@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.wanyue.imnew">
+
+
+    <uses-permission android:name="android.permission.REORDER_TASKS" />
+    <!--接三方的时候,修改这里的包名-->
+    <permission
+        android:name="com.wanyue.mails.permission.JPUSH_MESSAGE"
+        android:protectionLevel="signature"/>
+
+    <!--接三方的时候,修改这里的包名-->
+    <uses-permission android:name="com.wanyue.mails.permission.JPUSH_MESSAGE"/>
+    <application
+        android:allowBackup="true"
+        android:theme="@style/AppTheme">
+
+
+
+
+
+        <!--极光推送-->
+        <receiver
+            android:name="cn.jpush.android.service.AlarmReceiver"
+            android:exported="false"/>
+        <provider
+            android:name="cn.jpush.android.service.DataProvider"
+            android:authorities="com.wanyue.mails.DataProvider"
+            android:exported="true"/>
+
+        <receiver
+            android:name="com.wanyue.imnew.receiver.JPushReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.REGISTRATION"/>
+                <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED"/>
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED"/>
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED"/>
+                <action android:name="cn.jpush.android.intent.CONNECTION"/>
+                <category android:name="com.wanyue.mails"/>
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name="cn.jpush.android.service.DaemonService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.DaemonService"/>
+                <category android:name="com.wanyue.mails"/>
+            </intent-filter>
+
+        </service>
+
+
+        <receiver
+            android:name="cn.jpush.android.service.PushReceiver"
+            android:enabled="true"
+            android:exported="false"
+            android:process=":pushcore">
+            <intent-filter android:priority="1000">
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY"/>
+                <category android:name="com.wanyue.mails"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.USER_PRESENT"/>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED"/>
+                <action android:name="android.intent.action.PACKAGE_REMOVED"/>
+
+                <data android:scheme="package"/>
+            </intent-filter>
+        </receiver>
+        <activity
+            android:name="cn.jpush.android.ui.PushActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:exported="false"
+            android:theme="@android:style/Theme.NoTitleBar">
+            <intent-filter>
+                <action android:name="cn.jpush.android.ui.PushActivity"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="com.wanyue.mails"/>
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name="cn.jpush.android.service.PushService"
+            android:exported="false"
+            android:process=":pushcore">
+
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.REGISTER"/>
+                <action android:name="cn.jpush.android.intent.REPORT"/>
+                <action android:name="cn.jpush.android.intent.PushService"/>
+                <action android:name="cn.jpush.android.intent.PUSH_TIME"/>
+            </intent-filter>
+        </service>
+        <!--极光推送 end-->
+
+        <meta-data
+            android:name="JPUSH_CHANNEL"
+            android:value="developer-default"/>
+        <!--接三方的时候,修改这里的APP_KEY-->
+        <meta-data
+            android:name="JPUSH_APPKEY"
+            android:value="${jpushAppKey}"/>
+
+        <activity
+            android:name="com.wanyue.imnew.view.chat.ChatActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
+            android:exported="true" />
+        <activity
+            android:name="com.wanyue.imnew.view.conversation.ConversationActivity"
+            android:screenOrientation="portrait"
+            android:exported="true" />
+
+    </application>
+
+
+
+
+
+</manifest>

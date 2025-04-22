@@ -1,0 +1,1884 @@
+.
+├── app
+│   ├── release
+│   └── src
+│       ├── main
+│       │   ├── java
+│       │   │   └── com
+│       │   │       └── wanyue
+│       │   │           └── malls
+│       │   │               ├── InitHelper.java
+│       │   │               ├── LaunchActivity.java
+│       │   │               ├── MailApplication.java
+│       │   │               └── wxapi
+│       │   │                   ├── WXEntryActivity.java
+│       │   │                   └── WXPayEntryActivity.java
+│       │   └── res
+│       │       ├── drawable
+│       │       ├── layout
+│       │       ├── mipmap-hdpi
+│       │       ├── mipmap-mdpi
+│       │       ├── mipmap-xhdpi
+│       │       ├── mipmap-xxhdpi
+│       │       ├── mipmap-xxxhdpi
+│       │       └── values
+│       └── test
+│           └── java
+│               └── com
+│                   └── wanyue
+│                       └── malls
+│                           └── ExampleUnitTest.java
+├── calendarview
+│   └── src
+│       ├── androidTest
+│       │   └── java
+│       │       └── com
+│       │           └── haibin
+│       │               └── calendarview
+│       │                   ├── CalendarUtilTest.java
+│       │                   ├── ExampleInstrumentedTest.java
+│       │                   ├── LunarCalendarTest.java
+│       │                   ├── LunarUtilTest.java
+│       │                   └── SolarTermUtilTest.java
+│       ├── main
+│       │   ├── java
+│       │   │   └── com
+│       │   │       └── haibin
+│       │   │           └── calendarview
+│       │   │               ├── BaseMonthView.java
+│       │   │               ├── BaseRecyclerAdapter.java
+│       │   │               ├── BaseView.java
+│       │   │               ├── BaseWeekView.java
+│       │   │               ├── Calendar.java
+│       │   │               ├── CalendarLayout.java
+│       │   │               ├── CalendarUtil.java
+│       │   │               ├── CalendarView.java
+│       │   │               ├── CalendarViewDelegate.java
+│       │   │               ├── DefaultMonthView.java
+│       │   │               ├── DefaultWeekView.java
+│       │   │               ├── DefaultYearView.java
+│       │   │               ├── LunarCalendar.java
+│       │   │               ├── LunarUtil.java
+│       │   │               ├── Month.java
+│       │   │               ├── MonthView.java
+│       │   │               ├── MonthViewPager.java
+│       │   │               ├── MultiMonthView.java
+│       │   │               ├── MultiWeekView.java
+│       │   │               ├── RangeMonthView.java
+│       │   │               ├── RangeWeekView.java
+│       │   │               ├── SolarTermUtil.java
+│       │   │               ├── TrunkBranchAnnals.java
+│       │   │               ├── WeekBar.java
+│       │   │               ├── WeekView.java
+│       │   │               ├── WeekViewPager.java
+│       │   │               ├── YearRecyclerView.java
+│       │   │               ├── YearView.java
+│       │   │               ├── YearViewAdapter.java
+│       │   │               └── YearViewPager.java
+│       │   └── res
+│       │       ├── drawable
+│       │       ├── drawable-v21
+│       │       ├── layout
+│       │       ├── values
+│       │       ├── values-zh
+│       │       ├── values-zh-rHK
+│       │       └── values-zh-rTW
+│       └── test
+│           └── java
+│               └── com
+│                   └── haibin
+│                       └── calendarview
+│                           └── ExampleUnitTest.java
+├── common
+│   ├── libs
+│   └── src
+│       └── main
+│           ├── assets
+│           ├── java
+│           │   └── com
+│           │       └── wanyue
+│           │           └── common
+│           │               ├── CommonAppConfig.java
+│           │               ├── CommonApplication.java
+│           │               ├── Constants.java
+│           │               ├── HtmlConfig.java
+│           │               ├── activity
+│           │               │   ├── AbsActivity.java
+│           │               │   ├── BaseActivity.java
+│           │               │   ├── ErrorActivity.java
+│           │               │   └── WebViewActivity.java
+│           │               ├── adapter
+│           │               │   ├── BaseNavigatorAdapter.java
+│           │               │   ├── CommonShareAdapter.java
+│           │               │   ├── ImChatFaceAdapter.java
+│           │               │   ├── ImChatFacePagerAdapter.java
+│           │               │   ├── RefreshAdapter.java
+│           │               │   ├── ViewPagerAdapter.java
+│           │               │   ├── base
+│           │               │   │   ├── BaseMutiRecyclerAdapter.java
+│           │               │   │   ├── BaseReclyViewHolder.java
+│           │               │   │   └── BaseRecyclerAdapter.java
+│           │               │   └── radio
+│           │               │       ├── CheckEntity.java
+│           │               │       ├── IRadioChecker.java
+│           │               │       └── RadioAdapter.java
+│           │               ├── api
+│           │               │   └── CommonAPI.java
+│           │               ├── bean
+│           │               │   ├── AreaBean.java
+│           │               │   ├── AreaParseInfo.java
+│           │               │   ├── CatBean.java
+│           │               │   ├── ChargeSuccessBean.java
+│           │               │   ├── ChatAnchorParam.java
+│           │               │   ├── ChatAudienceParam.java
+│           │               │   ├── ChatGiftBean.java
+│           │               │   ├── ChatReceiveGiftBean.java
+│           │               │   ├── ChooseVideoBean.java
+│           │               │   ├── CoinBean.java
+│           │               │   ├── CoinPayBean.java
+│           │               │   ├── ConditionLevel.java
+│           │               │   ├── ConfigBean.java
+│           │               │   ├── DataListner.java
+│           │               │   ├── ExportNamer.java
+│           │               │   ├── FansUserBean.java
+│           │               │   ├── GoodsBean.java
+│           │               │   ├── LevelBean.java
+│           │               │   ├── LiveClassBean.java
+│           │               │   ├── LiveGiftBean.java
+│           │               │   ├── LiveInfo.java
+│           │               │   ├── MeiyanConfig.java
+│           │               │   ├── SimpleLiveBean.java
+│           │               │   ├── SimpleUserBean.java
+│           │               │   ├── SpecsValueBean.java
+│           │               │   ├── TestBean.java
+│           │               │   ├── TxLocationBean.java
+│           │               │   ├── TxLocationPoiBean.java
+│           │               │   ├── UserBean.java
+│           │               │   ├── UserItemBean.java
+│           │               │   ├── XingZuoBean.java
+│           │               │   └── commit
+│           │               │       ├── BaseObservableField.java
+│           │               │       ├── CommitEntity.java
+│           │               │       ├── ObservableInteager.java
+│           │               │       ├── ObservableLong.java
+│           │               │       └── ObservableString.java
+│           │               ├── business
+│           │               │   ├── HtmlHelper.java
+│           │               │   ├── JumpInterceptor.java
+│           │               │   ├── TimeModel.java
+│           │               │   ├── UserModel.java
+│           │               │   ├── acmannger
+│           │               │   │   ├── ActivityMannger.java
+│           │               │   │   └── ReleaseListner.java
+│           │               │   └── list
+│           │               │       ├── ListBean.java
+│           │               │       └── ListHelper.java
+│           │               ├── custom
+│           │               │   ├── AppBarLayoutBehavior.java
+│           │               │   ├── BigPageTitleView.java
+│           │               │   ├── BubbleLayout.java
+│           │               │   ├── CancleSelfRadioButton.java
+│           │               │   ├── CheckImageView.java
+│           │               │   ├── CoinGiveLayout.java
+│           │               │   ├── CommonRefreshView.java
+│           │               │   ├── CustomPopupWindow.java
+│           │               │   ├── DrawableCheckBox.java
+│           │               │   ├── DrawableRadioButton.java
+│           │               │   ├── DrawableRadioButton2.java
+│           │               │   ├── DrawableTextView.java
+│           │               │   ├── FixAppBarLayoutBehavior.java
+│           │               │   ├── FlowRadioDataGroup.java
+│           │               │   ├── FlowRadioGroup.java
+│           │               │   ├── ItemDecoration.java
+│           │               │   ├── ItemLinearLayout.java
+│           │               │   ├── ItemSlideHelper.java
+│           │               │   ├── MaxHeightRecyclerView.java
+│           │               │   ├── MyFrameLayout1.java
+│           │               │   ├── MyFrameLayout2.java
+│           │               │   ├── MyImageView2.java
+│           │               │   ├── MyLinearLayout1.java
+│           │               │   ├── MyLinearLayout2.java
+│           │               │   ├── MyLinearLayout3.java
+│           │               │   ├── MyLinearLayout4.java
+│           │               │   ├── MyLinearLayout5.java
+│           │               │   ├── MyLinearLayout6.java
+│           │               │   ├── MyPreDrawFilter.java
+│           │               │   ├── MyRadioButton.java
+│           │               │   ├── MyRelativeLayout1.java
+│           │               │   ├── MyRelativeLayout2.java
+│           │               │   ├── MyRelativeLayout5.java
+│           │               │   ├── MyScrollView.java
+│           │               │   ├── MyViewPager.java
+│           │               │   ├── NoScrollRecyclerView.java
+│           │               │   ├── NoScrollRecyleview.java
+│           │               │   ├── NoScrollWebView.java
+│           │               │   ├── RatingBar.java
+│           │               │   ├── RatioGifImageView.java
+│           │               │   ├── RatioImageView.java
+│           │               │   ├── RatioRoundImageView.java
+│           │               │   ├── RoundBackgroundColorSpan.java
+│           │               │   ├── ScaleTransitionPagerTitleView.java
+│           │               │   ├── ScrollLinearLayoutManager.java
+│           │               │   ├── ShadowContainer.java
+│           │               │   ├── ShadowDrawable.java
+│           │               │   ├── SquareImageView.java
+│           │               │   ├── SquareRoundedImageView.java
+│           │               │   ├── TabButton.java
+│           │               │   ├── TabButtonGroup.java
+│           │               │   ├── TintImageView.java
+│           │               │   ├── TransformationUtils.java
+│           │               │   ├── UIFactory.java
+│           │               │   ├── ValueFrameAnimator.java
+│           │               │   ├── VerticalImageSpan.java
+│           │               │   ├── VerticalViewPager.java
+│           │               │   ├── ViewPagerSnapHelper.java
+│           │               │   ├── WarpLinearLayout.java
+│           │               │   ├── ZoomImageView.java
+│           │               │   ├── ZoomView.java
+│           │               │   ├── bubble
+│           │               │   │   ├── Auto.java
+│           │               │   │   ├── BubbleDialog.java
+│           │               │   │   ├── BubbleLayout.java
+│           │               │   │   └── Util.java
+│           │               │   ├── refresh
+│           │               │   │   ├── CircleImageView.java
+│           │               │   │   ├── ControllLayoutManager.java
+│           │               │   │   ├── IControllLayoutMannger.java
+│           │               │   │   ├── LogRecyclerView.java
+│           │               │   │   ├── MaterialHeader.java
+│           │               │   │   ├── MaterialProgressDrawable.java
+│           │               │   │   └── RxRefreshView.java
+│           │               │   └── viewanimator
+│           │               │       ├── AnimationBuilder.java
+│           │               │       ├── AnimationListener.java
+│           │               │       └── ViewAnimator.java
+│           │               ├── dialog
+│           │               │   ├── AbsContainerDialogFragment.java
+│           │               │   ├── AbsDialogFragment.java
+│           │               │   ├── BottomDealFragment.java
+│           │               │   ├── ChatFaceDialog.java
+│           │               │   ├── ChooseSexDialog.java
+│           │               │   ├── CommonShareDialogFragment.java
+│           │               │   ├── ContainerBottmoDialogFragment.java
+│           │               │   └── SelectDialogFragment.java
+│           │               ├── event
+│           │               │   ├── BlackEvent.java
+│           │               │   ├── CoinChangeEvent.java
+│           │               │   ├── FollowEvent.java
+│           │               │   ├── ImMsgEvent.java
+│           │               │   ├── LaunchStackEvent.java
+│           │               │   ├── LocationEvent.java
+│           │               │   ├── LoginInvalidEvent.java
+│           │               │   ├── LoginSuccessEvent.java
+│           │               │   ├── MatchSuccessEvent.java
+│           │               │   ├── OrderChangedEvent.java
+│           │               │   └── UpdateFieldEvent.java
+│           │               ├── fragment
+│           │               │   └── ProcessFragment.java
+│           │               ├── glide
+│           │               │   └── ImgLoader.java
+│           │               ├── http
+│           │               │   ├── BaseHttpCallBack.java
+│           │               │   ├── BaseJsonBean.java
+│           │               │   ├── CommonHttpConsts.java
+│           │               │   ├── CommonHttpUtil.java
+│           │               │   ├── HttpCallback.java
+│           │               │   ├── HttpClient.java
+│           │               │   ├── HttpLoggingInterceptor.java
+│           │               │   ├── JsonBean.java
+│           │               │   ├── ParseArrayHttpCallBack.java
+│           │               │   ├── ParseHttpCallback.java
+│           │               │   ├── ParseSingleHttpCallback.java
+│           │               │   └── UrlMap.java
+│           │               ├── interfaces
+│           │               │   ├── ActivityResultCallback.java
+│           │               │   ├── CommonCallback.java
+│           │               │   ├── ImageResultCallback.java
+│           │               │   ├── KeyBoardHeightChangeListener.java
+│           │               │   ├── LifeCycleListener.java
+│           │               │   ├── OnFaceClickListener.java
+│           │               │   ├── OnItemClickListener.java
+│           │               │   └── VideoResultCallback.java
+│           │               ├── mob
+│           │               │   ├── LoginData.java
+│           │               │   ├── MobBean.java
+│           │               │   ├── MobCallback.java
+│           │               │   ├── MobConst.java
+│           │               │   ├── MobLoginUtil.java
+│           │               │   ├── MobShareUtil.java
+│           │               │   └── ShareData.java
+│           │               ├── pay
+│           │               │   ├── PayCallback.java
+│           │               │   ├── PayPresenter.java
+│           │               │   ├── ali
+│           │               │   │   ├── AliPayBuilder.java
+│           │               │   │   ├── Base64.java
+│           │               │   │   └── SignUtils.java
+│           │               │   ├── google
+│           │               │   │   └── GooglePayTask.java
+│           │               │   └── wx
+│           │               │       ├── WxApiWrapper.java
+│           │               │       └── WxPayBuilder.java
+│           │               ├── proxy
+│           │               │   ├── Arg.java
+│           │               │   ├── BaseProxyMannger.java
+│           │               │   ├── BaseViewProxy.java
+│           │               │   ├── LifeFragmentLisnter.java
+│           │               │   ├── LifeObserver.java
+│           │               │   ├── RxViewProxy.java
+│           │               │   ├── SingleRefreshViewProxy.java
+│           │               │   ├── ViewProxyChildMannger.java
+│           │               │   ├── ViewProxyMannger.java
+│           │               │   ├── ViewProxyPageAdapter.java
+│           │               │   ├── ViewProxyStack.java
+│           │               │   └── function
+│           │               │       ├── GalleryAdapter.java
+│           │               │       └── GalleryViewProxy.java
+│           │               ├── server
+│           │               │   ├── IRequestManager.java
+│           │               │   ├── MapBuilder.java
+│           │               │   ├── OkGoRequestMannger.java
+│           │               │   ├── RequestFactory.java
+│           │               │   ├── RxUtils.java
+│           │               │   ├── SeverConfig.java
+│           │               │   ├── annotation
+│           │               │   │   └── Text2.java
+│           │               │   ├── converter
+│           │               │   │   ├── Convert.java
+│           │               │   │   ├── FashJsonConvert.java
+│           │               │   │   ├── FastJsonConvert.java
+│           │               │   │   ├── IConvert.java
+│           │               │   │   └── JsonConvert.java
+│           │               │   ├── entity
+│           │               │   │   ├── BaseArrayResponse.java
+│           │               │   │   ├── BaseOriginalResponse.java
+│           │               │   │   ├── BaseSimpleReponse.java
+│           │               │   │   └── BaseSingleResponse.java
+│           │               │   ├── generic
+│           │               │   │   └── ParameterizedTypeImpl.java
+│           │               │   ├── interceptor
+│           │               │   │   └── ResponseInterceptor.java
+│           │               │   └── observer
+│           │               │       ├── DefaultObserver.java
+│           │               │       ├── DialogObserver.java
+│           │               │       └── LockClickObserver.java
+│           │               ├── upload
+│           │               │   ├── FileBundle.java
+│           │               │   ├── ImageUploader.java
+│           │               │   ├── UploadBean.java
+│           │               │   ├── UploadCallback.java
+│           │               │   ├── UploadQnImpl.java
+│           │               │   └── UploadStrategy.java
+│           │               ├── utils
+│           │               │   ├── BirthdayUtil.java
+│           │               │   ├── BitmapUtil.java
+│           │               │   ├── ChooseVideoUtil.java
+│           │               │   ├── CityUtil.java
+│           │               │   ├── CleanLeakUtils.java
+│           │               │   ├── ClickUtil.java
+│           │               │   ├── CommonIconUtil.java
+│           │               │   ├── DateFormatUtil.java
+│           │               │   ├── DebugUtil.java
+│           │               │   ├── DecryptUtil.java
+│           │               │   ├── DialogUitl.java
+│           │               │   ├── DownloadUtil.java
+│           │               │   ├── DpUtil.java
+│           │               │   ├── FaceUtil.java
+│           │               │   ├── FieldUtil.java
+│           │               │   ├── FileUtil.java
+│           │               │   ├── FormatUtil.java
+│           │               │   ├── GifCacheUtil.java
+│           │               │   ├── GiftTextRender.java
+│           │               │   ├── GlideCatchUtil.java
+│           │               │   ├── HeybroadHelper.java
+│           │               │   ├── ImageUtil.java
+│           │               │   ├── JsonUtil.java
+│           │               │   ├── KeyBoardHeightUtil.java
+│           │               │   ├── KeyBoardHeightUtil2.java
+│           │               │   ├── L.java
+│           │               │   ├── LanguageUtil.java
+│           │               │   ├── ListUtil.java
+│           │               │   ├── LocationUtil.java
+│           │               │   ├── LogUtil.java
+│           │               │   ├── MD5Util.java
+│           │               │   ├── ModelUtils.java
+│           │               │   ├── MoneyHelper.java
+│           │               │   ├── ObjectUtil.java
+│           │               │   ├── OpenFileUtil.java
+│           │               │   ├── Parser.java
+│           │               │   ├── ProcessImageUtil.java
+│           │               │   ├── ProcessResultUtil.java
+│           │               │   ├── RandomUtil.java
+│           │               │   ├── ResourceUtil.java
+│           │               │   ├── RoundBackGroundColorSpan.java
+│           │               │   ├── RouteUtil.java
+│           │               │   ├── ScreenDimenUtil.java
+│           │               │   ├── SpUtil.java
+│           │               │   ├── SpannableStringUtils.java
+│           │               │   ├── StringUtil.java
+│           │               │   ├── SystemUtil.java
+│           │               │   ├── ToastUtil.java
+│           │               │   ├── TxImCacheUtil.java
+│           │               │   ├── UMengUtil.java
+│           │               │   ├── ValidatePhoneUtil.java
+│           │               │   ├── VersionUtil.java
+│           │               │   ├── VideoChooseBean.java
+│           │               │   ├── VideoLocalUtil.java
+│           │               │   ├── ViewUtil.java
+│           │               │   ├── VoiceMediaPlayerUtil.java
+│           │               │   ├── WordFilterUtil.java
+│           │               │   └── WordUtil.java
+│           │               └── views
+│           │                   ├── AbsCommonViewHolder.java
+│           │                   ├── AbsLivePageViewHolder.java
+│           │                   └── AbsViewHolder.java
+│           ├── jniLibs
+│           │   ├── arm64-v8a
+│           │   └── armeabi-v7a
+│           └── res
+│               ├── anim
+│               ├── color
+│               ├── drawable
+│               ├── layout
+│               ├── mipmap-hdpi
+│               ├── mipmap-mdpi
+│               ├── mipmap-xhdpi
+│               ├── mipmap-xxhdpi
+│               ├── values
+│               ├── values-en-rUS
+│               ├── values-v21
+│               └── xml
+├── course
+│   ├── libs
+│   └── src
+│       ├── androidTest
+│       │   └── java
+│       │       └── com
+│       │           └── tiankou
+│       │               └── course
+│       │                   └── ExampleInstrumentedTest.java
+│       ├── main
+│       │   ├── java
+│       │   │   └── com
+│       │   │       └── wanyue
+│       │   │           └── course
+│       │   │               ├── adapter
+│       │   │               │   ├── ChatChargePayAdapter.java
+│       │   │               │   ├── CourseAdapter.java
+│       │   │               │   ├── CourseLevelAdapter.java
+│       │   │               │   ├── CourseNavigatorAadpter.java
+│       │   │               │   ├── CourseRecordAdapter.java
+│       │   │               │   ├── MyCourseRecordAdapter.java
+│       │   │               │   └── ProjectListAdapter.java
+│       │   │               ├── api
+│       │   │               │   └── CourseAPI.java
+│       │   │               ├── bean
+│       │   │               │   ├── ContentBean.java
+│       │   │               │   ├── CourseBean.java
+│       │   │               │   ├── CourseLevel0Bean.java
+│       │   │               │   ├── CourseLevel1Bean.java
+│       │   │               │   ├── EvaluateBean.java
+│       │   │               │   ├── Identity.java
+│       │   │               │   ├── LecturerBean.java
+│       │   │               │   ├── LessonBean.java
+│       │   │               │   ├── ProjectBean.java
+│       │   │               │   ├── RecordBean.java
+│       │   │               │   ├── ResumeBean.java
+│       │   │               │   └── ToalEvaluateBean.java
+│       │   │               ├── busniess
+│       │   │               │   ├── CourseConstants.java
+│       │   │               │   ├── CourseEvent.java
+│       │   │               │   ├── IBuyer.java
+│       │   │               │   ├── ProjectAdapterHelper.java
+│       │   │               │   └── UIFactory.java
+│       │   │               ├── evaluate
+│       │   │               │   ├── EvaluateCommitBean.java
+│       │   │               │   ├── adapter
+│       │   │               │   │   └── EvaluateListAdapter.java
+│       │   │               │   └── view
+│       │   │               │       ├── activity
+│       │   │               │       │   └── PublishEvaluateActivity.java
+│       │   │               │       └── proxy
+│       │   │               │           └── EvaluateListViewProxy.java
+│       │   │               ├── video
+│       │   │               │   ├── AbsLockPlayerViewProxy.java
+│       │   │               │   ├── Config.java
+│       │   │               │   ├── CustomPopupWindow.java
+│       │   │               │   ├── IPlayerViewProxy.java
+│       │   │               │   ├── LockDurSeekBar.java
+│       │   │               │   ├── NotifyViewProxy.java
+│       │   │               │   ├── TxAudioPlayViewProxy.java
+│       │   │               │   └── TxVideoPlayViewProxy.java
+│       │   │               ├── view
+│       │   │               │   ├── activity
+│       │   │               │   │   ├── BaseInsDetailActivity.java
+│       │   │               │   │   ├── ContentDetailActivity.java
+│       │   │               │   │   ├── CourseDetailActivity.java
+│       │   │               │   │   ├── CourseListActivity.java
+│       │   │               │   │   ├── MyCourseActivity.java
+│       │   │               │   │   └── MyCourseRecordActivity.java
+│       │   │               │   ├── dialog
+│       │   │               │   │   └── PayOrderPopView.java
+│       │   │               │   └── proxy
+│       │   │               │       ├── CatalogueViewProxy.java
+│       │   │               │       ├── ProjectListProxy.java
+│       │   │               │       ├── ins
+│       │   │               │       │   ├── BaseInsViewProxy.java
+│       │   │               │       │   ├── CourseIntroduceViewProxy.java
+│       │   │               │       │   └── WebViewInsViewProxy.java
+│       │   │               │       └── insbottom
+│       │   │               │           ├── AbsBottomInsViewProxy.java
+│       │   │               │           ├── BottomViewHelper.java
+│       │   │               │           └── BuyBottomVIewProxy.java
+│       │   │               └── widet
+│       │   │                   └── RatingStar.java
+│       │   └── res
+│       │       ├── drawable
+│       │       ├── drawable-xhdpi
+│       │       ├── layout
+│       │       └── values
+│       └── test
+│           └── java
+│               └── com
+│                   └── tiankou
+│                       └── course
+│                           └── ExampleUnitTest.java
+├── gradle
+│   └── wrapper
+├── imnew
+│   ├── libs
+│   └── src
+│       └── main
+│           ├── java
+│           │   └── com
+│           │       └── wanyue
+│           │           └── imnew
+│           │               ├── bean
+│           │               │   └── ChatChooseImageBean.java
+│           │               ├── busniess
+│           │               │   ├── IMSDK.java
+│           │               │   └── helper
+│           │               │       └── ConfigHelper.java
+│           │               ├── receiver
+│           │               │   ├── HomeWatcherReceiver.java
+│           │               │   └── JPushReceiver.java
+│           │               ├── util
+│           │               │   ├── ImPushUtil.java
+│           │               │   ├── ImageUtil.java
+│           │               │   └── MediaRecordUtil.java
+│           │               └── view
+│           │                   ├── chat
+│           │                   │   └── ChatActivity.java
+│           │                   └── conversation
+│           │                       └── ConversationActivity.java
+│           ├── jniLibs
+│           │   ├── arm64-v8a
+│           │   └── armeabi-v7a
+│           └── res
+│               ├── layout
+│               └── values
+├── libs
+├── live
+│   └── src
+│       └── main
+│           ├── assets
+│           ├── java
+│           │   └── com
+│           │       └── wanyue
+│           │           └── live
+│           │               ├── LiveConfig.java
+│           │               ├── activity
+│           │               │   ├── LiveActivity.java
+│           │               │   ├── LiveAdminListActivity.java
+│           │               │   ├── LiveAnchorActivity.java
+│           │               │   ├── LiveAudienceActivity.java
+│           │               │   ├── LiveBlackActivity.java
+│           │               │   ├── LiveChooseClassActivity.java
+│           │               │   ├── LiveContributeActivity.java
+│           │               │   ├── LiveGoodsAddActivity.java
+│           │               │   ├── LiveRecordActivity.java
+│           │               │   ├── LiveRecordPlayActivity.java
+│           │               │   ├── LiveReportActivity.java
+│           │               │   ├── LiveShutUpActivity.java
+│           │               │   ├── LiveStoreActivity.java
+│           │               │   ├── RoomManageActivity.java
+│           │               │   ├── RoomManageDetailActivity.java
+│           │               │   └── WindowActivity.java
+│           │               ├── adapter
+│           │               │   ├── LiveAdminListAdapter.java
+│           │               │   ├── LiveAdminRoomAdapter.java
+│           │               │   ├── LiveBlackAdapter.java
+│           │               │   ├── LiveChatAdapter.java
+│           │               │   ├── LiveFunctionAdapter.java
+│           │               │   ├── LiveGiftAdapter.java
+│           │               │   ├── LiveGiftCountAdapter.java
+│           │               │   ├── LiveGiftPagerAdapter.java
+│           │               │   ├── LiveGoodsAdapter.java
+│           │               │   ├── LiveGoodsAddAdapter.java
+│           │               │   ├── LiveNewChatAdapter.java
+│           │               │   ├── LivePkAdapter.java
+│           │               │   ├── LiveReadyClassAdapter.java
+│           │               │   ├── LiveReadyShareAdapter.java
+│           │               │   ├── LiveRecordAdapter.java
+│           │               │   ├── LiveRoomScrollAdapter.java
+│           │               │   ├── LiveRoomTypeAdapter.java
+│           │               │   ├── LiveShareAdapter.java
+│           │               │   ├── LiveShareSmallAdapter.java
+│           │               │   ├── LiveShopAdapter.java
+│           │               │   ├── LiveShutUpAdapter.java
+│           │               │   ├── LiveStoreAdapter.java
+│           │               │   ├── LiveTimeChargeAdapter.java
+│           │               │   ├── LiveUserActionAdapter.java
+│           │               │   └── LiveUserAdapter.java
+│           │               ├── bean
+│           │               │   ├── BackPackGiftBean.java
+│           │               │   ├── GlobalGiftBean.java
+│           │               │   ├── GuardRightBean.java
+│           │               │   ├── GuardUserBean.java
+│           │               │   ├── ImpressBean.java
+│           │               │   ├── LiveAdminRoomBean.java
+│           │               │   ├── LiveBean.java
+│           │               │   ├── LiveBuyGuardMsgBean.java
+│           │               │   ├── LiveChatBean.java
+│           │               │   ├── LiveDanMuBean.java
+│           │               │   ├── LiveEnterRoomBean.java
+│           │               │   ├── LiveFunctionBean.java
+│           │               │   ├── LiveGiftPrizePoolWinBean.java
+│           │               │   ├── LiveGoodsBean.java
+│           │               │   ├── LiveGuardInfo.java
+│           │               │   ├── LiveKsyConfigBean.java
+│           │               │   ├── LiveLuckGiftWinBean.java
+│           │               │   ├── LivePkBean.java
+│           │               │   ├── LiveReceiveGiftBean.java
+│           │               │   ├── LiveRecordBean.java
+│           │               │   ├── LiveReportBean.java
+│           │               │   ├── LiveRoomTypeBean.java
+│           │               │   ├── LiveShutUpBean.java
+│           │               │   ├── LiveTimeChargeBean.java
+│           │               │   ├── LiveUserActionBean.java
+│           │               │   ├── LiveUserBean.java
+│           │               │   ├── LiveUserGiftBean.java
+│           │               │   ├── LiveUserListBean.java
+│           │               │   ├── LuckPanBean.java
+│           │               │   ├── RedPackBean.java
+│           │               │   ├── RedPackResultBean.java
+│           │               │   ├── SearchUserBean.java
+│           │               │   ├── TurntableConfigBean.java
+│           │               │   └── TurntableGiftBean.java
+│           │               ├── business
+│           │               │   └── floatwindow
+│           │               │       ├── FloatFrameLayout.java
+│           │               │       ├── IExpotFlowContainer.java
+│           │               │       ├── SysPermisssonFragment.java
+│           │               │       ├── Utils.java
+│           │               │       └── WindowAddHelper.java
+│           │               ├── components
+│           │               │   ├── adapter
+│           │               │   └── view
+│           │               ├── custom
+│           │               │   ├── DashLineView.java
+│           │               │   ├── FrameImageView.java
+│           │               │   ├── GiftMarkView.java
+│           │               │   ├── GiftPageViewPager.java
+│           │               │   ├── LiveAudienceRecyclerView.java
+│           │               │   ├── LiveLightView.java
+│           │               │   ├── MusicProgressTextView.java
+│           │               │   ├── MyFrameLayout3.java
+│           │               │   ├── MyFrameLayout4.java
+│           │               │   ├── MyImageView.java
+│           │               │   ├── MyRelativeLayout1.java
+│           │               │   ├── MyTextView.java
+│           │               │   ├── MyTextView2.java
+│           │               │   ├── PkProgressBar.java
+│           │               │   ├── ProgressTextView.java
+│           │               │   ├── RoundTextView.java
+│           │               │   ├── StarView.java
+│           │               │   └── TopGradual.java
+│           │               ├── dialog
+│           │               │   ├── LiveAnthorUserDialogPop.java
+│           │               │   ├── LiveChatListDialogFragment.java
+│           │               │   ├── LiveChatRoomDialogFragment.java
+│           │               │   ├── LiveFunctionDialogFragment.java
+│           │               │   ├── LiveGiftDialogFragment.java
+│           │               │   ├── LiveGoodsDialogFragment.java
+│           │               │   ├── LiveInputDialogFragment.java
+│           │               │   ├── LiveLinkMicListDialogFragment.java
+│           │               │   ├── LiveLinkMicPkSearchDialog.java
+│           │               │   ├── LiveShareDialogFragment.java
+│           │               │   ├── LiveShareSelectDialogFragment.java
+│           │               │   ├── LiveShareSmallProgramDialogFragment.java
+│           │               │   ├── LiveShopDialogFragment.java
+│           │               │   ├── LiveUserActionDialogFragment.java
+│           │               │   ├── LiveUserDialogFragment.java
+│           │               │   └── LiveUserManngerDialogFragment.java
+│           │               ├── event
+│           │               │   ├── LinkMicTxAccEvent.java
+│           │               │   ├── LinkMicTxMixStreamEvent.java
+│           │               │   ├── LiveGoodsChangeEvent.java
+│           │               │   └── LiveRoomChangeEvent.java
+│           │               ├── http
+│           │               │   ├── LiveHttpConsts.java
+│           │               │   ├── LiveHttpUtil.java
+│           │               │   ├── LiveShopAPI.java
+│           │               │   └── MusicUrlCallback.java
+│           │               ├── interfaces
+│           │               │   ├── ILiveLinkMicViewHolder.java
+│           │               │   ├── ILivePushViewHolder.java
+│           │               │   ├── LiveFunctionClickListener.java
+│           │               │   ├── LivePushListener.java
+│           │               │   └── RedPackCountDownListener.java
+│           │               ├── model
+│           │               │   └── LiveModel.java
+│           │               ├── music
+│           │               │   ├── LiveMusicAdapter.java
+│           │               │   ├── LiveMusicBean.java
+│           │               │   ├── LiveMusicDialogFragment.java
+│           │               │   ├── LiveMusicPlayer.java
+│           │               │   ├── LrcBean.java
+│           │               │   ├── LrcParser.java
+│           │               │   ├── LrcTextView.java
+│           │               │   └── db
+│           │               │       ├── MusicDbHelper.java
+│           │               │       └── MusicDbManager.java
+│           │               ├── presenter
+│           │               │   ├── LiveDanmuPresenter.java
+│           │               │   ├── LiveGiftAnimPresenter.java
+│           │               │   ├── LiveLightAnimPresenter.java
+│           │               │   ├── LiveLinkMicAnchorPresenter.java
+│           │               │   ├── LiveLinkMicPkPresenter.java
+│           │               │   ├── LiveLinkMicPresenter.java
+│           │               │   ├── LiveRoomCheckLivePresenter.java
+│           │               │   └── UserHomeSharePresenter.java
+│           │               ├── receiver
+│           │               │   └── HomeWatcherReceiver.java
+│           │               ├── socket
+│           │               │   ├── SocketChatUtil.java
+│           │               │   ├── SocketClient.java
+│           │               │   ├── SocketLinkMicAnchorUtil.java
+│           │               │   ├── SocketLinkMicPkUtil.java
+│           │               │   ├── SocketLinkMicUtil.java
+│           │               │   ├── SocketMessageListener.java
+│           │               │   ├── SocketReceiveBean.java
+│           │               │   └── SocketSendBean.java
+│           │               ├── utils
+│           │               │   ├── LiveIconUtil.java
+│           │               │   ├── LiveStorge.java
+│           │               │   └── LiveTextRender.java
+│           │               └── views
+│           │                   ├── AbsLiveDialogViewHolder.java
+│           │                   ├── AbsLiveGiftViewHolder.java
+│           │                   ├── AbsLiveLinkMicPlayViewHolder.java
+│           │                   ├── AbsLiveLinkMicPushViewHolder.java
+│           │                   ├── AbsLivePushViewHolder.java
+│           │                   ├── AbsLiveViewHolder.java
+│           │                   ├── AbsUserHomeViewHolder.java
+│           │                   ├── DanmuViewHolder.java
+│           │                   ├── LauncherAdViewHolder.java
+│           │                   ├── LiveAdminListViewHolder.java
+│           │                   ├── LiveAnchorViewHolder.java
+│           │                   ├── LiveAudienceViewHolder.java
+│           │                   ├── LiveContributeViewHolder.java
+│           │                   ├── LiveEndViewHolder.java
+│           │                   ├── LiveGiftDaoViewHolder.java
+│           │                   ├── LiveGiftGiftViewHolder.java
+│           │                   ├── LiveGiftLuckTopViewHolder.java
+│           │                   ├── LiveGiftPackageViewHolder.java
+│           │                   ├── LiveGiftViewHolder.java
+│           │                   ├── LiveGoodsAddViewHolder.java
+│           │                   ├── LiveLinkMicPkViewHolder.java
+│           │                   ├── LiveLinkMicPlayTxViewHolder.java
+│           │                   ├── LiveLinkMicPushTxViewHolder.java
+│           │                   ├── LiveMusicViewHolder.java
+│           │                   ├── LiveMyLiveRoomViewHolder.java
+│           │                   ├── LiveMyRoomViewHolder.java
+│           │                   ├── LivePlayTxViewHolder.java
+│           │                   ├── LivePushTxViewHolder.java
+│           │                   ├── LiveReadyViewHolder.java
+│           │                   ├── LiveRecordPlayViewHolder.java
+│           │                   ├── LiveRecordViewHolder.java
+│           │                   ├── LiveRoomPlayViewHolder.java
+│           │                   ├── LiveRoomViewHolder.java
+│           │                   ├── LiveTitleAnimViewHolder.java
+│           │                   ├── LiveUserListViewHolder.java
+│           │                   ├── LiveWebViewHolder.java
+│           │                   └── LuckLiveGiftViewHolder.java
+│           └── res
+│               ├── color
+│               ├── drawable
+│               ├── layout
+│               ├── mipmap-hdpi
+│               ├── mipmap-mdpi
+│               ├── mipmap-xhdpi
+│               ├── mipmap-xxxhdpi
+│               └── values
+├── main
+│   └── src
+│       ├── main
+│       │   ├── java
+│       │   │   └── com
+│       │   │       └── wanyue
+│       │   │           └── main
+│       │   │               ├── adapter
+│       │   │               │   ├── BrokerageIndicatorAdapter.java
+│       │   │               │   ├── BrokerageRankAdapter.java
+│       │   │               │   ├── ClassifyAdapter.java
+│       │   │               │   ├── ClassifyIndexAdapter.java
+│       │   │               │   ├── CoinAdapter.java
+│       │   │               │   ├── CoinPayAdapter.java
+│       │   │               │   ├── CoinRecordAdapter.java
+│       │   │               │   ├── CoinRecordIndicatorAdapter.java
+│       │   │               │   ├── CommissionDetailAdapter.java
+│       │   │               │   ├── GreateSelectAdapter.java
+│       │   │               │   ├── HomeLiveAdapter.java
+│       │   │               │   ├── HomePageCourseAdapter.java
+│       │   │               │   ├── HomePageVIdeoAdapter.java
+│       │   │               │   ├── LikeGoodsAdapter.java
+│       │   │               │   ├── LoginTypeAdapter.java
+│       │   │               │   ├── MainMoudleAdapter.java
+│       │   │               │   ├── MainNavigatorAadpter.java
+│       │   │               │   ├── MainUserAdapter.java
+│       │   │               │   ├── MenuUserAdapter.java
+│       │   │               │   ├── MyIntegralAdapter.java
+│       │   │               │   ├── MySpreadAdapter.java
+│       │   │               │   ├── ReCommentAdapter.java
+│       │   │               │   ├── SpreadManAdapter.java
+│       │   │               │   ├── SpreadManRankAdapter.java
+│       │   │               │   └── SpreadOrderAdapter.java
+│       │   │               ├── api
+│       │   │               │   └── MainAPI.java
+│       │   │               ├── apply
+│       │   │               │   ├── activity
+│       │   │               │   │   └── ApplyStoreActivity.java
+│       │   │               │   ├── bean
+│       │   │               │   │   └── ApplyStoreBean.java
+│       │   │               │   └── view
+│       │   │               │       ├── AbsApplyStoreViewProxy.java
+│       │   │               │       ├── ApplyResultViewProxy.java
+│       │   │               │       └── ApplyStoreRxViewProxy.java
+│       │   │               ├── bean
+│       │   │               │   ├── AdvBean.java
+│       │   │               │   ├── ApplyAnthorInfo.java
+│       │   │               │   ├── BannerBean.java
+│       │   │               │   ├── BrokerageRankBean.java
+│       │   │               │   ├── ClassifyBean.java
+│       │   │               │   ├── ClassifySectionBean.java
+│       │   │               │   ├── CommissionBankBean.java
+│       │   │               │   ├── CommissionBean.java
+│       │   │               │   ├── CommissionSectionBean.java
+│       │   │               │   ├── CommitAdavanceBean.java
+│       │   │               │   ├── FeatureBean.java
+│       │   │               │   ├── FootGoodsBean.java
+│       │   │               │   ├── GreateSelectBean.java
+│       │   │               │   ├── HomePageBean.java
+│       │   │               │   ├── IBanner.java
+│       │   │               │   ├── IntegralRecordBean.java
+│       │   │               │   ├── LoginCommitBean.java
+│       │   │               │   ├── MainUserSectionBean.java
+│       │   │               │   ├── MenuBean.java
+│       │   │               │   ├── MoudleBean.java
+│       │   │               │   ├── MySpreadBean.java
+│       │   │               │   ├── ReCommentBean.java
+│       │   │               │   ├── RegisterCommitBean.java
+│       │   │               │   ├── SpreadManBean.java
+│       │   │               │   ├── SpreadManRankBean.java
+│       │   │               │   ├── SpreadOrderBean.java
+│       │   │               │   ├── SpreadOrderSectionBean.java
+│       │   │               │   ├── UserOrderNumBean.java
+│       │   │               │   └── WonderVedioBean.java
+│       │   │               ├── business
+│       │   │               │   └── MainEvent.java
+│       │   │               ├── find
+│       │   │               │   ├── adapter
+│       │   │               │   │   ├── FindGoodsAdapter.java
+│       │   │               │   │   ├── FindPhotoAdapter.java
+│       │   │               │   │   ├── FindVideoAdapter.java
+│       │   │               │   │   ├── MainFindIndicatorAdapter.java
+│       │   │               │   │   └── NormalFindAdapter.java
+│       │   │               │   ├── api
+│       │   │               │   │   └── FindAPI.java
+│       │   │               │   ├── bean
+│       │   │               │   │   ├── FindBean.java
+│       │   │               │   │   ├── FindLiveBean.java
+│       │   │               │   │   └── FindVideoBean.java
+│       │   │               │   ├── view
+│       │   │               │   │   ├── activity
+│       │   │               │   │   │   ├── FindDetailActivity.java
+│       │   │               │   │   │   └── LiveListActivity.java
+│       │   │               │   │   └── proxy
+│       │   │               │   │       ├── NormalFindListProxy.java
+│       │   │               │   │       └── VideoFindListProxy.java
+│       │   │               │   └── widet
+│       │   │               │       ├── ImageIPagerIndicator.java
+│       │   │               │       └── LinePagerIndicator.java
+│       │   │               ├── integral
+│       │   │               │   ├── adapter
+│       │   │               │   │   └── ProgressAdapter.java
+│       │   │               │   ├── api
+│       │   │               │   │   └── SignAPI.java
+│       │   │               │   ├── bean
+│       │   │               │   │   ├── SignRecordBean.java
+│       │   │               │   │   └── WeekSignBean.java
+│       │   │               │   └── view
+│       │   │               │       ├── activity
+│       │   │               │       │   ├── IntegralActivity.java
+│       │   │               │       │   └── SignSuccDialog.java
+│       │   │               │       ├── dialog
+│       │   │               │       ├── proxy
+│       │   │               │       │   └── SignProgressViewProxy.java
+│       │   │               │       └── widet
+│       │   │               │           ├── SignMonthView.java
+│       │   │               │           └── SingleMonthView2.java
+│       │   │               ├── store
+│       │   │               │   ├── adapter
+│       │   │               │   │   ├── CashAccountAdapter.java
+│       │   │               │   │   ├── ConsignmentManngerAdapter.java
+│       │   │               │   │   ├── ConsignmentManngerIndicatorAdapter.java
+│       │   │               │   │   ├── GoodsAddAdapter.java
+│       │   │               │   │   ├── ProfitRecordAdapter.java
+│       │   │               │   │   ├── SettlementRecordAdapter.java
+│       │   │               │   │   └── StoreOrderAdapter.java
+│       │   │               │   ├── bean
+│       │   │               │   │   ├── CashAccountBean.java
+│       │   │               │   │   ├── ConsignMentGoodsBean.java
+│       │   │               │   │   ├── MyStoreMessageBean.java
+│       │   │               │   │   ├── ProfitRecordBean.java
+│       │   │               │   │   └── SettlementRecordBean.java
+│       │   │               │   └── view
+│       │   │               │       ├── activity
+│       │   │               │       │   ├── CashActivity.java
+│       │   │               │       │   ├── ConsignmentManngerActivity.java
+│       │   │               │       │   ├── GetProfitActivity.java
+│       │   │               │       │   ├── MyConsignmentActivity.java
+│       │   │               │       │   ├── MyStoreActivity.java
+│       │   │               │       │   ├── ProfitActivity.java
+│       │   │               │       │   ├── ProiftRecordActivity.java
+│       │   │               │       │   ├── StoreGoodsAddActivity.java
+│       │   │               │       │   └── StoreOrderListActivity.java
+│       │   │               │       └── proxy
+│       │   │               │           ├── GoodsAddDetailBottomViewProxy.java
+│       │   │               │           ├── GoodsManngerAddViewProxy.java
+│       │   │               │           └── GoodsManngerViewProxy.java
+│       │   │               └── view
+│       │   │                   ├── activity
+│       │   │                   │   ├── BrokerageRankActivity.java
+│       │   │                   │   ├── BrokerageRecordActivity.java
+│       │   │                   │   ├── CachAdvanceRecordActivity.java
+│       │   │                   │   ├── CashAdvanceActivity.java
+│       │   │                   │   ├── CoinRecordActivity.java
+│       │   │                   │   ├── EditProfileActivity.java
+│       │   │                   │   ├── GiftProfitActivity.java
+│       │   │                   │   ├── GoodsConnectActivity.java
+│       │   │                   │   ├── GreateSelectActivity.java
+│       │   │                   │   ├── GroupBuyingActivity.java
+│       │   │                   │   ├── LoginActivity.java
+│       │   │                   │   ├── MainActivity.java
+│       │   │                   │   ├── MyCoinActivity.java
+│       │   │                   │   ├── MyDiamondsActivity.java
+│       │   │                   │   ├── MyIntegralActivity.java
+│       │   │                   │   ├── MySpreadActivity.java
+│       │   │                   │   ├── MyVideoActivity.java
+│       │   │                   │   ├── RegisterActivity.java
+│       │   │                   │   ├── SearchLiveActivity.java
+│       │   │                   │   ├── SettingActivity.java
+│       │   │                   │   ├── SpreadCensusActivity.java
+│       │   │                   │   ├── SpreadManRankActivity.java
+│       │   │                   │   ├── SpreadOrderActivity.java
+│       │   │                   │   ├── SpreadPillActivity.java
+│       │   │                   │   └── WindowActivity.java
+│       │   │                   ├── holder
+│       │   │                   │   └── CashAccountViewHolder.java
+│       │   │                   ├── pop
+│       │   │                   │   └── SelectOrderTypePop.java
+│       │   │                   ├── proxy
+│       │   │                   │   ├── AdvViewProxy.java
+│       │   │                   │   ├── BannerForAduioProxy.java
+│       │   │                   │   ├── BannerViewProxy.java
+│       │   │                   │   ├── BrokerageRankListViewProxy.java
+│       │   │                   │   ├── CoinRecordListViewProxy.java
+│       │   │                   │   ├── HomeLiveViewProxy.java
+│       │   │                   │   ├── MainDefaultHeadViewProxy.java
+│       │   │                   │   ├── MainHomeClassifyVIewProxy.java
+│       │   │                   │   ├── MainHomeFindViewProxy.java
+│       │   │                   │   ├── MainHomeGreateSelectViewProxy.java
+│       │   │                   │   ├── MainHomePageHeadViewproxy.java
+│       │   │                   │   ├── MainHomePageViewProxy.java
+│       │   │                   │   ├── MainHomeShopCartVIewProxy.java
+│       │   │                   │   ├── MainHomeUserHeadViewProxy.java
+│       │   │                   │   ├── MainHomeUserViewProxy.java
+│       │   │                   │   ├── MainShopCartViewProxy.java
+│       │   │                   │   ├── RecommendViewProxy.java
+│       │   │                   │   ├── SearchSpreadViewProxy.java
+│       │   │                   │   ├── SortSpreadViewProxy.java
+│       │   │                   │   ├── SpreadManRankHeadVIewProxy.java
+│       │   │                   │   └── adavance
+│       │   │                   │       ├── AdavanceViewProxy.java
+│       │   │                   │       ├── BankAdvanceViewProxy.java
+│       │   │                   │       ├── WxAdavanceViewProxy.java
+│       │   │                   │       └── ZfbAdvanceViewProxy.java
+│       │   │                   └── widet
+│       │   │                       └── UnderlineRadioButton.java
+│       │   └── res
+│       │       ├── color
+│       │       ├── drawable
+│       │       ├── drawable-xhdpi
+│       │       ├── layout
+│       │       ├── menu
+│       │       └── values
+│       └── test
+│           └── java
+│               └── com
+│                   └── wanyue
+│                       └── main
+│                           └── ExampleUnitTest.java
+├── mhui
+│   ├── libs
+│   └── src
+│       └── main
+│           ├── java
+│           │   └── com
+│           │       └── meihu
+│           │           └── beauty
+│           │               ├── adapter
+│           │               │   ├── MeiYanTitleAdapter.java
+│           │               │   ├── MhHaHaAdapter.java
+│           │               │   ├── MhMakeupAdapter.java
+│           │               │   ├── MhMeiYanAdapter.java
+│           │               │   ├── MhMeiYanFilterAdapter.java
+│           │               │   ├── MhMeiYanOneKeyAdapter.java
+│           │               │   ├── MhTeXiaoActionAdapter.java
+│           │               │   ├── MhTeXiaoSpecialAdapter.java
+│           │               │   ├── MhTeXiaoWaterAdapter.java
+│           │               │   ├── TieZhiAdapter.java
+│           │               │   ├── TieZhiTitleAdapter.java
+│           │               │   └── ViewPagerAdapter.java
+│           │               ├── bean
+│           │               │   ├── HaHaBean.java
+│           │               │   ├── MakeupBean.java
+│           │               │   ├── MeiYanBean.java
+│           │               │   ├── MeiYanDataBean.java
+│           │               │   ├── MeiYanFilterBean.java
+│           │               │   ├── MeiYanMainBean.java
+│           │               │   ├── MeiYanOneKeyBean.java
+│           │               │   ├── MeiYanOneKeyValue.java
+│           │               │   ├── MeiYanTypeBean.java
+│           │               │   ├── MeiYanValueBean.java
+│           │               │   ├── TeXiaoActionBean.java
+│           │               │   ├── TeXiaoSpecialBean.java
+│           │               │   ├── TeXiaoWaterBean.java
+│           │               │   ├── TieZhiBean.java
+│           │               │   └── TieZhiTypeBean.java
+│           │               ├── constant
+│           │               │   └── Constants.java
+│           │               ├── custom
+│           │               │   ├── GridSpacingItemDecoration.java
+│           │               │   ├── MyViewPager.java
+│           │               │   └── TextSeekBar.java
+│           │               ├── event
+│           │               │   └── TieZhiCancelEvent.java
+│           │               ├── glide
+│           │               │   └── ImgLoader.java
+│           │               ├── interfaces
+│           │               │   ├── CommonCallback.java
+│           │               │   ├── IBeautyClickListener.java
+│           │               │   ├── IBeautyEffectListener.java
+│           │               │   ├── IBeautyViewHolder.java
+│           │               │   ├── OnBottomHideListener.java
+│           │               │   ├── OnBottomShowListener.java
+│           │               │   ├── OnCaptureListener.java
+│           │               │   ├── OnItemClickListener.java
+│           │               │   ├── OnTieZhiActionClickListener.java
+│           │               │   ├── OnTieZhiActionDownloadListener.java
+│           │               │   ├── OnTieZhiActionListener.java
+│           │               │   └── OnTieZhiClickListener.java
+│           │               ├── utils
+│           │               │   ├── BackgroundTasks.java
+│           │               │   ├── ClickUtil.java
+│           │               │   ├── DensityUtils.java
+│           │               │   ├── DownloadUtil.java
+│           │               │   ├── DpUtil.java
+│           │               │   ├── MhDataManager.java
+│           │               │   ├── PreferencesUtil.java
+│           │               │   ├── SPUtil.java
+│           │               │   ├── ScreenDimenUtil.java
+│           │               │   ├── SimpleDataManager.java
+│           │               │   ├── StringUtil.java
+│           │               │   ├── ToastUtil.java
+│           │               │   └── WordUtil.java
+│           │               └── views
+│           │                   ├── AbsCommonViewHolder.java
+│           │                   ├── AbsMhChildViewHolder.java
+│           │                   ├── AbsViewHolder.java
+│           │                   ├── BeautyViewHolder.java
+│           │                   ├── MeiHuBeautyControl.java
+│           │                   ├── MhHaHaViewHolder.java
+│           │                   ├── MhMainViewHolder.java
+│           │                   ├── MhMakeupViewHolder.java
+│           │                   ├── MhMeiYanBeautyViewHolder.java
+│           │                   ├── MhMeiYanChildViewHolder.java
+│           │                   ├── MhMeiYanFilterViewHolder.java
+│           │                   ├── MhMeiYanOneKeyViewHolder.java
+│           │                   ├── MhMeiYanShapeViewHolder.java
+│           │                   ├── MhMeiYanViewHolder.java
+│           │                   ├── MhTeXiaoActionViewHolder.java
+│           │                   ├── MhTeXiaoChildViewHolder.java
+│           │                   ├── MhTeXiaoHaHaViewHolder.java
+│           │                   ├── MhTeXiaoSpecialViewHolder.java
+│           │                   ├── MhTeXiaoViewHolder.java
+│           │                   ├── MhTeXiaoWaterViewHolder.java
+│           │                   ├── MhTieZhiChildViewHolder.java
+│           │                   ├── MhTieZhiViewHolder.java
+│           │                   └── SimpleBeautyViewHolder.java
+│           └── res
+│               ├── drawable
+│               ├── layout
+│               ├── mipmap
+│               └── values
+├── mob
+│   ├── libs
+│   └── src
+│       └── main
+│           ├── assets
+│           ├── java
+│           │   └── cn
+│           │       └── sharesdk
+│           │           └── onekeyshare
+│           │               ├── CustomerLogo.java
+│           │               ├── OnekeyShare.java
+│           │               ├── OnekeySharePage.java
+│           │               ├── OnekeyShareTheme.java
+│           │               ├── OnekeyShareThemeImpl.java
+│           │               ├── ShareContentCustomizeCallback.java
+│           │               └── themes
+│           │                   └── classic
+│           │                       ├── ClassicTheme.java
+│           │                       ├── EditPage.java
+│           │                       ├── FriendAdapter.java
+│           │                       ├── FriendListItem.java
+│           │                       ├── FriendListPage.java
+│           │                       ├── IndicatorView.java
+│           │                       ├── PRTHeader.java
+│           │                       ├── PicViewerPage.java
+│           │                       ├── PlatformPage.java
+│           │                       ├── PlatformPageAdapter.java
+│           │                       ├── RotateImageView.java
+│           │                       ├── XView.java
+│           │                       ├── land
+│           │                       │   ├── EditPageLand.java
+│           │                       │   ├── FriendListPageLand.java
+│           │                       │   ├── PlatformPageAdapterLand.java
+│           │                       │   └── PlatformPageLand.java
+│           │                       └── port
+│           │                           ├── EditPagePort.java
+│           │                           ├── FriendListPagePort.java
+│           │                           ├── PlatformPageAdapterPort.java
+│           │                           └── PlatformPagePort.java
+│           └── res
+│               ├── color
+│               ├── drawable
+│               ├── drawable-hdpi
+│               ├── drawable-xhdpi
+│               ├── values
+│               └── values-en
+├── shop
+│   └── src
+│       ├── androidTest
+│       │   └── java
+│       │       └── com
+│       │           └── wanyue
+│       │               └── shop
+│       │                   └── ExampleInstrumentedTest.java
+│       ├── main
+│       │   ├── java
+│       │   │   └── com
+│       │   │       └── wanyue
+│       │   │           └── shop
+│       │   │               ├── adapter
+│       │   │               │   ├── AddressAdapter.java
+│       │   │               │   ├── BuyerOrderAdaper.java
+│       │   │               │   ├── BuyerOrderChildAdapter.java
+│       │   │               │   ├── BuyerOrderIndicatorAdapter.java
+│       │   │               │   ├── ChooseCouponAdapter.java
+│       │   │               │   ├── CollectGoodsAdapter.java
+│       │   │               │   ├── CommitOrderAdapter.java
+│       │   │               │   ├── CommitOrderChildAdapter.java
+│       │   │               │   ├── GetCouponAdapter.java
+│       │   │               │   ├── GoodsDetailAdapter.java
+│       │   │               │   ├── GoodsFootAdapter.java
+│       │   │               │   ├── GoodsVideoRecommendAdapter.java
+│       │   │               │   ├── GreateGoodsSearchAdapter.java
+│       │   │               │   ├── HotGoodsAdapter.java
+│       │   │               │   ├── KeywordAdapter.java
+│       │   │               │   ├── MyCouponAdapter.java
+│       │   │               │   ├── MyOverdueCouponAdapter.java
+│       │   │               │   ├── RefundGoodsListAdaper.java
+│       │   │               │   ├── RefundListAdapter.java
+│       │   │               │   ├── ShopCartAdapter.java
+│       │   │               │   ├── ShopListAdapter.java
+│       │   │               │   ├── ShopNavigatorAadpter.java
+│       │   │               │   ├── SpecSelectAdapter.java
+│       │   │               │   └── ViewLogisticsAdapter.java
+│       │   │               ├── api
+│       │   │               │   └── ShopAPI.java
+│       │   │               ├── bean
+│       │   │               │   ├── AddressCommitBean.java
+│       │   │               │   ├── AddressInfoBean.java
+│       │   │               │   ├── ChooseCouponBean.java
+│       │   │               │   ├── CouponBean.java
+│       │   │               │   ├── FoodGoodsBean.java
+│       │   │               │   ├── FootSectionBean.java
+│       │   │               │   ├── GoodsBannerBean.java
+│       │   │               │   ├── GoodsParseBean.java
+│       │   │               │   ├── GoodsSearchArgs.java
+│       │   │               │   ├── GoodsTypeBean.java
+│       │   │               │   ├── KeywordBean.java
+│       │   │               │   ├── MyCouponBean.java
+│       │   │               │   ├── OrderBean.java
+│       │   │               │   ├── OrderConfirmBean.java
+│       │   │               │   ├── OrderStatementBean.java
+│       │   │               │   ├── OrderStatus.java
+│       │   │               │   ├── PccInfo.java
+│       │   │               │   ├── PriceGroup.java
+│       │   │               │   ├── RefundCommitBean.java
+│       │   │               │   ├── ShopCartBean.java
+│       │   │               │   ├── ShopCartStoreBean.java
+│       │   │               │   ├── ShopcartParseBean.java
+│       │   │               │   ├── SpecsBean.java
+│       │   │               │   ├── StoreBean.java
+│       │   │               │   ├── StoreGoodsBean.java
+│       │   │               │   └── ViewLogisticsBean.java
+│       │   │               ├── business
+│       │   │               │   ├── ShopEvent.java
+│       │   │               │   ├── ShopState.java
+│       │   │               │   └── webimage
+│       │   │               │       └── MyWebViewClient.java
+│       │   │               ├── components
+│       │   │               │   ├── adapter
+│       │   │               │   │   ├── BaseCouponListAdapter.java
+│       │   │               │   │   ├── CouponListAdapter.java
+│       │   │               │   │   └── GoodsListAdapter.java
+│       │   │               │   └── view
+│       │   │               │       ├── CouponListViewProxy.java
+│       │   │               │       └── GoodsListProxy.java
+│       │   │               ├── evaluate
+│       │   │               │   ├── activity
+│       │   │               │   │   ├── EvaluateListActivity.java
+│       │   │               │   │   └── PublishEvaluateActivity.java
+│       │   │               │   ├── adapter
+│       │   │               │   │   ├── EvaluateLinearListAdapter.java
+│       │   │               │   │   ├── EvaluateListAdapter.java
+│       │   │               │   │   └── EvaluateListChildAdapter.java
+│       │   │               │   └── bean
+│       │   │               │       ├── EvaluateBean.java
+│       │   │               │       ├── EvaluateBean2.java
+│       │   │               │       └── EvaluateCommitBean.java
+│       │   │               ├── model
+│       │   │               │   ├── CustomServiceModel.java
+│       │   │               │   ├── GoodDetailModel.java
+│       │   │               │   ├── OrderModel.java
+│       │   │               │   └── ShopCartModel.java
+│       │   │               ├── photo
+│       │   │               │   ├── activity
+│       │   │               │   │   └── SelectPhotoActivity.java
+│       │   │               │   ├── adapter
+│       │   │               │   │   ├── SelectImageAdapter.java
+│       │   │               │   │   └── SelectPhotoAdapter.java
+│       │   │               │   ├── bean
+│       │   │               │   │   └── SelectPhotoBean.java
+│       │   │               │   └── util
+│       │   │               │       └── Util.java
+│       │   │               ├── store
+│       │   │               │   ├── adapter
+│       │   │               │   │   ├── ClassfiyAdapter.java
+│       │   │               │   │   ├── SelectStoreAdapter.java
+│       │   │               │   │   └── StoreAdapter.java
+│       │   │               │   ├── api
+│       │   │               │   │   └── StoreAPI.java
+│       │   │               │   ├── bean
+│       │   │               │   │   ├── ClassifyBean.java
+│       │   │               │   │   ├── ClassifySectionBean.java
+│       │   │               │   │   └── GoodsSelectStoreBean.java
+│       │   │               │   ├── business
+│       │   │               │   │   └── StoreFollowHelper.java
+│       │   │               │   └── view
+│       │   │               │       ├── activity
+│       │   │               │       │   ├── BusniessStoreActivity.java
+│       │   │               │       │   ├── SearchStoreActivity.java
+│       │   │               │       │   ├── StoreActivity.java
+│       │   │               │       │   ├── StoreHomeActivity.java
+│       │   │               │       │   └── StoreListActivity.java
+│       │   │               │       └── proxy
+│       │   │               │           ├── BaseStoreChildVIewProxy.java
+│       │   │               │           ├── StoreClassfiyViewProxy.java
+│       │   │               │           ├── StoreCouponListVIewProxy.java
+│       │   │               │           └── StorePageVIewProxy.java
+│       │   │               ├── video
+│       │   │               │   ├── GSYVideoHelper.java
+│       │   │               │   └── GSYVideoPlayer.java
+│       │   │               ├── view
+│       │   │               │   ├── activty
+│       │   │               │   │   ├── CommitOrderActivity.java
+│       │   │               │   │   ├── CreateAddressActivity.java
+│       │   │               │   │   ├── GetCouponActivity.java
+│       │   │               │   │   ├── GoodsDetailActivity.java
+│       │   │               │   │   ├── GoodsFootActivity.java
+│       │   │               │   │   ├── GoodsVideoActivity.java
+│       │   │               │   │   ├── GreateGoodsSearchActivity.java
+│       │   │               │   │   ├── MyAddressActivity.java
+│       │   │               │   │   ├── MyCollectGoodsActivity.java
+│       │   │               │   │   ├── MyCouponActivity.java
+│       │   │               │   │   ├── MyOrderActivity.java
+│       │   │               │   │   ├── OrderDeatailActivity.java
+│       │   │               │   │   ├── OrderPayResultActivity.java
+│       │   │               │   │   ├── OrderRefundActivity.java
+│       │   │               │   │   ├── RefundListActivity.java
+│       │   │               │   │   ├── RefundOrderDetailActivity.java
+│       │   │               │   │   ├── ShopCartActivity.java
+│       │   │               │   │   ├── ShopSearchActivity.java
+│       │   │               │   │   └── ViewLogisticsActivity.java
+│       │   │               │   ├── dialog
+│       │   │               │   │   └── GalleryDialogFragment.java
+│       │   │               │   ├── pop
+│       │   │               │   │   ├── BaseBottomPopView.java
+│       │   │               │   │   ├── BaseCenterPopView.java
+│       │   │               │   │   ├── ChooseCouponPopView.java
+│       │   │               │   │   ├── CouponGetPopView.java
+│       │   │               │   │   ├── GetCodePop.java
+│       │   │               │   │   ├── GoodsBillPop.java
+│       │   │               │   │   ├── PayOrderPopView.java
+│       │   │               │   │   └── ShareGoodsPop.java
+│       │   │               │   ├── view
+│       │   │               │   │   ├── BaseGoodItemViewProxy.java
+│       │   │               │   │   ├── BaseGoodsDetailBottomViewProxy.java
+│       │   │               │   │   ├── CommitOrderBottomViewProxy.java
+│       │   │               │   │   ├── GoodsDetailRecommendViewProxy.java
+│       │   │               │   │   ├── GoodsEvaluateViewProxy.java
+│       │   │               │   │   ├── GoodsHandleNoCartViewProxy.java
+│       │   │               │   │   ├── GoodsHandleViewProxy.java
+│       │   │               │   │   ├── GoodsNumViewProxy.java
+│       │   │               │   │   ├── GoodsPannelViewProxy.java
+│       │   │               │   │   ├── GoodsVideoRecommendViewProxy.java
+│       │   │               │   │   ├── GoodsWebViewProxy.java
+│       │   │               │   │   ├── HotGoodsEmptyViewProxy.java
+│       │   │               │   │   ├── HotKeywordSearchGoodViewProxy.java
+│       │   │               │   │   ├── SearchViewProxy.java
+│       │   │               │   │   ├── ShopCartGoodsNumViewProxy.java
+│       │   │               │   │   ├── ShopCartViewProxy.java
+│       │   │               │   │   ├── SortGoodsViewProxy.java
+│       │   │               │   │   ├── SpecsSelectViewProxy.java
+│       │   │               │   │   ├── StoreAtGoodsPannelViewProxy.java
+│       │   │               │   │   ├── buyer
+│       │   │               │   │   │   └── BuyerOderViewProxy.java
+│       │   │               │   │   └── order
+│       │   │               │   │       ├── AbsOderDetailBottomViewProxy.java
+│       │   │               │   │       ├── CompeleteODViewProxy.java
+│       │   │               │   │       ├── OrderDetailProgressViewProxy.java
+│       │   │               │   │       ├── WaitDeliveredOdBottomViewProxy.java
+│       │   │               │   │       ├── WaitEvaluateODViewProxy.java
+│       │   │               │   │       ├── WaitPayODBottomViewProxy.java
+│       │   │               │   │       └── WaitReceiveOdViewProxy.java
+│       │   │               │   └── widet
+│       │   │               │       ├── DataEditTextView.java
+│       │   │               │       ├── FlexRadioGroup.java
+│       │   │               │       ├── LinearLayoutForListView.java
+│       │   │               │       ├── PoolAutoLinearListView.java
+│       │   │               │       ├── RatingStar.java
+│       │   │               │       ├── ThreeCheckImageView.java
+│       │   │               │       ├── ViewGroupLayoutBaseAdapter.java
+│       │   │               │       ├── ViewGroupLayoutMutiBaseAdapter.java
+│       │   │               │       ├── ViewIdGenerator.java
+│       │   │               │       └── linear
+│       │   │               │           ├── IListView.java
+│       │   │               │           ├── ListFlexboxLayout.java
+│       │   │               │           ├── ListPool.java
+│       │   │               │           ├── MyAutoLineFeedLinearLayout.java
+│       │   │               │           └── PoolLinearListView.java
+│       │   │               └── widet
+│       │   └── res
+│       │       ├── color
+│       │       ├── drawable
+│       │       ├── drawable-xhdpi
+│       │       ├── layout
+│       │       └── values
+│       └── test
+│           └── java
+│               └── com
+│                   └── wanyue
+│                       └── shop
+│                           └── ExampleUnitTest.java
+├── tuikit
+│   ├── assets
+│   │   └── emoji
+│   ├── libs
+│   ├── sampleCode
+│   │   └── message.java
+│   └── src
+│       └── main
+│           ├── java
+│           │   └── com
+│           │       └── tencent
+│           │           └── qcloud
+│           │               └── tim
+│           │                   └── uikit
+│           │                       ├── TUIKit.java
+│           │                       ├── TUIKitImpl.java
+│           │                       ├── base
+│           │                       │   ├── BaseActvity.java
+│           │                       │   ├── BaseFragment.java
+│           │                       │   ├── GroupListenerConstants.java
+│           │                       │   ├── IBaseAction.java
+│           │                       │   ├── IBaseInfo.java
+│           │                       │   ├── IBaseMessageSender.java
+│           │                       │   ├── IBaseViewHolder.java
+│           │                       │   ├── ILayout.java
+│           │                       │   ├── IMEventListener.java
+│           │                       │   ├── INoticeLayout.java
+│           │                       │   ├── ITitleBarLayout.java
+│           │                       │   ├── IUIKitCallBack.java
+│           │                       │   ├── TUIChatControllerListener.java
+│           │                       │   ├── TUIConversationControllerListener.java
+│           │                       │   └── TUIKitListenerManager.java
+│           │                       ├── component
+│           │                       │   ├── AudioPlayer.java
+│           │                       │   ├── CircleImageView.java
+│           │                       │   ├── CustomLinearLayoutManager.java
+│           │                       │   ├── GridViewInScrollView.java
+│           │                       │   ├── LineControllerView.java
+│           │                       │   ├── NoticeLayout.java
+│           │                       │   ├── PopupList.java
+│           │                       │   ├── SelectionActivity.java
+│           │                       │   ├── TitleBarLayout.java
+│           │                       │   ├── UnreadCountTextView.java
+│           │                       │   ├── action
+│           │                       │   │   ├── PopActionClickListener.java
+│           │                       │   │   ├── PopDialogAdapter.java
+│           │                       │   │   ├── PopMenuAction.java
+│           │                       │   │   └── PopMenuAdapter.java
+│           │                       │   ├── dialog
+│           │                       │   │   └── TUIKitDialog.java
+│           │                       │   ├── face
+│           │                       │   │   ├── CustomFace.java
+│           │                       │   │   ├── CustomFaceGroup.java
+│           │                       │   │   ├── Emoji.java
+│           │                       │   │   ├── EmojiIndicatorView.java
+│           │                       │   │   ├── FaceFragment.java
+│           │                       │   │   ├── FaceGroup.java
+│           │                       │   │   ├── FaceGroupIcon.java
+│           │                       │   │   ├── FaceManager.java
+│           │                       │   │   └── RecentEmojiManager.java
+│           │                       │   ├── gatherimage
+│           │                       │   │   ├── DynamicChatUserIconView.java
+│           │                       │   │   ├── DynamicLayoutView.java
+│           │                       │   │   ├── MultiImageData.java
+│           │                       │   │   ├── ShadeImageView.java
+│           │                       │   │   ├── SynthesizedImageView.java
+│           │                       │   │   ├── Synthesizer.java
+│           │                       │   │   ├── TeamHeadSynthesizer.java
+│           │                       │   │   └── UserIconView.java
+│           │                       │   ├── indexlib
+│           │                       │   │   ├── IndexBar
+│           │                       │   │   │   ├── bean
+│           │                       │   │   │   │   ├── BaseIndexBean.java
+│           │                       │   │   │   │   └── BaseIndexPinyinBean.java
+│           │                       │   │   │   ├── helper
+│           │                       │   │   │   │   ├── IIndexBarDataHelper.java
+│           │                       │   │   │   │   └── IndexBarDataHelperImpl.java
+│           │                       │   │   │   └── widget
+│           │                       │   │   │       └── IndexBar.java
+│           │                       │   │   └── suspension
+│           │                       │   │       ├── ISuspensionInterface.java
+│           │                       │   │       └── SuspensionDecoration.java
+│           │                       │   ├── photoview
+│           │                       │   │   ├── Compat.java
+│           │                       │   │   ├── CustomGestureDetector.java
+│           │                       │   │   ├── OnGestureListener.java
+│           │                       │   │   ├── OnMatrixChangedListener.java
+│           │                       │   │   ├── OnOutsidePhotoTapListener.java
+│           │                       │   │   ├── OnPhotoTapListener.java
+│           │                       │   │   ├── OnScaleChangedListener.java
+│           │                       │   │   ├── OnSingleFlingListener.java
+│           │                       │   │   ├── OnViewDragListener.java
+│           │                       │   │   ├── OnViewTapListener.java
+│           │                       │   │   ├── PhotoView.java
+│           │                       │   │   ├── PhotoViewActivity.java
+│           │                       │   │   ├── PhotoViewAttacher.java
+│           │                       │   │   └── Util.java
+│           │                       │   ├── picture
+│           │                       │   │   └── imageEngine
+│           │                       │   │       ├── ImageEngine.java
+│           │                       │   │       └── impl
+│           │                       │   │           ├── CornerTransform.java
+│           │                       │   │           └── GlideEngine.java
+│           │                       │   └── video
+│           │                       │       ├── CameraActivity.java
+│           │                       │       ├── CameraInterface.java
+│           │                       │       ├── CaptureButton.java
+│           │                       │       ├── CaptureLayout.java
+│           │                       │       ├── FoucsView.java
+│           │                       │       ├── JCameraView.java
+│           │                       │       ├── ReturnButton.java
+│           │                       │       ├── TypeButton.java
+│           │                       │       ├── UIKitVideoView.java
+│           │                       │       ├── VideoViewActivity.java
+│           │                       │       ├── listener
+│           │                       │       │   ├── CaptureListener.java
+│           │                       │       │   ├── ClickListener.java
+│           │                       │       │   ├── ErrorListener.java
+│           │                       │       │   ├── JCameraListener.java
+│           │                       │       │   ├── ResultListener.java
+│           │                       │       │   ├── ReturnListener.java
+│           │                       │       │   └── TypeListener.java
+│           │                       │       ├── proxy
+│           │                       │       │   ├── IPlayer.java
+│           │                       │       │   ├── IjkMediaPlayerWrapper.java
+│           │                       │       │   ├── MediaPlayerProxy.java
+│           │                       │       │   └── SystemMediaPlayerWrapper.java
+│           │                       │       ├── state
+│           │                       │       │   ├── BorrowPictureState.java
+│           │                       │       │   ├── BorrowVideoState.java
+│           │                       │       │   ├── CameraMachine.java
+│           │                       │       │   ├── PreviewState.java
+│           │                       │       │   └── State.java
+│           │                       │       ├── util
+│           │                       │       │   ├── AngleUtil.java
+│           │                       │       │   ├── AudioUtil.java
+│           │                       │       │   ├── CameraParamUtil.java
+│           │                       │       │   ├── CheckPermission.java
+│           │                       │       │   └── DeviceUtil.java
+│           │                       │       └── view
+│           │                       │           └── CameraView.java
+│           │                       ├── config
+│           │                       │   ├── CustomFaceConfig.java
+│           │                       │   ├── GeneralConfig.java
+│           │                       │   └── TUIKitConfigs.java
+│           │                       ├── modules
+│           │                       │   ├── chat
+│           │                       │   │   ├── C2CChatManagerKit.java
+│           │                       │   │   ├── ChatLayout.java
+│           │                       │   │   ├── GroupChatManagerKit.java
+│           │                       │   │   ├── base
+│           │                       │   │   │   ├── AbsChatLayout.java
+│           │                       │   │   │   ├── BaseInputFragment.java
+│           │                       │   │   │   ├── ChatInfo.java
+│           │                       │   │   │   ├── ChatLayoutUI.java
+│           │                       │   │   │   ├── ChatManagerKit.java
+│           │                       │   │   │   ├── ChatProvider.java
+│           │                       │   │   │   ├── InputMoreActionUnit.java
+│           │                       │   │   │   ├── OfflineMessageBean.java
+│           │                       │   │   │   └── OfflineMessageContainerBean.java
+│           │                       │   │   ├── interfaces
+│           │                       │   │   │   ├── IChatLayout.java
+│           │                       │   │   │   ├── IChatProvider.java
+│           │                       │   │   │   ├── IInputLayout.java
+│           │                       │   │   │   ├── IMessageLayout.java
+│           │                       │   │   │   └── IMessageProperties.java
+│           │                       │   │   └── layout
+│           │                       │   │       ├── input
+│           │                       │   │       │   ├── InputLayout.java
+│           │                       │   │       │   ├── InputLayoutUI.java
+│           │                       │   │       │   └── TIMMentionEditText.java
+│           │                       │   │       ├── inputmore
+│           │                       │   │       │   ├── ActionsGridViewAdapter.java
+│           │                       │   │       │   ├── ActionsPagerAdapter.java
+│           │                       │   │       │   ├── InputMoreFragment.java
+│           │                       │   │       │   └── InputMoreLayout.java
+│           │                       │   │       └── message
+│           │                       │   │           ├── MessageLayout.java
+│           │                       │   │           ├── MessageLayoutUI.java
+│           │                       │   │           ├── MessageListAdapter.java
+│           │                       │   │           └── holder
+│           │                       │   │               ├── ICustomMessageViewGroup.java
+│           │                       │   │               ├── IOnCustomMessageDrawListener.java
+│           │                       │   │               ├── MessageAudioHolder.java
+│           │                       │   │               ├── MessageBaseHolder.java
+│           │                       │   │               ├── MessageContentHolder.java
+│           │                       │   │               ├── MessageCustomHolder.java
+│           │                       │   │               ├── MessageEmptyHolder.java
+│           │                       │   │               ├── MessageFileHolder.java
+│           │                       │   │               ├── MessageForwardHolder.java
+│           │                       │   │               ├── MessageHeaderHolder.java
+│           │                       │   │               ├── MessageImageHolder.java
+│           │                       │   │               ├── MessageTextHolder.java
+│           │                       │   │               └── MessageTipsHolder.java
+│           │                       │   ├── contact
+│           │                       │   │   ├── ContactAdapter.java
+│           │                       │   │   ├── ContactItemBean.java
+│           │                       │   │   ├── ContactLayout.java
+│           │                       │   │   ├── ContactListView.java
+│           │                       │   │   ├── FriendProfileLayout.java
+│           │                       │   │   └── interfaces
+│           │                       │   │       └── IContactLayout.java
+│           │                       │   ├── conversation
+│           │                       │   │   ├── ConversationLayout.java
+│           │                       │   │   ├── ConversationListAdapter.java
+│           │                       │   │   ├── ConversationListLayout.java
+│           │                       │   │   ├── ConversationManagerKit.java
+│           │                       │   │   ├── ConversationProvider.java
+│           │                       │   │   ├── base
+│           │                       │   │   │   ├── ConversationIconView.java
+│           │                       │   │   │   ├── ConversationInfo.java
+│           │                       │   │   │   ├── DraftInfo.java
+│           │                       │   │   │   └── DynamicConversationIconView.java
+│           │                       │   │   ├── holder
+│           │                       │   │   │   ├── ConversationBaseHolder.java
+│           │                       │   │   │   ├── ConversationCommonHolder.java
+│           │                       │   │   │   └── ConversationCustomHolder.java
+│           │                       │   │   └── interfaces
+│           │                       │   │       ├── IConversationAdapter.java
+│           │                       │   │       ├── IConversationLayout.java
+│           │                       │   │       ├── IConversationListLayout.java
+│           │                       │   │       ├── IConversationProvider.java
+│           │                       │   │       └── ILoadConversationCallback.java
+│           │                       │   ├── forward
+│           │                       │   │   ├── ForwardContactSelectorAdapter.java
+│           │                       │   │   ├── ForwardConversationSelectorAdapter.java
+│           │                       │   │   ├── ForwardSelectActivity.java
+│           │                       │   │   ├── ForwardSelectFragment.java
+│           │                       │   │   ├── ForwardSelectGroupActivity.java
+│           │                       │   │   ├── ForwardSelectLayout.java
+│           │                       │   │   ├── ForwardSelectListAdapter.java
+│           │                       │   │   ├── ForwardSelectListLayout.java
+│           │                       │   │   ├── base
+│           │                       │   │   │   └── ConversationBean.java
+│           │                       │   │   ├── holder
+│           │                       │   │   │   ├── ForwardBaseHolder.java
+│           │                       │   │   │   ├── ForwardCommonHolder.java
+│           │                       │   │   │   ├── ForwardLableHolder.java
+│           │                       │   │   │   └── ForwardSelectHolder.java
+│           │                       │   │   └── message
+│           │                       │   │       ├── ForwardMessageAudioHolder.java
+│           │                       │   │       ├── ForwardMessageBaseHolder.java
+│           │                       │   │       ├── ForwardMessageCustomHolder.java
+│           │                       │   │       ├── ForwardMessageFileHolder.java
+│           │                       │   │       ├── ForwardMessageImageHolder.java
+│           │                       │   │       ├── ForwardMessageListAdapter.java
+│           │                       │   │       └── ForwardMessageTextHolder.java
+│           │                       │   ├── group
+│           │                       │   │   ├── apply
+│           │                       │   │   │   ├── GroupApplyAdapter.java
+│           │                       │   │   │   ├── GroupApplyInfo.java
+│           │                       │   │   │   ├── GroupApplyManagerActivity.java
+│           │                       │   │   │   ├── GroupApplyManagerLayout.java
+│           │                       │   │   │   └── GroupApplyMemberActivity.java
+│           │                       │   │   ├── info
+│           │                       │   │   │   ├── GroupInfo.java
+│           │                       │   │   │   ├── GroupInfoActivity.java
+│           │                       │   │   │   ├── GroupInfoAdapter.java
+│           │                       │   │   │   ├── GroupInfoFragment.java
+│           │                       │   │   │   ├── GroupInfoLayout.java
+│           │                       │   │   │   ├── GroupInfoPresenter.java
+│           │                       │   │   │   ├── GroupInfoProvider.java
+│           │                       │   │   │   └── StartGroupMemberSelectActivity.java
+│           │                       │   │   ├── interfaces
+│           │                       │   │   │   └── IGroupMemberLayout.java
+│           │                       │   │   └── member
+│           │                       │   │       ├── GroupMemberDeleteAdapter.java
+│           │                       │   │       ├── GroupMemberDeleteFragment.java
+│           │                       │   │       ├── GroupMemberDeleteLayout.java
+│           │                       │   │       ├── GroupMemberInfo.java
+│           │                       │   │       ├── GroupMemberInviteFragment.java
+│           │                       │   │       ├── GroupMemberInviteLayout.java
+│           │                       │   │       ├── GroupMemberManagerAdapter.java
+│           │                       │   │       ├── GroupMemberManagerFragment.java
+│           │                       │   │       ├── GroupMemberManagerLayout.java
+│           │                       │   │       ├── IGroupMemberChangedCallback.java
+│           │                       │   │       └── IGroupMemberRouter.java
+│           │                       │   ├── message
+│           │                       │   │   ├── MessageCustom.java
+│           │                       │   │   ├── MessageInfo.java
+│           │                       │   │   ├── MessageInfoUtil.java
+│           │                       │   │   ├── MessageRevokedManager.java
+│           │                       │   │   └── MessageTyping.java
+│           │                       │   └── search
+│           │                       │       ├── SearchFuntionUtils.java
+│           │                       │       ├── SearchMainActivity.java
+│           │                       │       ├── SearchMoreListActivity.java
+│           │                       │       ├── SearchMoreMsgListActivity.java
+│           │                       │       ├── groupinterface
+│           │                       │       │   ├── TUISearchGroupDataProvider.java
+│           │                       │       │   ├── TUISearchGroupParam.java
+│           │                       │       │   └── TUISearchGroupResult.java
+│           │                       │       ├── model
+│           │                       │       │   ├── SearchDataBean.java
+│           │                       │       │   ├── SearchMoreMsgAdapter.java
+│           │                       │       │   └── SearchResultAdapter.java
+│           │                       │       └── view
+│           │                       │           └── PageRecycleView.java
+│           │                       └── utils
+│           │                           ├── BackgroundTasks.java
+│           │                           ├── DateTimeUtil.java
+│           │                           ├── FileUtil.java
+│           │                           ├── ImageUtil.java
+│           │                           ├── MD5Utils.java
+│           │                           ├── NetWorkUtils.java
+│           │                           ├── PermissionUtils.java
+│           │                           ├── PopWindowUtil.java
+│           │                           ├── ScreenUtil.java
+│           │                           ├── SharedPreferenceUtils.java
+│           │                           ├── SoftKeyBoardUtil.java
+│           │                           ├── TUIKitConstants.java
+│           │                           ├── TUIKitFileProvider.java
+│           │                           ├── TUIKitLog.java
+│           │                           ├── TUIKitUtils.java
+│           │                           ├── ThreadHelper.java
+│           │                           └── ToastUtil.java
+│           └── res
+│               ├── anim
+│               ├── color
+│               ├── drawable
+│               ├── drawable-hdpi
+│               ├── drawable-xxhdpi
+│               ├── drawable-xxxhdpi
+│               ├── layout
+│               ├── values
+│               ├── values-zh-rCN
+│               └── xml
+└── video
+    └── src
+        └── main
+            ├── java
+            │   └── com
+            │       ├── tencent
+            │       │   └── liteav
+            │       │       └── demo
+            │       │           └── superplayer
+            │       │               ├── SuperPlayerCode.java
+            │       │               ├── SuperPlayerDef.java
+            │       │               ├── SuperPlayerGlobalConfig.java
+            │       │               ├── SuperPlayerModel.java
+            │       │               ├── SuperPlayerVideoId.java
+            │       │               ├── SuperPlayerView.java
+            │       │               ├── model
+            │       │               │   ├── SuperPlayer.java
+            │       │               │   ├── SuperPlayerImpl.java
+            │       │               │   ├── SuperPlayerObserver.java
+            │       │               │   ├── entity
+            │       │               │   │   ├── EncryptedStreamingInfo.java
+            │       │               │   │   ├── PlayImageSpriteInfo.java
+            │       │               │   │   ├── PlayInfoStream.java
+            │       │               │   │   ├── PlayKeyFrameDescInfo.java
+            │       │               │   │   ├── ResolutionName.java
+            │       │               │   │   ├── SuperPlayerVideoIdV2.java
+            │       │               │   │   ├── VideoClassification.java
+            │       │               │   │   └── VideoQuality.java
+            │       │               │   ├── net
+            │       │               │   │   ├── HttpURLClient.java
+            │       │               │   │   └── LogReport.java
+            │       │               │   ├── protocol
+            │       │               │   │   ├── IPlayInfoParser.java
+            │       │               │   │   ├── IPlayInfoProtocol.java
+            │       │               │   │   ├── IPlayInfoRequestCallback.java
+            │       │               │   │   ├── PlayInfoConstant.java
+            │       │               │   │   ├── PlayInfoParams.java
+            │       │               │   │   ├── PlayInfoParserV2.java
+            │       │               │   │   ├── PlayInfoParserV4.java
+            │       │               │   │   ├── PlayInfoProtocolV2.java
+            │       │               │   │   └── PlayInfoProtocolV4.java
+            │       │               │   └── utils
+            │       │               │       ├── NetWatcher.java
+            │       │               │       ├── VideoGestureDetector.java
+            │       │               │       └── VideoQualityUtils.java
+            │       │               └── ui
+            │       │                   ├── player
+            │       │                   │   ├── AbsPlayer.java
+            │       │                   │   ├── FloatPlayer.java
+            │       │                   │   ├── FullScreenPlayer.java
+            │       │                   │   ├── Player.java
+            │       │                   │   └── WindowPlayer.java
+            │       │                   └── view
+            │       │                       ├── PointSeekBar.java
+            │       │                       ├── VideoProgressLayout.java
+            │       │                       ├── VodMoreView.java
+            │       │                       ├── VodQualityView.java
+            │       │                       └── VolumeBrightnessProgressLayout.java
+            │       └── wanyue
+            │           └── video
+            │               ├── activity
+            │               │   ├── AbsVideoCommentActivity.java
+            │               │   ├── AbsVideoPlayActivity.java
+            │               │   ├── VideoChooseActivity.java
+            │               │   ├── VideoClassifyActivity.java
+            │               │   ├── VideoGoodsAddActivity.java
+            │               │   ├── VideoListActivity.java
+            │               │   ├── VideoPlayActivity.java
+            │               │   ├── VideoPublishActivity.java
+            │               │   └── VideoRecordActivity.java
+            │               ├── adapter
+            │               │   ├── VideoChooseAdapter.java
+            │               │   ├── VideoClassifyAdapter.java
+            │               │   ├── VideoCommentAdapter.java
+            │               │   ├── VideoGoodsAddAdapter.java
+            │               │   ├── VideoPubShareAdapter.java
+            │               │   ├── VideoReportAdapter.java
+            │               │   ├── VideoScrollAdapter.java
+            │               │   └── VideoShareAdapter.java
+            │               ├── api
+            │               │   ├── VideoAPI.java
+            │               │   └── VideoHttpConsts.java
+            │               ├── bean
+            │               │   ├── VideoBean.java
+            │               │   ├── VideoChooseBean.java
+            │               │   ├── VideoCommentBean.java
+            │               │   ├── VideoCommentBundleBean.java
+            │               │   ├── VideoCommentChildBean.java
+            │               │   ├── VideoReportBean.java
+            │               │   └── VideoSimpleBean.java
+            │               ├── components
+            │               │   ├── adapter
+            │               │   │   └── VideoListAdapter.java
+            │               │   └── view
+            │               │       └── VideoListProxy.java
+            │               ├── custom
+            │               │   ├── ColorfulProgress.java
+            │               │   ├── NumberProgressBar.java
+            │               │   ├── RangeSlider.java
+            │               │   ├── RangeSliderViewContainer.java
+            │               │   ├── RecordProgressView.java
+            │               │   ├── SliderViewContainer.java
+            │               │   ├── ThumbView.java
+            │               │   ├── ThumbnailAdapter.java
+            │               │   ├── VideoLoadingBar.java
+            │               │   ├── VideoProgressController.java
+            │               │   ├── VideoProgressView.java
+            │               │   ├── VideoRecordBtnView.java
+            │               │   └── ViewTouchProcess.java
+            │               ├── dialog
+            │               │   ├── VideoGoodsDialogFragment.java
+            │               │   ├── VideoInputDialogFragment.java
+            │               │   └── VideoShareDialogFragment.java
+            │               ├── event
+            │               │   ├── VideoCommentEvent.java
+            │               │   ├── VideoDeleteEvent.java
+            │               │   ├── VideoLikeEvent.java
+            │               │   ├── VideoScrollPageEvent.java
+            │               │   └── VideoShareEvent.java
+            │               ├── http
+            │               ├── interfaces
+            │               │   └── VideoScrollDataHelper.java
+            │               ├── upload
+            │               │   ├── VideoUploadBean.java
+            │               │   ├── VideoUploadCallback.java
+            │               │   ├── VideoUploadQnImpl.java
+            │               │   ├── VideoUploadStrategy.java
+            │               │   └── VideoUploadTxImpl.java
+            │               ├── utils
+            │               │   ├── MusicMediaPlayerUtil.java
+            │               │   ├── VideoIconUtil.java
+            │               │   ├── VideoLocalUtil.java
+            │               │   ├── VideoStorge.java
+            │               │   └── VideoTextRender.java
+            │               └── views
+            │                   ├── VideoCommentViewHolder.java
+            │                   ├── VideoPlayViewHolder.java
+            │                   ├── VideoPlayWrapViewHolder.java
+            │                   ├── VideoProcessViewHolder.java
+            │                   └── VideoScrollViewHolder.java
+            └── res
+                ├── color
+                ├── drawable
+                ├── drawable-xxhdpi
+                ├── layout
+                ├── mipmap-mdpi
+                ├── mipmap-xxxhdpi
+                └── values
+
+491 directories, 1390 files

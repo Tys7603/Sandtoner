@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.wanyue.video">
+
+    <application
+        android:allowBackup="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".activity.VideoChooseActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.VideoClassifyActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.VideoRecordActivity"
+            android:exported="true">
+
+        </activity>
+
+        <activity
+            android:name=".activity.VideoListActivity"
+            android:exported="true">
+
+
+        </activity>
+        <activity
+            android:name=".activity.VideoPlayActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden" />
+        <activity
+            android:name=".activity.VideoPublishActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.VideoGoodsAddActivity"
+            android:screenOrientation="portrait" />
+    </application>
+
+</manifest>

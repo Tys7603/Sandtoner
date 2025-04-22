@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/main_home"
+        android:icon="@drawable/icon_main_bottom_home"
+        android:title="@string/home_page" />
+
+    <item
+        android:id="@+id/main_classfiy"
+        android:icon="@drawable/icon_main_bottom_classify"
+        android:title="@string/str_classfiy" />
+
+    <item
+        android:id="@+id/main_find"
+        android:icon="@drawable/icon_main_bottom_find"
+        android:title="@string/str_find" />
+
+    <item
+        android:id="@+id/main_shopcart"
+        android:icon="@drawable/icon_main_bottom_shopcart2"
+        android:title="@string/str_shop_cart"
+        />
+
+    <item
+        android:id="@+id/main_user"
+        android:icon="@drawable/icon_main_bottom_user"
+        android:title="@string/str__mine" />
+</menu>

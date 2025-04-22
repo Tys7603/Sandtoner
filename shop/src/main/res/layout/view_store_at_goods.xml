@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:orientation="horizontal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center_vertical"
+        android:id="@+id/btn_store"
+        android:paddingLeft="@dimen/default_padding"
+        android:paddingRight="@dimen/default_padding"
+        >
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:riv_oval="true"
+            android:id="@+id/img_store_avatar"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="外贸尾货专卖"
+            android:layout_marginLeft="5dp"
+            android:id="@+id/tv_store_name"
+            android:textSize="@dimen/text_size_15"
+            android:textColor="@color/textColor"
+            />
+
+        <TextView
+            android:text="@string/str_ziying"
+            android:id="@+id/tv_store_self"
+            style="@style/self_store_tag"
+
+            android:layout_marginRight="5dp"
+            />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/str_in_store"
+            android:textSize="@dimen/text_size_14"
+            android:textColor="@color/global"
+            android:gravity="left" />
+
+        <ImageView
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:src="@mipmap/icon_arrow_right"
+            android:tint="@color/global"
+            />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:orientation="horizontal"
+        android:id="@+id/btn_evaluate"
+        android:gravity="center_vertical"
+        android:background="#FAFAFA"
+        android:layout_marginLeft="@dimen/default_margin"
+        android:layout_marginRight="@dimen/default_margin"
+        android:layout_marginBottom="@dimen/default_margin"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_store"
+        >
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="宝贝描述  3.5 低"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:id="@+id/tv_evaluate_1"
+            android:textSize="@dimen/text_size_12"
+            android:textColor="@color/gray1"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="宝贝描述  3.5 低"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:id="@+id/tv_evaluate_2"
+            android:textSize="@dimen/text_size_12"
+            android:textColor="@color/gray1"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="宝贝描述  3.5 低"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:id="@+id/tv_evaluate_3"
+            android:textSize="@dimen/text_size_12"
+            android:textColor="@color/gray1"
+            />
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

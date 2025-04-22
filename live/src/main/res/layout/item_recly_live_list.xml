@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/bg_color_white_radius_10">
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:scaleType="centerCrop"
+        app:riv_oval="true"
+        android:id="@+id/img_store_avator"
+        android:layout_margin="@dimen/default_margin"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@color/cardview_dark_background"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="万岳官方旗舰店"
+        app:layout_constraintLeft_toRightOf="@id/img_store_avator"
+        app:layout_constraintTop_toTopOf="@id/img_store_avator"
+        app:layout_constraintBottom_toTopOf="@id/tv_time"
+        android:textSize="@dimen/text_size_14"
+        android:textColor="@color/textColor"
+        android:id="@+id/tv_store_name"
+        android:layout_marginLeft="@dimen/default_margin"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2021-08-21"
+        android:textSize="@dimen/text_size_10"
+        android:textColor="@color/gray1"
+        android:id="@+id/tv_time"
+        app:layout_constraintLeft_toLeftOf="@id/tv_store_name"
+        app:layout_constraintBottom_toBottomOf="@id/img_store_avator"
+        app:layout_constraintTop_toBottomOf="@id/tv_store_name"
+        />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/btn_follow"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/img_store_avator"
+        app:layout_constraintBottom_toBottomOf="@id/img_store_avator"
+        android:layout_marginRight="@dimen/default_margin"
+        >
+        <TextView
+            android:layout_width="40dp"
+            android:layout_height="20dp"
+            android:text="@string/str_str_follow"
+            android:gravity="center"
+            android:id="@+id/tv_no_follow"
+            android:textSize="@dimen/text_size_10"
+            android:textColor="@color/white"
+            android:background="@drawable/bg_color_global_radius_15"
+            />
+        <com.wanyue.common.custom.DrawableTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_follow"
+            android:textColor="@color/textColor"
+            android:textSize="@dimen/text_size_10"
+            android:drawablePadding="3dp"
+            app:dt_left_drawable="@drawable/icon_follow_dui"
+            app:dt_left_width="12dp"
+            app:dt_left_height="7dp"
+            android:visibility="gone"
+            android:text="@string/str_followed"
+            />
+
+
+
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="这是我发布的种草文字内容这是我发布的种草文字内这是我发布的种草文字内容这是我发布容。"
+        android:textSize="@dimen/text_size_13"
+        android:textColor="@color/textColor2"
+        android:id="@+id/tv_title"
+        app:layout_constraintTop_toBottomOf="@id/img_store_avator"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="@dimen/default_margin"
+        android:layout_marginRight="@dimen/default_margin"
+        android:layout_marginTop="@dimen/default_margin"
+        />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        app:layout_constraintLeft_toLeftOf="@id/tv_title"
+        app:layout_constraintTop_toBottomOf="@id/tv_title"
+        app:layout_constraintRight_toRightOf="@id/tv_title"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/vp_live_container"
+        >
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginRight="3dp"
+            app:layout_constraintRight_toLeftOf="@id/img_thumb_1"
+            android:id="@+id/img_live_thumb"
+            android:scaleType="centerCrop"
+            tools:background="@color/black"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="@id/img_live_thumb"
+            app:layout_constraintTop_toTopOf="@id/img_live_thumb"
+            app:layout_constraintRight_toRightOf="parent"
+            android:textSize="@dimen/text_size_13"
+            android:textColor="@color/white"
+            android:layout_marginLeft="13dp"
+            android:layout_marginRight="13dp"
+            android:layout_marginTop="20dp"
+            android:textStyle="bold"
+
+            android:id="@+id/tv_live_title"
+            />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="99dp"
+            android:id="@+id/img_thumb_1"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/img_live_thumb"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:background="@color/red"
+            android:scaleType="centerCrop"
+            android:layout_marginBottom="3dp"
+            />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="99dp"
+            android:id="@+id/img_thumb_2"
+            android:scaleType="centerCrop"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="@id/img_thumb_1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:background="@color/black"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        app:layout_constraintLeft_toLeftOf="@id/tv_title"
+        app:layout_constraintTop_toBottomOf="@id/vp_live_container"
+        app:layout_constraintRight_toRightOf="@id/tv_title"
+        android:id="@+id/rc_goods"
+        android:layout_marginTop="10dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/read_tip1"
+        android:id="@+id/tv_read_num"
+        android:textSize="@dimen/text_size_12"
+        android:textColor="@color/textColor2"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="@dimen/default_margin"
+        app:layout_constraintTop_toTopOf="@id/btn_zan"
+        app:layout_constraintBottom_toBottomOf="@id/btn_zan"
+        />
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:orientation="horizontal"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rc_goods"
+        android:layout_margin="@dimen/default_margin"
+        android:gravity="center_vertical"
+        android:id="@+id/btn_zan"
+        android:visibility="invisible"
+        >
+        <com.wanyue.common.custom.CheckImageView
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            app:enable_click="false"
+            app:deault_image="@drawable/icon_find_zan_default"
+            app:select_image="@drawable/icon_find_zan_select"
+            android:id="@+id/img_zan"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="80"
+            android:textSize="@dimen/text_size_12"
+            android:textColor="@color/textColor2"
+            android:layout_marginLeft="5dp"
+            android:id="@+id/tv_zan"
+            />
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+ >
+    <include layout="@layout/view_title"/>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/vp_top_container"
+        />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/container"
+            android:orientation="vertical"
+
+            android:layout_marginTop="@dimen/default_margin"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="视频内容标题在这里显示"
+                android:textColor="@color/textColor"
+                android:textSize="@dimen/text_size_16"
+                android:gravity="center_vertical"
+                android:id="@+id/tv_title"
+                android:minHeight="20dp"
+                android:textStyle="bold"
+                android:layout_marginLeft="@dimen/default_margin"
+                android:layout_marginRight="@dimen/default_margin"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="图文内容简介文字在这里显示，字数不会太多，简单的介绍。"
+                android:textColor="@color/gray1"
+                android:gravity="center_vertical"
+                android:textSize="@dimen/text_size_11"
+                android:id="@+id/tv_des"
+                android:layout_marginTop="@dimen/default_margin"
+                android:layout_marginLeft="@dimen/default_margin"
+                android:layout_marginRight="@dimen/default_margin"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="2020-02-01"
+                android:textColor="@color/gray1"
+                android:textSize="@dimen/text_size_11"
+                android:layout_marginTop="25dp"
+                android:id="@+id/tv_time"
+                android:layout_marginLeft="@dimen/default_margin"
+                android:layout_marginRight="@dimen/default_margin"
+                android:layout_marginBottom="10dp"
+                />
+            <View  style="@style/line2"
+                android:layout_marginLeft="@dimen/default_margin"
+                android:layout_marginRight="@dimen/default_margin"
+                />
+
+            <com.wanyue.common.custom.NoScrollWebView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/webView"
+                />
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

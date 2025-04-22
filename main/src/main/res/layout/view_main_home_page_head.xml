@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/main_top_height"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:background="@color/white"
+    android:paddingLeft="@dimen/default_padding"
+    android:paddingRight="@dimen/default_padding">
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:riv_oval="true"
+        android:src="@mipmap/ic_launcher"
+        />
+
+    <FrameLayout
+        android:id="@+id/btn_search"
+        android:layout_margin="5dp"
+        android:focusable="true"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="34dp"
+        android:background="@drawable/bg_search">
+        <ImageView
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:padding="8dp"
+            android:layout_marginLeft="2dp"
+            android:src="@mipmap/icon_main_search"
+            android:tint="@color/gray3"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="38dp"
+            android:layout_marginRight="10dp"
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            android:id="@+id/et_search"
+            android:imeOptions="actionSearch"
+            android:textColor="@color/textColor"
+            android:textColorHint="#B4B4B4"
+            android:textSize="@dimen/text_size_14"
+            android:enabled="false"
+            android:focusable="false"
+            />
+
+    </FrameLayout>
+
+    <com.wanyue.common.custom.DrawableTextView
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:text="@string/str_sao"
+        android:textSize="@dimen/text_size_9"
+        android:gravity="center_horizontal"
+        android:textColor="@color/textColor"
+        app:dt_top_drawable="@drawable/icon_scan"
+        app:dt_top_width="20dp"
+        app:dt_top_height="20dp"
+        android:drawablePadding="5dp"
+        android:id="@+id/btn_scan"
+        />
+
+
+
+    <FrameLayout android:layout_width="50dp"
+                 android:layout_height="wrap_content"
+        >
+        <com.wanyue.common.custom.DrawableTextView
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="@string/str_msg"
+            android:textSize="@dimen/text_size_9"
+            android:textColor="@color/textColor"
+            app:dt_top_drawable="@drawable/icon_home_message"
+            app:dt_top_width="20dp"
+            app:dt_top_height="20dp"
+            android:gravity="center_horizontal"
+            android:drawablePadding="5dp"
+            android:id="@+id/btn_message"
+            />
+        <TextView style="@style/red_point_style"
+
+            android:layout_gravity="right"
+            android:id="@+id/tv_red_point"
+            />
+
+    </FrameLayout>
+
+
+
+
+</LinearLayout>

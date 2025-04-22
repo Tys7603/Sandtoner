@@ -1,0 +1,14 @@
+rootProject.name='直播带货demo'
+include ':app', ':mob', ':common', ':mhui', ':live'
+include ':main'
+
+include ':shop'
+include ':calendarview'
+include ':tuikit'
+
+include ':video'
+
+include ':course'
+include ':imnew'
+
+include ':mhsdk'

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".evaluate.view.activity.PublishEvaluateActivity">
+    <include layout="@layout/view_title"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/default_padding"
+        android:paddingRight="@dimen/default_padding"
+        >
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:gravity="center_vertical"
+            android:maxLines="2"
+            android:minWidth="36dp"
+            android:textColor="@color/textColor"
+            android:textSize="@dimen/text_size_14"
+            tools:text="高二上学期语文知识内容讲解，重点知识串讲，考前冲刺练习。高二上学期语文知识内容讲解，重点知识串讲，考前冲刺练习。高二上学期语文知识内容讲解，重点知识串讲，考前冲刺练习。" />
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            app:riv_oval="true"
+            android:id="@+id/img_avator"
+            tools:src="@mipmap/icon_voice_pause"
+            android:layout_marginTop="10dp"
+            android:scaleType="centerCrop"
+            android:layout_below="@+id/tv_title"
+            android:layout_marginBottom="5dp"
+            android:visibility="gone"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="15dp"
+            android:text="李二狗老师"
+            android:textColor="@color/textColor"
+            android:textSize="@dimen/text_size_10"
+            android:gravity="center_vertical"
+            android:layout_alignTop="@+id/img_avator"
+            android:layout_toRightOf="@+id/img_avator"
+            android:layout_marginLeft="6dp"
+            android:id="@+id/tv_name"
+            android:visibility="gone"
+            />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="@dimen/default_padding"
+        android:paddingRight="@dimen/default_padding"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:layout_marginBottom="50dp"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/overall_evaluation"
+                android:textColor="@color/textColor"
+                android:textSize="@dimen/text_size_14"
+                />
+
+            <com.wanyue.course.widet.RatingStar
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:id="@+id/rating_star"
+                android:layout_marginLeft="20dp"
+                app:starNumber="5"/>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="极不满意"
+                android:textColor="@color/yellow3"
+                android:textSize="@dimen/text_size_14"
+                android:id="@+id/tv_evaluate_result"
+                />
+
+        </LinearLayout>
+        <View style="@style/line2"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:padding="5dp"
+            android:hint="@string/speak_u_evaluate"
+            android:textColor="@color/textColor"
+            android:textSize="@dimen/text_size_14"
+            android:id="@+id/et_evaluate"
+            android:gravity="left"
+            />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        >
+        <Button style="@style/bottom_button_style"
+            android:text="@string/pub_evaluation"
+            android:id="@+id/btn_commit"
+            android:layout_gravity="center"
+            android:layout_marginBottom="0dp"
+            />
+    </FrameLayout>
+
+
+
+</LinearLayout>

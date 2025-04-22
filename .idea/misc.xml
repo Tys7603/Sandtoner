@@ -1,0 +1,302 @@
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="../../../../.gradle/caches/transforms-2/files-2.1/4576c45ac9bea00b6904c8ce9dd74e3a/res/drawable/ic_photo.xml" value="0.175" />
+        <entry key="common/src/main/res/drawable/bg_btn_primary.xml" value="0.175" />
+        <entry key="common/src/main/res/drawable/bg_btn_primary_1.xml" value="0.190625" />
+        <entry key="common/src/main/res/drawable/bg_btn_primary_2.xml" value="0.175" />
+        <entry key="common/src/main/res/drawable/bg_color_gray_radius_5.xml" value="0.1" />
+        <entry key="common/src/main/res/drawable/bg_color_white_radius_10.xml" value="0.1" />
+        <entry key="common/src/main/res/drawable/bg_color_white_radius_10_no_border.xml" value="0.1" />
+        <entry key="common/src/main/res/drawable/bg_search.xml" value="0.1" />
+        <entry key="common/src/main/res/drawable/bound_color_global_radius_10.xml" value="0.1" />
+        <entry key="common/src/main/res/drawable/bound_color_global_radius_11.xml" value="0.1" />
+        <entry key="common/src/main/res/drawable/bound_color_global_radius_15.xml" value="0.1" />
+        <entry key="common/src/main/res/drawable/bound_color_global_radius_20.xml" value="0.1" />
+        <entry key="common/src/main/res/drawable/round_red.xml" value="0.175" />
+        <entry key="common/src/main/res/drawable/round_white.xml" value="0.175" />
+        <entry key="common/src/main/res/drawable/round_yellow.xml" value="0.175" />
+        <entry key="common/src/main/res/layout/dialog_loading.xml" value="0.15833333333333333" />
+        <entry key="common/src/main/res/layout/empty_no_data.xml" value="0.15885416666666666" />
+        <entry key="common/src/main/res/layout/empty_no_data_small.xml" value="0.2862925943853118" />
+        <entry key="common/src/main/res/layout/view_gallery.xml" value="0.572091139603156" />
+        <entry key="common/src/main/res/layout/view_refresh_default.xml" value="0.15081521739130435" />
+        <entry key="common/src/main/res/layout/view_single_refresh.xml" value="0.10099637681159421" />
+        <entry key="common/src/main/res/layout/view_title.xml" value="0.11548913043478261" />
+        <entry key="course/src/main/res/drawable/bg_color_blue_radius_2.xml" value="0.1" />
+        <entry key="course/src/main/res/drawable/bg_color_orange_radius_2.xml" value="0.1" />
+        <entry key="course/src/main/res/drawable/fg_speed.xml" value="0.175" />
+        <entry key="course/src/main/res/drawable/icon_chat_charge_pay_1.xml" value="0.1" />
+        <entry key="course/src/main/res/layout/activity_content_detail.xml" value="0.266556400299953" />
+        <entry key="course/src/main/res/layout/activity_course_detail.xml" value="0.11005434782608696" />
+        <entry key="course/src/main/res/layout/activity_course_list.xml" value="0.1046875" />
+        <entry key="course/src/main/res/layout/activity_my_course.xml" value="0.1" />
+        <entry key="course/src/main/res/layout/activity_my_course_record.xml" value="0.14479166666666668" />
+        <entry key="course/src/main/res/layout/activity_publish_evaluate.xml" value="0.43948126801152737" />
+        <entry key="course/src/main/res/layout/dialog_chat_charge_pay.xml" value="0.31832547995172666" />
+        <entry key="course/src/main/res/layout/dialog_simple_evaluate.xml" value="0.11005434782608696" />
+        <entry key="course/src/main/res/layout/item_chat_charge_pay.xml" value="0.1" />
+        <entry key="course/src/main/res/layout/item_recly_course_evaluate.xml" value="0.19370337870283136" />
+        <entry key="course/src/main/res/layout/item_recly_course_level_0.xml" value="0.10461956521739131" />
+        <entry key="course/src/main/res/layout/item_recly_course_level_1.xml" value="0.22235865062717902" />
+        <entry key="course/src/main/res/layout/item_recly_my_course_record.xml" value="0.15885416666666666" />
+        <entry key="course/src/main/res/layout/item_recly_project_price.xml" value="0.4661852599810207" />
+        <entry key="course/src/main/res/layout/item_relcy_course_recorder.xml" value="0.3215169002473207" />
+        <entry key="course/src/main/res/layout/item_relcy_project_course.xml" value="0.3475298126064736" />
+        <entry key="course/src/main/res/layout/view_audio_tools.xml" value="0.2539111670295774" />
+        <entry key="course/src/main/res/layout/view_catalogue.xml" value="0.10461956521739131" />
+        <entry key="course/src/main/res/layout/view_course_bottom_buy.xml" value="0.335559265442404" />
+        <entry key="course/src/main/res/layout/view_course_evaluate_list.xml" value="0.3253433845980079" />
+        <entry key="course/src/main/res/layout/view_course_introduce.xml" value="0.3942101228759376" />
+        <entry key="course/src/main/res/layout/view_evaluate_list.xml" value="0.344255238539005" />
+        <entry key="course/src/main/res/layout/view_tx_audio.xml" value="0.1" />
+        <entry key="course/src/main/res/layout/view_tx_video.xml" value="0.1" />
+        <entry key="im/src/main/res/layout/view_chat_room.xml" value="0.11496412547571475" />
+        <entry key="imnew/src/main/res/layout/activity_chat.xml" value="0.17447916666666666" />
+        <entry key="imnew/src/main/res/layout/activity_conversation.xml" value="0.10052083333333334" />
+        <entry key="live/src/main/res/drawable/bg_btn_confirm.xml" value="0.1" />
+        <entry key="live/src/main/res/layout/activity_goods_conn_live.xml" value="0.16041666666666668" />
+        <entry key="live/src/main/res/layout/activity_live_anchor.xml" value="0.1" />
+        <entry key="live/src/main/res/layout/activity_live_list.xml" value="0.140625" />
+        <entry key="live/src/main/res/layout/activity_room_manage.xml" value="0.11005434782608696" />
+        <entry key="live/src/main/res/layout/dialog_live_empty.xml" value="0.1453125" />
+        <entry key="live/src/main/res/layout/item_recly_live_list.xml" value="0.1421875" />
+        <entry key="live/src/main/res/layout/view_live_anchor.xml" value="0.15885416666666666" />
+        <entry key="live/src/main/res/layout/view_live_audience.xml" value="0.15885416666666666" />
+        <entry key="live/src/main/res/layout/view_live_push_tx.xml" value="0.1" />
+        <entry key="live/src/main/res/layout/view_live_ready.xml" value="0.335" />
+        <entry key="live/src/main/res/layout/view_live_room.xml" value="0.7256940122064649" />
+        <entry key="main/src/main/res/drawable/bg_item_moudle.xml" value="0.175" />
+        <entry key="main/src/main/res/layout/activity_brokerage_rank.xml" value="0.15833333333333333" />
+        <entry key="main/src/main/res/layout/activity_find_detail.xml" value="0.23768281203426736" />
+        <entry key="main/src/main/res/layout/activity_goods_connect.xml" value="0.17447916666666666" />
+        <entry key="main/src/main/res/layout/activity_greate_select.xml" value="0.15885416666666666" />
+        <entry key="main/src/main/res/layout/activity_integral.xml" value="0.26272883521927376" />
+        <entry key="main/src/main/res/layout/activity_my_coin.xml" value="0.15885416666666666" />
+        <entry key="main/src/main/res/layout/activity_my_consignment.xml" value="0.3488468097052021" />
+        <entry key="main/src/main/res/layout/activity_my_integral.xml" value="0.21034118428130144" />
+        <entry key="main/src/main/res/layout/activity_my_profit.xml" value="0.15885416666666666" />
+        <entry key="main/src/main/res/layout/activity_my_spread.xml" value="0.23055856790541898" />
+        <entry key="main/src/main/res/layout/activity_my_store.xml" value="0.1" />
+        <entry key="main/src/main/res/layout/activity_my_video.xml" value="0.14479166666666668" />
+        <entry key="main/src/main/res/layout/activity_profit.xml" value="0.41294181785646006" />
+        <entry key="main/src/main/res/layout/dialog_sign_succ.xml" value="0.2605230873434645" />
+        <entry key="main/src/main/res/layout/item_banner_image.xml" value="0.1" />
+        <entry key="main/src/main/res/layout/item_consignment_profit.xml" value="0.25553151813698644" />
+        <entry key="main/src/main/res/layout/item_main_home_user.xml" value="0.3598673300165838" />
+        <entry key="main/src/main/res/layout/item_main_me_order.xml" value="0.7418349764131195" />
+        <entry key="main/src/main/res/layout/item_main_me_spread.xml" value="0.36282511063997214" />
+        <entry key="main/src/main/res/layout/item_main_recommend.xml" value="0.15081521739130435" />
+        <entry key="main/src/main/res/layout/item_reclt_normal_line.xml" value="0.15104166666666666" />
+        <entry key="main/src/main/res/layout/item_reclt_normal_progress.xml" value="0.33818917482035377" />
+        <entry key="main/src/main/res/layout/item_recly_consignment_order.xml" value="0.1578125" />
+        <entry key="main/src/main/res/layout/item_recly_find_live.xml" value="0.4202255016895324" />
+        <entry key="main/src/main/res/layout/item_recly_find_normal.xml" value="0.3846834614071603" />
+        <entry key="main/src/main/res/layout/item_recly_find_video.xml" value="0.29172964337157997" />
+        <entry key="main/src/main/res/layout/item_recly_like_goods.xml" value="0.3374357666986566" />
+        <entry key="main/src/main/res/layout/item_recly_main_moudle_full.xml" value="0.5227230039306842" />
+        <entry key="main/src/main/res/layout/item_recly_main_moudle_helf.xml" value="0.2620208922361828" />
+        <entry key="main/src/main/res/layout/item_recly_main_user.xml" value="0.16041666666666668" />
+        <entry key="main/src/main/res/layout/item_recly_my_coupon.xml" value="0.1" />
+        <entry key="main/src/main/res/layout/item_recly_my_spread.xml" value="0.1" />
+        <entry key="main/src/main/res/layout/item_recly_section_classify_head.xml" value="0.14719202898550723" />
+        <entry key="main/src/main/res/layout/item_recly_section_classify_normal.xml" value="0.3215940685820204" />
+        <entry key="main/src/main/res/layout/item_recommend_live.xml" value="0.4093484419263456" />
+        <entry key="main/src/main/res/layout/item_relcy_find_goods.xml" value="0.4906303236797274" />
+        <entry key="main/src/main/res/layout/item_relcy_find_photo.xml" value="0.12047101449275362" />
+        <entry key="main/src/main/res/layout/item_relcy_home_page_course.xml" value="0.11354166666666667" />
+        <entry key="main/src/main/res/layout/item_relcy_home_page_video.xml" value="0.17986798679867988" />
+        <entry key="main/src/main/res/layout/view_banner.xml" value="0.1" />
+        <entry key="main/src/main/res/layout/view_find_video_list.xml" value="0.26601917468466685" />
+        <entry key="main/src/main/res/layout/view_main_adv.xml" value="0.15081521739130435" />
+        <entry key="main/src/main/res/layout/view_main_default_head.xml" value="0.15489130434782608" />
+        <entry key="main/src/main/res/layout/view_main_find.xml" value="0.26406209424673516" />
+        <entry key="main/src/main/res/layout/view_main_home_page.xml" value="0.1547020491543704" />
+        <entry key="main/src/main/res/layout/view_main_home_page_head.xml" value="0.4384977907825639" />
+        <entry key="main/src/main/res/layout/view_main_home_shop_cart.xml" value="0.1" />
+        <entry key="main/src/main/res/layout/view_main_home_user.xml" value="0.12604166666666666" />
+        <entry key="main/src/main/res/layout/view_main_shop_cart.xml" value="0.15885416666666666" />
+        <entry key="main/src/main/res/layout/view_normal_find.xml" value="0.11979166666666667" />
+        <entry key="main/src/main/res/layout/view_recommend_live_and_other.xml" value="0.6327800829875518" />
+        <entry key="main/src/main/res/layout/view_sign_progress.xml" value="0.15833333333333333" />
+        <entry key="mhui/src/main/res/layout/view_beauty_mh_main.xml" value="0.1" />
+        <entry key="mhui/src/main/res/layout/view_beauty_mh_main_ha_ha_jing.xml" value="0.15443840579710144" />
+        <entry key="mhui/src/main/res/layout/view_beauty_mh_main_mei_yan.xml" value="0.11041666666666666" />
+        <entry key="mhui/src/main/res/layout/view_beauty_mh_main_mei_zhuang.xml" value="0.10260416666666666" />
+        <entry key="mhui/src/main/res/layout/view_beauty_mh_main_record.xml" value="0.1" />
+        <entry key="mhui/src/main/res/layout/view_beauty_mh_main_tie_zhi.xml" value="0.335" />
+        <entry key="shop/src/main/res/drawable/bg_coupon_head.xml" value="0.190625" />
+        <entry key="shop/src/main/res/drawable/bg_coupon_head_gray.xml" value="0.1421875" />
+        <entry key="shop/src/main/res/drawable/bg_seek_bar.xml" value="0.1" />
+        <entry key="shop/src/main/res/drawable/checked_coupon_state.xml" value="0.190625" />
+        <entry key="shop/src/main/res/drawable/point.xml" value="0.1" />
+        <entry key="shop/src/main/res/layout/activity_busniess_store.xml" value="0.11041666666666666" />
+        <entry key="shop/src/main/res/layout/activity_commit_order.xml" value="0.14823476521441414" />
+        <entry key="shop/src/main/res/layout/activity_get_coupon.xml" value="0.13958333333333334" />
+        <entry key="shop/src/main/res/layout/activity_goods_detail.xml" value="0.2060751127303246" />
+        <entry key="shop/src/main/res/layout/activity_goods_foot.xml" value="0.16041666666666668" />
+        <entry key="shop/src/main/res/layout/activity_goods_video.xml" value="0.1125" />
+        <entry key="shop/src/main/res/layout/activity_greate_goods_search.xml" value="0.10625" />
+        <entry key="shop/src/main/res/layout/activity_my_collect_goods.xml" value="0.17447916666666666" />
+        <entry key="shop/src/main/res/layout/activity_my_coupon.xml" value="0.17447916666666666" />
+        <entry key="shop/src/main/res/layout/activity_my_order.xml" value="0.17447916666666666" />
+        <entry key="shop/src/main/res/layout/activity_order_pay_result.xml" value="0.17447916666666666" />
+        <entry key="shop/src/main/res/layout/activity_publish_evaluate.xml" value="0.16739627507689755" />
+        <entry key="shop/src/main/res/layout/activity_publish_evaluate_goods.xml" value="0.4591549295774648" />
+        <entry key="shop/src/main/res/layout/activity_refund_list.xml" value="0.17447916666666666" />
+        <entry key="shop/src/main/res/layout/activity_refund_order_detail.xml" value="0.17447916666666666" />
+        <entry key="shop/src/main/res/layout/activity_search_store.xml" value="0.1" />
+        <entry key="shop/src/main/res/layout/activity_select_photo.xml" value="0.17447916666666666" />
+        <entry key="shop/src/main/res/layout/activity_shop_cart.xml" value="0.14010416666666667" />
+        <entry key="shop/src/main/res/layout/activity_shop_search.xml" value="0.21329703849427203" />
+        <entry key="shop/src/main/res/layout/activity_store.xml" value="0.1067002602852881" />
+        <entry key="shop/src/main/res/layout/activity_store_home.xml" value="0.3104796802927349" />
+        <entry key="shop/src/main/res/layout/activity_store_home2.xml" value="0.15885416666666666" />
+        <entry key="shop/src/main/res/layout/activity_store_list.xml" value="0.14479166666666668" />
+        <entry key="shop/src/main/res/layout/activity_view_logistics.xml" value="0.17447916666666666" />
+        <entry key="shop/src/main/res/layout/commit_order_bottom.xml" value="0.17447916666666666" />
+        <entry key="shop/src/main/res/layout/dialog_coupon_get.xml" value="0.17447916666666666" />
+        <entry key="shop/src/main/res/layout/dialog_gallery.xml" value="0.17447916666666666" />
+        <entry key="shop/src/main/res/layout/dialog_goods_pill.xml" value="0.17447916666666666" />
+        <entry key="shop/src/main/res/layout/dialog_pay_order.xml" value="0.3202790717566805" />
+        <entry key="shop/src/main/res/layout/ite_recly_user_coupon.xml" value="0.41341348235681896" />
+        <entry key="shop/src/main/res/layout/item_goods_tab.xml" value="0.14895833333333333" />
+        <entry key="shop/src/main/res/layout/item_head_hot_goods_empty.xml" value="0.15081521739130435" />
+        <entry key="shop/src/main/res/layout/item_recly_buyer_order_4.xml" value="0.5631655143666564" />
+        <entry key="shop/src/main/res/layout/item_recly_foot_goods_content.xml" value="0.15746309458720611" />
+        <entry key="shop/src/main/res/layout/item_recly_foot_goods_title.xml" value="0.1" />
+        <entry key="shop/src/main/res/layout/item_recly_goods_recommend.xml" value="0.18443002780352177" />
+        <entry key="shop/src/main/res/layout/item_recly_goods_select_store.xml" value="0.18141812784711914" />
+        <entry key="shop/src/main/res/layout/item_recly_goods_video_recommend.xml" value="0.4476395784644619" />
+        <entry key="shop/src/main/res/layout/item_recly_hot_goods.xml" value="0.272364384195803" />
+        <entry key="shop/src/main/res/layout/item_recly_my_coupon.xml" value="0.5429510215728829" />
+        <entry key="shop/src/main/res/layout/item_recly_my_invalid_coupon.xml" value="0.433370185623902" />
+        <entry key="shop/src/main/res/layout/item_recly_normal_goods_list.xml" value="0.2969989035688191" />
+        <entry key="shop/src/main/res/layout/item_recly_order_goods_about.xml" value="0.3112583361402549" />
+        <entry key="shop/src/main/res/layout/item_recly_section_store_classify_head.xml" value="0.14719202898550723" />
+        <entry key="shop/src/main/res/layout/item_recly_section_store_classify_normal.xml" value="0.4295387290042731" />
+        <entry key="shop/src/main/res/layout/item_recly_store_simple.xml" value="0.33435049974251274" />
+        <entry key="shop/src/main/res/layout/item_relcy_commit_order.xml" value="0.246248386804057" />
+        <entry key="shop/src/main/res/layout/item_relcy_get_coupon.xml" value="0.5597667638483965" />
+        <entry key="shop/src/main/res/layout/item_relcy_keyword.xml" value="0.7978513533653334" />
+        <entry key="shop/src/main/res/layout/item_search.xml" value="0.7923862662303003" />
+        <entry key="shop/src/main/res/layout/view_goods_detail_recommend.xml" value="0.266025641025641" />
+        <entry key="shop/src/main/res/layout/view_goods_handle.xml" value="0.662169946311711" />
+        <entry key="shop/src/main/res/layout/view_goods_num.xml" value="0.5" />
+        <entry key="shop/src/main/res/layout/view_goods_pannel.xml" value="0.15885416666666666" />
+        <entry key="shop/src/main/res/layout/view_goods_video_recommend.xml" value="0.46045694200351495" />
+        <entry key="shop/src/main/res/layout/view_hot_keyword_search.xml" value="0.29609848125718086" />
+        <entry key="shop/src/main/res/layout/view_order_detail_bottom_compeleted.xml" value="0.4919234867943896" />
+        <entry key="shop/src/main/res/layout/view_shop_cart.xml" value="0.17457264195830358" />
+        <entry key="shop/src/main/res/layout/view_sort_goods.xml" value="0.7145971830547576" />
+        <entry key="shop/src/main/res/layout/view_store_at_goods.xml" value="0.4345946659438673" />
+        <entry key="shop/src/main/res/layout/view_store_classfiy.xml" value="0.26768377253814146" />
+        <entry key="shop/src/main/res/layout/view_store_page.xml" value="0.5571004979722317" />
+        <entry key="shop/src/main/res/layout/view_title_store.xml" value="0.14719202898550723" />
+        <entry key="tuikit/src/main/res/layout/activity_video_view.xml" value="0.1" />
+        <entry key="tuikit/src/main/res/layout/chat_input_layout.xml" value="0.12626262626262627" />
+        <entry key="tuikit/src/main/res/layout/chat_layout.xml" value="0.1546875" />
+        <entry key="tuikit/src/main/res/layout/forward_message_adapter_item_content.xml" value="0.1546875" />
+        <entry key="tuikit/src/main/res/layout/forward_msg_holder.xml" value="0.1546875" />
+        <entry key="tuikit/src/main/res/layout/message_adapter_content_text.xml" value="0.1546875" />
+        <entry key="tuikit/src/main/res/layout/message_adapter_item_content.xml" value="0.31396933419161066" />
+        <entry key="video/src/main/res/drawable/bg_btn_record_1.xml" value="0.175" />
+        <entry key="video/src/main/res/drawable/bg_video_comment_like_0.xml" value="0.1" />
+        <entry key="video/src/main/res/drawable/bg_video_comment_like_1.xml" value="0.1" />
+        <entry key="video/src/main/res/drawable/radio_live_ready_class.xml" value="0.16770833333333332" />
+        <entry key="video/src/main/res/drawable/superplayer_biz_video_progressbar.xml" value="0.175" />
+        <entry key="video/src/main/res/layout/activity_video_classify.xml" value="0.14727134610293433" />
+        <entry key="video/src/main/res/layout/activity_video_edit.xml" value="0.10364583333333334" />
+        <entry key="video/src/main/res/layout/activity_video_goods_add.xml" value="0.1" />
+        <entry key="video/src/main/res/layout/activity_video_list.xml" value="0.15208333333333332" />
+        <entry key="video/src/main/res/layout/activity_video_play.xml" value="0.1" />
+        <entry key="video/src/main/res/layout/activity_video_publish.xml" value="0.387116491531041" />
+        <entry key="video/src/main/res/layout/activity_video_record.xml" value="0.22117476432197244" />
+        <entry key="video/src/main/res/layout/activity_video_record2.xml" value="0.36614645858343337" />
+        <entry key="video/src/main/res/layout/activity_video_recorder.xml" value="0.1" />
+        <entry key="video/src/main/res/layout/activity_video_report.xml" value="0.10364583333333334" />
+        <entry key="video/src/main/res/layout/dialog_video_goods.xml" value="0.1" />
+        <entry key="video/src/main/res/layout/item_relcy_video_list.xml" value="0.3874425727411945" />
+        <entry key="video/src/main/res/layout/item_speed_adjust.xml" value="0.1" />
+        <entry key="video/src/main/res/layout/item_video_comment_child.xml" value="0.3885643678045898" />
+        <entry key="video/src/main/res/layout/item_video_comment_parent.xml" value="0.48269217703615225" />
+        <entry key="video/src/main/res/layout/item_video_goods_add.xml" value="0.128" />
+        <entry key="video/src/main/res/layout/item_video_ready_class.xml" value="0.5640365518369729" />
+        <entry key="video/src/main/res/layout/superplayer_item_new_vod.xml" value="0.1" />
+        <entry key="video/src/main/res/layout/superplayer_vod_player_fullscreen.xml" value="0.1" />
+        <entry key="video/src/main/res/layout/superplayer_vod_view.xml" value="0.1" />
+        <entry key="video/src/main/res/layout/view_no_data_music_class.xml" value="0.1" />
+        <entry key="video/src/main/res/layout/view_video_comment.xml" value="0.11875" />
+        <entry key="video/src/main/res/layout/view_video_edit_filter.xml" value="0.1" />
+        <entry key="video/src/main/res/layout/view_video_edit_volume.xml" value="0.1" />
+        <entry key="video/src/main/res/layout/view_video_pannel.xml" value="0.1949419372183893" />
+        <entry key="video/src/main/res/layout/view_video_play.xml" value="0.1" />
+        <entry key="video/src/main/res/layout/view_video_play_wrap.xml" value="0.2911304106753962" />
+        <entry key="video/src/main/res/layout/view_video_scroll.xml" value="0.1015625" />
+      </map>
+    </option>
+  </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="JavadocGenerationManager">
+    <option name="OUTPUT_DIRECTORY" value="$USER_HOME$/资料/直播带货文档" />
+    <option name="OPTION_HIERARCHY" value="false" />
+    <option name="OPTION_NAVIGATOR" value="false" />
+    <option name="OPTION_INDEX" value="false" />
+    <option name="OPTION_DOCUMENT_TAG_DEPRECATED" value="false" />
+    <option name="OPTION_DEPRECATED_LIST" value="false" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State />
+          <State>
+            <id>Android</id>
+          </State>
+          <State>
+            <id>CorrectnessLintAndroid</id>
+          </State>
+          <State>
+            <id>Gradle</id>
+          </State>
+          <State>
+            <id>GradleMigrationKotlin</id>
+          </State>
+          <State>
+            <id>InternationalizationLintAndroid</id>
+          </State>
+          <State>
+            <id>Kotlin</id>
+          </State>
+          <State>
+            <id>LintAndroid</id>
+          </State>
+          <State>
+            <id>MigrationKotlin</id>
+          </State>
+          <State>
+            <id>PerformanceLintAndroid</id>
+          </State>
+          <State>
+            <id>Probable bugsGradle</id>
+          </State>
+          <State>
+            <id>SecurityLintAndroid</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>Ali-Check</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.wanyue.common.custom.BubbleLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="9dp"
+    android:id="@+id/item"
+    app:direction="bottom"
+    app:radius="3dp"
+    app:offset="0dp"
+    app:background_color="@color/alpha_black_6f"
+    app:shadow_size="4dp"
+    >
+  <RadioGroup
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:orientation="vertical"
+      android:id="@+id/radio_group"
+      >
+
+      <RadioButton
+          android:layout_width="match_parent"
+          android:layout_height="0dp"
+          android:text="2x"
+          android:layout_weight="1"
+          android:textSize="@dimen/text_size_9"
+          android:textColor="@color/fg_speed"
+          android:button="@null"
+          android:id="@+id/rb_speed2"
+          android:gravity="center" />
+
+      <RadioButton
+          android:layout_width="match_parent"
+          android:layout_height="0dp"
+          android:text="1.5x"
+          android:layout_weight="1"
+          android:textSize="@dimen/text_size_9"
+          android:textColor="@color/fg_speed"
+          android:button="@null"
+          android:id="@+id/rb_speed15"
+          android:gravity="center" />
+
+      <RadioButton
+          android:layout_width="match_parent"
+          android:layout_height="0dp"
+          android:text="1x"
+          android:layout_weight="1"
+          android:textSize="@dimen/text_size_9"
+          android:textColor="@color/fg_speed"
+          android:button="@null"
+          android:id="@+id/rb_speed1"
+          android:gravity="center" />
+
+      <RadioButton
+          android:layout_width="match_parent"
+          android:layout_height="0dp"
+          android:text="0.5x"
+          android:layout_weight="1"
+          android:textSize="@dimen/text_size_9"
+          android:textColor="@color/fg_speed"
+          android:button="@null"
+          android:id="@+id/rb_rb_speed05"
+          android:gravity="center" />
+
+  </RadioGroup>
+</com.wanyue.common.custom.BubbleLayout>

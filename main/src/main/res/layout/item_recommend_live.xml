@@ -1,0 +1,135 @@
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:background="@drawable/bg_color_white_radius_5"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/img_thumb"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:riv_corner_radius_top_left="5dp"
+        app:riv_corner_radius_top_right="5dp"
+        app:riv_corner_radius_bottom_left="@dimen/dp5"
+        app:riv_corner_radius_bottom_right="@dimen/dp5"
+        tools:src="@drawable/icon_addr_delete" />
+
+    <LinearLayout
+        android:id="@+id/roundCornerLinearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="17dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_color_global_radius_13"
+        android:backgroundTint="@color/alpha_black_3f"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintLeft_toLeftOf="@id/img_thumb"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="17dp"
+            tools:src="@drawable/icon_live_ing"
+            android:id="@+id/img_living_tag"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|center"
+            android:drawablePadding="5dp"
+            android:gravity="center"
+            android:text="1.8万人观看"
+            android:textColor="@color/white"
+            android:textSize="9sp"
+            android:textStyle="bold"
+            android:id="@+id/live_num"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            app:dt_left_drawable="@drawable/icon_yelllow_cart" />
+    </LinearLayout>
+
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        app:riv_corner_radius_bottom_right="5dp"
+        app:riv_corner_radius_bottom_left="5dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:src="@drawable/bg_video_shader"
+        android:scaleType="centerCrop"
+        />
+
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="107dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="7dp"
+        android:layout_marginBottom="30dp"
+        android:maxLines="1"
+        android:textColor="#FFFFFFFF"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="@id/img_thumb"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/img_thumb"
+        tools:text="直播标题在这里显示，哈哈..." />
+
+
+
+
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/icon_main_message"
+        android:scaleType="centerCrop"
+        app:riv_oval="true"
+        android:id="@+id/img_user_avatar"
+        app:layout_constraintTop_toBottomOf="@id/tv_title"
+        app:layout_constraintLeft_toLeftOf="@id/tv_title"
+        android:layout_marginTop="6dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="乔知画小姐姐"
+        android:textSize="10sp"
+        android:id="@+id/tv_user_name"
+        android:textColor="#FFFFFFFF"
+
+        app:layout_constraintTop_toTopOf="@id/img_user_avatar"
+        app:layout_constraintBottom_toBottomOf="@id/img_user_avatar"
+        app:layout_constraintLeft_toRightOf="@id/img_user_avatar"
+        android:layout_marginLeft="5dp"
+        />
+    <com.wanyue.common.custom.DrawableTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="1.8w"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_10"
+        app:layout_constraintBottom_toBottomOf="@id/img_thumb"
+        app:layout_constraintRight_toRightOf="@id/img_thumb"
+        android:layout_marginRight="10.5dp"
+        app:dt_left_drawable="@drawable/icon_main_zan"
+        app:dt_left_height="10dp"
+        app:dt_left_width="10dp"
+        android:id="@+id/tv_zan"
+        android:drawablePadding="5dp"
+        android:layout_marginBottom="5dp"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

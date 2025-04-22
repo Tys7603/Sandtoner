@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="38dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="@drawable/bg_color_grayf5_radius_2"
+    android:gravity="center_vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_title"
+        android:textSize="@dimen/text_size_13"
+        tools:text="舒徐"
+        android:gravity="center"
+        android:maxLines="1"
+        android:layout_marginLeft="@dimen/default_margin"
+        android:textColor="@color/textColor"
+        />
+</LinearLayout>

@@ -1,0 +1,49 @@
+apply plugin: 'com.android.library'
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+    }
+
+    sourceSets {
+        main {
+            assets.srcDirs = ['assets']
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+        maven { url "https://mirrors.tencent.com/repository/maven/tencent_public"}
+    }
+
+}
+
+dependencies {
+    //implementation fileTree(include: ['*.jar','*.aar'], dir: 'libs')
+
+    implementation 'it.sephiroth.android.library.imagezoom:library:1.0.4'
+    implementation 'com.github.promeg:tinypinyin:1.0.0' // ~80KB
+    api project(':common')
+    api 'com.tencent.imsdk:imsdk-plus:5.6.1200'
+}
+

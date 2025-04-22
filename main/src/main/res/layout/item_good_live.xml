@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_height="wrap_content"
+    android:layout_width="wrap_content">
+<com.makeramen.roundedimageview.RoundedImageView android:id="@+id/img_conver11"
+    android:layout_width="48dp"
+    android:layout_height="63dp"
+    android:scaleType="centerCrop"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.0"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:riv_corner_radius_top_left="5dp"
+    app:riv_corner_radius_top_right="5dp"
+    app:riv_corner_radius_bottom_left="@dimen/dp5"
+    app:riv_corner_radius_bottom_right="@dimen/dp5"
+    tools:src="@drawable/bg_global"
+     />
+    <com.wanyue.common.custom.DrawableTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:drawablePadding="3dp"
+        android:gravity="right"
+        android:text="22.2w"
+        android:textColor="@color/white"
+        android:textSize="8sp"
+        android:id="@+id/live_num"
+        app:dt_left_drawable="@drawable/icon_video_play"
+        app:dt_left_height="6dp"
+        app:dt_left_width="4dp" />
+</FrameLayout>

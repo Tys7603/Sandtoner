@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="@dimen/bottom_tools_height"
+    android:background="@color/white"
+    android:id="@+id/vp_bottom"
+    android:gravity="center_vertical"
+    >
+
+
+    <Button style="@style/bottom_button_style"
+        android:text="@string/str_buy_now"
+        android:id="@+id/btn_commit"
+        android:layout_gravity="center_vertical"
+        android:layout_marginBottom="0dp"
+        />
+
+</FrameLayout>

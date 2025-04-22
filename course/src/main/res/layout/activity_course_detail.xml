@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+    <include layout="@layout/view_title"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/detail_thumb_height"
+        >
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/detail_thumb_height"
+            android:id="@+id/vp_top_container"
+            />
+    </FrameLayout>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/vp_promotion_container"
+        />
+
+    <net.lucode.hackware.magicindicator.MagicIndicator
+        android:layout_width="match_parent"
+        android:id="@+id/indicator"
+        android:background="@color/white"
+        android:layout_height="@dimen/indicator_default_height"
+        android:layout_marginBottom="5dp"
+        />
+
+    <com.wanyue.common.custom.MyViewPager
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        app:canScroll="false"
+        android:id="@+id/viewPager"
+        />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/white"
+        android:id="@+id/vp_bottom"
+        android:gravity="center_vertical"
+        >
+    </FrameLayout>
+
+</LinearLayout>

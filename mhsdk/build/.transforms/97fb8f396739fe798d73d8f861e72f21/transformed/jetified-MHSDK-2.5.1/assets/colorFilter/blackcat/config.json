@@ -1,0 +1,16 @@
+{
+    "filterList": [{
+        "type": "filter",
+        "name": "blackcat",
+        "vertexShader": "",
+        "fragmentShader": "fragment.glsl",
+        "uniformList":["curveTexture"],
+        "uniformData": {
+            "curveTexture": "curve.bin"
+        },
+        "strength": 1.0,
+        "texelOffset": 0,
+        "audioPath": "",
+        "audioLooping": 1
+    }]
+}

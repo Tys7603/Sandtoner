@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".store.view.activity.StoreHomeActivity">
+    <include layout="@layout/view_title"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="76dp"
+                >
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:scaleType="centerCrop"
+                    app:riv_oval="true"
+                    android:id="@+id/img_store_avator"
+                    android:layout_margin="@dimen/default_margin"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    tools:src="@color/cardview_dark_background"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="万岳官方旗舰店"
+                    app:layout_constraintLeft_toRightOf="@id/img_store_avator"
+                    app:layout_constraintTop_toTopOf="@id/img_store_avator"
+                    app:layout_constraintBottom_toTopOf="@id/tv_fans"
+                    android:textSize="@dimen/text_size_14"
+                    android:textColor="@color/textColor"
+                    android:id="@+id/tv_store_name"
+                    android:layout_marginLeft="@dimen/default_margin"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2021-08-21"
+                    android:textSize="@dimen/text_size_10"
+                    android:textColor="@color/gray1"
+                    android:id="@+id/tv_fans"
+                    app:layout_constraintLeft_toLeftOf="@id/tv_store_name"
+                    app:layout_constraintBottom_toBottomOf="@id/img_store_avator"
+                    app:layout_constraintTop_toBottomOf="@id/tv_store_name"
+                    />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1px"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:background="@color/line_color"
+                    />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="53dp"
+                android:layout_marginLeft="@dimen/default_margin"
+                android:gravity="center_vertical"
+                android:text="店铺地址"
+                android:textColor="@color/textColor"
+                android:textSize="@dimen/text_size_13"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/default_margin"
+                android:hint="暂未添加地址"
+                android:textSize="@dimen/text_size_12"
+                android:textColor="@color/textColor2"
+                android:id="@+id/tv_addr"
+                android:layout_marginBottom="@dimen/default_margin"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="店铺描述"
+                android:textSize="@dimen/text_size_13"
+                android:textColor="@color/textColor"
+                android:layout_marginLeft="@dimen/default_margin"
+                android:gravity="center_vertical"
+                android:textStyle="bold"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/default_margin"
+                android:hint="暂未添加内容"
+                android:textSize="@dimen/text_size_12"
+                android:textColor="@color/textColor2"
+                android:id="@+id/tv_add_content"
+                android:visibility="gone"
+                android:layout_marginTop="@dimen/default_margin"
+                android:layout_marginBottom="@dimen/default_margin"
+                />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/vp_web_container"
+                />
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+
+
+
+</LinearLayout>

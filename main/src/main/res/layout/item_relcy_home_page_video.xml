@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="50dp"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:id="@+id/img_thumb"
+        app:riv_corner_radius="5dp"
+        android:src="@color/global"
+        />
+    <com.wanyue.common.custom.DrawableTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="22.2w"
+        android:textSize="@dimen/text_size_9"
+        android:textColor="@color/white"
+        android:id="@+id/tv_play_num"
+        app:dt_left_drawable="@drawable/icon_small_video_play"
+        app:dt_left_width="8dp"
+        app:dt_left_height="8dp"
+        android:layout_margin="5dp"
+        android:drawablePadding="3dp"
+        android:layout_gravity="right|bottom"
+       />
+
+</FrameLayout>

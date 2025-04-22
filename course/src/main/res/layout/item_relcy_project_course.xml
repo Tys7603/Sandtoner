@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/item_project_height"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/item"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:layout_width="100dp"
+        android:layout_height="@dimen/item_conver_height"
+        app:riv_corner_radius="5dp"
+        android:scaleType="centerCrop"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="@dimen/default_margin"
+        android:layout_marginBottom="@dimen/default_margin"
+        android:id="@+id/img_thumb"
+        android:layout_centerVertical="true"
+        android:transitionName="image"
+        tools:src="@drawable/bg_color_blue_radius_2"
+        />
+
+
+    <ImageView
+        android:layout_width="26dp"
+        android:layout_height="16dp"
+
+        android:layout_alignRight="@id/img_thumb"
+        android:layout_alignBottom="@id/img_thumb"
+        android:id="@+id/icon_vip"
+        />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/img_thumb"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_toRightOf="@+id/img_thumb"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:minHeight="@dimen/home_item_title_height"
+        android:textColor="@color/textColor"
+        android:textSize="@dimen/text_size_14"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/gray1"
+        android:textSize="@dimen/text_size_10"
+        android:layout_alignBottom="@id/img_thumb"
+        android:layout_alignLeft="@+id/tv_title"
+        android:layout_marginTop="5dp"
+        tools:text="2课时"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:id="@+id/tv_lesson"
+        />
+    <TextView
+        android:id="@+id/tv_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/img_thumb"
+        android:layout_alignRight="@id/tv_title"
+        android:layout_gravity="center_vertical"
+        android:gravity="center"
+        android:minHeight="16dp"
+        android:textColor="@color/red20"
+        android:textSize="@dimen/text_size_12"
+        android:textStyle="bold"
+        tools:text="¥ 88.00" />
+
+</RelativeLayout>

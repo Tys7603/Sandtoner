@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:minHeight="16dp"
+    android:layout_alignTop="@+id/img_avator"
+    android:layout_alignRight="@id/tv_title">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="15dp"
+        android:text="@string/str_miaosha"
+        android:gravity="center"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:textSize="@dimen/text_size_10"
+        android:textColor="@color/white"
+        android:id="@+id/tv_price_tag"
+        android:layout_gravity="center_vertical"
+        tools:background="@drawable/bg_color_orange_radius_2"
+        android:layout_marginRight="8dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="¥ 88.00"
+        android:textColor="@color/red20"
+        android:textSize="@dimen/text_size_12"
+        android:id="@+id/tv_price"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_gravity="center_vertical"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="¥ 88.00"
+        android:textSize="@dimen/text_size_11"
+        android:textColor="#FFB4B4B4"
+        android:layout_marginLeft="6dp"
+        android:id="@+id/tv_original_price"
+        android:layout_gravity="center_vertical"
+        />
+</LinearLayout>

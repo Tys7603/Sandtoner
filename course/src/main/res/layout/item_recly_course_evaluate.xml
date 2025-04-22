@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:background="@color/white"
+    >
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        app:riv_oval="true"
+        android:id="@+id/img_avator"
+        tools:src="@drawable/ssdk_exception_icon"
+        android:scaleType="centerCrop"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="哥来自江湖"
+        android:textColor="@color/textColor"
+        android:textSize="@dimen/text_size_14"
+        android:layout_toRightOf="@+id/img_avator"
+        android:id="@+id/tv_user_name"
+        android:layout_marginLeft="10dp"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="学习28个课时评价"
+        android:textColor="@color/gray1"
+        android:textSize="@dimen/text_size_12"
+        android:minHeight="20dp"
+        android:gravity="center_vertical"
+        android:layout_alignLeft="@+id/tv_user_name"
+        android:layout_below="@+id/tv_user_name"
+        android:id="@+id/tv_study_progress"
+        android:layout_marginTop="5dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="全网质量最好课程之一！"
+        android:textColor="@color/textColor2"
+        android:textSize="@dimen/text_size_16"
+        android:id="@+id/tv_content"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/tv_study_progress"
+        android:layout_alignLeft="@+id/tv_study_progress"
+        android:layout_marginBottom="10dp"
+        />
+
+    <com.wanyue.course.widet.RatingStar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rating_star"
+        android:layout_alignParentRight="true"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="2020-02-01"
+        android:textColor="@color/gray1"
+        android:textSize="@dimen/text_size_12"
+        android:id="@+id/tv_time"
+        android:minHeight="20dp"
+        android:gravity="center_vertical"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/rating_star"
+        />
+</RelativeLayout>

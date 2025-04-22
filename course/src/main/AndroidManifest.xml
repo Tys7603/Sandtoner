@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.wanyue.course">
+
+    <application>
+        <activity
+            android:name=".view.activity.MyCourseRecordActivity"
+            android:exported="true"
+            android:configChanges="screenLayout|orientation"
+            android:screenOrientation="portrait"
+            />
+        <activity
+            android:name=".view.activity.MyCourseActivity"
+            android:exported="true"
+
+            />
+        <activity
+            android:name=".view.activity.CourseDetailActivity"
+            android:exported="true"
+
+            />
+        <activity
+            android:name=".evaluate.view.activity.PublishEvaluateActivity"
+            android:exported="true" />
+        <activity
+            android:name=".view.activity.CourseListActivity"
+            android:exported="true" />
+        <activity
+            android:name=".view.activity.ContentDetailActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|screenSize|smallestScreenSize|keyboard|keyboardHidden|navigation"
+            android:exported="true" />
+    </application>
+
+</manifest>

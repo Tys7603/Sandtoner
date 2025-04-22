@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="bottom_button_style">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/text_size_15</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/bg_button_normal_radius_5</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/bottom_button_height</item>
+        <item name="android:layout_gravity">bottom</item>
+        <item name="android:layout_marginLeft">@dimen/default_margin</item>
+        <item name="android:layout_marginRight">@dimen/default_margin</item>
+        <item name="android:layout_marginBottom">10dp</item>
+    </style>
+
+
+    <dimen name="bottom_button_height">36dp</dimen>
+    <dimen name="bottom_tools_height">50dp</dimen>
+</resources>
