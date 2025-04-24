@@ -61,7 +61,51 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (savedInstanceState != null) {
+            // Restore the activity state
+            mLastClickBackTime = savedInstanceState.getLong("lastClickBackTime", 0);
+        }
+    }
 
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putLong("lastClickBackTime", mLastClickBackTime);
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (mLiveCheckLivePresenter != null) {
+            mLiveCheckLivePresenter = null;
+        }
+        if (mProcessResultUtil != null) {
+            mProcessResultUtil = null;
+        }
+        if (mViewPager != null) {
+            mViewPager.setAdapter(null);
+            mViewPager = null;
+        }
+        if (mBottomView != null) {
+            mBottomView.setOnNavigationItemSelectedListener(null);
+            mBottomView = null;
+        }
+        super.onDestroy();
+    }
+
+    @Override
+    public void finish() {
+        if (!isFinishing()) {
+            // Clear any remaining dialogs
+            if (getWindow() != null && getWindow().getDecorView() != null) {
+                getWindow().getDecorView().post(new Runnable() {
+                    @Override
+                    public void run() {
+                        ActivityMannger.getInstance().releaseBaseActivity(MainActivity.this);
+                    }
+                });
+            }
+            super.finish();
+        }
     }
 
     @Override
@@ -217,11 +261,11 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
         finish();
     }
 
-    @Override
-    public void finish() {
-        super.finish();
-        ActivityMannger.getInstance().releaseBaseActivity(this);
-    }
+//    @Override
+//    public void finish() {
+//        super.finish();
+//        ActivityMannger.getInstance().releaseBaseActivity(this);
+//    }
 
 
     public void setSelectClasfiy() {

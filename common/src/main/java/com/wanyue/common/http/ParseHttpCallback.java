@@ -97,4 +97,6 @@ public abstract class ParseHttpCallback<T> extends BaseHttpCallBack {
     public boolean showLoadingDialog() {
         return false;
     }
+
+    public abstract void onError(Throwable e);
 }

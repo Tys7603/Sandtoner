@@ -268,9 +268,6 @@ public class VideoInputDialogFragment extends AbsDialogFragment implements View.
         }
         String content = mInput.getText().toString().trim();
 
-
-
-
         if (TextUtils.isEmpty(content)) {
             ToastUtil.show(R.string.content_empty);
             return;
@@ -289,7 +286,6 @@ public class VideoInputDialogFragment extends AbsDialogFragment implements View.
             }
         }
 
-
         VideoAPI.setComment(toUid, mVideoId, content, commentId, parentId, new ParseHttpCallback<JSONObject>() {
             @Override
             public void onSuccess(int code, String msg, JSONObject info) {
@@ -304,7 +300,12 @@ public class VideoInputDialogFragment extends AbsDialogFragment implements View.
                 ToastUtil.show(msg);
                 dismiss();
                 ((AbsVideoPlayActivity) mContext).hideCommentWindow(true);
+            }
 
+            @Override
+            public void onError(Throwable e) {
+                // Handle error case here
+                ToastUtil.show(R.string.video_comment_reply);
             }
         });
     }

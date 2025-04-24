@@ -17,6 +17,7 @@ import com.wanyue.common.mob.MobShareUtil;
 import com.wanyue.common.utils.ClickUtil;
 import com.wanyue.common.utils.DpUtil;
 import com.wanyue.common.utils.L;
+import com.wanyue.common.utils.ToastUtil;
 import com.wanyue.live.R;
 import com.wanyue.live.bean.LiveBean;
 import com.wanyue.live.http.LiveHttpConsts;
@@ -77,6 +78,12 @@ public class LiveShareSelectDialogFragment extends AbsDialogFragment implements 
                     mBtnPill.setEnabled(true);
                     mBtnShareWechat.setAlpha(1F);
                     mBtnPill.setAlpha(1F);
+                }
+            }
+            @Override
+            public void onError(Throwable e) {
+                if (e != null) {
+                    ToastUtil.show(e.getMessage());
                 }
             }
         });

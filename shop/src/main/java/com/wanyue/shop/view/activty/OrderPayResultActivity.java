@@ -18,6 +18,7 @@ import com.wanyue.common.utils.ClickUtil;
 import com.wanyue.common.utils.ResourceUtil;
 import com.wanyue.common.utils.RouteUtil;
 import com.wanyue.common.utils.StringUtil;
+import com.wanyue.common.utils.ToastUtil;
 import com.wanyue.shop.R;
 import com.wanyue.shop.api.ShopAPI;
 import com.wanyue.shop.bean.OrderBean;
@@ -89,6 +90,15 @@ public class OrderPayResultActivity extends BaseActivity implements View.OnClick
               }else{
                     finish();
                 }
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                // Handle error case for order detail
+                if (e != null) {
+                    ToastUtil.show(e.getMessage());
+                }
+                finish();
             }
         });
     }

@@ -13,6 +13,7 @@ import com.wanyue.common.custom.DrawableTextView;
 import com.wanyue.common.custom.refresh.RxRefreshView;
 import com.wanyue.common.http.ParseHttpCallback;
 import com.wanyue.common.utils.ListUtil;
+import com.wanyue.common.utils.ToastUtil;
 import com.wanyue.common.utils.WordUtil;
 import com.wanyue.main.R;
 import com.wanyue.main.adapter.MySpreadAdapter;
@@ -90,6 +91,12 @@ public class MySpreadActivity extends BaseActivity implements BaseQuickAdapter.O
                     if(mTvCurrentMoney!=null){
                        mTvCurrentMoney.setText(commissionCount);
                     }
+                }
+            }
+            @Override
+            public void onError(Throwable e) {
+                if (e != null) {
+                    ToastUtil.show(e.getMessage());
                 }
             }
         });

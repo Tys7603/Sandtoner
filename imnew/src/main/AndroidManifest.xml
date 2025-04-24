@@ -3,15 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.wanyue.imnew">
 
-
     <uses-permission android:name="android.permission.REORDER_TASKS" />
-    <!--接三方的时候,修改这里的包名-->
     <permission
-        android:name="com.wanyue.mails.permission.JPUSH_MESSAGE"
+        android:name="com.sandtoner.app.permission.JPUSH_MESSAGE"
         android:protectionLevel="signature"/>
 
-    <!--接三方的时候,修改这里的包名-->
-    <uses-permission android:name="com.wanyue.mails.permission.JPUSH_MESSAGE"/>
+    <uses-permission android:name="com.sandtoner.app.permission.JPUSH_MESSAGE"/>
     <application
         android:allowBackup="true"
         android:theme="@style/AppTheme">
@@ -26,8 +23,9 @@
             android:exported="false"/>
         <provider
             android:name="cn.jpush.android.service.DataProvider"
-            android:authorities="com.wanyue.mails.DataProvider"
-            android:exported="true"/>
+            android:authorities="com.sandtoner.app.DataProvider"
+            android:exported="true"
+            tools:replace="android:authorities"/>
 
         <receiver
             android:name="com.wanyue.imnew.receiver.JPushReceiver"
@@ -39,7 +37,7 @@
                 <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED"/>
                 <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED"/>
                 <action android:name="cn.jpush.android.intent.CONNECTION"/>
-                <category android:name="com.wanyue.mails"/>
+                <category android:name="com.sandtoner.app"/>
             </intent-filter>
         </receiver>
 
@@ -49,7 +47,7 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="cn.jpush.android.intent.DaemonService"/>
-                <category android:name="com.wanyue.mails"/>
+                <category android:name="com.sandtoner.app"/>
             </intent-filter>
 
         </service>
@@ -62,7 +60,7 @@
             android:process=":pushcore">
             <intent-filter android:priority="1000">
                 <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY"/>
-                <category android:name="com.wanyue.mails"/>
+                <category android:name="com.sandtoner.app"/>
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.USER_PRESENT"/>
@@ -83,7 +81,7 @@
             <intent-filter>
                 <action android:name="cn.jpush.android.ui.PushActivity"/>
                 <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="com.wanyue.mails"/>
+                <category android:name="com.sandtoner.app"/>
             </intent-filter>
         </activity>
 
@@ -112,7 +110,7 @@
         <activity
             android:name="com.wanyue.imnew.view.chat.ChatActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan"
             android:exported="true" />
         <activity
             android:name="com.wanyue.imnew.view.conversation.ConversationActivity"

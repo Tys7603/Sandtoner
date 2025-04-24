@@ -70,6 +70,12 @@ public class LiveRoomCheckLivePresenter {
             DialogUitl.dismissDialog(mLoadingDialog);
         }
         @Override
+        public void onError(Throwable e) {
+            if (e != null) {
+                ToastUtil.show(e.getMessage());
+            }
+        }
+        @Override
         public void onSuccess(int code, String msg, JSONObject info) {
             if(!isSuccess(code)||info==null){
                 DialogUitl.dismissDialog(mLoadingDialog);

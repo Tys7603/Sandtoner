@@ -120,6 +120,13 @@ public class CatalogueViewProxy extends RxViewProxy {
                 ContentBean contentBean=level.parseContentBean(mCourseBean);
                 ContentDetailActivity.forward(getActivity(),contentBean);
             }
+
+            @Override
+            public void onError(Throwable e) {
+                if (e != null) {
+                    ToastUtil.show(e.getMessage());
+                }
+            }
         });
     }
 

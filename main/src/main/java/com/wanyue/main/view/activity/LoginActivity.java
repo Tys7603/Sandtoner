@@ -142,6 +142,12 @@ public class LoginActivity extends BaseActivity implements TimeModel.TimeListner
                     ToastUtil.show(msg);
                 }
             }
+            @Override
+            public void onError(Throwable e) {
+                if (e != null) {
+                    ToastUtil.show(e.getMessage());
+                }
+            }
         });
     }
 
@@ -196,6 +202,12 @@ public class LoginActivity extends BaseActivity implements TimeModel.TimeListner
                 loginingSucc(info);
             }else{
                 ToastUtil.show(msg);
+            }
+        }
+        @Override
+        public void onError(Throwable e) {
+            if (e != null) {
+                ToastUtil.show(e.getMessage());
             }
         }
     };

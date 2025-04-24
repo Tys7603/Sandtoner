@@ -105,37 +105,8 @@ com/tencent/qcloud/tim/uikit/component/video/util/CameraParamUtil.java
  com.tencent.qcloud.tim.uikit.component.video.util.CameraParamUtil
  com.tencent.qcloud.tim.uikit.component.video.util.CameraParamUtil$1
  com.tencent.qcloud.tim.uikit.component.video.util.CameraParamUtil$CameraSizeComparator
-com/tencent/qcloud/tim/uikit/modules/chat/base/AbsChatLayout.java
- com.tencent.qcloud.tim.uikit.modules.chat.base.AbsChatLayout
- com.tencent.qcloud.tim.uikit.modules.chat.base.AbsChatLayout$1
- com.tencent.qcloud.tim.uikit.modules.chat.base.AbsChatLayout$1$1
- com.tencent.qcloud.tim.uikit.modules.chat.base.AbsChatLayout$10
- com.tencent.qcloud.tim.uikit.modules.chat.base.AbsChatLayout$11
- com.tencent.qcloud.tim.uikit.modules.chat.base.AbsChatLayout$12
- com.tencent.qcloud.tim.uikit.modules.chat.base.AbsChatLayout$13
- com.tencent.qcloud.tim.uikit.modules.chat.base.AbsChatLayout$14
- com.tencent.qcloud.tim.uikit.modules.chat.base.AbsChatLayout$15
- com.tencent.qcloud.tim.uikit.modules.chat.base.AbsChatLayout$16
- com.tencent.qcloud.tim.uikit.modules.chat.base.AbsChatLayout$17
- com.tencent.qcloud.tim.uikit.modules.chat.base.AbsChatLayout$18
- com.tencent.qcloud.tim.uikit.modules.chat.base.AbsChatLayout$19
- com.tencent.qcloud.tim.uikit.modules.chat.base.AbsChatLayout$2
- com.tencent.qcloud.tim.uikit.modules.chat.base.AbsChatLayout$20
- com.tencent.qcloud.tim.uikit.modules.chat.base.AbsChatLayout$20$1
- com.tencent.qcloud.tim.uikit.modules.chat.base.AbsChatLayout$3
- com.tencent.qcloud.tim.uikit.modules.chat.base.AbsChatLayout$4
- com.tencent.qcloud.tim.uikit.modules.chat.base.AbsChatLayout$5
- com.tencent.qcloud.tim.uikit.modules.chat.base.AbsChatLayout$6
- com.tencent.qcloud.tim.uikit.modules.chat.base.AbsChatLayout$6$1
- com.tencent.qcloud.tim.uikit.modules.chat.base.AbsChatLayout$6$2
- com.tencent.qcloud.tim.uikit.modules.chat.base.AbsChatLayout$6$3
- com.tencent.qcloud.tim.uikit.modules.chat.base.AbsChatLayout$6$4
- com.tencent.qcloud.tim.uikit.modules.chat.base.AbsChatLayout$6$5
- com.tencent.qcloud.tim.uikit.modules.chat.base.AbsChatLayout$6$6
- com.tencent.qcloud.tim.uikit.modules.chat.base.AbsChatLayout$7
- com.tencent.qcloud.tim.uikit.modules.chat.base.AbsChatLayout$8
- com.tencent.qcloud.tim.uikit.modules.chat.base.AbsChatLayout$9
- com.tencent.qcloud.tim.uikit.modules.chat.base.AbsChatLayout$onForwardSelectActivityListener
+com/tencent/qcloud/tim/uikit/base/ILayout.java
+ com.tencent.qcloud.tim.uikit.base.ILayout
 com/tencent/qcloud/tim/uikit/modules/search/SearchMoreListActivity.java
  com.tencent.qcloud.tim.uikit.modules.search.SearchMoreListActivity
  com.tencent.qcloud.tim.uikit.modules.search.SearchMoreListActivity$1
@@ -465,12 +436,8 @@ com/tencent/qcloud/tim/uikit/modules/chat/layout/message/holder/MessageTipsHolde
  com.tencent.qcloud.tim.uikit.modules.chat.layout.message.holder.MessageTipsHolder
 com/tencent/qcloud/tim/uikit/modules/chat/C2CChatManagerKit.java
  com.tencent.qcloud.tim.uikit.modules.chat.C2CChatManagerKit
-com/tencent/qcloud/tim/uikit/modules/chat/layout/message/holder/MessageContentHolder.java
- com.tencent.qcloud.tim.uikit.modules.chat.layout.message.holder.MessageContentHolder
- com.tencent.qcloud.tim.uikit.modules.chat.layout.message.holder.MessageContentHolder$1
- com.tencent.qcloud.tim.uikit.modules.chat.layout.message.holder.MessageContentHolder$2
- com.tencent.qcloud.tim.uikit.modules.chat.layout.message.holder.MessageContentHolder$3
- com.tencent.qcloud.tim.uikit.modules.chat.layout.message.holder.MessageContentHolder$4
+com/tencent/qcloud/tim/uikit/component/photoview/Compat.java
+ com.tencent.qcloud.tim.uikit.component.photoview.Compat
 com/tencent/qcloud/tim/uikit/modules/message/MessageRevokedManager.java
  com.tencent.qcloud.tim.uikit.modules.message.MessageRevokedManager
  com.tencent.qcloud.tim.uikit.modules.message.MessageRevokedManager$MessageRevokeHandler
@@ -1015,7 +982,40 @@ com/tencent/qcloud/tim/uikit/modules/conversation/ConversationLayout.java
  com.tencent.qcloud.tim.uikit.modules.conversation.ConversationLayout
 com/tencent/qcloud/tim/uikit/modules/group/apply/GroupApplyManagerActivity.java
  com.tencent.qcloud.tim.uikit.modules.group.apply.GroupApplyManagerActivity
-com/tencent/qcloud/tim/uikit/base/ILayout.java
- com.tencent.qcloud.tim.uikit.base.ILayout
-com/tencent/qcloud/tim/uikit/component/photoview/Compat.java
- com.tencent.qcloud.tim.uikit.component.photoview.Compat
+com/tencent/qcloud/tim/uikit/modules/chat/layout/message/holder/MessageContentHolder.java
+ com.tencent.qcloud.tim.uikit.modules.chat.layout.message.holder.MessageContentHolder
+ com.tencent.qcloud.tim.uikit.modules.chat.layout.message.holder.MessageContentHolder$1
+ com.tencent.qcloud.tim.uikit.modules.chat.layout.message.holder.MessageContentHolder$2
+ com.tencent.qcloud.tim.uikit.modules.chat.layout.message.holder.MessageContentHolder$3
+ com.tencent.qcloud.tim.uikit.modules.chat.layout.message.holder.MessageContentHolder$4
+com/tencent/qcloud/tim/uikit/modules/chat/base/AbsChatLayout.java
+ com.tencent.qcloud.tim.uikit.modules.chat.base.AbsChatLayout
+ com.tencent.qcloud.tim.uikit.modules.chat.base.AbsChatLayout$1
+ com.tencent.qcloud.tim.uikit.modules.chat.base.AbsChatLayout$1$1
+ com.tencent.qcloud.tim.uikit.modules.chat.base.AbsChatLayout$10
+ com.tencent.qcloud.tim.uikit.modules.chat.base.AbsChatLayout$11
+ com.tencent.qcloud.tim.uikit.modules.chat.base.AbsChatLayout$12
+ com.tencent.qcloud.tim.uikit.modules.chat.base.AbsChatLayout$13
+ com.tencent.qcloud.tim.uikit.modules.chat.base.AbsChatLayout$14
+ com.tencent.qcloud.tim.uikit.modules.chat.base.AbsChatLayout$15
+ com.tencent.qcloud.tim.uikit.modules.chat.base.AbsChatLayout$16
+ com.tencent.qcloud.tim.uikit.modules.chat.base.AbsChatLayout$17
+ com.tencent.qcloud.tim.uikit.modules.chat.base.AbsChatLayout$18
+ com.tencent.qcloud.tim.uikit.modules.chat.base.AbsChatLayout$19
+ com.tencent.qcloud.tim.uikit.modules.chat.base.AbsChatLayout$2
+ com.tencent.qcloud.tim.uikit.modules.chat.base.AbsChatLayout$20
+ com.tencent.qcloud.tim.uikit.modules.chat.base.AbsChatLayout$20$1
+ com.tencent.qcloud.tim.uikit.modules.chat.base.AbsChatLayout$3
+ com.tencent.qcloud.tim.uikit.modules.chat.base.AbsChatLayout$4
+ com.tencent.qcloud.tim.uikit.modules.chat.base.AbsChatLayout$5
+ com.tencent.qcloud.tim.uikit.modules.chat.base.AbsChatLayout$6
+ com.tencent.qcloud.tim.uikit.modules.chat.base.AbsChatLayout$6$1
+ com.tencent.qcloud.tim.uikit.modules.chat.base.AbsChatLayout$6$2
+ com.tencent.qcloud.tim.uikit.modules.chat.base.AbsChatLayout$6$3
+ com.tencent.qcloud.tim.uikit.modules.chat.base.AbsChatLayout$6$4
+ com.tencent.qcloud.tim.uikit.modules.chat.base.AbsChatLayout$6$5
+ com.tencent.qcloud.tim.uikit.modules.chat.base.AbsChatLayout$6$6
+ com.tencent.qcloud.tim.uikit.modules.chat.base.AbsChatLayout$7
+ com.tencent.qcloud.tim.uikit.modules.chat.base.AbsChatLayout$8
+ com.tencent.qcloud.tim.uikit.modules.chat.base.AbsChatLayout$9
+ com.tencent.qcloud.tim.uikit.modules.chat.base.AbsChatLayout$onForwardSelectActivityListener

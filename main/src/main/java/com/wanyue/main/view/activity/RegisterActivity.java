@@ -161,6 +161,12 @@ public class RegisterActivity extends BaseActivity implements TimeModel.TimeList
                     ToastUtil.show(msg);
                 }
             }
+            @Override
+            public void onError(Throwable e) {
+                if (e != null) {
+                    ToastUtil.show(e.getMessage());
+                }
+            }
         });
     }
 
@@ -171,6 +177,12 @@ public class RegisterActivity extends BaseActivity implements TimeModel.TimeList
                 ToastUtil.show(msg);
                 if(isSuccess(code)){
                    getRegisterCodeSucc(code,msg,info);
+                }
+            }
+            @Override
+            public void onError(Throwable e) {
+                if (e != null) {
+                    ToastUtil.show(e.getMessage());
                 }
             }
         });

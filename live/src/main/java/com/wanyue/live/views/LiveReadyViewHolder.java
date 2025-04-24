@@ -157,6 +157,12 @@ public class LiveReadyViewHolder extends AbsViewHolder implements View.OnClickLi
                 }
             }
             @Override
+            public void onError(Throwable e) {
+                if (e != null) {
+                    ToastUtil.show(e.getMessage());
+                }
+            }
+            @Override
             public Dialog createLoadingDialog() {
                 return DialogUitl.loadingDialog(mContext);
             }

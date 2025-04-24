@@ -538,7 +538,15 @@ public class VideoPublishActivity extends AbsActivity implements ITXLivePlayList
                 }else{
                     finish();
                 }
+            }
 
+            @Override
+            public void onError(Throwable e) {
+                DialogUitl.dismissDialog(mLoading);
+                if (mBtnPub != null) {
+                    mBtnPub.setEnabled(true);
+                }
+                ToastUtil.show(R.string.video_pub_failed);
             }
         });
     }

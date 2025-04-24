@@ -128,6 +128,15 @@ public class CommitOrderActivity extends BaseActivity implements View.OnClickLis
                  L.e("json=="+json);
                 }
             }
+
+            @Override
+            public void onError(Throwable e) {
+                // Handle error case
+                if (e != null) {
+                    ToastUtil.show(e.getMessage());
+                }
+                mBtnCommit.setEnabled(false);
+            }
         });
     }
 
@@ -307,6 +316,14 @@ public class CommitOrderActivity extends BaseActivity implements View.OnClickLis
                         orderComputedSucc(info);
                     }
                 }
+
+                @Override
+                public void onError(Throwable e) {
+                    // Handle error case for price computation
+                    if (e != null) {
+                        ToastUtil.show(e.getMessage());
+                    }
+                }
             };
         }
     }
@@ -350,7 +367,7 @@ public class CommitOrderActivity extends BaseActivity implements View.OnClickLis
                 return;
             }
         }
-        ShopAPI.orderCreate(mOrderConfirmBean,  new ParseHttpCallback<JSONObject>() {
+        ShopAPI.orderCreate(mOrderConfirmBean, new ParseHttpCallback<JSONObject>() {
             @Override
             public void onSuccess(int code, String msg, JSONObject info) {
                 ToastUtil.show(msg);
@@ -364,6 +381,15 @@ public class CommitOrderActivity extends BaseActivity implements View.OnClickLis
                   }
                 }
             }
+
+            @Override
+            public void onError(Throwable e) {
+                // Handle error case for order creation
+                if (e != null) {
+                    ToastUtil.show(e.getMessage());
+                }
+            }
+
             @Override
             public boolean showLoadingDialog() {
                 return true;
@@ -426,11 +452,14 @@ public class CommitOrderActivity extends BaseActivity implements View.OnClickLis
      *
      * @param address the address
      */
-    public void setAddress(AddressInfoBean address) {
-        mAddressInfoBean = address;
-        if(mOrderConfirmBean!=null){
-            mOrderConfirmBean.setAddressInfo(mAddressInfoBean);
+    private void setAddress(AddressInfoBean addressInfoBean) {
+        if(addressInfoBean == null) {
+            mAddressInfoBean = null;
+            return;
         }
+        mAddressInfoBean = addressInfoBean;
+        mTvNamePhone.setText(addressInfoBean.getNamePhoneShowInfo());
+        mTvAddress.setText(addressInfoBean.getDetailArea());
     }
    
 }

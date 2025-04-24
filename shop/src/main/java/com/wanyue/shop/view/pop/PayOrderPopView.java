@@ -102,6 +102,12 @@ public class PayOrderPopView extends BaseBottomPopView implements View.OnClickLi
             public Dialog createLoadingDialog() {
                 return DialogUitl.loadingDialog(getContext());
             }
+
+            @Override
+            public void onError(Throwable e) {
+                // Handle error case for WeChat payment
+                DialogUitl.dismissDialog(createLoadingDialog());
+            }
         });
     }
 
@@ -147,6 +153,12 @@ public class PayOrderPopView extends BaseBottomPopView implements View.OnClickLi
             @Override
             public Dialog createLoadingDialog() {
                 return DialogUitl.loadingDialog(getContext());
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                // Handle error case for Coin payment
+                DialogUitl.dismissDialog(createLoadingDialog());
             }
         });
     }

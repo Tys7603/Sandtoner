@@ -6,14 +6,15 @@ ext {
             targetSdkVersion : 30,
             versionCode      : 19,
             versionName      : "3.0.1",
-            applicationId :"com.wanyue.malls"
+            applicationId :"com.sandtoner.app"
     ]
 
 
     manifestPlaceholders = [
             //域名
 //            serverHost       : "https://testsc.sdwanyue.com",
-            serverHost       : "https://malls.sdwanyue.com",
+//            serverHost       : "https://malls.sdwanyue.com",
+            serverHost       : "https://system.sandtoner.com",
             //极光
             jpushAppKey       : "eaac58e984e4f41f7fd78a2e",
             //腾讯bugly

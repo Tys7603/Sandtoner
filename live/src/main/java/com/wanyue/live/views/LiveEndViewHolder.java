@@ -11,6 +11,7 @@ import com.wanyue.common.glide.ImgLoader;
 import com.wanyue.common.http.HttpCallback;
 import com.wanyue.common.http.ParseHttpCallback;
 import com.wanyue.common.utils.StringUtil;
+import com.wanyue.common.utils.ToastUtil;
 import com.wanyue.common.views.AbsViewHolder;
 import com.wanyue.live.R;
 import com.wanyue.live.activity.LiveAnchorActivity;
@@ -77,6 +78,12 @@ public class LiveEndViewHolder extends AbsViewHolder implements View.OnClickList
                         if (isSuccess(code)&&info!=null) {
                             mDuration.setText(info.getString("length"));
                             mWatchNum.setText(StringUtil.toWan(info.getLongValue("nums")));
+                        }
+                    }
+                    @Override
+                    public void onError(Throwable e) {
+                        if (e != null) {
+                            ToastUtil.show(e.getMessage());
                         }
                     }
                 });

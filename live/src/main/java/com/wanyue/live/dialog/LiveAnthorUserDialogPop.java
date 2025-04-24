@@ -124,6 +124,12 @@ public class LiveAnthorUserDialogPop extends BaseCenterPopView implements View.O
                     //ViewUtil.setVisibility(mBtnShutUp,View.VISIBLE);
                 }
             }
+            @Override
+            public void onError(Throwable e) {
+                if (e != null) {
+                    ToastUtil.show(e.getMessage());
+                }
+            }
         });
     }
 

@@ -166,6 +166,12 @@ public class EditProfileActivity extends BaseActivity implements View.OnClickLis
                 }
             }
             @Override
+            public void onError(Throwable e) {
+                if (e != null) {
+                    ToastUtil.show(e.getMessage());
+                }
+            }
+            @Override
             public Dialog createLoadingDialog() {
                 return DialogUitl.loadingDialog(mContext);
             }

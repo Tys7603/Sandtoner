@@ -19,6 +19,7 @@ import com.wanyue.common.pay.PayPresenter;
 import com.wanyue.common.utils.ClickUtil;
 import com.wanyue.common.utils.DialogUitl;
 import com.wanyue.common.utils.StringUtil;
+import com.wanyue.common.utils.ToastUtil;
 import com.wanyue.course.R;
 import com.wanyue.course.api.CourseAPI;
 import com.wanyue.course.busniess.IBuyer;
@@ -98,6 +99,12 @@ public class PayOrderPopView extends BaseBottomPopView implements View.OnClickLi
                 }
             }
             @Override
+            public void onError(Throwable e) {
+                if (e != null) {
+                    ToastUtil.show(e.getMessage());
+                }
+            }
+            @Override
             public boolean showLoadingDialog() {
                 return true;
             }
@@ -140,6 +147,12 @@ public class PayOrderPopView extends BaseBottomPopView implements View.OnClickLi
             public void onSuccess(int code, String msg, JSONObject info) {
                 if(isSuccess(code)){
                     buySucc();
+                }
+            }
+            @Override
+            public void onError(Throwable e) {
+                if (e != null) {
+                    ToastUtil.show(e.getMessage());
                 }
             }
             @Override

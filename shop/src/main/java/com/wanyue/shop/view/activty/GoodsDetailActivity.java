@@ -27,6 +27,7 @@ import com.wanyue.common.utils.ClickUtil;
 import com.wanyue.common.utils.DebugUtil;
 import com.wanyue.common.utils.ListUtil;
 import com.wanyue.common.utils.RouteUtil;
+import com.wanyue.common.utils.ToastUtil;
 import com.wanyue.common.utils.ViewUtil;
 import com.wanyue.shop.R;
 import com.wanyue.shop.api.ShopAPI;
@@ -133,7 +134,7 @@ public class GoodsDetailActivity extends BaseActivity implements View.OnClickLis
             @Override
             public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
                 if(mPannelViewProxy!=null){
-                 if(mPannelViewProxy.isScrollTop(scrollY)){ //每一个view都去监听scrollview的滚动位置
+                 if(mPannelViewProxy.isScrollTop(scrollY)){
                      selectTabLine(0);
                      if(mPannelViewProxy.getOffectTabHeight()==0){
                          //将tab栏高度传入,加入偏移量,目的是控制view滑动到tab栏正下面属于复合条件
@@ -274,7 +275,7 @@ public class GoodsDetailActivity extends BaseActivity implements View.OnClickLis
         ShopAPI.getGoodsDetail(mGoodsId, new ParseHttpCallback<JSONObject>() {
             @Override
             public void onSuccess(int code, String msg, JSONObject info) {
-               if(isSuccess(code)){
+                if(isSuccess(code)){
                    GoodsParseBean goodsParseBean= info.toJavaObject(GoodsParseBean.class);
                    if(ListUtil.haveData(goodsParseBean.getLiveList())){
                        ViewUtil.setVisibility(mBtnLive, View.VISIBLE);
@@ -304,6 +305,14 @@ public class GoodsDetailActivity extends BaseActivity implements View.OnClickLis
                    initRecommendViewProxy(goodsBeanList);
                    initWebViewProxy(storeGoodsBean.getDescription());
                }
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                if (e != null) {
+                    ToastUtil.show(e.getMessage());
+                }
+                finish();
             }
         });
     }

@@ -81,8 +81,6 @@ public class VideoUploadQnImpl implements VideoUploadStrategy {
         mVideoUploadCallback = callback;
 
         //向内部服务器获取七牛云的token
-
-
         VideoAPI.getQiNiuToken(new ParseHttpCallback<com.alibaba.fastjson.JSONObject>() {
             @Override
             public void onSuccess(int code, String msg, com.alibaba.fastjson.JSONObject info) {
@@ -90,6 +88,13 @@ public class VideoUploadQnImpl implements VideoUploadStrategy {
                 mToken = StringUtil.decryptUrl(mToken);
                 uploadFile(mVideoUploadBean.getVideoFile(), mVideoUpCompletionHandler);
                 mRegion=info.getString("region");
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                if (mVideoUploadCallback != null) {
+                    mVideoUploadCallback.onFailure();
+                }
             }
         });
     }

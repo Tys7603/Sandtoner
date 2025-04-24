@@ -17,6 +17,7 @@ import com.wanyue.common.http.HttpCallback;
 import com.wanyue.common.http.ParseHttpCallback;
 import com.wanyue.common.interfaces.OnItemClickListener;
 import com.wanyue.common.utils.DpUtil;
+import com.wanyue.common.utils.ToastUtil;
 import com.wanyue.common.utils.WordUtil;
 import com.wanyue.live.R;
 import com.wanyue.live.activity.LiveAudienceActivity;
@@ -123,6 +124,12 @@ public class LiveGoodsDialogFragment extends AbsDialogFragment implements OnItem
                     if (mTitle != null) {
                         mTitle.setText(WordUtil.getString(R.string.goods_tip_39 ,nums));
                     }
+                }
+            }
+            @Override
+            public void onError(Throwable e) {
+                if (e != null) {
+                    ToastUtil.show(e.getMessage());
                 }
             }
         });

@@ -18,6 +18,7 @@ import com.wanyue.common.http.HttpCallback;
 import com.wanyue.common.http.ParseHttpCallback;
 import com.wanyue.common.utils.DpUtil;
 import com.wanyue.common.utils.StringUtil;
+import com.wanyue.common.utils.ToastUtil;
 import com.wanyue.common.utils.WordUtil;
 import com.wanyue.live.R;
 import com.wanyue.live.activity.LiveAnchorActivity;
@@ -146,6 +147,12 @@ public class LiveShopDialogFragment extends AbsDialogFragment implements View.On
                 if(isSuccess(code)){
                     mGoodsNum= info.getInteger("nums");
                     setTitle();
+                }
+            }
+            @Override
+            public void onError(Throwable e) {
+                if (e != null) {
+                    ToastUtil.show(e.getMessage());
                 }
             }
         });

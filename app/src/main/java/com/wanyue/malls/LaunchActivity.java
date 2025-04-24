@@ -1,6 +1,7 @@
 package com.wanyue.malls;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.widget.ImageView;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.wanyue.common.CommonAppConfig;
@@ -34,7 +35,36 @@ public class LaunchActivity extends AbsActivity {
     }
 
     @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (isFinishing()) {
+            return;
+        }
+        main();
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (mDisposable != null && !mDisposable.isDisposed()) {
+            mDisposable.dispose();
+            mDisposable = null;
+        }
+        if (mViewAnimator != null) {
+            mViewAnimator.cancel();
+            mViewAnimator = null;
+        }
+        if (mImgCover != null) {
+            mImgCover.setImageDrawable(null);
+            mImgCover = null;
+        }
+        super.onDestroy();
+    }
+
+    @Override
     public void init() {
+        if (isFinishing()) {
+            return;
+        }
         mImgCover = findViewById(R.id.img_cover);
         Intent intent = getIntent();
         if (!isTaskRoot()
@@ -48,20 +78,56 @@ public class LaunchActivity extends AbsActivity {
         ImgLoader.display(this,R.mipmap.screen,mImgCover);
         startLauncherAnim();
 
-        mDisposable= Observable.timer(1, TimeUnit.SECONDS).observeOn(AndroidSchedulers.mainThread()).flatMap(new Function<Long, ObservableSource<ConfigBean>>() {
+        mDisposable = Observable.timer(1, TimeUnit.SECONDS)
+            .observeOn(AndroidSchedulers.mainThread())
+            .flatMap(new Function<Long, ObservableSource<ConfigBean>>() {
+                @Override
+                public ObservableSource<ConfigBean> apply(Long aLong) throws Exception {
+                    return CommonAPI.getConfig();
+                }
+            })
+            .subscribe(new Consumer<ConfigBean>() {
+                @Override
+                public void accept(ConfigBean configBean) throws Exception {
+                    if (isFinishing()) {
+                        return;
+                    }
+                    //初始化极光推送
+                    CommonAppConfig.setConfig(configBean);
+                    InitHelper.initIM(configBean.getTxSdkappid());
+                    String beautyKey = StringUtil.decryptUrl(configBean.getBeautyKey());
+                    InitHelper.startNowInit(mContext, beautyKey);
+                    startLauncher();
+                }
+            }, new Consumer<Throwable>() {
+                @Override
+                public void accept(Throwable throwable) {
+                    if (!isFinishing()) {
+                        startLauncher();
+                    }
+                }
+            });
+    }
+
+    private void startLauncher() {
+        if (isFinishing()) {
+            return;
+        }
+        runOnUiThread(new Runnable() {
             @Override
-            public ObservableSource<ConfigBean> apply(Long aLong) throws Exception {
-                return CommonAPI.getConfig();
-            }
-        }).subscribe(new Consumer<ConfigBean>() {
-            @Override
-            public void accept(ConfigBean configBean) throws Exception {
-                //初始化极光推送
-                CommonAppConfig.setConfig(configBean);
-                InitHelper.initIM(configBean.getTxSdkappid());
-                String beautyKey= StringUtil.decryptUrl(configBean.getBeautyKey());
-                InitHelper.startNowInit(mContext,beautyKey);
-                startLauncher();
+            public void run() {
+                if (isFinishing()) {
+                    return;
+                }
+                Intent intent;
+                if (CommonAppConfig.isLogin()) {
+                    intent = new Intent(LaunchActivity.this, MainActivity.class);
+                } else {
+                    intent = new Intent(LaunchActivity.this, LoginActivity.class);
+                }
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish();
             }
         });
     }
@@ -71,24 +137,29 @@ public class LaunchActivity extends AbsActivity {
     }
 
     /*开始启动方法*/
-    private void startLauncher() {
-        /*倒计时开始*/
-        if(CommonAppConfig.isLogin()){
-            startActivity(MainActivity.class);
-        }else{
-            startActivity(LoginActivity.class);
-        }
-        finish();
-    }
+//    private void startLauncher() {
+//        if (isFinishing()) {
+//            return;
+//        }
+//        /*倒计时开始*/
+//        runOnUiThread(new Runnable() {
+//            @Override
+//            public void run() {
+//                if (CommonAppConfig.isLogin()) {
+//                    startActivity(new Intent(LaunchActivity.this, MainActivity.class));
+//                } else {
+//                    startActivity(new Intent(LaunchActivity.this, LoginActivity.class));
+//                }
+//                finish();
+//            }
+//        });
+//    }
 
     @Override
-    protected void releaseActivty() {
-        super.releaseActivty();
-        if(mDisposable!=null&&!mDisposable.isDisposed()){
-           mDisposable.dispose();
-        }
-        if(mViewAnimator!=null){
-            mViewAnimator.cancel();
+    public void finish() {
+        if (!isFinishing()) {
+            releaseActivty();
+            super.finish();
         }
     }
 

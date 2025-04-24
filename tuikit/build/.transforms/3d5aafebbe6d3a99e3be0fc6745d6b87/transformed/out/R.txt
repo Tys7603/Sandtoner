@@ -4416,7 +4416,7 @@ int string login_input_pwd_4 0x0
 int string login_phone_error 0x0
 int string login_pwd_forget 0x0
 int string login_status_Invalid 0x0
-int string login_tip_1 0x0
+int string  0x0
 int string login_tip_2 0x0
 int string login_tip_3 0x0
 int string lower_wheat 0x0

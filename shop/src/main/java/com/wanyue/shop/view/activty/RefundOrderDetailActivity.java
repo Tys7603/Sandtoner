@@ -126,6 +126,14 @@ public class RefundOrderDetailActivity extends BaseActivity implements View.OnCl
                     setOrderDataUI();
                 }
             }
+
+            @Override
+            public void onError(Throwable e) {
+                // Handle error case
+                if (e != null) {
+                    ToastUtil.show(e.getMessage());
+                }
+            }
         });
     }
 

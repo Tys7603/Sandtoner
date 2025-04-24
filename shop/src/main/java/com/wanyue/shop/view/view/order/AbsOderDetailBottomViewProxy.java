@@ -135,7 +135,15 @@ public abstract class AbsOderDetailBottomViewProxy extends RxViewProxy implement
                 }else {
                     ToastUtil.show(msg);
                 }
+            }
 
+            @Override
+            public void onError(Throwable e) {
+                // Handle error case for taking goods
+                if (e != null) {
+                    ToastUtil.show(e.getMessage());
+                }
+                DialogUitl.dismissDialog(createLoadingDialog());
             }
         });
     }

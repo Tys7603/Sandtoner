@@ -109,6 +109,12 @@ public class LiveUserManngerDialogFragment extends AbsDialogFragment implements 
 
                 }
             }
+            @Override
+            public void onError(Throwable e) {
+                if (e != null) {
+                    ToastUtil.show(e.getMessage());
+                }
+            }
         });
     }
 

@@ -63,14 +63,21 @@ public class ViewLogisticsActivity extends BaseActivity implements View.OnClickL
         ShopAPI.viewLogistics(mOrderId, new ParseHttpCallback<JSONObject>() {
             @Override
             public void onSuccess(int code, String msg, JSONObject info) {
-                    if(isSuccess(code)&&info!=null){
-                      String json=info.toJSONString();
-                      DebugUtil.logJson(info);
-                      parseOrder(info);
-                      parseViewLogistics(info);
-                      initEmptyView();
+                if(isSuccess(code)&&info!=null){
+                    String json=info.toJSONString();
+                    DebugUtil.logJson(info);
+                    parseOrder(info);
+                    parseViewLogistics(info);
+                    initEmptyView();
+                }
+            }
 
-                    }
+            @Override
+            public void onError(Throwable e) {
+                // Handle error case for logistics view
+                if (e != null) {
+                    ToastUtil.show(e.getMessage());
+                }
             }
         });
     }

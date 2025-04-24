@@ -444,6 +444,11 @@ public class VideoPlayWrapViewHolder extends AbsViewHolder implements View.OnCli
                     }
                 }
             }
+
+            @Override
+            public void onError(Throwable e) {
+                // Handle error case
+            }
         });
     }
 
