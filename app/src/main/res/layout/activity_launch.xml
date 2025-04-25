@@ -17,7 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/text_size_11"
-        android:text="Copyright 2013-2020,WanYue All rights reserved."
+        android:text=""
         android:layout_gravity="bottom|center_horizontal"
         android:layout_marginBottom="20dp"
         android:textColor="@color/gray3"
