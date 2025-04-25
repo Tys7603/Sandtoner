@@ -251,8 +251,8 @@
 
 
     <string name="login">Login</string>
-    <string name="login_tip_1">Login means consent</string>
-    <string name="login_tip_2"> User Agreement</string>
+    <string name="login_tip_1"></string>
+    <string name="login_tip_2"></string>
     <string name="login_tip_3">Welcome to experience the %1$s appointment system!</string>
     <string name="login_input_phone">Please type in your phone number</string>
     <string name="login_input_email">Please type in your email address</string>

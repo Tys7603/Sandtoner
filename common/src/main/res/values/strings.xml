@@ -302,7 +302,7 @@
 
     <string name="login">Login</string>
     <string name="login_tip_1">Login means you have agreed</string>
-    <string name="login_tip_2">《User Agreement》</string>
+    <string name="login_tip_2"></string>
     <string name="login_tip_3">Welcome to experience %1$s!</string>
     <string name="login_input_phone">Please enter your mobile phone number</string>
     <string name="login_input_email">Please enter your email</string>
@@ -709,7 +709,7 @@
     <string name="select_area">Select area</string>
     <string name="address">Address</string>
     <string name="blacklist">Blacklist</string>
-    <string name="well_come_to_live_app">Welcome to experience Wanyue live streaming system</string>
+    <string name="well_come_to_live_app">Welcome to Sandtoner Live Sales</string>
     <string name="live_start">Start live streaming</string>
     <string name="record_cancel">Recording failed</string>
 
@@ -1171,7 +1171,7 @@
     <string name="read_tip1">%1$s people read</string>
     <string name="read_tip2">%1$s people watched</string>
 
-    <string name="app_name">Wanyue live streaming</string>
+    <string name="app_name">Sandtoner Live Sales</string>
     <string name="video_title_tip">Here is the video title</string>
     <string name="str_manjian">Voucher</string>
     <string name="str_ziying">Self-operated</string>
