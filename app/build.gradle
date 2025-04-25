@@ -61,4 +61,10 @@ repositories {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     api project(':main')
+    
+    // PayPal Android SDK
+    implementation 'com.paypal.sdk:paypal-android-sdk:2.16.0'
+    
+    // Paystack Android SDK
+    implementation 'co.paystack.android:paystack:3.1.3'
 }

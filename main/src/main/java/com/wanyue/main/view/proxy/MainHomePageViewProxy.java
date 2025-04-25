@@ -143,7 +143,7 @@ public class MainHomePageViewProxy extends RxViewProxy implements LiveRoomCheckL
                 startActivity(GreateGoodsSearchActivity.class);
             }
         };
-        viewProxy.putArgs("title", "请输入商品关键词");
+        viewProxy.putArgs("title", "Please enter product keywords");
         getViewProxyChildMannger().addViewProxy(mVpTopContainer, viewProxy, viewProxy.getDefaultTag());
     }
 

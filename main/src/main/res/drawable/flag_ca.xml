@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="18dp"
+    android:viewportWidth="24"
+    android:viewportHeight="18">
+    
+    <!-- Nền trắng bên trái -->
+    <path
+        android:pathData="M0,0h6v18h-6z"
+        android:fillColor="#FFFFFF"/>
+    
+    <!-- Nền trắng bên phải -->
+    <path
+        android:pathData="M18,0h6v18h-6z"
+        android:fillColor="#FFFFFF"/>
+    
+    <!-- Nền đỏ ở giữa -->
+    <path
+        android:pathData="M6,0h12v18h-12z"
+        android:fillColor="#FF0000"/>
+    
+    <!-- Lá phong Canada -->
+    <path
+        android:pathData="M12,3.6L12.6,4.8L13.8,4.2L13.2,5.4L14.4,6L13.2,6.6L13.8,7.8L12.6,7.2L12,8.4L11.4,7.2L10.2,7.8L10.8,6.6L9.6,6L10.8,5.4L10.2,4.2L11.4,4.8L12,3.6Z"
+        android:fillColor="#FF0000"/>
+    
+    <!-- Thân lá phong -->
+    <path
+        android:pathData="M12,8.4L12,14.4"
+        android:strokeWidth="0.6"
+        android:strokeColor="#FF0000"/>
+</vector>
