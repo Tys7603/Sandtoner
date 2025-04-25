@@ -75,7 +75,7 @@ public class LaunchActivity extends AbsActivity {
             finish();
             return;
         }
-        ImgLoader.display(this,R.mipmap.screen,mImgCover);
+        ImgLoader.display(this,R.mipmap.ic_launcher,mImgCover);
         startLauncherAnim();
 
         mDisposable = Observable.timer(1, TimeUnit.SECONDS)
