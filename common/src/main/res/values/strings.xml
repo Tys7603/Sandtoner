@@ -39,7 +39,7 @@
     <string name="copy_link">Copy link</string>
     <string name="copy_success">Copy successful</string>
 
-    <string name="home_page">Home page</string>
+    <string name="home_page">Home</string>
     <string name="home_page_share_1">"%1$s" is also in %2$s, ~ click to view his story</string>
     <string name="home_page_share_2">He has %1$s fans, come and watch! </string>
 
@@ -906,7 +906,7 @@
     <string name="guard_buy">Open now</string>
     <string name="guard_buy_2">Open guard</string>
     <string name="guard_buy_3">Renew guard</string>
-    <string name="guard_my">My</string>
+    <string name="guard_my">Account</string>
     <string name="guard_guard">Guard</string>
     <string name="guard_week_con">This week\'s contribution</string>
     <string name="guard_no_data">Become TA\'s first guard</string>
@@ -990,7 +990,7 @@
     <string name="new_product">New product</string>
     <string name="goods_list">Product list</string>
     <string name="default_tag">Default</string>
-    <string name="shop_cart">Shopping Cart</string>
+    <string name="shop_cart">Cart</string>
     <string name="customer_service">Customer Service</string>
     <string name="add_shop_cart">Add to Cart</string>
     <string name="coupon_add_point">Coupon:</string>
@@ -1185,10 +1185,10 @@
     <string name="str_beauty">Beauty</string>
     <string name="str_video_fenlei">Video category</string>
     <string name="str_video_fenlei_choose">Please select the video category</string>
-    <string name="str_classfiy">Classification</string>
-    <string name="str_find">Discover</string>
-    <string name="str_shop_cart">Shopping Cart</string>
-    <string name="str__mine">My</string>
+    <string name="str_classfiy">Shop</string>
+    <string name="str_find">Lekker</string>
+    <string name="str_shop_cart">Cart</string>
+    <string name="str__mine">Account</string>
     <string name="str_sign">Sign in</string>
     <string name="str_daixiao_shouyi">Consignment income</string>
     <string name="str_quick_add">One-click add</string>
