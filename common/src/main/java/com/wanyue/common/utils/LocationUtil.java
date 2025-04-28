@@ -84,6 +84,11 @@ public class LocationUtil {
                 }
             }
         }
+
+        @Override
+        public void onError(int code, String msg) {
+
+        }
     };
 
 

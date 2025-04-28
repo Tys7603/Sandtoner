@@ -1,4 +1,13 @@
 <resources>
     <string name="delete_tip">删除成功</string>
     <string name="beizhu">备注说明</string>
+    <string name="coin_pay_pp">PayPal</string>
+    <string name="str_zhifu_5">Safe international payments</string>
+    <string name="processing_payment">Processing payment</string>
+    <string name="please_wait_payment_verification">Please wait while we verify your payment.</string>
+    <string name="payment_successful">Payment successful</string>
+    <string name="payment_failed">Payment failed</string>
+    <string name="paypal_logo">Logo PayPal</string>
+    <string name="payment_cancelled">Payment has been cancelled</string>
+    <string name="order_id_format">Order code: %s</string>
 </resources>

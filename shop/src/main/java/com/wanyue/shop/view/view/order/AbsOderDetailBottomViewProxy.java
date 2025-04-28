@@ -196,6 +196,11 @@ public abstract class AbsOderDetailBottomViewProxy extends RxViewProxy implement
                     OrderModel.sendOrderChangeEvent(id);
                 }
             }
+
+            @Override
+            public void onError(int code, String msg) {
+
+            }
         });
     }
 

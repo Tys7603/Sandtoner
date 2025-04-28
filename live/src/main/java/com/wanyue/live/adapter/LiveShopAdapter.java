@@ -56,6 +56,11 @@ public class LiveShopAdapter extends RefreshAdapter<GoodsBean> {
                                     ToastUtil.show(msg);
                                 }
                             }
+
+                            @Override
+                            public void onError(int code, String msg) {
+
+                            }
                         }
                 );
             }

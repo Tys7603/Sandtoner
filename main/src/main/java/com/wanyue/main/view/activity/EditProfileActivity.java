@@ -86,6 +86,11 @@ public class EditProfileActivity extends BaseActivity implements View.OnClickLis
                         showData(userBean);
                     }
                 }
+
+                @Override
+                public void onError(int code, String msg) {
+
+                }
             });
         }
     }

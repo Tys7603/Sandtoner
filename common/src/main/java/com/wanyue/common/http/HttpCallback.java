@@ -59,5 +59,5 @@ public abstract class HttpCallback extends BaseHttpCallBack {
     public abstract void onSuccess(int code, String msg, String[] info);
 
 
-
+    public abstract void onError(int code, String msg);
 }

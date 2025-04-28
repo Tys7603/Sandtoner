@@ -110,6 +110,11 @@ public abstract class AbsVideoPlayActivity extends AbsVideoCommentActivity {
                                 ToastUtil.show(msg);
                             }
                         }
+
+                        @Override
+                        public void onError(int code, String msg) {
+
+                        }
                     });
                 }
                 @Override
@@ -214,6 +219,11 @@ public abstract class AbsVideoPlayActivity extends AbsVideoCommentActivity {
                         mVideoScrollViewHolder.deleteVideo(videoBean);
                     }
                 }
+            }
+
+            @Override
+            public void onError(int code, String msg) {
+
             }
         });
     }

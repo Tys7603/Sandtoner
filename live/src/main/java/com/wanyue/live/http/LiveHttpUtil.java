@@ -389,6 +389,11 @@ public class LiveHttpUtil {
                     public void onSuccess(int code, String msg, String[] info) {
 
                     }
+
+                    @Override
+                    public void onError(int code, String msg) {
+
+                    }
                 });
     }
 
@@ -650,6 +655,11 @@ public class LiveHttpUtil {
                     @Override
                     public void onSuccess(int code, String msg, String[] info) {
                         L.e("info=="+info);
+                    }
+
+                    @Override
+                    public void onError(int code, String msg) {
+
                     }
                 });
     }

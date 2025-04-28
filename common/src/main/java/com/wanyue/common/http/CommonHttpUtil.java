@@ -60,6 +60,11 @@ public class CommonHttpUtil {
         public void onSuccess(int code, String msg, String[] info) {
 
         }
+
+        @Override
+        public void onError(int code, String msg) {
+
+        }
     };
 
 

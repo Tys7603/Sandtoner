@@ -598,6 +598,11 @@ public class VideoPublishActivity extends AbsActivity implements ITXLivePlayList
             }
 
             @Override
+            public void onError(int code, String msg) {
+
+            }
+
+            @Override
             public void onError() {
                 super.onError();
                 finish();

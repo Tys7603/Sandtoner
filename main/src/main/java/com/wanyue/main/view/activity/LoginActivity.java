@@ -204,6 +204,11 @@ public class LoginActivity extends BaseActivity implements TimeModel.TimeListner
                     getLoginCodeSucc();
                 }
             }
+
+            @Override
+            public void onError(int code, String msg) {
+
+            }
         });
     }
 
@@ -279,6 +284,11 @@ public class LoginActivity extends BaseActivity implements TimeModel.TimeListner
                     }
                     finish();
                 }
+            }
+
+            @Override
+            public void onError(int code, String msg) {
+
             }
         });
     }

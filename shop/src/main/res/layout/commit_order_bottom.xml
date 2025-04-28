@@ -74,7 +74,7 @@
             android:textColor="@color/textColor"
             android:id="@+id/tag_tv_tip"
             />
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <!-- <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:id="@+id/btn_wx"
@@ -110,6 +110,53 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/str_zhifu_2"
+                android:textSize="@dimen/text_size_13"
+                android:textColor="#FFAAAAAA"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/line"
+                 />
+
+        </androidx.constraintlayout.widget.ConstraintLayout> -->
+
+        <!-- Paypal payment -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:id="@+id/btn_wx"
+            android:layout_marginTop="10dp"
+            >
+            <com.wanyue.common.custom.DrawableTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/line"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:text="@string/coin_pay_pp"
+                app:dt_left_drawable="@mipmap/icon_share_paypal"
+                app:dt_left_width="22dp"
+                app:dt_left_height="22dp"
+                android:textSize="@dimen/text_size_14"
+                android:gravity="center_vertical"
+                android:drawablePadding="6dp"
+                android:id="@+id/tv_pp_pay"
+                />
+            <View
+                android:layout_width="1dp"
+                android:layout_height="22dp"
+                android:background="#EEEEEE"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:id="@+id/line"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/str_zhifu_5"
                 android:textSize="@dimen/text_size_13"
                 android:textColor="#FFAAAAAA"
                 app:layout_constraintRight_toRightOf="parent"

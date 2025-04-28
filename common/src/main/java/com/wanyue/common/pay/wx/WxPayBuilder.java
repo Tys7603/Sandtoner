@@ -96,6 +96,11 @@ public class WxPayBuilder {
             }
 
             @Override
+            public void onError(int code, String msg) {
+
+            }
+
+            @Override
             public boolean showLoadingDialog() {
                 return true;
             }

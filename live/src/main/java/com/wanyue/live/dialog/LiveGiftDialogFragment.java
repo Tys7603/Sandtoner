@@ -455,6 +455,11 @@ public class LiveGiftDialogFragment extends AbsDialogFragment implements View.On
                 ToastUtil.show(msg);
             }
         }
+
+        @Override
+        public void onError(int code, String msg) {
+
+        }
     }
 
 

@@ -124,6 +124,12 @@ public class LiveRoomCheckLivePresenter {
                     ToastUtil.show(msg);
                 }
             }
+
+            @Override
+            public void onError(int code, String msg) {
+
+            }
+
             @Override
             public void onError() {
                 super.onError();

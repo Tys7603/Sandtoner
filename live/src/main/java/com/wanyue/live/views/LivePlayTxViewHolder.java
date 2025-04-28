@@ -403,6 +403,11 @@ public class LivePlayTxViewHolder extends LiveRoomPlayViewHolder implements ITXL
                                 }
                             }
                         }
+
+                        @Override
+                        public void onError(int code, String msg) {
+
+                        }
                     };
                 }
                 LiveHttpUtil.getTxLinkMicAccUrl(mUrl, mGetTxLinkMicAccUrlCallback);

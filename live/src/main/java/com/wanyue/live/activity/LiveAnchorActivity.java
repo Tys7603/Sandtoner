@@ -462,6 +462,12 @@ public class LiveAnchorActivity extends LiveActivity implements LiveFunctionClic
                     ToastUtil.show(msg);
                 }
             }
+
+            @Override
+            public void onError(int code, String msg) {
+
+            }
+
             @Override
             public boolean showLoadingDialog() {
                 return true;
@@ -754,6 +760,11 @@ public class LiveAnchorActivity extends LiveActivity implements LiveFunctionClic
                     ToastUtil.show(msg);
                 }
             }
+
+            @Override
+            public void onError(int code, String msg) {
+
+            }
         });
     }
 
@@ -851,6 +862,11 @@ public class LiveAnchorActivity extends LiveActivity implements LiveFunctionClic
                            endLive();
                         }
                     }
+                }
+
+                @Override
+                public void onError(int code, String msg) {
+
                 }
             };
         }

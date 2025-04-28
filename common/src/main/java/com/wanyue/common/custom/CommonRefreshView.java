@@ -158,6 +158,11 @@ public class CommonRefreshView extends FrameLayout implements View.OnClickListen
             mDataHelper.onRefreshSuccess(adapter.getList(), adapter.getItemCount());
         }
 
+        @Override
+        public void onError(int code, String msg) {
+
+        }
+
 
         @Override
         public void onError() {
@@ -235,6 +240,11 @@ public class CommonRefreshView extends FrameLayout implements View.OnClickListen
             } else {
                 mPageCount--;
             }
+        }
+
+        @Override
+        public void onError(int code, String msg) {
+
         }
 
         @Override

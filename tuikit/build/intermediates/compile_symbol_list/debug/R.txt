@@ -3790,6 +3790,7 @@ int string coin_charge_success 0x0
 int string coin_give 0x0
 int string coin_pay_ali 0x0
 int string coin_pay_coin 0x0
+int string coin_pay_pp 0x0
 int string coin_pay_wx 0x0
 int string coin_wx_not_install 0x0
 int string collect 0x0
@@ -5367,6 +5368,7 @@ int string str_zhifu_1 0x0
 int string str_zhifu_2 0x0
 int string str_zhifu_3 0x0
 int string str_zhifu_4 0x0
+int string str_zhifu_5 0x0
 int string str_zhongcao 0x0
 int string str_ziying 0x0
 int string str_zrsy 0x0

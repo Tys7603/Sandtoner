@@ -98,6 +98,12 @@ public class CommonAPI {
                         }
                         e.onComplete();
                     }
+
+                    @Override
+                    public void onError(int code, String msg) {
+
+                    }
+
                     @Override
                     public void onError() {
                         super.onError();
@@ -230,6 +236,11 @@ public class CommonAPI {
     public static final HttpCallback NO_CALLBACK = new HttpCallback() {
         @Override
         public void onSuccess(int code, String msg, String[] info) {
+
+        }
+
+        @Override
+        public void onError(int code, String msg) {
 
         }
     };

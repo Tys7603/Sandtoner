@@ -175,6 +175,11 @@ public class LiveMusicDialogFragment extends AbsDialogFragment implements View.O
                 mAdapter.setList(list);
             }
         }
+
+        @Override
+        public void onError(int code, String msg) {
+
+        }
     };
 
 
@@ -260,6 +265,11 @@ public class LiveMusicDialogFragment extends AbsDialogFragment implements View.O
             } else {
                 ToastUtil.show(msg);
             }
+        }
+
+        @Override
+        public void onError(int code, String msg) {
+
         }
     };
 

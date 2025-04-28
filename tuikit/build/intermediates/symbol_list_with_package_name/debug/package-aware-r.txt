@@ -3791,6 +3791,7 @@ string coin_charge_success
 string coin_give
 string coin_pay_ali
 string coin_pay_coin
+string coin_pay_pp
 string coin_pay_wx
 string coin_wx_not_install
 string collect
@@ -5368,6 +5369,7 @@ string str_zhifu_1
 string str_zhifu_2
 string str_zhifu_3
 string str_zhifu_4
+string str_zhifu_5
 string str_zhongcao
 string str_ziying
 string str_zrsy

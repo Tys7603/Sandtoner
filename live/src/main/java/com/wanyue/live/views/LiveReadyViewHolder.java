@@ -346,6 +346,11 @@ public class LiveReadyViewHolder extends AbsViewHolder implements View.OnClickLi
             }
 
             @Override
+            public void onError(int code, String msg) {
+
+            }
+
+            @Override
             public void onError() {
                 super.onError();
                 view.setEnabled(true);

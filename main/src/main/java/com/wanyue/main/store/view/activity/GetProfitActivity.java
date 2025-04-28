@@ -157,6 +157,12 @@ public class GetProfitActivity extends BaseActivity {
                     finish();
                 }
             }
+
+            @Override
+            public void onError(int code, String msg) {
+
+            }
+
             @Override
             public boolean showLoadingDialog() {
                return true;

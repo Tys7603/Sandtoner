@@ -106,6 +106,11 @@ public class UploadQnImpl implements UploadStrategy {
                         }
                     }
                 }
+
+                @Override
+                public void onError(int code, String msg) {
+
+                }
             };
         }
         CommonAPI.getUploadQiNiuToken(mGetUploadTokenCallback);

@@ -32,6 +32,7 @@
     <string name="coin_balance_2">Balance:</string>
     <string name="coin_pay_ali">Alipay</string>
     <string name="coin_pay_wx">WeChat Pay</string>
+    <string name="coin_pay_pp">Paypal payment</string>
     <string name="coin_charge_success">Recharge successful</string>
     <string name="coin_charge_failed">Recharge failed</string>
     <string name="coin_ali_not_install">Alipay not installed</string>
@@ -1330,6 +1331,7 @@
     <string name="str_zhifu_2">WeChat Quick Payment</string>
     <string name="str_zhifu_3">Balance Payment</string>
     <string name="str_zhifu_4">Available Balance:</string>
+    <string name="str_zhifu_5">Paypal Quick Payment</string>
     <string name="str_100">100</string>
     <string name="str_current_code">Current Points</string>
     <string name="str_">Product Recommendation Video</string>

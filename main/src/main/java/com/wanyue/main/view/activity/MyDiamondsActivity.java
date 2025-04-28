@@ -205,6 +205,11 @@ public class MyDiamondsActivity extends BaseActivity implements OnItemClickListe
             }
 
             @Override
+            public void onError(int code, String msg) {
+
+            }
+
+            @Override
             public void onFinish() {
                 if (mRefreshLayout != null) {
                     mRefreshLayout.setRefreshing(false);

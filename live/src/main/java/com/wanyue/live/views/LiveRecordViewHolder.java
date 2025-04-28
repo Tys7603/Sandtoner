@@ -135,6 +135,11 @@ public class LiveRecordViewHolder extends AbsUserHomeViewHolder implements OnIte
                     ToastUtil.show(msg);
                 }
             }
+
+            @Override
+            public void onError(int code, String msg) {
+
+            }
         });
     }
 

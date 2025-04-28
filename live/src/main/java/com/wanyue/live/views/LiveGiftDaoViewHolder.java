@@ -80,6 +80,12 @@ public class LiveGiftDaoViewHolder extends AbsLiveGiftViewHolder {
                         mCoin.setText(obj.getString("coin"));
                     }
                 }
+
+                @Override
+                public void onError(int code, String msg) {
+
+                }
+
                 @Override
                 public void onFinish() {
                     if (mLoading != null) {
@@ -100,6 +106,11 @@ public class LiveGiftDaoViewHolder extends AbsLiveGiftViewHolder {
                     if (code == 0 && info.length > 0) {
                         mCoin.setText(JSONObject.parseObject(info[0]).getString("coin"));
                     }
+                }
+
+                @Override
+                public void onError(int code, String msg) {
+
                 }
             });
         }

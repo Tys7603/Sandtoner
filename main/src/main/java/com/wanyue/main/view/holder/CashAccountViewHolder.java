@@ -84,6 +84,11 @@ public class CashAccountViewHolder extends AbsViewHolder implements View.OnClick
                 }
                 ToastUtil.show(msg);
             }
+
+            @Override
+            public void onError(int code, String msg) {
+
+            }
         };
     }
 

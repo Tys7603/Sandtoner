@@ -300,6 +300,11 @@ public class LiveLinkMicPkPresenter implements View.OnClickListener {
                                 ToastUtil.show(msg);
                             }
                         }
+
+                        @Override
+                        public void onError(int code, String msg) {
+
+                        }
                     });
                 } else {
                     if (mPkWaitCount < 0) {

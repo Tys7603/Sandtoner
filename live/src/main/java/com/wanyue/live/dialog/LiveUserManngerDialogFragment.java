@@ -185,6 +185,11 @@ public class LiveUserManngerDialogFragment extends AbsDialogFragment implements 
                     dismiss();
                 }
             }
+
+            @Override
+            public void onError(int code, String msg) {
+
+            }
         });
     }
 
@@ -202,6 +207,11 @@ public class LiveUserManngerDialogFragment extends AbsDialogFragment implements 
                 } else {
                     ToastUtil.show(msg);
                 }
+            }
+
+            @Override
+            public void onError(int code, String msg) {
+
             }
         });
     }
@@ -247,6 +257,11 @@ public class LiveUserManngerDialogFragment extends AbsDialogFragment implements 
                 } else {
                     ToastUtil.show(msg);
                 }
+            }
+
+            @Override
+            public void onError(int code, String msg) {
+
             }
         });
     }

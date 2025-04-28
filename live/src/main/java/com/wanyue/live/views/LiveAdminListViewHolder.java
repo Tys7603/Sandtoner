@@ -78,6 +78,11 @@ public class LiveAdminListViewHolder extends AbsLivePageViewHolder implements On
                     showTip();
                 }
             }
+
+            @Override
+            public void onError(int code, String msg) {
+
+            }
         };
     }
 
@@ -125,6 +130,11 @@ public class LiveAdminListViewHolder extends AbsLivePageViewHolder implements On
                     //}
                 }
                 ToastUtil.show(msg);
+            }
+
+            @Override
+            public void onError(int code, String msg) {
+
             }
         });
     }

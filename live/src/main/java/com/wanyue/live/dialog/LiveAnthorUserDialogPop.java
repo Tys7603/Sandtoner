@@ -192,6 +192,11 @@ public class LiveAnthorUserDialogPop extends BaseCenterPopView implements View.O
                     ((LiveActivity) getContext()).superCloseRoom();
                 }
             }
+
+            @Override
+            public void onError(int code, String msg) {
+
+            }
         });
     }
 

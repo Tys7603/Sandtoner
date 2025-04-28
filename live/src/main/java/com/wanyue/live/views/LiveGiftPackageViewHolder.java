@@ -58,6 +58,11 @@ public class LiveGiftPackageViewHolder extends AbsLiveGiftViewHolder {
             }
 
             @Override
+            public void onError(int code, String msg) {
+
+            }
+
+            @Override
             public void onFinish() {
                 if (mLoading != null) {
                     mLoading.setVisibility(View.INVISIBLE);

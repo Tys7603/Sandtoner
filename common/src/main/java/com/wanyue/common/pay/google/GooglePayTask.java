@@ -108,6 +108,11 @@ public class GooglePayTask implements PurchasesUpdatedListener {
             }
 
             @Override
+            public void onError(int code, String msg) {
+
+            }
+
+            @Override
             public void onError(Response<JsonBean> response) {
                 super.onError(response);
                 ToastUtil.show(WordUtil.getString(R.string.pay_failure));

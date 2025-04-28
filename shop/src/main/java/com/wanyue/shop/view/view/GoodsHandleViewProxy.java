@@ -156,6 +156,11 @@ public class GoodsHandleViewProxy extends BaseGoodsDetailBottomViewProxy impleme
                    ToastUtil.show(msg);
                }
            }
+
+           @Override
+           public void onError(int code, String msg) {
+
+           }
        });
     }
     //立即购买

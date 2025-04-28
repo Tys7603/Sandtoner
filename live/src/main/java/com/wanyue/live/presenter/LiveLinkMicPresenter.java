@@ -246,6 +246,11 @@ public class LiveLinkMicPresenter implements View.OnClickListener {
 
                                     }
                                 }
+
+                                @Override
+                                public void onError(int code, String msg) {
+
+                                }
                             });
 
 
@@ -253,6 +258,11 @@ public class LiveLinkMicPresenter implements View.OnClickListener {
                         }
 
                     }
+                }
+
+                @Override
+                public void onError(int code, String msg) {
+
                 }
             });
         }
@@ -475,6 +485,11 @@ public class LiveLinkMicPresenter implements View.OnClickListener {
                 } else {
                     ToastUtil.show(msg);
                 }
+            }
+
+            @Override
+            public void onError(int code, String msg) {
+
             }
         });
     }

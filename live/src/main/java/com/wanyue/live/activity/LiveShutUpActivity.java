@@ -116,6 +116,11 @@ public class LiveShutUpActivity extends AbsActivity implements OnItemClickListen
                 }
                 ToastUtil.show(msg);
             }
+
+            @Override
+            public void onError(int code, String msg) {
+
+            }
         });
 
     }

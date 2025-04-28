@@ -118,6 +118,11 @@ public class VideoScrollViewHolder extends AbsViewHolder implements
             }
 
             @Override
+            public void onError(int code, String msg) {
+
+            }
+
+            @Override
             public void onFinish() {
                 if (mRefreshLayout != null) {
                     mRefreshLayout.setRefreshing(false);
@@ -141,6 +146,11 @@ public class VideoScrollViewHolder extends AbsViewHolder implements
                 } else {
                     mPage--;
                 }
+            }
+
+            @Override
+            public void onError(int code, String msg) {
+
             }
         };
         mVideoDataHelper = VideoStorge.getInstance().getDataHelper(mVideoKey);

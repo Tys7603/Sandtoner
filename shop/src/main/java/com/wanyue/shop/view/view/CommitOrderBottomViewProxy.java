@@ -18,7 +18,7 @@ public abstract class CommitOrderBottomViewProxy extends RxViewProxy implements 
     private CheckImageView mBtnSelectPoint;
     private TextView mTagTvTip;
     private ViewGroup mBtnWx;
-    private TextView mTvWxPay;
+    private TextView mTvPpPay;
     private ViewGroup mBtnCoin;
     private TextView mTvCoinPay;
 
@@ -39,14 +39,14 @@ public abstract class CommitOrderBottomViewProxy extends RxViewProxy implements 
         super.initView(contentView);
         mTvFreight = findViewById(R.id.tv_freight);
         mBtnSelectPoint = findViewById(R.id.btn_select_point);
-        mTagTvTip =findViewById(R.id.tag_tv_tip);
+        mTagTvTip = findViewById(R.id.tag_tv_tip);
         mBtnWx = findViewById(R.id.btn_wx);
-        mTvWxPay =  findViewById(R.id.tv_wx_pay);
+        mTvPpPay = findViewById(R.id.tv_pp_pay);
         mBtnCoin = findViewById(R.id.btn_coin);
-        mTvCoinPay =  findViewById(R.id.tv_coin_pay);
+        mTvCoinPay = findViewById(R.id.tv_coin_pay);
         mTvCode = (TextView) findViewById(R.id.tv_code);
         mTvUseCoin = (TextView) findViewById(R.id.tv_use_coin);
-        setSelect(Constants.PAY_TYPE_WX);
+        setSelect(Constants.PAY_TYPE_PP);
         mBtnSelectPoint.setChecked(mIsSelectCode==1);
         mBtnWx.setOnClickListener(this);
         mBtnCoin.setOnClickListener(this);
@@ -68,13 +68,13 @@ public abstract class CommitOrderBottomViewProxy extends RxViewProxy implements 
         }
 
         if(payTypeCoin.equals(Constants.PAY_TYPE_COIN)){
-            mTvWxPay.setTextColor(normalColor);
+            mTvPpPay.setTextColor(normalColor);
             mTvCoinPay.setTextColor(selectColor);
             mBtnWx.setBackground(normalBg);
             mBtnCoin.setBackground(selectBg);
-        }else if(payTypeCoin.equals(Constants.PAY_TYPE_WX)){
+        }else if(payTypeCoin.equals(Constants.PAY_TYPE_PP)){
             mTvCoinPay.setTextColor(normalColor);
-            mTvWxPay.setTextColor(selectColor);
+            mTvPpPay.setTextColor(selectColor);
             mBtnWx.setBackground(selectBg);
             mBtnCoin.setBackground(normalBg);
         }
@@ -85,7 +85,7 @@ public abstract class CommitOrderBottomViewProxy extends RxViewProxy implements 
     public void onClick(View v) {
         int id=v.getId();
         if(id==R.id.btn_wx){
-          setSelect(Constants.PAY_TYPE_WX);
+          setSelect(Constants.PAY_TYPE_PP);
         }else if(id==R.id.btn_coin){
           setSelect(Constants.PAY_TYPE_COIN);
         }
@@ -120,8 +120,6 @@ public abstract class CommitOrderBottomViewProxy extends RxViewProxy implements 
             }
         }
     }
-
-
 
     public abstract void selectChange();
 }

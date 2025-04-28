@@ -144,6 +144,11 @@ public class GiftProfitActivity extends BaseActivity implements View.OnClickList
                     }
                 }
             }
+
+            @Override
+            public void onError(int code, String msg) {
+
+            }
         });
     }
 
@@ -188,6 +193,11 @@ public class GiftProfitActivity extends BaseActivity implements View.OnClickList
                 }
 
                 ToastUtil.show(msg);
+            }
+
+            @Override
+            public void onError(int code, String msg) {
+
             }
         });
     }

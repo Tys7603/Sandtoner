@@ -310,6 +310,11 @@ public class VideoCommentViewHolder extends AbsViewHolder implements View.OnClic
                     }
                 }
             }
+
+            @Override
+            public void onError(int code, String msg) {
+
+            }
         });
     }
 

@@ -240,6 +240,11 @@ public class LiveLinkMicAnchorPresenter implements View.OnClickListener {
                                     ToastUtil.show(msg);
                                 }
                             }
+
+                            @Override
+                            public void onError(int code, String msg) {
+
+                            }
                         });
                     }
                 } else {

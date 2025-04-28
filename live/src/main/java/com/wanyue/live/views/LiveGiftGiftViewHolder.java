@@ -79,6 +79,11 @@ public class LiveGiftGiftViewHolder extends AbsLiveGiftViewHolder {
                 }
 
                 @Override
+                public void onError(int code, String msg) {
+
+                }
+
+                @Override
                 public void onFinish() {
                     if (mLoading != null) {
                         mLoading.setVisibility(View.INVISIBLE);
@@ -107,6 +112,11 @@ public class LiveGiftGiftViewHolder extends AbsLiveGiftViewHolder {
                     if (isSuccess(code) && info.length > 0) {
                         mCoin.setText(JSONObject.parseObject(info[0]).getString("coin"));
                     }
+                }
+
+                @Override
+                public void onError(int code, String msg) {
+
                 }
             });
         }

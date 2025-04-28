@@ -743,6 +743,11 @@ public abstract class LiveActivity extends AbsActivity implements SocketMessageL
                 ToastUtil.show(msg);
             }
         }
+
+        @Override
+        public void onError(int code, String msg) {
+
+        }
     };
 
 

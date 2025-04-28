@@ -171,6 +171,11 @@ public class VideoPlayWrapViewHolder extends AbsViewHolder implements View.OnCli
         public void onSuccess(int code, String msg, String[] info) {
 
         }
+
+        @Override
+        public void onError(int code, String msg) {
+
+        }
     };
 
     public void setData(VideoBean bean, Object payload) {

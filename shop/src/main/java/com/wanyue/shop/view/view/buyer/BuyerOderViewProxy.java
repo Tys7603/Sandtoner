@@ -212,6 +212,11 @@ public abstract class BuyerOderViewProxy extends RxViewProxy implements BaseQuic
                     }
                 }
             }
+
+            @Override
+            public void onError(int code, String msg) {
+
+            }
         });
     }
 }

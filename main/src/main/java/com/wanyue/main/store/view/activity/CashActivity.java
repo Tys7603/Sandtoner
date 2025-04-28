@@ -82,6 +82,11 @@ public class CashActivity extends AbsActivity implements View.OnClickListener, C
                     }
                 }
             }
+
+            @Override
+            public void onError(int code, String msg) {
+
+            }
         });
     }
 
@@ -158,6 +163,11 @@ public class CashActivity extends AbsActivity implements View.OnClickListener, C
                             }
                         }
                         ToastUtil.show(msg);
+                    }
+
+                    @Override
+                    public void onError(int code, String msg) {
+
                     }
                 });
             }

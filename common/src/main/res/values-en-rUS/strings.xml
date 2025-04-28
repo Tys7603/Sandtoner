@@ -33,6 +33,7 @@
     <string name="coin_balance_2">Balance:</string>
     <string name="coin_pay_ali">Alipay</string>
     <string name="coin_pay_wx">Wechat payment</string>
+    <string name="coin_pay_pp">Paypal payment</string>
     <string name="coin_charge_success">Credit added successfully</string>
     <string name="coin_charge_failed">Fail to add credit</string>
     <string name="coin_ali_not_install">Alipay has not been installed</string>

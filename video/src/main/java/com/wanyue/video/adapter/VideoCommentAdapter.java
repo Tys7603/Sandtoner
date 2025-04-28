@@ -103,6 +103,11 @@ public class VideoCommentAdapter extends RefreshAdapter<VideoCommentBean> {
                     }
                 }
             }
+
+            @Override
+            public void onError(int code, String msg) {
+
+            }
         };
 
         mLikeClickListener = new View.OnClickListener() {

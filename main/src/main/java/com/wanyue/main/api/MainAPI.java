@@ -462,7 +462,7 @@ public class MainAPI {
           @Override
           public List<MainUserSectionBean> apply(JSONObject info) throws Exception {
               MainUserSectionBean sectionBean=new MainUserSectionBean();
-              sectionBean.setTitle("我的服务");
+              sectionBean.setTitle("My Services");
               List<MenuBean>menuBeanList=new ArrayList<>();
               sectionBean.setMenuBeanList(menuBeanList);
               JSONArray jsonArray=info.getJSONArray("routine_my_menus");
@@ -470,9 +470,9 @@ public class MainAPI {
                   List<MenuBean>list=JSONArray.parseArray(jsonArray.toString(),MenuBean.class);
                   menuBeanList.addAll(list);
               }
-              MenuBean menuBean=new MenuBean("联系客服",serviceId,R.drawable.icon_main_user_customer);
+              MenuBean menuBean=new MenuBean("Contact Customer Service",serviceId,R.drawable.icon_main_user_customer);
               menuBeanList.add(menuBean);
-              menuBean=new MenuBean("个性设置",settingId,R.drawable.icon_main_user_setting);
+              menuBean=new MenuBean("Personalization Settings",settingId,R.drawable.icon_main_user_setting);
               menuBeanList.add(menuBean);
               list.add(sectionBean);
               return list;
