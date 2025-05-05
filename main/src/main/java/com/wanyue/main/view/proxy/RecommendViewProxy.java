@@ -57,13 +57,13 @@ public class RecommendViewProxy  extends RxViewProxy {
         mRcCourse = (RecyclerView) findViewById(R.id.rc_course);
         mVpLiveContainer = (FrameLayout) findViewById(R.id.vp_live_container);
 
-        CharSequence text1=SpannableStringUtils.getBuilder("推荐").append("直播 ").setForegroundColor(ResourceUtil.getColor(R.color.global)).create();
+        CharSequence text1=SpannableStringUtils.getBuilder("Sandtoner").append(" Live").setForegroundColor(ResourceUtil.getColor(R.color.global)).create();
         mTvLiveTitle.setText(text1);
 
-        CharSequence text2=SpannableStringUtils.getBuilder("精彩").append("视频 ").setForegroundColor(ResourceUtil.getColor(R.color.global)).create();
+        CharSequence text2=SpannableStringUtils.getBuilder("Reels").append("").setForegroundColor(ResourceUtil.getColor(R.color.global)).create();
         mTvVideoTitle.setText(text2);
 
-        CharSequence text3=SpannableStringUtils.getBuilder("精选").append("内容 ").setForegroundColor(ResourceUtil.getColor(R.color.global)).create();
+        CharSequence text3=SpannableStringUtils.getBuilder("G40").append(" Selected").setForegroundColor(ResourceUtil.getColor(R.color.global)).create();
         mTvCourseTitle.setText(text3);
 
 
