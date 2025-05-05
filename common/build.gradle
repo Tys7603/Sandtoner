@@ -122,4 +122,13 @@ dependencies {
     api 'androidx.navigation:navigation-ui:2.2.2'
     api 'com.google.android:flexbox:1.1.0'
     api 'com.lxj:xpopup:2.0.6'
+
+    api 'com.amitshekhar.android:android-networking:1.0.2'
+    api 'com.paypal.android:paypal-web-payments:1.5.0'
+
+    implementation('org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.21') {
+        exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib-jdk7'
+        exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib:1.6.10'
+    }
+
 }

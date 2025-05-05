@@ -23,48 +23,88 @@
             android:exported="true" />
         <activity
             android:name=".view.activity.WindowActivity"
+            android:exported="false"
             android:theme="@style/dialog2" />
-        <activity android:name=".view.activity.GroupBuyingActivity" />
-        <activity android:name=".view.activity.RegisterActivity" />
-        <activity android:name=".store.view.activity.StoreGoodsAddActivity" />
-        <activity android:name=".store.view.activity.ConsignmentManngerActivity" />
-        <activity android:name=".store.view.activity.MyConsignmentActivity" />
-        <activity android:name=".store.view.activity.CashActivity" />
-        <activity android:name=".store.view.activity.GetProfitActivity" />
-        <activity android:name=".store.view.activity.ProiftRecordActivity" />
-        <activity android:name=".store.view.activity.ProfitActivity" />
-        <activity android:name=".store.view.activity.StoreOrderListActivity" />
-        <activity android:name=".store.view.activity.MyStoreActivity" />
-        <activity android:name=".view.activity.CoinRecordActivity" />
-        <activity android:name=".view.activity.MyCoinActivity" />
-        <activity android:name=".view.activity.SettingActivity" />
-        <activity android:name=".view.activity.SearchLiveActivity" />
-        <activity android:name=".apply.activity.ApplyStoreActivity" />
-        <activity android:name=".view.activity.CachAdvanceRecordActivity" />
-        <activity android:name=".view.activity.SpreadManRankActivity" />
-        <activity android:name=".view.activity.BrokerageRankActivity" />
-        <activity android:name=".view.activity.CashAdvanceActivity" />
-        <activity android:name=".view.activity.SpreadOrderActivity" />
-        <activity android:name=".view.activity.BrokerageRecordActivity" />
-        <activity android:name=".view.activity.SpreadCensusActivity" />
+        <activity android:name=".view.activity.GroupBuyingActivity"
+            android:exported="false"/>
+        <activity android:name=".view.activity.RegisterActivity"
+            android:exported="false"/>
+        <activity android:name=".store.view.activity.StoreGoodsAddActivity"
+            android:exported="false"/>
+        <activity android:name=".store.view.activity.ConsignmentManngerActivity"
+            android:exported="false"/>
+        <activity android:name=".store.view.activity.MyConsignmentActivity"
+            android:exported="false"/>
+        <activity android:name=".store.view.activity.CashActivity"
+            android:exported="false"/>
+        <activity android:name=".store.view.activity.GetProfitActivity"
+            android:exported="false"/>
+        <activity android:name=".store.view.activity.ProiftRecordActivity"
+            android:exported="false"/>
+        <activity android:name=".store.view.activity.ProfitActivity"
+            android:exported="false"/>
+        <activity android:name=".store.view.activity.StoreOrderListActivity"
+            android:exported="false"/>
+        <activity android:name=".store.view.activity.MyStoreActivity"
+            android:exported="false"/>
+        <activity android:name=".view.activity.CoinRecordActivity"
+            android:exported="false"/>
+        <activity android:name=".view.activity.MyCoinActivity"
+            android:exported="false"/>
+        <activity android:name=".view.activity.SettingActivity"
+            android:exported="false"/>
+        <activity android:name=".view.activity.SearchLiveActivity"
+            android:exported="false"/>
+        <activity android:name=".apply.activity.ApplyStoreActivity"
+            android:exported="false"/>
+        <activity android:name=".view.activity.CachAdvanceRecordActivity"
+            android:exported="false" />
+        <activity android:name=".view.activity.SpreadManRankActivity"
+            android:exported="false"/>
+        <activity android:name=".view.activity.BrokerageRankActivity"
+            android:exported="false"/>
+        <activity android:name=".view.activity.CashAdvanceActivity"
+            android:exported="false"/>
+        <activity android:name=".view.activity.SpreadOrderActivity"
+            android:exported="false"/>
+        <activity android:name=".view.activity.BrokerageRecordActivity"
+            android:exported="false"/>
+        <activity android:name=".view.activity.SpreadCensusActivity"
+            android:exported="false"/>
         <activity
             android:name=".view.activity.SpreadPillActivity"
-            android:theme="@style/spread_pill_style" />
-        <activity android:name=".view.activity.MySpreadActivity" />
-        <activity android:name=".view.activity.EditProfileActivity" />
+            android:theme="@style/spread_pill_style"
+            android:exported="false"/>
+        <activity android:name=".view.activity.MySpreadActivity"
+            android:exported="false"/>
+        <activity android:name=".view.activity.EditProfileActivity"
+            android:exported="false"/>
         <activity
             android:name=".view.activity.MainActivity"
-            android:launchMode="singleTask"
-            android:theme="@style/MainActvivityTheme" />
+            android:launchMode="singleTop"
+            android:exported="true"
+            android:theme="@style/MainActvivityTheme" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:scheme="com.example.paypal"
+                    android:host="paypalpay" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".view.activity.LoginActivity"
-            android:launchMode="singleTop" />
+            android:launchMode="singleTop"
+            android:exported="false"/>
         <activity
             android:name=".view.activity.MyDiamondsActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:exported="false"/>
         <activity
             android:name=".view.activity.GiftProfitActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:exported="false"/>
     </application>
 
 </manifest>

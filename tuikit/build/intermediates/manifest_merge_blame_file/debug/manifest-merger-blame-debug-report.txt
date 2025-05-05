@@ -4,135 +4,161 @@
 4
 5    <uses-sdk
 6        android:minSdkVersion="21"
-6-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml
-7        android:targetSdkVersion="30" />
-7-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml
+6-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml
+7        android:targetSdkVersion="31" />
+7-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml
 8
 9    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-9-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:4:5-79
-9-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:4:22-76
+9-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:4:5-79
+9-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:4:22-76
 10    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-10-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:5:5-76
-10-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:5:22-73
+10-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:5:5-76
+10-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:5:22-73
 11    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-11-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:6:5-75
-11-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:6:22-72
+11-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:6:5-75
+11-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:6:22-72
 12    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-12-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:7:5-81
-12-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:7:22-78
+12-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:7:5-81
+12-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:7:22-78
 13    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-13-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:8:5-80
-13-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:8:22-77
+13-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:8:5-80
+13-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:8:22-77
 14    <uses-permission android:name="android.permission.VIBRATE" />
-14-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:9:5-65
-14-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:9:22-63
+14-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:9:5-65
+14-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:9:22-63
 15
 16    <application>
-16-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:11:5-72:19
+16-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:11:5-85:19
 17        <activity
-17-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:13:9-15:52
+17-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:13:9-16:52
 18            android:name="com.tencent.qcloud.tim.uikit.component.video.CameraActivity"
-18-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:14:13-59
-19            android:screenOrientation="portrait" />
-19-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:15:13-49
-20        <activity
-20-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:16:9-18:77
-21            android:name="com.tencent.qcloud.tim.uikit.component.video.VideoViewActivity"
-21-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:17:13-62
-22            android:configChanges="keyboardHidden|orientation|screenSize" />
-22-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:18:13-74
-23        <activity
-23-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:19:9-21:52
-24            android:name="com.tencent.qcloud.tim.uikit.component.photoview.PhotoViewActivity"
-24-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:20:13-66
-25            android:screenOrientation="portrait" />
-25-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:21:13-49
-26        <activity
-26-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:22:9-24:52
-27            android:name="com.tencent.qcloud.tim.uikit.modules.group.info.GroupInfoActivity"
-27-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:23:13-65
+18-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:14:13-59
+19            android:exported="false"
+19-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:15:13-37
+20            android:screenOrientation="portrait" />
+20-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:16:13-49
+21        <activity
+21-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:17:9-20:77
+22            android:name="com.tencent.qcloud.tim.uikit.component.video.VideoViewActivity"
+22-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:18:13-62
+23            android:configChanges="keyboardHidden|orientation|screenSize"
+23-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:20:13-74
+24            android:exported="false" />
+24-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:19:13-37
+25        <activity
+25-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:21:9-24:52
+26            android:name="com.tencent.qcloud.tim.uikit.component.photoview.PhotoViewActivity"
+26-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:22:13-66
+27            android:exported="false"
+27-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:23:13-37
 28            android:screenOrientation="portrait" />
-28-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:24:13-49
+28-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:24:13-49
 29        <activity
-29-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:25:9-28:52
-30            android:name="com.tencent.qcloud.tim.uikit.modules.group.info.StartGroupMemberSelectActivity"
-30-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:26:13-78
-31            android:launchMode="singleInstance"
-31-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:27:13-48
+29-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:25:9-28:52
+30            android:name="com.tencent.qcloud.tim.uikit.modules.group.info.GroupInfoActivity"
+30-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:26:13-65
+31            android:exported="false"
+31-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:27:13-37
 32            android:screenOrientation="portrait" />
-32-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:28:13-49
+32-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:28:13-49
 33        <activity
-33-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:29:9-31:52
-34            android:name="com.tencent.qcloud.tim.uikit.component.SelectionActivity"
-34-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:30:13-56
-35            android:screenOrientation="portrait" />
-35-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:31:13-49
-36        <activity
-36-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:32:9-35:73
-37            android:name="com.tencent.qcloud.tim.uikit.modules.group.apply.GroupApplyManagerActivity"
-37-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:33:13-74
-38            android:screenOrientation="portrait"
-38-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:34:13-49
-39            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
-39-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:35:13-70
-40        <activity
-40-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:36:9-39:73
-41            android:name="com.tencent.qcloud.tim.uikit.modules.group.apply.GroupApplyMemberActivity"
-41-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:37:13-73
-42            android:screenOrientation="portrait"
-42-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:38:13-49
-43            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
-43-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:39:13-70
-44        <activity
-44-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:40:9-42:52
-45            android:name="com.tencent.qcloud.tim.uikit.modules.forward.ForwardSelectActivity"
-45-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:41:13-94
-46            android:screenOrientation="portrait" />
-46-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:42:13-49
+33-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:29:9-33:52
+34            android:name="com.tencent.qcloud.tim.uikit.modules.group.info.StartGroupMemberSelectActivity"
+34-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:30:13-78
+35            android:exported="false"
+35-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:31:13-37
+36            android:launchMode="singleInstance"
+36-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:32:13-48
+37            android:screenOrientation="portrait" />
+37-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:33:13-49
+38        <activity
+38-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:34:9-37:52
+39            android:name="com.tencent.qcloud.tim.uikit.component.SelectionActivity"
+39-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:35:13-56
+40            android:exported="false"
+40-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:36:13-37
+41            android:screenOrientation="portrait" />
+41-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:37:13-49
+42        <activity
+42-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:38:9-42:73
+43            android:name="com.tencent.qcloud.tim.uikit.modules.group.apply.GroupApplyManagerActivity"
+43-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:39:13-74
+44            android:exported="false"
+44-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:41:13-37
+45            android:screenOrientation="portrait"
+45-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:40:13-49
+46            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
+46-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:42:13-70
 47        <activity
-47-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:44:9-47:52
-48            android:name="com.tencent.qcloud.tim.uikit.modules.forward.ForwardSelectGroupActivity"
-48-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:45:13-99
-49            android:launchMode="singleInstance"
-49-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:46:13-48
-50            android:screenOrientation="portrait" />
-50-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:47:13-49
-51        <activity
-51-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:49:9-51:52
-52            android:name="com.tencent.qcloud.tim.uikit.modules.search.SearchMainActivity"
-52-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:50:13-90
-53            android:screenOrientation="portrait" />
-53-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:51:13-49
-54        <activity
-54-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:53:9-55:52
-55            android:name="com.tencent.qcloud.tim.uikit.modules.search.SearchMoreListActivity"
-55-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:54:13-94
-56            android:screenOrientation="portrait" />
-56-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:55:13-49
-57        <activity
-57-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:57:9-59:52
-58            android:name="com.tencent.qcloud.tim.uikit.modules.search.SearchMoreMsgListActivity"
-58-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:58:13-97
-59            android:screenOrientation="portrait" />
-59-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:59:13-49
-60
-61        <provider
-61-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:62:9-70:20
-62            android:name="com.tencent.qcloud.tim.uikit.utils.TUIKitFileProvider"
-62-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:63:13-53
-63            android:authorities="${applicationId}.uikit.fileprovider"
-63-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:64:13-70
-64            android:exported="false"
-64-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:65:13-37
-65            android:grantUriPermissions="true" >
-65-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:66:13-47
-66            <meta-data
-66-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:67:13-69:60
-67                android:name="android.support.FILE_PROVIDER_PATHS"
-67-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:68:17-67
-68                android:resource="@xml/file_paths_public" />
-68-->/Users/nguyenngon/Downloads/waosoft-project/Sandtoner/tuikit/src/main/AndroidManifest.xml:69:17-58
-69        </provider>
-70    </application>
-71
-72</manifest>
+47-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:43:9-47:73
+48            android:name="com.tencent.qcloud.tim.uikit.modules.group.apply.GroupApplyMemberActivity"
+48-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:44:13-73
+49            android:exported="false"
+49-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:46:13-37
+50            android:screenOrientation="portrait"
+50-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:45:13-49
+51            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
+51-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:47:13-70
+52        <activity
+52-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:48:9-51:52
+53            android:name="com.tencent.qcloud.tim.uikit.modules.forward.ForwardSelectActivity"
+53-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:49:13-94
+54            android:exported="false"
+54-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:50:13-37
+55            android:screenOrientation="portrait" />
+55-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:51:13-49
+56        <activity
+56-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:53:9-57:52
+57            android:name="com.tencent.qcloud.tim.uikit.modules.forward.ForwardSelectGroupActivity"
+57-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:54:13-99
+58            android:exported="false"
+58-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:55:13-37
+59            android:launchMode="singleInstance"
+59-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:56:13-48
+60            android:screenOrientation="portrait" />
+60-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:57:13-49
+61        <activity
+61-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:59:9-62:52
+62            android:name="com.tencent.qcloud.tim.uikit.modules.search.SearchMainActivity"
+62-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:60:13-90
+63            android:exported="false"
+63-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:61:13-37
+64            android:screenOrientation="portrait" />
+64-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:62:13-49
+65        <activity
+65-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:64:9-67:52
+66            android:name="com.tencent.qcloud.tim.uikit.modules.search.SearchMoreListActivity"
+66-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:65:13-94
+67            android:exported="false"
+67-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:66:13-37
+68            android:screenOrientation="portrait" />
+68-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:67:13-49
+69        <activity
+69-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:69:9-72:52
+70            android:name="com.tencent.qcloud.tim.uikit.modules.search.SearchMoreMsgListActivity"
+70-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:70:13-97
+71            android:exported="false"
+71-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:71:13-37
+72            android:screenOrientation="portrait" />
+72-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:72:13-49
+73
+74        <provider
+74-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:75:9-83:20
+75            android:name="com.tencent.qcloud.tim.uikit.utils.TUIKitFileProvider"
+75-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:76:13-53
+76            android:authorities="${applicationId}.uikit.fileprovider"
+76-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:77:13-70
+77            android:exported="false"
+77-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:78:13-37
+78            android:grantUriPermissions="true" >
+78-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:79:13-47
+79            <meta-data
+79-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:80:13-82:60
+80                android:name="android.support.FILE_PROVIDER_PATHS"
+80-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:81:17-67
+81                android:resource="@xml/file_paths_public" />
+81-->D:\AndroidPay\wanyue-malls-android 2\wanyue-malls-android 2\tuikit\src\main\AndroidManifest.xml:82:17-58
+82        </provider>
+83    </application>
+84
+85</manifest>

@@ -1,5 +1,6 @@
 package com.wanyue.main.view.proxy;
 
+import android.content.Intent;
 import android.view.ViewGroup;
 import com.wanyue.common.proxy.RxViewProxy;
 import com.wanyue.main.R;
@@ -31,4 +32,11 @@ public class MainShopCartViewProxy extends RxViewProxy {
     public int getLayoutId() {
         return R.layout.view_main_shop_cart;
     }
+
+    public void onActivityNewIntent(Intent intent) {
+        if (mShopCartViewProxy != null) {
+            mShopCartViewProxy.onActivityNewIntent(intent);
+        }
+    }
+
 }

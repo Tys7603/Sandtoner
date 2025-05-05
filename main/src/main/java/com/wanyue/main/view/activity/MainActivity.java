@@ -308,4 +308,15 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
     public void onLiveRoomChanged(LiveBean liveBean, String data) {
         LiveAudienceActivity.forward(MainActivity.this,liveBean,data);
     }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent); // Cập nhật intent mới
+
+        if (mShopCartViewProxy != null) {
+            mShopCartViewProxy.onActivityNewIntent(intent);
+        }
+    }
+
 }

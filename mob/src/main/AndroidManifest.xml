@@ -6,6 +6,7 @@
         <activity
             android:name="com.mob.tools.MobUIShell"
             android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:windowSoftInputMode="stateHidden|adjustResize">
 
@@ -21,6 +22,7 @@
 
         <activity
             android:name="cn.sharesdk.tencent.qq.ReceiveActivity"
+            android:exported="true"
             android:launchMode="singleTask"
             android:noHistory="true">
             <intent-filter>

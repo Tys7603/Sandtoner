@@ -12,50 +12,63 @@
         >
         <activity
             android:name=".component.video.CameraActivity"
+            android:exported="false"
             android:screenOrientation="portrait" />
         <activity
             android:name=".component.video.VideoViewActivity"
+            android:exported="false"
             android:configChanges="keyboardHidden|orientation|screenSize" />
         <activity
             android:name=".component.photoview.PhotoViewActivity"
+            android:exported="false"
             android:screenOrientation="portrait" />
         <activity
             android:name=".modules.group.info.GroupInfoActivity"
+            android:exported="false"
             android:screenOrientation="portrait" />
         <activity
             android:name=".modules.group.info.StartGroupMemberSelectActivity"
+            android:exported="false"
             android:launchMode="singleInstance"
             android:screenOrientation="portrait" />
         <activity
             android:name=".component.SelectionActivity"
+            android:exported="false"
             android:screenOrientation="portrait" />
         <activity
             android:name=".modules.group.apply.GroupApplyManagerActivity"
             android:screenOrientation="portrait"
+            android:exported="false"
             android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
         <activity
             android:name=".modules.group.apply.GroupApplyMemberActivity"
             android:screenOrientation="portrait"
+            android:exported="false"
             android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
         <activity
             android:name="com.tencent.qcloud.tim.uikit.modules.forward.ForwardSelectActivity"
+            android:exported="false"
             android:screenOrientation="portrait" />
 
         <activity
             android:name="com.tencent.qcloud.tim.uikit.modules.forward.ForwardSelectGroupActivity"
+            android:exported="false"
             android:launchMode="singleInstance"
             android:screenOrientation="portrait" />
 
         <activity
             android:name="com.tencent.qcloud.tim.uikit.modules.search.SearchMainActivity"
+            android:exported="false"
             android:screenOrientation="portrait" />
 
         <activity
             android:name="com.tencent.qcloud.tim.uikit.modules.search.SearchMoreListActivity"
+            android:exported="false"
             android:screenOrientation="portrait" />
 
         <activity
             android:name="com.tencent.qcloud.tim.uikit.modules.search.SearchMoreMsgListActivity"
+            android:exported="false"
             android:screenOrientation="portrait" />
 
 

@@ -1,8 +1,12 @@
 package com.wanyue.common.proxy;
 
+import static com.tencent.bugly.Bugly.applicationContext;
+
 import androidx.annotation.CallSuper;
 import androidx.annotation.CheckResult;
 import androidx.annotation.NonNull;
+
+import com.androidnetworking.AndroidNetworking;
 import com.trello.rxlifecycle2.LifecycleProvider;
 import com.trello.rxlifecycle2.LifecycleTransformer;
 import com.trello.rxlifecycle2.RxLifecycle;

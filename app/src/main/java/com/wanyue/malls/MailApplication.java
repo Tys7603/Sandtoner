@@ -1,7 +1,14 @@
 package com.wanyue.malls;
 
+import android.os.Build;
+import android.util.Log;
+
+import androidx.multidex.BuildConfig;
+
 import com.wanyue.common.CommonApplication;
 import com.wanyue.common.utils.ResourceUtil;
+
+import co.paystack.android.PaystackSdk;
 
 /**
  * The type Mail application.
@@ -14,6 +21,7 @@ public class MailApplication extends CommonApplication {
 		ELContext.setContext(this);
         InitHelper initHelper=new InitHelper();
         initHelper.startDelayInit(this,100);
+        PaystackSdk.initialize(getApplicationContext());
     }
 
     @Override

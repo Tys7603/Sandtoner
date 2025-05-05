@@ -1,17 +1,41 @@
 package com.wanyue.shop.view.view;
 
+import static com.tencent.bugly.Bugly.applicationContext;
+
+import android.app.Activity;
 import android.app.Dialog;
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.common.Priority;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.chad.library.adapter.base.entity.MultiItemEntity;
+import com.paypal.android.corepayments.CoreConfig;
+import com.paypal.android.corepayments.Environment;
+import com.paypal.android.corepayments.PayPalSDKError;
+import com.paypal.android.paypalwebpayments.PayPalWebCheckoutClient;
+import com.paypal.android.paypalwebpayments.PayPalWebCheckoutFundingSource;
+import com.paypal.android.paypalwebpayments.PayPalWebCheckoutListener;
+import com.paypal.android.paypalwebpayments.PayPalWebCheckoutRequest;
+import com.paypal.android.paypalwebpayments.PayPalWebCheckoutResult;
+import com.readystatesoftware.chuck.internal.ui.MainActivity;
 import com.wanyue.common.custom.CheckImageView;
 import com.wanyue.common.custom.refresh.RxRefreshView;
 import com.wanyue.common.proxy.RxViewProxy;
@@ -22,6 +46,7 @@ import com.wanyue.common.utils.ListUtil;
 import com.wanyue.common.utils.StringUtil;
 import com.wanyue.common.utils.ToastUtil;
 import com.wanyue.common.utils.ViewUtil;
+import com.wanyue.shop.BuildConfig;
 import com.wanyue.shop.R;
 import com.wanyue.shop.adapter.ShopCartAdapter;
 import com.wanyue.shop.api.ShopAPI;
@@ -31,12 +56,30 @@ import com.wanyue.shop.business.ShopState;
 import com.wanyue.shop.model.ShopCartModel;
 import com.wanyue.shop.view.activty.CommitOrderActivity;
 import org.jetbrains.annotations.NotNull;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import java.util.ArrayList;
 import java.util.List;
-
+import java.util.UUID;
+import co.paystack.android.Paystack;
+import co.paystack.android.PaystackSdk;
+import co.paystack.android.Transaction;
+import co.paystack.android.model.Card;
+import co.paystack.android.model.Charge;
 import io.reactivex.Observable;
 import io.reactivex.functions.Function;
 
 public class ShopCartViewProxy extends RxViewProxy implements View.OnClickListener, ShopCartAdapter.DeleteInvaildListner{
+
+    private Button paymentButtonContainer;
+    private Button btnPayStack;
+    private String clientID = BuildConfig.CLIENT_ID;
+    private String secretID = BuildConfig.SECRET_ID;
+    private String returnUrl = "com.example.paypal://paypalpay";
+    private String accessToken = "";
+    private String uniqueId = "";
+    private String orderid = "";
 
     private static final int STATE_NORMAL=1; //普通状态
     private static final int STATE_EDIT=2;  //编辑状态
@@ -59,6 +102,7 @@ public class ShopCartViewProxy extends RxViewProxy implements View.OnClickListen
     private ShopCartModel mShopCartModel;
     private ShopcartParseBean mShopcartParseBean;
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void initView(ViewGroup viewGroup) {
         mShopCartModel= ViewModelProviders.of(getActivity()).get(ShopCartModel.class);
@@ -79,7 +123,8 @@ public class ShopCartViewProxy extends RxViewProxy implements View.OnClickListen
         HotGoodsEmptyViewProxy hotGoodsEmptyViewProxy=new HotGoodsEmptyViewProxy();
         hotGoodsEmptyViewProxy.setEmptyIconId(R.drawable.bg_empty_no_cart);
         mRefreshView.setEmptyViewProxy(getViewProxyMannger(),hotGoodsEmptyViewProxy);
-
+        paymentButtonContainer = findViewById(R.id.payment_button_container);
+        btnPayStack = findViewById(R.id.btn_pay_stack);
         mShopCartAdapter=new ShopCartAdapter(null,getViewProxyMannger(),getActivity(),mShopCartModel);
         mRefreshView.setAdapter(mShopCartAdapter);
         mRefreshView.setRefreshEnable(false);
@@ -114,6 +159,190 @@ public class ShopCartViewProxy extends RxViewProxy implements View.OnClickListen
         mCheckTotalImage.setOnClickListener(this);
         mBtnCommit.setOnClickListener(this);
         initShopCartDataObserver();
+
+        paymentButtonContainer.setVisibility(View.GONE);
+        fetchAccessToken();
+
+        paymentButtonContainer.setOnClickListener(v -> startOrder());
+        btnPayStack.setOnClickListener(v -> startOrderPayStack());
+    }
+
+    private void startOrderPayStack() {
+        Card card = new Card("4084084084084081", 1, 30, "408");
+        if (card.isValid()) {
+            Charge charge = new Charge();
+            charge.setCard(card);
+            charge.setAmount(5000 * 100);
+            charge.setCurrency("ZAR");
+            charge.setEmail("user@example.com");
+            charge.setReference("ChargedFromJava_" + System.currentTimeMillis());
+
+            PaystackSdk.chargeCard((Activity) getParentLayoutGroup().getContext(), charge, new Paystack.TransactionCallback() {
+                @Override
+                public void onSuccess(Transaction transaction) {
+                    Toast.makeText(getParentLayoutGroup().getContext(), "Payment success", Toast.LENGTH_LONG).show();
+                }
+
+                @Override
+                public void beforeValidate(Transaction transaction) {
+                }
+
+                @Override
+                public void onError(Throwable error, Transaction transaction) {
+                    Log.e("longnx", "onError: " + error.getMessage());
+                    Toast.makeText(getParentLayoutGroup().getContext(), "Payment error: " + error.getMessage(), Toast.LENGTH_LONG).show();
+                }
+            });
+        }
+    }
+
+    private void fetchAccessToken() {
+        String authString = clientID + ":" + secretID;
+        String encodedAuthString = Base64.encodeToString(authString.getBytes(), Base64.NO_WRAP);
+
+        AndroidNetworking.post("https://api-m.sandbox.paypal.com/v1/oauth2/token")
+                .addHeaders("Authorization", "Basic " + encodedAuthString)
+                .addHeaders("Content-Type", "application/x-www-form-urlencoded")
+                .addBodyParameter("grant_type", "client_credentials")
+                .setPriority(Priority.HIGH)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            accessToken = response.getString("access_token");
+                            paymentButtonContainer.setVisibility(View.VISIBLE);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onError(ANError error) {
+                        Log.d("Paypal", error.getErrorBody());
+                    }
+                });
+    }
+
+    private void startOrder() {
+        uniqueId = UUID.randomUUID().toString();
+
+        try {
+            JSONObject orderRequestJson = new JSONObject();
+            orderRequestJson.put("intent", "CAPTURE");
+
+            JSONArray purchaseUnits = new JSONArray();
+            JSONObject unit = new JSONObject();
+            unit.put("reference_id", uniqueId);
+
+            JSONObject amount = new JSONObject();
+            amount.put("currency_code", "USD");
+            amount.put("value", "5.00");
+
+            unit.put("amount", amount);
+            purchaseUnits.put(unit);
+            orderRequestJson.put("purchase_units", purchaseUnits);
+
+            JSONObject experienceContext = new JSONObject();
+            experienceContext.put("payment_method_preference", "IMMEDIATE_PAYMENT_REQUIRED");
+            experienceContext.put("brand_name", "SH Developer");
+            experienceContext.put("locale", "en-US");
+            experienceContext.put("landing_page", "LOGIN");
+            experienceContext.put("shipping_preference", "NO_SHIPPING");
+            experienceContext.put("user_action", "PAY_NOW");
+            experienceContext.put("return_url", returnUrl);
+            experienceContext.put("cancel_url", "https://example.com/cancelUrl");
+
+            JSONObject paypal = new JSONObject();
+            paypal.put("experience_context", experienceContext);
+
+            JSONObject paymentSource = new JSONObject();
+            paymentSource.put("paypal", paypal);
+            orderRequestJson.put("payment_source", paymentSource);
+
+            AndroidNetworking.post("https://api-m.sandbox.paypal.com/v2/checkout/orders")
+                    .addHeaders("Authorization", "Bearer " + accessToken)
+                    .addHeaders("Content-Type", "application/json")
+                    .addHeaders("PayPal-Request-Id", uniqueId)
+                    .addJSONObjectBody(orderRequestJson)
+                    .setPriority(Priority.HIGH)
+                    .build()
+                    .getAsJSONObject(new JSONObjectRequestListener() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            try {
+                                handlerOrderID(response.getString("id"));
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+
+                        @Override
+                        public void onError(ANError error) {
+                            Log.d("Paypal", "Order Error : " + error.getMessage() + " || " + error.getErrorBody() + " || " + error.getResponse());
+                        }
+                    });
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void handlerOrderID(String orderID) {
+        CoreConfig config = new CoreConfig(clientID, Environment.SANDBOX);
+        PayPalWebCheckoutClient payPalWebCheckoutClient = new PayPalWebCheckoutClient((FragmentActivity) getParentLayoutGroup().getContext(), config, returnUrl);
+
+        payPalWebCheckoutClient.setListener(new PayPalWebCheckoutListener() {
+            @Override
+            public void onPayPalWebSuccess(PayPalWebCheckoutResult result) {
+                Log.d("longnx", "onPayPalWebSuccess: " + result);
+            }
+
+            @Override
+            public void onPayPalWebFailure(PayPalSDKError error) {
+                Log.d("longnx", "onPayPalWebFailure: ");
+            }
+
+            @Override
+            public void onPayPalWebCanceled() {
+                Log.d("longnx", "onPayPalWebCanceled: ");
+            }
+        });
+
+        orderid = orderID;
+        PayPalWebCheckoutRequest payPalWebCheckoutRequest = new PayPalWebCheckoutRequest(orderID, PayPalWebCheckoutFundingSource.PAYPAL);
+        payPalWebCheckoutClient.start(payPalWebCheckoutRequest);
+    }
+
+    private void captureOrder(String orderID) {
+        AndroidNetworking.post("https://api-m.sandbox.paypal.com/v2/checkout/orders/" + orderID + "/capture")
+                .addHeaders("Authorization", "Bearer " + accessToken)
+                .addHeaders("Content-Type", "application/json")
+                .addJSONObjectBody(new JSONObject()) // Empty body
+                .setPriority(Priority.HIGH)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Toast.makeText(getParentLayoutGroup().getContext(), "Payment Successful", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onError(ANError error) {
+                        Log.e("Paypal", "Capture Error : " + error.getErrorDetail());
+                    }
+                });
+    }
+
+    public void onActivityNewIntent(Intent intent) {
+        if (intent != null && intent.getData() != null) {
+            String opType = intent.getData().getQueryParameter("opType");
+            if ("payment".equals(opType)) {
+                captureOrder(orderid);
+            } else if ("cancel".equals(opType)) {
+                Toast.makeText(getActivity(), "Payment Cancelled", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
     /*查看所有商品是否是选中状态*/
