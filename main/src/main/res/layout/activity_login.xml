@@ -71,13 +71,6 @@
                 android:focusable="true"
                 android:background="?android:attr/selectableItemBackground">
 
-                <ImageView
-                    android:id="@+id/img_country_flag"
-                    android:layout_width="24dp"
-                    android:layout_height="18dp"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/flag_vn" />
-
                 <TextView
                     android:id="@+id/tv_country_code"
                     android:layout_width="wrap_content"

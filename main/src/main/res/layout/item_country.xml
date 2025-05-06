@@ -5,11 +5,7 @@
     android:orientation="horizontal"
     android:padding="16dp">
 
-    <ImageView
-        android:id="@+id/img_country_flag"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:scaleType="centerCrop" />
+
 
     <TextView
         android:id="@+id/tv_country_name"

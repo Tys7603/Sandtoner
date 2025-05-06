@@ -37,21 +37,30 @@ public class CountryPickerDialog extends Dialog {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.dialog_country_picker);
 
-        // Lấy danh sách quốc gia
-        List<Country> countries = CountryUtils.getCountries(context);
-
-        // Thiết lập RecyclerView
         RecyclerView recyclerView = findViewById(R.id.rv_countries);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        adapter = new CountryAdapter(context, countries, country -> {
-            if (listener != null) {
-                listener.onCountrySelected(country);
-            }
-            dismiss();
-        });
-        recyclerView.setAdapter(adapter);
 
-        // Thiết lập tìm kiếm
+        android.view.View progressBar = findViewById(R.id.progressBar);
+        if (progressBar != null) progressBar.setVisibility(android.view.View.VISIBLE);
+
+        CountryUtils.fetchCountriesFromApi(context, new CountryUtils.CountryFetchCallback() {
+            @Override
+            public void onResult(List<Country> countries) {
+                adapter = new CountryAdapter(context, countries, country -> {
+                    if (listener != null) {
+                        listener.onCountrySelected(country);
+                    }
+                    dismiss();
+                });
+                recyclerView.setAdapter(adapter);
+                if (progressBar != null) progressBar.setVisibility(android.view.View.GONE);
+            }
+            @Override
+            public void onError(Exception e) {
+                if (progressBar != null) progressBar.setVisibility(android.view.View.GONE);
+            }
+        });
+
         EditText etSearch = findViewById(R.id.et_search_country);
         etSearch.addTextChangedListener(new TextWatcher() {
             @Override
@@ -59,7 +68,9 @@ public class CountryPickerDialog extends Dialog {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                adapter.getFilter().filter(s);
+                if (adapter != null) {
+                    adapter.getFilter().filter(s);
+                }
             }
 
             @Override

@@ -46,7 +46,6 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Country country = countriesFiltered.get(position);
-        holder.imgFlag.setImageResource(country.getFlagResId());
         holder.tvName.setText(country.getName());
         holder.tvCode.setText(country.getDialCode());
 
@@ -95,13 +94,12 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.ViewHold
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView imgFlag;
         TextView tvName;
         TextView tvCode;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            imgFlag = itemView.findViewById(R.id.img_country_flag);
+
             tvName = itemView.findViewById(R.id.tv_country_name);
             tvCode = itemView.findViewById(R.id.tv_country_code);
         }

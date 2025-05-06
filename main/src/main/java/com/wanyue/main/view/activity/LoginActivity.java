@@ -5,8 +5,10 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.InputFilter;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -55,19 +57,26 @@ import com.wanyue.main.adapter.LoginTypeAdapter;
 import com.wanyue.main.api.MainAPI;
 import com.wanyue.main.bean.LoginCommitBean;
 
+import java.io.IOException;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 import butterknife.OnTextChanged;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 @Route(path = RouteUtil.PATH_LOGIN)
 public class LoginActivity extends BaseActivity implements TimeModel.TimeListner, OnItemClickListener<MobBean> {
 
     @BindView(R2.id.country_picker_container)
     LinearLayout mCountryPickerContainer;
-    @BindView(R2.id.img_country_flag) 
-    ImageView mImgCountryFlag;
+    
     @BindView(R2.id.tv_country_code)
     TextView mTvCountryCode;
 
@@ -93,6 +102,16 @@ public class LoginActivity extends BaseActivity implements TimeModel.TimeListner
     private MobLoginUtil mLoginUtil;
     private Country mSelectedCountry;
 
+    private LinearLayout countryPickerContainer;
+    private TextView tvCountryCode;
+    private ImageView imgCountryFlag;
+    private EditText tvPhone, tvCode;
+    private TextView btnGetCode;
+    private Button btnLogin;
+
+    private String selectedRegionCode = "86";
+    private String selectedCountryFlag = "flag_cn";
+
     @Override
     public void init() {
         mBtnTip.setText(getString(R.string.login_tip_2));
@@ -102,6 +121,53 @@ public class LoginActivity extends BaseActivity implements TimeModel.TimeListner
 
         mSelectedCountry = CountryUtils.getCountryByCode(this, "CN");
         updateCountryUI(mSelectedCountry);
+
+        countryPickerContainer = findViewById(R.id.country_picker_container);
+        tvCountryCode = findViewById(R.id.tv_country_code);
+        tvPhone = findViewById(R.id.tv_phone);
+        tvCode = findViewById(R.id.tv_code);
+        btnGetCode = findViewById(R.id.btn_get_code);
+        btnLogin = findViewById(R.id.btn_login);
+
+        countryPickerContainer.setOnClickListener(v -> {
+            CountryPickerDialog dialog = new CountryPickerDialog(this, country -> {
+                mSelectedCountry = country;
+                updateCountryUI(mSelectedCountry);
+                selectedRegionCode = mSelectedCountry.getRegionCodeNumber();
+            });
+            dialog.show();
+        });
+
+        btnGetCode.setOnClickListener(v -> {
+            String phone = tvPhone.getText().toString().trim();
+            if (mSelectedCountry == null) {
+                ToastUtil.show("Please select country");
+                return;
+            }
+            if (mSelectedCountry != null && !mSelectedCountry.isValidPhoneNumber(phone)) {
+                ToastUtil.show("Invalid phone number for " + mSelectedCountry.getName());
+                return;
+            }
+            MainAPI.getVerifyKey(new ParseHttpCallback<JSONObject>() {
+                @Override
+                public void onSuccess(int code, String msg, JSONObject info) {
+                    if (info != null) {
+                        String key = info.getString("key");
+                        sendVerificationCode(phone, mSelectedCountry.getRegionCodeNumber(), key);
+                    } else {
+                        ToastUtil.show(msg);
+                    }
+                }
+                @Override
+                public void onError(Throwable e) {
+                    if (e != null) {
+                        ToastUtil.show(e.getMessage());
+                    }
+                }
+            });
+        });
+
+        tvPhone.setFilters(new InputFilter[]{ new InputFilter.LengthFilter(15) });
     }
 
     private void initCommitData() {
@@ -123,34 +189,8 @@ public class LoginActivity extends BaseActivity implements TimeModel.TimeListner
 
     private void updateCountryUI(Country country) {
         if (country != null) {
-            mImgCountryFlag.setImageResource(country.getFlagResId());
+
             mTvCountryCode.setText(country.getDialCode());
-        }
-    }
-
-    @OnClick(R2.id.country_picker_container)
-    public void onCountryPickerClicked() {
-        CountryPickerDialog dialog = new CountryPickerDialog(this, country -> {
-            mSelectedCountry = country;
-            updateCountryUI(mSelectedCountry);
-            validatePhoneNumber();
-        });
-        dialog.show();
-    }
-
-    private void validatePhoneNumber() {
-        String phoneNumber = mTvPhone.getText().toString().trim();
-        boolean isValid = false;
-
-        if (!TextUtils.isEmpty(phoneNumber) && mSelectedCountry != null) {
-            isValid = mSelectedCountry.isValidPhoneNumber(phoneNumber);
-        }
-        mBtnGetCode.setEnabled(isValid);
-
-        if (!TextUtils.isEmpty(phoneNumber) && !isValid) {
-            mTvPhone.setError("Invalid phone number for " + mSelectedCountry.getName());
-        } else {
-            mTvPhone.setError(null);
         }
     }
 
@@ -165,6 +205,7 @@ public class LoginActivity extends BaseActivity implements TimeModel.TimeListner
     public void watchCodeTextChange(CharSequence sequence, int start, int before, int count) {
         String codeString = sequence.toString();
         mLoginCommitBean.setCheckString(codeString);
+        validatePhoneNumber();
     }
 
     @OnClick(R2.id.btn_get_code)
@@ -179,8 +220,8 @@ public class LoginActivity extends BaseActivity implements TimeModel.TimeListner
             @Override
             public void onSuccess(int code, String msg, JSONObject info) {
                 if (info != null) {
-                    String infoString = info.getString("key");
-                    getVerifyCode(phoneNum, infoString);
+                    String key = info.getString("key");
+                    getVerifyCode(phoneNum, key);
                 } else {
                     ToastUtil.show(msg);
                 }
@@ -195,8 +236,8 @@ public class LoginActivity extends BaseActivity implements TimeModel.TimeListner
         });
     }
 
-    private void getVerifyCode(String phoneNum, String infoString) {
-        MainAPI.getVerifyCode(phoneNum, "login", infoString, new HttpCallback() {
+    private void getVerifyCode(String phoneNum, String key) {
+        MainAPI.getVerifyCode(phoneNum, "login", key, new HttpCallback() {
             @Override
             public void onSuccess(int code, String msg, String[] info) {
                 ToastUtil.show(msg);
@@ -390,5 +431,108 @@ public class LoginActivity extends BaseActivity implements TimeModel.TimeListner
 
     private void loginByThird(String loginType, LoginData data) {
         MainAPI.loginByThird(data, mParseHttpCallback);
+    }
+
+    private void fetchRegionCodes() {
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder()
+            .url("https://system.sandtoner.com/api/region_codes")
+            .get()
+            .build();
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                runOnUiThread(() -> {
+                    ToastUtil.show("Get list of failed area codes: " + e.getMessage());
+                });
+            }
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String json = response.body().string();
+                runOnUiThread(() -> {
+                    try {
+                        JSONObject jsonObject = JSON.parseObject(json);
+                        int status = jsonObject.getIntValue("status");
+                        String msg = jsonObject.getString("msg");
+                        if (status == 200) {
+                            ToastUtil.show("Get list of area codes successfully");
+                            // Có thể parse và cập nhật UI ở đây nếu cần
+                            // JSONArray data = jsonObject.getJSONArray("data");
+                            // Log.d("RegionCodes", data.toJSONString());
+                        } else {
+                            ToastUtil.show("Get list of failed area codes: " + msg);
+                        }
+                    } catch (Exception ex) {
+                        ToastUtil.show("Error processing area code response: " + ex.getMessage());
+                    }
+                });
+            }
+        });
+    }
+
+    private void updateRegionCode(String regionCode, String flagResource) {
+        runOnUiThread(() -> {
+            tvCountryCode.setText("+" + regionCode);
+            selectedRegionCode = regionCode;
+            int resId = getResources().getIdentifier(flagResource, "drawable", getPackageName());
+            if (resId != 0) imgCountryFlag.setImageResource(resId);
+        });
+    }
+
+    private void validatePhoneNumber() {
+        String phoneNumber = tvPhone.getText().toString().trim();
+        boolean isValid = false;
+        if (!TextUtils.isEmpty(phoneNumber) && mSelectedCountry != null) {
+            isValid = mSelectedCountry.isValidPhoneNumber(phoneNumber);
+        }
+        btnGetCode.setEnabled(isValid);
+        String code = tvCode.getText().toString().trim();
+        btnLogin.setEnabled(isValid && !TextUtils.isEmpty(code));
+        if (!TextUtils.isEmpty(phoneNumber) && !isValid) {
+            tvPhone.setError("Invalid phone number for " + mSelectedCountry.getName());
+        } else {
+            tvPhone.setError(null);
+        }
+    }
+
+    private void sendVerificationCode(String phone, String regionCode, String key) {
+        OkHttpClient client = new OkHttpClient();
+        RequestBody formBody = new FormBody.Builder()
+            .add("phone", phone)
+            .add("type", "login")
+            .add("key", key)
+            .add("region_code", regionCode)
+            .build();
+        Request request = new Request.Builder()
+            .url("https://system.sandtoner.com/api/register/verify")
+            .post(formBody)
+            .build();
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                runOnUiThread(() -> {
+                    ToastUtil.show("Send verification code failed: " + e.getMessage());
+                });
+            }
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String json = response.body().string();
+                Log.e("SMS_API", "Response: " + json);
+                runOnUiThread(() -> {
+                    try {
+                        JSONObject jsonObject = JSON.parseObject(json);
+                        int status = jsonObject.getIntValue("status");
+                        String msg = jsonObject.getString("msg");
+                        if (status == 200) {
+                            ToastUtil.show("Verification code sent successfully: " + msg);
+                        } else {
+                            ToastUtil.show("Verification code sent failed: " + msg);
+                        }
+                    } catch (Exception ex) {
+                        ToastUtil.show("Response processing error: " + ex.getMessage());
+                    }
+                });
+            }
+        });
     }
 }

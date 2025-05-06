@@ -1,13 +1,14 @@
 package com.wanyue.main.bean;
 
 import com.wanyue.common.bean.commit.CommitEntity;
-import com.wanyue.common.utils.ValidatePhoneUtil;
+import com.wanyue.common.model.Country;
 
 public class RegisterCommitBean extends CommitEntity {
     private String phone;
     private String pwd;
     private String code;
     private String spread;
+    private Country selectedCountry;
 
     public String getPhone() {
         return phone;
@@ -39,13 +40,20 @@ public class RegisterCommitBean extends CommitEntity {
     public String getSpread() {
         return spread;
     }
+
     public void setSpread(String spread) {
         this.spread = spread;
         observer();
     }
 
+    public void setSelectedCountry(Country country) {
+        this.selectedCountry = country;
+        observer();
+    }
+
     @Override
     public boolean observerCondition() {
-        return ValidatePhoneUtil.validateMobileNumber(phone)&&fieldNotEmpty(pwd)&&fieldNotEmpty(code);
+        boolean isValidPhone = selectedCountry != null && selectedCountry.isValidPhoneNumber(phone);
+        return isValidPhone && fieldNotEmpty(pwd) && fieldNotEmpty(code);
     }
 }

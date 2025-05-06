@@ -4,6 +4,8 @@ package com.wanyue.main.view.activity;
 import android.content.Intent;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.alibaba.fastjson.JSONObject;
 import com.wanyue.common.Constants;
@@ -23,6 +25,11 @@ import com.wanyue.main.bean.RegisterCommitBean;
 import butterknife.BindView;
 import butterknife.OnClick;
 import butterknife.OnTextChanged;
+import com.wanyue.common.utils.CountryUtils;
+import com.wanyue.common.model.Country;
+import com.wanyue.common.dialog.CountryPickerDialog;
+import com.wanyue.common.utils.SpUtil;
+import com.wanyue.common.CommonAppConfig;
 
 /**
  * The type Register activity.
@@ -69,15 +76,37 @@ public class RegisterActivity extends BaseActivity implements TimeModel.TimeList
      */
     RegisterCommitBean mRegisterCommitBean;
 
+    private LinearLayout countryPickerContainer;
+    private TextView tvCountryCode;
+
+    private Country mSelectedCountry;
+    private String selectedRegionCode = "86";
 
     @Override
     public void init() {
-        mRegisterCommitBean=new RegisterCommitBean();
+        mRegisterCommitBean = new RegisterCommitBean();
         mRegisterCommitBean.setDataListner(new DataListner() {
             @Override
             public void compelete(boolean isCompelete) {
                 mBtnCommit.setEnabled(isCompelete);
             }
+        });
+
+        countryPickerContainer = findViewById(R.id.country_picker_container);
+        tvCountryCode = findViewById(R.id.tv_country_code);
+
+        mSelectedCountry = CountryUtils.getCountryByCode(this, "CN");
+        updateCountryUI(mSelectedCountry);
+        mRegisterCommitBean.setSelectedCountry(mSelectedCountry);
+
+        countryPickerContainer.setOnClickListener(v -> {
+            CountryPickerDialog dialog = new CountryPickerDialog(this, country -> {
+                mSelectedCountry = country;
+                updateCountryUI(mSelectedCountry);
+                selectedRegionCode = mSelectedCountry.getRegionCodeNumber();
+                mRegisterCommitBean.setSelectedCountry(mSelectedCountry);
+            });
+            dialog.show();
         });
     }
 
@@ -130,10 +159,32 @@ public class RegisterActivity extends BaseActivity implements TimeModel.TimeList
             @Override
             public void onNextTo(Boolean aBoolean) {
                 if(aBoolean){
-                    Intent intent=getIntent();
-                    intent.putExtra(Constants.DATA,mTvPhone.getText().toString());
-                    setResult(RESULT_OK,intent);
-                    finish();
+                    // Sau khi đăng ký thành công, tự động đăng nhập
+                    String phone = mRegisterCommitBean.getPhone();
+                    String pwd = mRegisterCommitBean.getPwd();
+                    MainAPI.loginByCode(phone, mRegisterCommitBean.getCode(), new ParseHttpCallback<JSONObject>() {
+                        @Override
+                        public void onSuccess(int code, String msg, JSONObject info) {
+                            if (isSuccess(code)) {
+                                String token = info.getString("token");
+                                String sign = info.getString("usersig");
+                                CommonAppConfig.setLoginInfo("0", token, true);
+                                SpUtil.getInstance().setStringValue(SpUtil.TX_IM_USER_SIGN, sign);
+                                
+                                Intent intent = getIntent();
+                                intent.putExtra(Constants.DATA, phone);
+                                setResult(RESULT_OK, intent);
+                                finish();
+                            } else {
+                                ToastUtil.show(msg);
+                            }
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+                            ToastUtil.show(e.getMessage());
+                        }
+                    });
                 }
             }
         });
@@ -145,19 +196,22 @@ public class RegisterActivity extends BaseActivity implements TimeModel.TimeList
      */
     @OnClick(R2.id.btn_get_code)
     public void getLoginCode() {
-        final String phoneNum=mTvPhone.getText().toString();
-        if(!ValidatePhoneUtil.validateMobileNumber(phoneNum)){
-            mTvPhone.setError(WordUtil.getString(R.string.login_phone_error));
-            mTvPhone.requestFocus();
+        final String phoneNum = mTvPhone.getText().toString();
+        if (mSelectedCountry == null) {
+            ToastUtil.show("Please select country");
+            return;
+        }
+        if (!mSelectedCountry.isValidPhoneNumber(phoneNum)) {
+            ToastUtil.show("Invalid phone number for " + mSelectedCountry.getName());
             return;
         }
         MainAPI.getVerifyKey(new ParseHttpCallback<JSONObject>() {
             @Override
             public void onSuccess(int code, String msg, JSONObject info) {
-                if(info!=null){
-                    String key= info.getString("key");
-                    getVerifyCode(phoneNum,key);
-                }else{
+                if (info != null) {
+                    String key = info.getString("key");
+                    sendVerificationCode(phoneNum, mSelectedCountry.getRegionCodeNumber(), key);
+                } else {
                     ToastUtil.show(msg);
                 }
             }
@@ -170,13 +224,13 @@ public class RegisterActivity extends BaseActivity implements TimeModel.TimeList
         });
     }
 
-    private void getVerifyCode(String phoneNum,String infoString) {
-        MainAPI.getVerifyCode(phoneNum, "register", infoString, new ParseHttpCallback<JSONObject>() {
+    private void sendVerificationCode(String phone, String regionCode, String key) {
+        MainAPI.getVerifyCode(phone, "register", key, new ParseHttpCallback<JSONObject>() {
             @Override
             public void onSuccess(int code, String msg, JSONObject info) {
                 ToastUtil.show(msg);
-                if(isSuccess(code)){
-                   getRegisterCodeSucc(code,msg,info);
+                if (isSuccess(code)) {
+                    getRegisterCodeSucc(code, msg, info);
                 }
             }
             @Override
@@ -187,6 +241,7 @@ public class RegisterActivity extends BaseActivity implements TimeModel.TimeList
             }
         });
     }
+
     private void getRegisterCodeSucc(int code, String msg, JSONObject info) {
         if(code!=200){
             return;
@@ -217,9 +272,19 @@ public class RegisterActivity extends BaseActivity implements TimeModel.TimeList
     /*监听手机号输入框信息*/
     @OnTextChanged(value = R2.id.tv_phone, callback = OnTextChanged.Callback.TEXT_CHANGED)
     public void watchPhoneTextChange(CharSequence sequence, int start, int before, int count){
-        String phoneString=sequence.toString();
+        String phoneString = sequence.toString();
         mRegisterCommitBean.setPhone(phoneString);
-        mBtnGetCode.setEnabled(ValidatePhoneUtil.validateMobileNumber(phoneString));
+
+        boolean isValid = false;
+        if (mSelectedCountry != null && !phoneString.isEmpty()) {
+            isValid = mSelectedCountry.isValidPhoneNumber(phoneString);
+        }
+        mBtnGetCode.setEnabled(isValid);
+        if (!isValid && !phoneString.isEmpty()) {
+            mTvPhone.setError("Invalid phone number for " + (mSelectedCountry != null ? mSelectedCountry.getName() : ""));
+        } else {
+            mTvPhone.setError(null);
+        }
     }
 
     /**
@@ -271,5 +336,11 @@ public class RegisterActivity extends BaseActivity implements TimeModel.TimeList
     public void compelete() {
         mBtnGetCode.setEnabled(true);
         mBtnGetCode.setText(R.string.reg_get_code);
+    }
+
+    private void updateCountryUI(Country country) {
+        if (country != null) {
+            tvCountryCode.setText(country.getDialCode());
+        }
     }
 }

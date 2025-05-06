@@ -43,4 +43,8 @@ public class Country {
         }
         return Pattern.matches(phoneRegex, phoneNumber);
     }
+
+    public String getRegionCodeNumber() {
+        return dialCode != null ? dialCode.replace("+", "") : "";
+    }
 }
