@@ -124,7 +124,7 @@ public class SpreadManRankActivity extends BaseActivity {
         if(rankBean1!=null){
             mTvName1.setText(rankBean1.getNickname());
             ImgLoader.display(this,rankBean1.getAvatar(),mImgAvatar1);
-            mTvUserNum1.setText(rankBean2.getCount()+"人");
+            mTvUserNum1.setText(rankBean2.getCount()+"Agents");
             ViewUtil.setVisibility(mVpRank1,View.VISIBLE);
         }else{
             ViewUtil.setVisibility(mVpRank1,View.INVISIBLE);
@@ -132,7 +132,7 @@ public class SpreadManRankActivity extends BaseActivity {
         if(rankBean2!=null){
             mTvName2.setText(rankBean2.getNickname());
             ImgLoader.display(this,rankBean2.getAvatar(),mImgAvatar2);
-            mTvUserNum2.setText(rankBean2.getCount()+"人");
+            mTvUserNum2.setText(rankBean2.getCount()+"Agents");
             ViewUtil.setVisibility(mVpRank2,View.VISIBLE);
         }else{
             ViewUtil.setVisibility(mVpRank2,View.INVISIBLE);
@@ -140,7 +140,7 @@ public class SpreadManRankActivity extends BaseActivity {
         if(rankBean3!=null){
             mTvName3.setText(rankBean3.getNickname());
             ImgLoader.display(this,rankBean3.getAvatar(),mImgAvatar3);
-            mTvUserNum3.setText(rankBean3.getCount()+"人");
+            mTvUserNum3.setText(rankBean3.getCount()+"Agents");
             ViewUtil.setVisibility(mVpRank3,View.VISIBLE);
         }else{
             ViewUtil.setVisibility(mVpRank3,View.INVISIBLE);

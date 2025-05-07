@@ -307,16 +307,16 @@ public class MainHomeUserViewProxy extends RxViewProxy implements View.OnClickLi
             mTvYesterdayMoney.setText(yesterDay);
         }
         if(mTvSpreadPersonNum!=null){
-            String personString= spread_count+"人";
-            int startIndex=personString.indexOf("人");
+            String personString= spread_count+"Agents";
+            int startIndex=personString.indexOf("Agents");
             SpannableStringBuilder style = new SpannableStringBuilder(personString);
             style.setSpan(new AbsoluteSizeSpan(10, true), startIndex, startIndex+1, Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
             mTvSpreadPersonNum.setText(style);
         }
 
         if(mTvSpreadNum!=null){
-            String numString= spread_order_count+"单";
-            int startIndex=numString.indexOf("单");
+            String numString= spread_order_count+"Deals";
+            int startIndex=numString.indexOf("Deals");
             SpannableStringBuilder style = new SpannableStringBuilder(numString);
             style.setSpan(new AbsoluteSizeSpan(10, true), startIndex, startIndex+1, Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
             mTvSpreadNum.setText(style);
@@ -329,10 +329,10 @@ public class MainHomeUserViewProxy extends RxViewProxy implements View.OnClickLi
 
 
 
-        setTopLabelTitle(mTvFavorites,"收藏夹",value1);
-        setTopLabelTitle(mTvFollowStore,"关注店铺",value2);
-        setTopLabelTitle(mTvIntegralCode,"我的积分",value3);
-        setTopLabelTitle(mTvCoupon,"我的卡券",value4);
+        setTopLabelTitle(mTvFavorites,"Bookmark",value1);
+        setTopLabelTitle(mTvFollowStore,"Followed Stores",value2);
+        setTopLabelTitle(mTvIntegralCode,"My points",value3);
+        setTopLabelTitle(mTvCoupon,"My coupons",value4);
     }
 
     private void setTopLabelTitle(TextView title,String labelString,String value) {

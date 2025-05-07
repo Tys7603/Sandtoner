@@ -347,7 +347,7 @@ public class GroupInfoLayout extends LinearLayout implements IGroupMemberLayout,
         mGroupNameView.setContent(info.getGroupName());
         mGroupIDView.setContent(info.getId());
         mGroupNotice.setContent(info.getNotice());
-        mMemberView.setContent(info.getMemberCount() + "人");
+        mMemberView.setContent(info.getMemberCount() + "Agents");
         mMemberAdapter.setDataSource(info);
         mGroupTypeView.setContent(convertGroupText(info.getGroupType()));
         mJoinTypeView.setContent(mJoinTypes.get(info.getJoinType()));

@@ -24,7 +24,7 @@ public class SpreadManRankAdapter extends BaseRecyclerAdapter<SpreadManRankBean,
         int position=helper.getLayoutPosition()+3;
         helper.setImageUrl(item.getAvatar(),R.id.img_avator);
         helper.setText(R.id.tv_name,item.getNickname());
-        helper.setText(R.id.tv_count,item.getCount()+"人");
+        helper.setText(R.id.tv_count,item.getCount()+"Agents");
         helper.setText(R.id.tv_rank_num,Integer.toString(position));
         ImageView imageView=helper.getView(R.id.img_rank_num);
         TextView tvRankNum=helper.getView(R.id.tv_rank_num);

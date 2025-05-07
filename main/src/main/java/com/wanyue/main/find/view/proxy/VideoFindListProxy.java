@@ -40,7 +40,7 @@ public class VideoFindListProxy extends RxViewProxy {
         ViewUtil.setViewOutlineProvider(refreshView, DpUtil.dp2px(10));
         refreshView.setReclyViewSetting(RxRefreshView.ReclyViewSetting.creatStaggeredGridSetting(getActivity(),2));
         refreshView.setEmptyLevel(1);
-        refreshView.setNoDataTip("暂无数据，去其他频道看看吧～");
+        refreshView.setNoDataTip("No data available. Go to other channels and have a look !");
 
         mAdapter=new FindVideoAdapter(null);
         mAdapter.setOnItemChildClickListener2(new BaseMutiRecyclerAdapter.OnItemChildClickListener2<VideoBean>() {

@@ -967,12 +967,12 @@
     <string name="goods_nums">%1$s\nBaby</string>
     <string name="good_watch">%1$s people watching</string>
     <string name="my_order">My order</string>
-    <string name="wait_pay">Waiting for payment</string>
+    <string name="wait_pay">To Pay</string>
     <string name="check_all_order">Check all orders</string>
-    <string name="wait_to_delivered">Waiting for delivery</string>
+    <string name="wait_to_delivered">To Ship</string>
     <string name="delivered">Delivered</string>
-    <string name="wait_to_received">Waiting for receipt</string>
-    <string name="wait_to_evaluated">Waiting for evaluation</string>
+    <string name="wait_to_received">To Receive</string>
+    <string name="wait_to_evaluated">To Review</string>
 
     <string name="refund">Refund</string>
     <string name="my_service">My service</string>
@@ -1078,8 +1078,8 @@
     <string name="order_detail_failed_reason">Reason for failure:</string>
 
     <string name="collect_goods">Goods collection</string>
-    <string name="my_spread">My promotion</string>
-    <string name="check_detail">Check details</string>
+    <string name="my_spread">My Business</string>
+    <string name="check_detail">Details</string>
     <string name="spread_tip1">Promotion business card</string>
     <string name="spread_tip2">Promoter statistics</string>
     <string name="spread_tip3">Commission record</string>
@@ -1218,7 +1218,7 @@
     <string name="str_tixian_tip2">Withdrawal record</string>
     <string name="str_tixian_tip3">Withdraw immediately</string>
     <string name="str_dan">Order</string>
-    <string name="str_tuiguang_tip1">Number of Promoters</string>
+    <string name="str_tuiguang_tip1">Number of Agents</string>
     <string name="str_tuiguang_tip2">People</string>
     <string name="str_tixian_tip4">Amount Available for Withdrawal</string>
     <string name="str_tixian_tip5">Enter Withdrawal Amount</string>
@@ -1266,10 +1266,10 @@
     <string name="str_in_store">Enter the store</string>
     <string name="str_del">Delete</string>
     <string name="str_shangjia">On the shelf</string>
-    <string name="str_yongjin">Current commission</string>
-    <string name="str_tuiguang_1">Yesterday\'s income</string>
-    <string name="str_tuiguang_2">Number of promoters</string>
-    <string name="str_tuiguang_3">Orders from promoters</string>
+    <string name="str_yongjin">Commission</string>
+    <string name="str_tuiguang_1">Yesterday\'s\n income</string>
+    <string name="str_tuiguang_2">Number of\n Agents</string>
+    <string name="str_tuiguang_3">Agent\'s Orders</string>
     <string name="str_xiajia">Off the shelves</string>
     <string name="str_xiaofei_1">Total assets (yuan)</string>
     <string name="str_xiaofei_2">Cumulative consumption (yuan)</string>
@@ -1285,7 +1285,7 @@
     <string name="str_live_tip2">Share the live broadcast room</string>
     <string name="str_live_tip3">Share to WeChat</string>
     <string name="str_live_tip4">QR code poster</string>
-    <string name="str_live_tip5">Go to the store ></string>
+    <string name="str_live_tip5">Go to the store</string>
     <string name="str_live_tip6">Products on sale</string>
     <string name="str_str_follow">Follow</string>
     <string name="str_share_code">Press and hold to identify the QR code and enter the live broadcast room</string>

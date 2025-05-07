@@ -21,7 +21,7 @@ public class StoreListActivity extends BaseActivity implements BaseQuickAdapter.
 
     @Override
     public void init() {
-        setTabTitle("关注店铺");
+        setTabTitle("Followed Stores");
         mRefreshView = (RxRefreshView) findViewById(R.id.refreshView);
         mRefreshView.setReclyViewSetting(RxRefreshView.ReclyViewSetting.createLinearSetting(this,1));
 

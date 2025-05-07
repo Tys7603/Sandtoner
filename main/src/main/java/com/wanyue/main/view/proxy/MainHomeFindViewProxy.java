@@ -36,7 +36,7 @@ public class MainHomeFindViewProxy extends RxViewProxy {
         mIndicator =  findViewById(R.id.indicator);
         mViewPager =  findViewById(R.id.viewPager);
 
-        String[] titleArray={"关注","上新","种草","直播","视频"};
+        String[] titleArray={"Follow","New!","Hot!","Live","Video"};
 
         CommonNavigator commonNavigator = new CommonNavigator(getActivity());
         mIndicatorAdapter = new MainFindIndicatorAdapter(titleArray, getActivity(), mViewPager);
@@ -78,19 +78,19 @@ public class MainHomeFindViewProxy extends RxViewProxy {
         list.add(find5);
 
         find1.setLevel(1);
-        find1.setTitle("暂无数据，去其他频道看看吧～");
+        find1.setTitle("No data available. Go to other channels and have a look !");
         find1.setBackgroundColor(Color.WHITE);
 
         find2.setLevel(1);
-        find2.setTitle("暂无数据，去其他频道看看吧～");
+        find2.setTitle("No data available. Go to other channels and have a look !");
         find2.setBackgroundColor(Color.WHITE);
 
         find3.setLevel(1);
-        find3.setTitle("暂无数据，去其他频道看看吧～");
+        find3.setTitle("No data available. Go to other channels and have a look !");
         find3.setBackgroundColor(Color.WHITE);
 
         find4.setLevel(1);
-        find4.setTitle("暂无数据，去其他频道看看吧～");
+        find4.setTitle("No data available. Go to other channels and have a look !");
         find4.setBackgroundColor(Color.WHITE);
 
         return list;

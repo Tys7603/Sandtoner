@@ -85,7 +85,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="28\n收藏夹"
+                android:text="28\nBookmark"
                 android:textSize="@dimen/text_size_14"
                 android:textColor="@color/white"
                 android:layout_weight="1"
@@ -96,7 +96,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="28\n关注店铺"
+                android:text="28\nFollowed Stores"
                 android:textSize="@dimen/text_size_14"
                 android:textColor="@color/white"
                 android:layout_weight="1"

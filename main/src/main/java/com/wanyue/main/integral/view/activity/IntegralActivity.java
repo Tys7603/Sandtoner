@@ -39,7 +39,7 @@ public class IntegralActivity extends BaseActivity implements CalendarView.OnMon
 
     @Override
     public void init() {
-        setTabTitle("积分签到");
+        setTabTitle("Points Sign In");
         mTvIntegralCode = findViewById(R.id.tv_integral_code);
         mBtnSign = findViewById(R.id.btn_sign);
         mTvTime =  findViewById(R.id.tv_time);
@@ -85,7 +85,7 @@ public class IntegralActivity extends BaseActivity implements CalendarView.OnMon
             drawable.setTint(ResourceUtil.getColor(R.color.gray_dc));
             mBtnSign.setBackground(drawable);
         }else{
-            mBtnSign.setText("签到");
+            mBtnSign.setText("Sign In");
             mBtnSign.setEnabled(true);
             Drawable drawable=ResourceUtil.getDrawable(R.drawable.bg_color_global_radius_20,false);
             mBtnSign.setBackground(drawable);
