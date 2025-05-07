@@ -39,9 +39,9 @@ public class ProfitActivity extends BaseActivity implements View.OnClickListener
     public void init() {
         mType=getIntent().getIntExtra(Constants.TYPE,0);
         if(mType==TYPE_STORE){
-            setTabTitle("店铺收益");
+            setTabTitle("Store revenue");
         }else{
-            setTabTitle("代销收益");
+            setTabTitle("Agency income");
         }
         mTvLeftTop = (TextView) findViewById(R.id.tv_left_top);
         mTvLeftBottom = (TextView) findViewById(R.id.tv_left_bottom);

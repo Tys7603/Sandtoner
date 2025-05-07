@@ -42,9 +42,9 @@ public class StoreOrderListActivity extends BaseActivity implements RadioGroup.O
     public void init() {
         mStatus=getIntent().getIntExtra(Constants.TYPE,0);
         if(mStatus==ShopState.ORDER_SELL_STORE){
-            setTabTitle("店铺订单");
+            setTabTitle("Store order");
         }else{
-            setTabTitle("代销订单");
+            setTabTitle("Consignment order");
         }
 
         mRadioGroup =  findViewById(R.id.radio_group);

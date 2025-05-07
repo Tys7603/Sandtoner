@@ -32,7 +32,7 @@ public class ConsignmentManngerActivity extends BaseActivity {
 
     @Override
     public void init() {
-        setTabTitle("商品管理");
+        setTabTitle("Product management");
         mIndicator = (MagicIndicator) findViewById(R.id.indicator);
         mViewPager = (ViewPager) findViewById(R.id.viewPager);
         List<String>titleArray= ListUtil.asList("在售","已下架");

@@ -39,7 +39,7 @@ public class MyStoreActivity extends BaseActivity implements View.OnClickListene
 
     @Override
     public void init() {
-        setTabTitle("我的店铺");
+        setTabTitle("My Shop");
         mTvOrderTip = (DrawableTextView) findViewById(R.id.tv_order_tip);
         mBtnMyOrder = (DrawableTextView) findViewById(R.id.btn_my_order);
         mBtnWaitDelivered = (TextView) findViewById(R.id.btn_wait_delivered);

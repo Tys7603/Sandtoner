@@ -17,7 +17,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="代销收益 ¥ 8.00"
+            android:text="Agency income ¥ 8.00"
             android:textSize="@dimen/text_size_13"
             android:textColor="@color/textColor"
             android:layout_marginLeft="@dimen/default_margin"

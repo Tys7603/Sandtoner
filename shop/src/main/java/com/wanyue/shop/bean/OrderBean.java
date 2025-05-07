@@ -180,7 +180,7 @@ public class OrderBean implements MultiItemEntity {
     private String bringPriceTip;
     public String getBringPriceTip(){
         if(bringPriceTip==null){
-           bringPriceTip="代销收益 "+StringUtil.getPrice(bringPrice);
+           bringPriceTip="Agency income "+StringUtil.getPrice(bringPrice);
         }
         return bringPriceTip;
     }

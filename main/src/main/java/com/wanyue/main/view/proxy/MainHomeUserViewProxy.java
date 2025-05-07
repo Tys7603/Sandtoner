@@ -343,21 +343,21 @@ public class MainHomeUserViewProxy extends RxViewProxy implements View.OnClickLi
     private void openShop(boolean isShop, List<MainUserSectionBean> data) {
         if(isShop){
             MainUserSectionBean mainUserSectionBean1=new MainUserSectionBean();
-            mainUserSectionBean1.setTitle("我的代销");
+            mainUserSectionBean1.setTitle("My Consignment");
             mainUserSectionBean1.setId(MY_CONSIGNMENT);
-            mainUserSectionBean1.setRightTitle("查看详情");
-            List<MenuBean>list=ListUtil.asList(new MenuBean("商品管理",CONSIGNMENT_GOOD_MANNGER,R.drawable.icon_main_user_good_mannger),
-            new MenuBean("代销订单",CONSIGNMENT_ORDER,R.drawable.icon_main_user_consignment_order),
-            new MenuBean("代销收益",CONSIGNMENT_MONEY,R.drawable.icon_main_user_consignment_money)
+            mainUserSectionBean1.setRightTitle("Check the details");
+            List<MenuBean>list=ListUtil.asList(new MenuBean("Product management",CONSIGNMENT_GOOD_MANNGER,R.drawable.icon_main_user_good_mannger),
+            new MenuBean("Consignment order",CONSIGNMENT_ORDER,R.drawable.icon_main_user_consignment_order),
+            new MenuBean("Agency income",CONSIGNMENT_MONEY,R.drawable.icon_main_user_consignment_money)
             );
             data.add(mainUserSectionBean1);
             mainUserSectionBean1.setMenuBeanList(list);
             MainUserSectionBean mainUserSectionBean2=new MainUserSectionBean();
-            mainUserSectionBean2.setTitle("我的店铺");
-            mainUserSectionBean2.setRightTitle("店铺主页");
+            mainUserSectionBean2.setTitle("My Shop");
+            mainUserSectionBean2.setRightTitle("Store homepage");
             mainUserSectionBean2.setId(MY_STORE);
-            List<MenuBean>list2=ListUtil.asList(new MenuBean("店铺订单",STORE_ORDER,R.drawable.icon_main_user_store_order),
-                    new MenuBean("店铺收益",STORE_MONEY,R.drawable.icon_main_user_store_money)
+            List<MenuBean>list2=ListUtil.asList(new MenuBean("Store order",STORE_ORDER,R.drawable.icon_main_user_store_order),
+                    new MenuBean("Store revenue",STORE_MONEY,R.drawable.icon_main_user_store_money)
             );
             mainUserSectionBean2.setMenuBeanList(list2);
             data.add(mainUserSectionBean2);
