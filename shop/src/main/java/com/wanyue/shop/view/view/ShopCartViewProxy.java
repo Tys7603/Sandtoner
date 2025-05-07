@@ -121,7 +121,7 @@ public class ShopCartViewProxy extends RxViewProxy implements View.OnClickListen
         mRefreshView.setLoadMoreEnable(false);
         mRefreshView.setHasFixedSize(true);
         HotGoodsEmptyViewProxy hotGoodsEmptyViewProxy=new HotGoodsEmptyViewProxy();
-        hotGoodsEmptyViewProxy.setEmptyIconId(R.drawable.bg_empty_no_cart);
+        hotGoodsEmptyViewProxy.setEmptyText("No products available, go add something");
         mRefreshView.setEmptyViewProxy(getViewProxyMannger(),hotGoodsEmptyViewProxy);
         paymentButtonContainer = findViewById(R.id.payment_button_container);
         btnPayStack = findViewById(R.id.btn_pay_stack);

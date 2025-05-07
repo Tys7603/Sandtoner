@@ -711,7 +711,7 @@
     <string name="address">Address</string>
     <string name="blacklist">Blacklist</string>
 
-    <string name="well_come_to_live_app">Welcome to Sandtoner Live Sales</string>
+    <string name="well_come_to_live_app">Welcome to Sandtoner</string>
 
     <string name="live_start">Start live streaming</string>
     <string name="record_cancel">Recording failed</string>
@@ -1173,7 +1173,7 @@
     <string name="sign_tip1">Sign in today to get %1$s points</string>
     <string name="read_tip1">%1$s people read</string>
     <string name="read_tip2">%1$s people watched</string>
-    <string name="app_name">Sandtoner Live Sales</string>
+    <string name="app_name">Sandtoner</string>
     <string name="video_title_tip">Here is the video title</string>
     <string name="str_manjian">Voucher</string>
     <string name="str_ziying">Self-operated</string>

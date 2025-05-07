@@ -119,8 +119,11 @@ public class LoginActivity extends BaseActivity implements TimeModel.TimeListner
         initThirdData();
         mImgLauncher.setImageResource(CommonAppConfig.getAppIconRes());
 
-        mSelectedCountry = CountryUtils.getCountryByCode(this, "CN");
-        updateCountryUI(mSelectedCountry);
+        mSelectedCountry = CountryUtils.getCountryByCode(this, "ZAF");
+        if (mSelectedCountry != null) {
+            updateCountryUI(mSelectedCountry);
+            selectedRegionCode = mSelectedCountry.getRegionCodeNumber();
+        }
 
         countryPickerContainer = findViewById(R.id.country_picker_container);
         tvCountryCode = findViewById(R.id.tv_country_code);

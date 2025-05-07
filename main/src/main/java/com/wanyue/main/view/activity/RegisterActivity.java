@@ -95,9 +95,13 @@ public class RegisterActivity extends BaseActivity implements TimeModel.TimeList
         countryPickerContainer = findViewById(R.id.country_picker_container);
         tvCountryCode = findViewById(R.id.tv_country_code);
 
-        mSelectedCountry = CountryUtils.getCountryByCode(this, "CN");
-        updateCountryUI(mSelectedCountry);
-        mRegisterCommitBean.setSelectedCountry(mSelectedCountry);
+        // Set default country to South Africa (ZAF)
+        mSelectedCountry = CountryUtils.getCountryByCode(this, "ZAF");
+        if (mSelectedCountry != null) {
+            updateCountryUI(mSelectedCountry);
+            selectedRegionCode = mSelectedCountry.getRegionCodeNumber();
+            mRegisterCommitBean.setSelectedCountry(mSelectedCountry);
+        }
 
         countryPickerContainer.setOnClickListener(v -> {
             CountryPickerDialog dialog = new CountryPickerDialog(this, country -> {

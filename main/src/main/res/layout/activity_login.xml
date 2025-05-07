@@ -51,7 +51,7 @@
             android:textColor="@color/textColor"
             android:textSize="@dimen/text_size_20"
             android:textStyle="bold"
-            tools:text="Sandtoner Live Sales" />
+            tools:text="Sandtoner" />
 
         <!-- Country Picker Layout -->
         <LinearLayout

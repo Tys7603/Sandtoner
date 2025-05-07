@@ -41,7 +41,12 @@ public class CountryPickerDialog extends Dialog {
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
 
         android.view.View progressBar = findViewById(R.id.progressBar);
-        if (progressBar != null) progressBar.setVisibility(android.view.View.VISIBLE);
+        EditText etSearch = findViewById(R.id.et_search_country);
+        
+        if (progressBar != null) {
+            progressBar.setVisibility(android.view.View.VISIBLE);
+            etSearch.setVisibility(android.view.View.GONE);
+        }
 
         CountryUtils.fetchCountriesFromApi(context, new CountryUtils.CountryFetchCallback() {
             @Override
@@ -53,15 +58,20 @@ public class CountryPickerDialog extends Dialog {
                     dismiss();
                 });
                 recyclerView.setAdapter(adapter);
-                if (progressBar != null) progressBar.setVisibility(android.view.View.GONE);
+                if (progressBar != null) {
+                    progressBar.setVisibility(android.view.View.GONE);
+                    etSearch.setVisibility(android.view.View.VISIBLE);
+                }
             }
             @Override
             public void onError(Exception e) {
-                if (progressBar != null) progressBar.setVisibility(android.view.View.GONE);
+                if (progressBar != null) {
+                    progressBar.setVisibility(android.view.View.GONE);
+                    etSearch.setVisibility(android.view.View.VISIBLE);
+                }
             }
         });
 
-        EditText etSearch = findViewById(R.id.et_search_country);
         etSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}

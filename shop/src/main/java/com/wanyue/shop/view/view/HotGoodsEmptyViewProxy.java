@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -23,6 +24,7 @@ public class HotGoodsEmptyViewProxy extends RxViewProxy implements BaseQuickAdap
     private RecyclerView mReclyView;
     private HotGoodsAdapter mHotGoodsAdapter;
     private int mEmptyIconId;
+    private String mEmptyText;
 
     private boolean isHideConver;
 
@@ -57,13 +59,22 @@ public class HotGoodsEmptyViewProxy extends RxViewProxy implements BaseQuickAdap
         if(inflater!=null){
             View headView=inflater.inflate(R.layout.item_head_hot_goods_empty,mContentView,false);
             ImageView imageView= headView.findViewById(R.id.img_cover);
+            TextView textView = headView.findViewById(R.id.tv_empty_text);
+            
             if(isHideConver){
                 imageView.setVisibility(View.GONE);
             }else{
-                ImgLoader.display(getActivity(),mEmptyIconId,imageView);
+                if (mEmptyText != null && !mEmptyText.isEmpty()) {
+                    imageView.setVisibility(View.GONE);
+                    textView.setVisibility(View.VISIBLE);
+                    textView.setText(mEmptyText);
+                } else {
+                    imageView.setVisibility(View.VISIBLE);
+                    textView.setVisibility(View.GONE);
+                    ImgLoader.display(getActivity(),mEmptyIconId,imageView);
+                }
             }
             mHotGoodsAdapter.setHeaderView(headView);
-
         }
         mHotGoodsAdapter.setOnItemClickListener(this);
 
@@ -87,6 +98,10 @@ public class HotGoodsEmptyViewProxy extends RxViewProxy implements BaseQuickAdap
 
     public void setEmptyIconId(int emptyIconId) {
         mEmptyIconId = emptyIconId;
+    }
+
+    public void setEmptyText(String text) {
+        mEmptyText = text;
     }
 
     @Override
