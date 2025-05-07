@@ -25,7 +25,11 @@ public class MenuUserAdapter extends BaseRecyclerAdapter<MenuBean,BaseReclyViewH
 
     @Override
     public void convert(BaseReclyViewHolder helper, MenuBean item) {
-        helper.setText(R.id.tv_name,item.getName());
+        if (item.getName().equals("Create Store")){
+            helper.setText(R.id.tv_name, "Sell On Sandtoner");
+        }else {
+            helper.setText(R.id.tv_name,item.getName());
+        }
         int id=item.getLocalIcon();
         String url=item.getPic();
         if(id!=-1&&id!=0){
