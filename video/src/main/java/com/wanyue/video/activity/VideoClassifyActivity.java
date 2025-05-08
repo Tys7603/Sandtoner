@@ -26,7 +26,7 @@ public class VideoClassifyActivity extends BaseActivity implements OnItemClickLi
 
     @Override
     public void init() {
-        setTabTitle("视频分类");
+        setTabTitle("Video Categories");
         mRecyclerView = findViewById(R.id.recyclerView);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false));

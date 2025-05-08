@@ -32,7 +32,7 @@ public class CourseListActivity extends BaseActivity {
 
     @Override
     public void init() {
-        setTabTitle("精选内容");
+        setTabTitle("Selected Content");
         mIndicator = findViewById(R.id.indicator);
         mViewPager =findViewById(R.id.viewPager);
         getCat();

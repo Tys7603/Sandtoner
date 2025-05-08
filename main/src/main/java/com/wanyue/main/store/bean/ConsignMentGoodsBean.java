@@ -41,7 +41,7 @@ public class ConsignMentGoodsBean {
 
     public String getPriceTip() {
         if(priceTip==null){
-          priceTip="售价："+ StringUtil.getPrice(price);
+          priceTip="Price: "+ StringUtil.getPrice(price);
         }
         return priceTip;
     }

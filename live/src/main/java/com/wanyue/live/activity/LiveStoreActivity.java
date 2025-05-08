@@ -88,7 +88,7 @@ public class LiveStoreActivity extends BaseActivity implements View.OnClickListe
             LiveShopAPI.getShopSaleNum(mUserBean.getId(), new ParseSingleHttpCallback<String>("nums") {
                 @Override
                 public void onSuccess(String data) {
-                    mTvGoodsCount.setText(data+"件");
+                    mTvGoodsCount.setText(data+" items");
                 }
             });
         }

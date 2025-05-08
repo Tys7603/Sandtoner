@@ -28,7 +28,7 @@ public class VideoListActivity extends BaseActivity {
 
     @Override
     public void init() {
-        setTabTitle("视频");
+        setTabTitle("Video");
         mIndicator = findViewById(R.id.indicator);
         mViewPager =findViewById(R.id.viewPager);
         getCat();

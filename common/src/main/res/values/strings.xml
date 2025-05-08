@@ -992,7 +992,7 @@
     <string name="goods_list">Product list</string>
     <string name="default_tag">Default</string>
     <string name="shop_cart">Cart</string>
-    <string name="customer_service">Customer Service</string>
+    <string name="customer_service">Customer\nService</string>
     <string name="add_shop_cart">Add to Cart</string>
     <string name="coupon_add_point">Coupon:</string>
     <string name="coupon">Coupon</string>
@@ -1191,7 +1191,7 @@
     <string name="str_shop_cart">Cart</string>
     <string name="str__mine">Account</string>
     <string name="str_sign">Sign in</string>
-    <string name="str_daixiao_shouyi">Consignment income</string>
+    <string name="str_daixiao_shouyi">Sales revenue</string>
     <string name="str_quick_add">One-click add</string>
     <string name="str_send_code_tip">The gifted points have been sent to your account</string>
     <string name="str_i_konw">I know</string>
@@ -1270,7 +1270,7 @@
     <string name="str_tuiguang_1">Yesterday\'s\n income</string>
     <string name="str_tuiguang_2">Number of\n Agents</string>
     <string name="str_tuiguang_3">Agent\'s Orders</string>
-    <string name="str_xiajia">Off the shelves</string>
+    <string name="str_xiajia">Take off the shelf</string>
     <string name="str_xiaofei_1">Total assets (yuan)</string>
     <string name="str_xiaofei_2">Cumulative consumption (yuan)</string>
     <string name="str_xiaofei_3">Billing records</string>

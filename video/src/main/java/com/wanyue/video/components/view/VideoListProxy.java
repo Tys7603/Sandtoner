@@ -29,7 +29,7 @@ public abstract class VideoListProxy extends SingleRefreshViewProxy<VideoBean> i
         if(mLevel==null){
            mRefreshView.setEmptyLevel(1);
            mRefreshView.setIconId(R.mipmap.icon_default_no_data);
-           mRefreshView.setNoDataTip("暂无视频");
+           mRefreshView.setNoDataTip("No videos available");
         }else{
             mRefreshView.setEmptyLevel(mLevel);
             mRefreshView.setIconId(mIconid);
