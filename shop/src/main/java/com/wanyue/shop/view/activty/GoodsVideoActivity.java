@@ -22,7 +22,7 @@ public class GoodsVideoActivity extends BaseActivity {
     private String mId;
     @Override
     public void init() {
-        setTabTitle("商品关联视频");
+        setTabTitle("Product Related Videos");
         mId=getIntent().getStringExtra(Constants.KEY_ID);
         mContainer =  findViewById(R.id.container);
         VideoListProxy videoListProxy=new VideoListProxy() {

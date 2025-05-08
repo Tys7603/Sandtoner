@@ -45,9 +45,9 @@ public class StoreAtGoodsPannelViewProxy extends RxViewProxy {
         if(mStoreData!=null){
             mTvStoreName.setText(mStoreData.getName());
             ImgLoader.display(getActivity(),mStoreData.getAvatar(),mImgStoreAvatar);
-            mTvEvaluate1.setText(getEvaluateTip("宝贝描述 ",mStoreData.getShopScore1()));
-            mTvEvaluate2.setText(getEvaluateTip("商家服务 ",mStoreData.getShopScore2()));
-            mTvEvaluate3.setText(getEvaluateTip("物流服务 ",mStoreData.getShopScore3()));
+            mTvEvaluate1.setText(getEvaluateTip("Product Description",mStoreData.getShopScore1()));
+            mTvEvaluate2.setText(getEvaluateTip("Seller Service",mStoreData.getShopScore2()));
+            mTvEvaluate3.setText(getEvaluateTip("Logistics Service",mStoreData.getShopScore3()));
         }
 
         if(mStoreData.getShoptype()==2){
@@ -60,7 +60,7 @@ public class StoreAtGoodsPannelViewProxy extends RxViewProxy {
 
     private CharSequence getEvaluateTip(String left,String right) {
         int textcolor= !StringUtil.contains(right,"高")? ResourceUtil.getColor(R.color.textColor2):ResourceUtil.getColor(R.color.global);
-       return SpannableStringUtils.getBuilder(left).append(right).setForegroundColor(textcolor).setBold().create();
+       return SpannableStringUtils.getBuilder(left + "\n").append(right).setForegroundColor(textcolor).setBold().create();
     }
 
     @Override

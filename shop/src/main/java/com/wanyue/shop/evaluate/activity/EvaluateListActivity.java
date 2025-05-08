@@ -64,7 +64,7 @@ public class EvaluateListActivity extends BaseActivity {
 
     @Override
     public void init() {
-        setTabTitle("商品评分");
+        setTabTitle("Product Rating");
         mId=getIntent().getStringExtra(Constants.KEY_ID);
         mStar = findViewById(R.id.star);
         mVpTopContainer = findViewById(R.id.vp_top_container);

@@ -33,7 +33,7 @@
             android:textSize="@dimen/text_size_15"
             android:textColor="@color/textColor"
             android:gravity="center"
-            android:text="商品"
+            android:text="Products"
             android:button="@null"
             android:id="@+id/btn_0"
             />
@@ -44,7 +44,7 @@
             android:textSize="@dimen/text_size_15"
             android:textColor="@color/textColor"
             android:gravity="center"
-            android:text="评价"
+            android:text="Reviews"
             android:button="@null"
             android:id="@+id/btn_1"
             />

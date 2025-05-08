@@ -113,14 +113,14 @@ public class AddressInfoBean implements Parcelable {
 
     public String getNamePhoneShowInfo() {
         if(namePhoneShowInfo==null){
-           namePhoneShowInfo=StringUtil.contact("收货人:\t"+name,"\t\t",phone);
+           namePhoneShowInfo=StringUtil.contact("Recipient:\t"+name,"\t\t",phone);
         }
         return namePhoneShowInfo;
     }
 
     public String getDetailArea() {
         if(TextUtils.isEmpty(detailArea)){
-           detailArea= StringUtil.contact("收货地址:\t",province,"\t",city,"\t",area,"\t","\t",address);
+           detailArea= StringUtil.contact("Shipping address:\t",province,"\t",city,"\t",area,"\t","\t",address);
         }
         return detailArea;
     }
