@@ -516,7 +516,7 @@ public class ShopCartViewProxy extends RxViewProxy implements View.OnClickListen
             ToastUtil.show(R.string.select_goods_tip);
             return;
         }
-        DialogUitl.showSimpleDialog(getActivity(), "是否要删除商品?", new DialogUitl.SimpleCallback() {
+        DialogUitl.showSimpleDialog(getActivity(), "Do you want to delete the product?", new DialogUitl.SimpleCallback() {
             @Override
             public void onConfirmClick(Dialog dialog, String content) {
                 if(mShopCartModel!=null){
