@@ -68,7 +68,7 @@
     <string name="goods_tip_13">Get product information</string>
     <string name="goods_tip_14">View the same product</string>
     <string name="goods_tip_16">Invalid advertising link</string>
-    <string name="goods_tip_17">Products on sale</string>
+    <string name="goods_tip_17">In Stock</string>
 
     <string name="goods_tip_18">Go to buy</string>
     <string name="goods_tip_19">No products are currently on sale</string>
@@ -92,7 +92,7 @@
     <string name="goods_tip_37">Manage to remove from shelves</string>
     <string name="goods_tip_38">Removed from shelves</string>
     <string name="goods_tip_39">On sale (%1$s)</string>
-    <string name="goods_un_saled">Removed from shelves</string>
+    <string name="goods_un_saled">By Order</string>
     <string name="live_send_gift">Gift</string>
     <string name="live_send_gift_4">Backpack</string>
     <string name="live_send_gift_5">Props</string>
@@ -1003,7 +1003,7 @@
     <string name="sale_num_tip">Sales:%1$s%2$s</string>
     <string name="evaluate_tip">User Rating(%1$s)</string>
     <string name="high_praise_rate">Praise Rate</string>
-    <string name="original_tip">Original price: ¥%1$s</string>
+    <string name="original_tip">Original price: R%1$s</string>
     <string name="specs">Specifications</string>
     <string name="select_specs_tip">Please select specifications</string>
     <string name="small_program_tip">Long press to identify the applet and buy it now</string>
@@ -1045,12 +1045,12 @@
     <string name="coin_pay_coin">Balance payment</string>
     <string name="use_coin">Available balance: %1$s</string>
     <string name="order_message">Order information</string>
-    <string name="user_order_total">Consumption order:\t%1$s\t\t\tTotal consumption:\t %2$s</string>
+    <string name="user_order_total">Total orders:\t%1$s\t\t\tTotal purchases amount:\t %2$s</string>
 
-    <string name="mail_001">To be paid\n\n%1$s</string>
-    <string name="mail_002">Waiting for shipment\n\n%1$s</string>
-    <string name="mail_003">Waiting for receipt\n\n%1$s</string>
-    <string name="mail_004">Waiting for evaluation\n\n%1$s</string>
+    <string name="mail_001">To Pay\n\n%1$s</string>
+    <string name="mail_002">To Ship\n\n%1$s</string>
+    <string name="mail_003">To Receive\n\n%1$s</string>
+    <string name="mail_004">To Review\n\n%1$s</string>
     <string name="mail_005">Refund</string>
     <string name="mail_006">Completed\n\n%1$s</string>
     <string name="custom_service_tip1">Contact customer service</string>
@@ -1134,7 +1134,7 @@
     <string name="profit_coin_error">The amount exceeds the amount that can be withdrawn</string>
     <string name="profit_coin_error2">The amount that can be withdrawn cannot be 0</string>
     <string name="order_today">Today\'s order</string>
-    <string name="order_total2">Total order</string>
+    <string name="order_total2">Total orders</string>
     <string name="onther">Others</string>
     <string name="add_goods">Add goods</string>
     <string name="saled_num">%1$s sold</string>
@@ -1207,11 +1207,11 @@
     <string name="str_follwed">Already followed</string>
     <string name="str_zhongcao">This is the text content of the grass planting text I posted This is the text content of the grass planting text I posted This is the text content of the grass planting text I posted This is the content of the grass planting text I posted </string>
     <string name="str_tixian_tip1">Add withdrawal account</string>
-    <string name="str_shouyi_tip1">Today\'s income (yuan)</string>
-    <string name="str_shouyi_tip4">Unsettled (yuan)</string>
+    <string name="str_shouyi_tip1">Today\'s income (Rand)</string>
+    <string name="str_shouyi_tip4">Account Balance (Rand)</string>
     <string name="str_shouyi_tip5">Settlement record</string>
-    <string name="str_shouyi_tip2">Total income (yuan)</string>
-    <string name="str_shouyi_tip3">Settled (yuan)</string>
+    <string name="str_shouyi_tip2">Total income (Rand)</string>
+    <string name="str_shouyi_tip3">Settled (Rand)</string>
     <string name="str_zrsy">Yesterday\'s income</string>
     <string name="str_shouyi_tip6">Amount available for withdrawal</string>
 
@@ -1234,14 +1234,14 @@
     <string name="str_shouyi_tip7">Store revenue</string>
     <string name="str_shouyi_tip8">Today\'s revenue (yuan)</string>
     <string name="str_shouyi_tip9">Total revenue (yuan)</string>
-    <string name="str_shouyi_tip10">Settled (yuan)</string>
-    <string name="str_shouyi_tip11">Unsettled (yuan)</string>
+    <string name="str_shouyi_tip10">Settled (Rand)</string>
+    <string name="str_shouyi_tip11">Account Balance (Rand)</string>
     <string name="str_sao">Scan</string>
     <string name="str_msg">Message</string>
-    <string name="str_shouyi_tip12">Agency revenue</string>
+    <string name="str_shouyi_tip12">Consignment sales revenue</string>
 
     <string name="str_cai_like">Guess you like</string>
-    <string name="str_daixiao_order">Consignment order</string>
+    <string name="str_daixiao_order">Consignment sales orders</string>
     <string name="str_look_order">View all orders</string>
     <string name="str_baozheng">30-day refund, 15-day exchange</string>
     <string name="str_store_order">Store order</string>
@@ -1280,7 +1280,7 @@
     <string name="str_order_">Please go to the PC merchant backend to publish products/manage orders</string>
     <string name="str__01">Copy address</string>
 
-    <string name="str_store_mannger">Product management</string>
+    <string name="str_store_mannger">Product Management</string>
     <string name="str_live_tip1">Say something...</string>
     <string name="str_live_tip2">Share the live broadcast room</string>
     <string name="str_live_tip3">Share to WeChat</string>

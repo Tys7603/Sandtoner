@@ -17,7 +17,7 @@ public class BusniessStoreActivity extends BaseActivity implements BaseQuickAdap
     private SelectStoreAdapter mStoreAdapter;
     @Override
     public void init() {
-        setTabTitle("精选旺铺");
+        setTabTitle("Featured Shops");
         mRefreshView =findViewById(R.id.refreshView);
         mRefreshView.setReclyViewSetting(RxRefreshView.ReclyViewSetting.createLinearSetting(this,1));
 

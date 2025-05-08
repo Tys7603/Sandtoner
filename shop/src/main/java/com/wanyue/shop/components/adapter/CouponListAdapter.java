@@ -29,9 +29,9 @@ public class CouponListAdapter extends BaseCouponListAdapter<CouponBean> {
         btnGetCoupon.setChecked(isGet);
         helper.setImageResouceId(R.drawable.bg_coupon_vaild,R.id.img_head_bg);
         if(isGet){
-            btnGetCoupon.setText("已领取");
+            btnGetCoupon.setText("Received");
         }else{
-            btnGetCoupon.setText("立即领取");
+            btnGetCoupon.setText("Claim Now");
         }
     }
 }

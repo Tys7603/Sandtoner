@@ -10,7 +10,7 @@ public class GreateSelectActivity extends BaseActivity {
 
     @Override
     public void init() {
-        setTabTitle("今日优选");
+        setTabTitle("Today's Picks");
         mContainer = (ViewGroup) findViewById(R.id.container);
         MainHomeGreateSelectViewProxy  selectViewProxy=new MainHomeGreateSelectViewProxy();
         getViewProxyMannger().addViewProxy(mContainer,selectViewProxy,selectViewProxy.getDefaultTag());

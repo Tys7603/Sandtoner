@@ -25,7 +25,7 @@ public class GoodsFootActivity extends BaseActivity {
 
     @Override
     public void init() {
-        setTabTitle("我的足迹");
+        setTabTitle("My Footprints");
         mRefreshView = findViewById(R.id.refreshView);
         mRefreshView.setEmptyLevel(1);
         mRefreshView.setIconId(R.mipmap.icon_default_no_data);

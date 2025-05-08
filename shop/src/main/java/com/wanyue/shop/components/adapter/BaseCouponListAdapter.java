@@ -31,11 +31,11 @@ public abstract class BaseCouponListAdapter<T extends CouponBean> extends BaseRe
         if(tvCouponType==null){
 
         }else if(StringUtil.equals(item.getType(),"0")){
-            tvCouponType.setText("通用卷");
+            tvCouponType.setText("Universal Coupon");
         }else if(StringUtil.equals(item.getType(),"1")){
-            tvCouponType.setText("品类券");
+            tvCouponType.setText("Category Coupon");
         }else if(StringUtil.equals(item.getType(),"2")){
-            tvCouponType.setText("商品卷");
+            tvCouponType.setText("Product Coupon");
         }
 
         TextView tvStoreSelf=helper.getView(R.id.tv_store_self);

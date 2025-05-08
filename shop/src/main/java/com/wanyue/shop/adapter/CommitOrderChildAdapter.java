@@ -34,7 +34,7 @@ public class CommitOrderChildAdapter extends BaseRecyclerAdapter<ShopCartBean, B
             SpecsValueBean specsValueBean=goodsBean.getAttrInfo();
             if(specsValueBean!=null){
                 helper.setText(R.id.tv_field,specsValueBean.getSuk());
-                String price = "¥" + specsValueBean.getPrice();
+                String price = "R" + specsValueBean.getPrice();
                 helper.setText(R.id.tv_price, price);
             }
         }

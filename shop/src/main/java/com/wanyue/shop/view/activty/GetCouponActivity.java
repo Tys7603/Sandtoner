@@ -12,7 +12,7 @@ public class GetCouponActivity extends BaseActivity {
     private ViewGroup mContainer;
     @Override
     public void init() {
-        setTabTitle("领券中心");
+        setTabTitle("Coupon Center");
         mContainer = (ViewGroup) findViewById(R.id.container);
         StoreCouponListVIewProxy storeCouponListVIewProxy = new StoreCouponListVIewProxy();
         getViewProxyMannger().addViewProxy(mContainer,storeCouponListVIewProxy,storeCouponListVIewProxy.getDefaultTag());

@@ -30,7 +30,7 @@ public class SelectStoreAdapter extends BaseRecyclerAdapter<GoodsSelectStoreBean
     @Override
     protected void convert(@NonNull BaseReclyViewHolder helper, GoodsSelectStoreBean storeBean) {
         helper.setText(R.id.tv_store_name,storeBean.getName());
-        helper.setText(R.id.tv_fans,"粉丝 :"+storeBean.getFansNum());
+        helper.setText(R.id.tv_fans,"Followers :"+storeBean.getFansNum());
         helper.setImageUrl(storeBean.getAvatar(),R.id.img_store_avator);
         View tvSelf=helper.getView(R.id.tv_store_self);
         if(storeBean.getShoptype()==2){

@@ -31,7 +31,7 @@
         />
 
     <TextView
-        android:text="自营"
+        android:text="Self-operated"
         android:id="@+id/tv_store_self"
         app:layout_constraintTop_toTopOf="@id/tv_store_name"
         app:layout_constraintBottom_toBottomOf="@id/tv_store_name"

@@ -33,7 +33,7 @@ import java.text.DecimalFormat;
 
 
 public class UIFactory {
-    public static final String UNIT="¥";
+    public static final String UNIT="R";
    
     private static int colorPwd=-1;
     private static int colorFree=-1;
@@ -183,7 +183,7 @@ public class UIFactory {
         if(df==null){
            df = new DecimalFormat("#0.00");
         }
-        String formatPrice="¥"+df.format(price);
+        String formatPrice="R"+df.format(price);
         return formatPrice;
     }
 
@@ -196,7 +196,7 @@ public class UIFactory {
         }
         ProjectBean projectBean;
 
-        String formatPrice="¥"+df.format(price);
+        String formatPrice="R"+df.format(price);
         return formatPrice;
     }
 
@@ -209,6 +209,6 @@ public class UIFactory {
 
 
     public static String getFormatPrice(String money) {
-        return "¥"+money;
+        return "R"+money;
     }
 }

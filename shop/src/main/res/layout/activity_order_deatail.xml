@@ -240,7 +240,7 @@
                         android:text="@string/order_detail_tip4"
                         style="@style/order_detail_group_tv_tip" />
                     <TextView
-                        tools:text="¥1.0"
+                        tools:text="R1.0"
                         style="@style/order_detail_group_tv_content"
                         android:id="@+id/tv_order_price"
                         />
@@ -254,7 +254,7 @@
                         android:text="@string/order_detail_tip5"
                         style="@style/order_detail_group_tv_tip" />
                     <TextView
-                        tools:text="¥1.0"
+                        tools:text="R1.0"
                         style="@style/order_detail_group_tv_content"
                         android:id="@+id/tv_yunfei"
                         />

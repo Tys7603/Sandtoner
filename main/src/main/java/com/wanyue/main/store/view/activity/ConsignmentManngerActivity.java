@@ -32,10 +32,10 @@ public class ConsignmentManngerActivity extends BaseActivity {
 
     @Override
     public void init() {
-        setTabTitle("Product management");
+        setTabTitle("Product Management");
         mIndicator = (MagicIndicator) findViewById(R.id.indicator);
         mViewPager = (ViewPager) findViewById(R.id.viewPager);
-        List<String>titleArray= ListUtil.asList("在售","已下架");
+        List<String>titleArray= ListUtil.asList("In Stock","By Order");
         initViewProxy();
         mIndicatorAdapter=new ConsignmentManngerIndicatorAdapter(titleArray,this,mViewPager);
         CommonNavigator commonNavigator = new CommonNavigator(this);
@@ -71,7 +71,7 @@ public class ConsignmentManngerActivity extends BaseActivity {
             @Override
             public void onSuccess(Integer data) {
                 if(mIndicatorAdapter!=null){
-                   mIndicatorAdapter.notifyTitle(StringUtil.contact("已下架","\t",data),1);
+                   mIndicatorAdapter.notifyTitle(StringUtil.contact("By Order","\t",data),1);
                 }
             }
         });
@@ -83,7 +83,7 @@ public class ConsignmentManngerActivity extends BaseActivity {
             @Override
             public void onSuccess(Integer data) {
                 if(mIndicatorAdapter!=null){
-                   mIndicatorAdapter.notifyTitle(StringUtil.contact("在售","\t",data),0);
+                   mIndicatorAdapter.notifyTitle(StringUtil.contact("In Stock","\t",data),0);
                 }
             }
         });

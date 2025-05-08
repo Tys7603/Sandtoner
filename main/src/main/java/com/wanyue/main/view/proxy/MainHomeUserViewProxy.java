@@ -343,11 +343,11 @@ public class MainHomeUserViewProxy extends RxViewProxy implements View.OnClickLi
     private void openShop(boolean isShop, List<MainUserSectionBean> data) {
         if(isShop){
             MainUserSectionBean mainUserSectionBean1=new MainUserSectionBean();
-            mainUserSectionBean1.setTitle("My Consignment");
+            mainUserSectionBean1.setTitle("Sales Management");
             mainUserSectionBean1.setId(MY_CONSIGNMENT);
             mainUserSectionBean1.setRightTitle("Check the details");
-            List<MenuBean>list=ListUtil.asList(new MenuBean("Product management",CONSIGNMENT_GOOD_MANNGER,R.drawable.icon_main_user_good_mannger),
-            new MenuBean("Consignment order",CONSIGNMENT_ORDER,R.drawable.icon_main_user_consignment_order),
+            List<MenuBean>list=ListUtil.asList(new MenuBean("Product Management",CONSIGNMENT_GOOD_MANNGER,R.drawable.icon_main_user_good_mannger),
+            new MenuBean("Consignment sales orders",CONSIGNMENT_ORDER,R.drawable.icon_main_user_consignment_order),
             new MenuBean("Agency income",CONSIGNMENT_MONEY,R.drawable.icon_main_user_consignment_money)
             );
             data.add(mainUserSectionBean1);

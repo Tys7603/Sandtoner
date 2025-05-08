@@ -34,7 +34,7 @@ public class StoreAdapter extends BaseRecyclerAdapter<StoreBean, BaseReclyViewHo
     @Override
     protected void convert(@NonNull BaseReclyViewHolder helper, StoreBean storeBean) {
         helper.setText(R.id.tv_store_name,storeBean.getName());
-        helper.setText(R.id.tv_fans,"粉丝 :"+storeBean.getFansNum());
+        helper.setText(R.id.tv_fans,"Followers :"+storeBean.getFansNum());
         helper.setText(R.id.tv_addr,storeBean.getAddr());
         helper.setImageUrl(storeBean.getAvatar(),R.id.img_store_avator);
 

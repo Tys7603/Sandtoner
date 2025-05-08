@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
 
-    <string name="video_say_something">说点什么吧~</string>
+    <string name="video_say_something">Say something~~</string>
     <string name="video_download_success">视频下载成功</string>
     <string name="video_download_failed">视频下载失败</string>
     <string name="video_no_more_video">没有更多视频</string>
     <string name="video_comment">评论</string>
     <string name="video_comment_cannot_self">不能给自己点赞</string>
-    <string name="video_no_comment">暂无评论，快来抢沙发吧</string>
+    <string name="video_no_comment">No comments yet, be the first to comment!</string>
     <string name="video_comment_reply">回复</string>
     <string name="video_comment_expand">展开更多评论</string>
     <string name="video_comment_collapsed">收起</string>

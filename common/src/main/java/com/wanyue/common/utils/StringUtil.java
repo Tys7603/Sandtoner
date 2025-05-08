@@ -368,7 +368,7 @@ public class StringUtil {
         if(TextUtils.isEmpty(price)){
             return "";
         }
-        return "¥"+price;
+        return "R"+price;
     }
     public static List<String> split(String string){
        string=string.replace(" ","");
@@ -432,12 +432,12 @@ public class StringUtil {
     private static DecimalFormat df;
     public static String getFormatPrice(double price) {
         if(price==0){
-            return "¥ 0";
+            return "R 0";
         }
         if(df==null){
             df = new DecimalFormat("#0.00");
         }
-        String formatPrice="¥ "+df.format(price);
+        String formatPrice="R "+df.format(price);
         return formatPrice;
     }
 

@@ -79,7 +79,7 @@ public class IntegralActivity extends BaseActivity implements CalendarView.OnMon
     private void checkSignUIState() {
         if(mData.getIsSign()==1){
             setCurrentDaySign();
-            mBtnSign.setText("已签到");
+            mBtnSign.setText("Sign In");
             mBtnSign.setEnabled(false);
             Drawable drawable=ResourceUtil.getDrawable(R.drawable.bg_color_global_radius_20,false);
             drawable.setTint(ResourceUtil.getColor(R.color.gray_dc));

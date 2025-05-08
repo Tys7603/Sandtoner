@@ -281,7 +281,7 @@ public class Constants {
 
 
     public static final String MONEY = "money";
-    public static final String MONEY_SIGN = "¥";
+    public static final String MONEY_SIGN = "R";
 
 
 

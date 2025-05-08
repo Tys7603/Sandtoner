@@ -2,7 +2,7 @@ package com.wanyue.common.utils;
 import com.wanyue.common.CommonAppConfig;
 
 public class MoneyHelper {
-    public static final String RMB_UNIT="¥";
+    public static final String RMB_UNIT="R";
     public static final String PLATFORM_UNIT= CommonAppConfig.getCoinName();
     public static final int TYPE_RMB=1; //人名币类型
     public static final int TYPE_PLATFORM=2;//平台币类型

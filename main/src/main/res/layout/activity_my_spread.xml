@@ -99,7 +99,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="累积已提"
+            android:text="Total Withdrawn"
             android:textSize="@dimen/text_size_12"
             android:textColor="#FFE6E6E6"
             app:layout_constraintLeft_toLeftOf="@id/tv_total_get_money"

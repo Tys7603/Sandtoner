@@ -31,7 +31,7 @@ public class MyConsignmentActivity extends BaseActivity implements View.OnClickL
 
     @Override
     public void init() {
-        setTabTitle("My Consignment");
+        setTabTitle("Sales Management");
         mBtnOrderToday = (TextView) findViewById(R.id.btn_order_today);
         mBtnOrderTotal = (TextView) findViewById(R.id.btn_order_total);
         mBtnGoodsSale = (TextView) findViewById(R.id.btn_goods_sale);

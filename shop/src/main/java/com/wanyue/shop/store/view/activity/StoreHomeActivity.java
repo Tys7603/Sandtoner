@@ -35,7 +35,7 @@ public class StoreHomeActivity extends BaseActivity {
 
     @Override
     public void init() {
-        setTabTitle("店铺介绍");
+        setTabTitle("Store Introduction");
         mImgStoreAvator = findViewById(R.id.img_store_avator);
         mTvStoreName = (TextView) findViewById(R.id.tv_store_name);
         mTvFans = (TextView) findViewById(R.id.tv_fans);
@@ -46,7 +46,7 @@ public class StoreHomeActivity extends BaseActivity {
         String json=getIntent().getStringExtra(Constants.DATA);
 
         StoreBean storeBean=JSON.parseObject(json,StoreBean.class);
-        mTvFans.setText("粉丝："+storeBean.getFansNum());
+        mTvFans.setText("Followers: "+storeBean.getFansNum());
         mTvStoreName.setText(storeBean.getName());
         ImgLoader.display(this,storeBean.getAvatar(),mImgStoreAvator);
         mTvAddr.setText(storeBean.getAddr());

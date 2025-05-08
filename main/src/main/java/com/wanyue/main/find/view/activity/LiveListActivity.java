@@ -36,7 +36,7 @@ public class LiveListActivity extends BaseActivity {
 
     @Override
     public void init() {
-        setTabTitle("直播");
+        setTabTitle("Live Stream");
         mIndicator = findViewById(com.wanyue.video.R.id.indicator);
         mViewPager =findViewById(com.wanyue.video.R.id.viewPager);
         getCatData();
@@ -102,7 +102,7 @@ public class LiveListActivity extends BaseActivity {
 
             normalFindListProxy.setIconId(R.mipmap.icon_default_no_data);
             normalFindListProxy.setLevel(1);
-            normalFindListProxy.setTitle("暂无直播");
+            normalFindListProxy.setTitle("No live stream available");
             viewProxyList.add(normalFindListProxy);
         }
         return viewProxyList;

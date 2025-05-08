@@ -80,10 +80,10 @@ public class StorePageVIewProxy extends BaseStoreChildVIewProxy {
 
     private void checkFollowButtonAnswer() {
         if(mStoreBean.getIsFollow()==1){
-           mTvFollow.setText("已关注");
+           mTvFollow.setText("Following");
            mTvFollow.setBackground(ResourceUtil.getDrawable(R.drawable.bg_color_gray1_radius_15,false));
         }else{
-            mTvFollow.setText("关注");
+            mTvFollow.setText("Follow");
             mTvFollow.setBackground(ResourceUtil.getDrawable(R.drawable.bg_color_global_radius_15,false));
         }
     }
@@ -125,7 +125,7 @@ public class StorePageVIewProxy extends BaseStoreChildVIewProxy {
 
 
     private String[] getTitleArray() {
-        String[]titleArray={"推荐","新品","优惠券"};
+        String[]titleArray={"Recommendations","New Products","Coupons"};
         return titleArray;
     }
 
@@ -161,7 +161,7 @@ public class StorePageVIewProxy extends BaseStoreChildVIewProxy {
         if(!isInit()){
             return;
         }
-        mTvTime.setText("粉丝："+mStoreBean.getFansNum());
+        mTvTime.setText("Followers: "+mStoreBean.getFansNum());
         mTvStoreName.setText(mStoreBean.getName());
         ImgLoader.display(getActivity(),mStoreBean.getAvatar(),mImgStoreAvator);
         checkFollowButtonAnswer();
@@ -178,7 +178,7 @@ public class StorePageVIewProxy extends BaseStoreChildVIewProxy {
             return;
         }
 
-        WebViewActivity.forward(getActivity(),mStoreBean.getContentUrl(),"店铺介绍");
+        WebViewActivity.forward(getActivity(),mStoreBean.getContentUrl(),"Store Introduction");
     }
 
 

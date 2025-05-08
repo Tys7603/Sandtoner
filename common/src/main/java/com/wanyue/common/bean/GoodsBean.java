@@ -93,7 +93,7 @@ public class GoodsBean implements Parcelable {
 
     public String getUnitPrice() {
         if(unitPrice==null){
-           unitPrice= "¥"+mPriceNow;
+           unitPrice= "R"+mPriceNow;
         }
         return unitPrice;
     }

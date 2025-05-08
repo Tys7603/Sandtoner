@@ -219,7 +219,7 @@ public class ShopCartAdapter <T extends MultiItemEntity> extends BaseMutiRecycle
             SpecsValueBean specsValueBean=goodsBean.getAttrInfo();
             if(specsValueBean!=null){
                helper.setText(R.id.tv_field, WordUtil.getString(R.string.goods_field_tip,specsValueBean.getSuk()));
-                String price = "¥" + specsValueBean.getPrice();
+                String price = "R" + specsValueBean.getPrice();
                 helper.setText(R.id.tv_price, price);
             }
         }
