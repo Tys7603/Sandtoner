@@ -86,7 +86,7 @@ public  class AddressAdapter extends BaseRecyclerAdapter<AddressInfoBean, BaseRe
             @Override
             public void onNextTo(Boolean aBoolean) {
                 if(aBoolean){
-                    ToastUtil.show("设置成功");
+                    ToastUtil.show("Add new address");
                   changeSelect(position);
                 }
             }
