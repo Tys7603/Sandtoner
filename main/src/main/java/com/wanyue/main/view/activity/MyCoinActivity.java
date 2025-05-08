@@ -30,7 +30,7 @@ public class MyCoinActivity extends BaseActivity implements View.OnClickListener
 
     @Override
     public void init() {
-        setTabTitle("我的余额");
+        setTabTitle("My Balance");
         mContainer = (ViewGroup) findViewById(R.id.container);
         mTvLeftTop = (TextView) findViewById(R.id.tv_left_top);
         mTvLeftBottom = (TextView) findViewById(R.id.tv_left_bottom);

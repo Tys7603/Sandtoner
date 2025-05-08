@@ -12,6 +12,8 @@
         android:scaleType="centerCrop"
         android:src="@drawable/bg_login_back" />
 
+    <!-- Xóa hoặc comment nút đăng ký ở góc trên -->
+    <!--
     <TextView
         android:id="@+id/btn_register"
         android:layout_width="wrap_content"
@@ -25,6 +27,7 @@
         android:text="@string/login_immediately_register"
         android:textColor="@color/textColor2"
         android:textSize="@dimen/text_size_13" />
+    -->
 
 
     <LinearLayout
@@ -144,18 +147,37 @@
             android:layout_height="1px"
             android:background="@color/gray6" />
 
-        <Button
-            android:id="@+id/btn_login"
+        <!-- Thay thế nút LOGIN cũ và thêm layout mới cho 2 nút ở phía dưới cùng -->
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/button_item_height"
+            android:layout_height="wrap_content"
             android:layout_marginTop="39dp"
-            android:background="@drawable/bg_btn_primary"
-            android:elevation="1dp"
-            android:enabled="false"
-            android:gravity="center"
-            android:text="@string/login_immediately_login"
-            android:textColor="@color/white"
-            android:textSize="@dimen/text_size_15" />
+            android:layout_marginBottom="30dp"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btn_login"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_btn_login_white"
+                android:text="LOGIN"
+                android:textColor="@color/global"
+                android:textSize="@dimen/text_size_15"
+                android:layout_marginEnd="8dp"/>
+
+            <Button
+                android:id="@+id/btn_register"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_btn_primary"
+                android:text="JOIN US"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_15"
+                android:layout_marginStart="8dp"/>
+        </LinearLayout>
 
         <Space
             android:layout_width="0dp"

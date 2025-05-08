@@ -87,9 +87,9 @@ public class SingleMonthView2 extends MonthView {
                    mCurDayTextPaint);
 
             if(hasScheme){
-                expand="已签";
+                expand="Signed";
             }else{
-                expand="今";
+                expand="Today";
             }
             float line2=mTextBaseLine + y - dipToPx(getContext(),1)+(metrics.bottom - metrics.top) / 2;
             canvas.drawText(expand,

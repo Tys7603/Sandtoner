@@ -112,6 +112,9 @@ public class LoginActivity extends BaseActivity implements TimeModel.TimeListner
     private String selectedRegionCode = "86";
     private String selectedCountryFlag = "flag_cn";
 
+    private static final long CLICK_DEBOUNCE_TIME = 1000; // 1 second debounce time
+    private long mLastClickTime = 0;
+
     @Override
     public void init() {
         mBtnTip.setText(getString(R.string.login_tip_2));
@@ -213,6 +216,12 @@ public class LoginActivity extends BaseActivity implements TimeModel.TimeListner
 
     @OnClick(R2.id.btn_get_code)
     public void getCode() {
+        long currentTime = System.currentTimeMillis();
+        if (currentTime - mLastClickTime < CLICK_DEBOUNCE_TIME) {
+            return; // Ignore rapid clicks
+        }
+        mLastClickTime = currentTime;
+
         final String phoneNum = mTvPhone.getText().toString();
         if (!ValidatePhoneUtil.validateMobileNumber(phoneNum)) {
             mTvPhone.setError(WordUtil.getString(R.string.login_phone_error));

@@ -230,7 +230,7 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
 
     private void openAuthDialog() {
         DialogUitl.Builder builder = new DialogUitl.Builder(this);
-        builder.setTitle("开通店铺")
+        builder.setTitle("Activate Shop")
                 .setContent("你未认证开通店铺，无法进行直播")
                 .setConfrimString("前往认证")
                 .setCancelable(true)

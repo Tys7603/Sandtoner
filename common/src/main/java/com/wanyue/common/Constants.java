@@ -31,7 +31,7 @@ public class Constants {
     public static final String VIDEO_FACE_OPEN = "videoOpenFace";
     public static final String VIDEO_FACE_HEIGHT = "videoFaceHeight";
 
-    public static final String DIAMONDS = "钻石";
+    public static final String DIAMONDS = "LEMON";
     public static final String VOTES = "映票";
     public static final String PAY_ALI_NOT_ENABLE = "支付宝未接入";
     public static final String PAY_WX_NOT_ENABLE = "微信支付未接入";

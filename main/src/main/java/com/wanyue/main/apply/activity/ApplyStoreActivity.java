@@ -28,7 +28,7 @@ public class ApplyStoreActivity extends BaseActivity {
 
     @Override
     public void init() {
-        setTabTitle("开通店铺");
+        setTabTitle("Activate Shop");
         mVpContainer =  findViewById(R.id.vp_container);
     }
 

@@ -56,7 +56,7 @@ public abstract class ProjectListProxy extends RxViewProxy implements BaseQuickA
         if(!TextUtils.isEmpty(mEmptyHint)){
            mRefreshView.setNoDataTip(mEmptyHint);
         }else{
-            mRefreshView.setNoDataTip("暂无内容");
+            mRefreshView.setNoDataTip("No content available");
         }
 
         mProjectListAdapter.setOnItemClickListener(this);

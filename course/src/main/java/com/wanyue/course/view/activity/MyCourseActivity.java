@@ -27,9 +27,9 @@ public class MyCourseActivity extends BaseActivity {
 
     @Override
     public void init() {
-        setTabTitle("我的课程");
+        setTabTitle("My Courses");
         mTvRightTitle = (TextView) findViewById(R.id.tv_right_title);
-        mTvRightTitle.setText("购买记录");
+        mTvRightTitle.setText("Purchase history");
         mTvRightTitle.setTextColor(ResourceUtil.getColor(R.color.gray1));
         mTvRightTitle.setOnClickListener(new View.OnClickListener() {
             @Override

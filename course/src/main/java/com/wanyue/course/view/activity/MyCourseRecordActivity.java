@@ -15,12 +15,12 @@ public class MyCourseRecordActivity extends BaseActivity {
 
     @Override
     public void init() {
-        setTabTitle("购买记录");
+        setTabTitle("Purchase history");
         mRefreshView = (RxRefreshView) findViewById(R.id.refreshView);
         mMyCourseRecordAdapter=new CourseRecordAdapter(null);
         mRefreshView.setAdapter(mMyCourseRecordAdapter);
         mRefreshView.setEmptyLevel(1);
-        mRefreshView.setNoDataTip("暂无购买记录");
+        mRefreshView.setNoDataTip("No purchase record");
 
         mRefreshView.setReclyViewSetting(RxRefreshView.ReclyViewSetting.createLinearSetting(this));
         mRefreshView.setDataListner(new RxRefreshView.DataListner<RecordBean>() {

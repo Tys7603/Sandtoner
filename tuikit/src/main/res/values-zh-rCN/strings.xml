@@ -223,7 +223,7 @@
     <string name="banned">被禁言</string>
     <string name="cancle_banned">被取消禁言</string>
     <string name="permission_content">使用该功能，需要开启权限，鉴于您禁用相关权限，请手动设置开启权限</string>
-    <string name="setting">设置</string>
+    <string name="setting">Settings</string>
     <string name="button_call">点击上方按钮发起呼叫</string>
     <string name="them_exist">他们也在</string>
     <string name="launch_call">发起呼叫</string>

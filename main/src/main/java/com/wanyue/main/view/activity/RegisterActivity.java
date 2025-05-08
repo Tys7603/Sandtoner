@@ -82,6 +82,9 @@ public class RegisterActivity extends BaseActivity implements TimeModel.TimeList
     private Country mSelectedCountry;
     private String selectedRegionCode = "86";
 
+    private static final long CLICK_DEBOUNCE_TIME = 1000; // 1 second debounce time
+    private long mLastClickTime = 0;
+
     @Override
     public void init() {
         mRegisterCommitBean = new RegisterCommitBean();
@@ -200,6 +203,12 @@ public class RegisterActivity extends BaseActivity implements TimeModel.TimeList
      */
     @OnClick(R2.id.btn_get_code)
     public void getLoginCode() {
+        long currentTime = System.currentTimeMillis();
+        if (currentTime - mLastClickTime < CLICK_DEBOUNCE_TIME) {
+            return; // Ignore rapid clicks
+        }
+        mLastClickTime = currentTime;
+
         final String phoneNum = mTvPhone.getText().toString();
         if (mSelectedCountry == null) {
             ToastUtil.show("Please select country");
