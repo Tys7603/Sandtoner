@@ -108,22 +108,14 @@ public class CreateAddressActivity extends BaseActivity {
 
     @OnClick(R2.id.btn_select_area)
     public void selectArea() {
-        final ArrayList<Province> list = CityUtil.getInstance().getCityList();
-        if (!ListUtil.haveData(list)) {
-            final Dialog loading = DialogUitl.loadingDialog(mContext);
-            loading.show();
-            CityUtil.getInstance().getCityListFromRemote(new CommonCallback<ArrayList<Province>>() {
-                @Override
-                public void callback(ArrayList<Province> newList) {
-                    loading.dismiss();
-                    if (newList != null) {
-                        showChooseCityDialog(newList);
-                    }
+        CityUtil.getInstance().getCityListFromAssets(new CommonCallback<ArrayList<Province>>() {
+            @Override
+            public void callback(ArrayList<Province> newList) {
+                if (newList != null) {
+                    showChooseCityDialog(newList);
                 }
-            });
-        } else {
-            showChooseCityDialog(list);
-        }
+            }
+        });
     }
 
     /*监听地址变化*/

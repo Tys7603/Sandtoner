@@ -303,14 +303,14 @@ public class DialogUitl {
         picker.setHideProvince(false);
         picker.setHideCounty(false);
         picker.setColumnWeight(3 / 9.0f, 3 / 9.0f, 3 / 9.0f);
-        if (TextUtils.isEmpty(province)) {
-            province = "北京市";
+        if (TextUtils.isEmpty(province) && list != null && !list.isEmpty()) {
+            province = list.get(0).getAreaName();
         }
-        if (TextUtils.isEmpty(city)) {
-            city = "北京市";
+        if (TextUtils.isEmpty(city) && list != null && !list.isEmpty() && list.get(0).getCities() != null && !list.get(0).getCities().isEmpty()) {
+            city = list.get(0).getCities().get(0).getAreaName();
         }
-        if (TextUtils.isEmpty(district)) {
-            district = "东城区";
+        if (TextUtils.isEmpty(district) && list != null && !list.isEmpty() && list.get(0).getCities() != null && !list.get(0).getCities().isEmpty() && list.get(0).getCities().get(0).getCounties() != null && !list.get(0).getCities().get(0).getCounties().isEmpty()) {
+            district = list.get(0).getCities().get(0).getCounties().get(0).getAreaName();
         }
         picker.setSelectedItem(province, city, district);
         picker.setOnAddressPickListener(listener);

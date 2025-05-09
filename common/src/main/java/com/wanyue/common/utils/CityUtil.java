@@ -62,10 +62,8 @@ public class CityUtil {
                     }
                     String result = sb.toString();
                     if (!TextUtils.isEmpty(result)) {
-                        if (mProvinceList == null) {
-                            mProvinceList = new ArrayList<>();
-                        }
-                        mProvinceList.addAll(JSON.parseArray(result, Province.class));
+                        ArrayList<Province> provinceList = (ArrayList<Province>) JSON.parseArray(result, Province.class);
+                        mProvinceList = provinceList;
                         mHandler.post(new Runnable() {
                             @Override
                             public void run() {
