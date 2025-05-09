@@ -51,7 +51,7 @@ public  class AddressAdapter extends BaseRecyclerAdapter<AddressInfoBean, BaseRe
         if(mContext==null){
             deleteAddress(id);
         }else{
-            DialogUitl.showSimpleDialog(mContext, "是否要删除该地址?", new DialogUitl.SimpleCallback() {
+            DialogUitl.showSimpleDialog(mContext, "Do you want to delete this address?", new DialogUitl.SimpleCallback() {
                 @Override
                 public void onConfirmClick(Dialog dialog, String content) {
                     deleteAddress(id);
