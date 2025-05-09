@@ -33,7 +33,6 @@ public abstract class GoodsManngerViewProxy extends RxViewProxy implements BaseQ
     protected void initView(ViewGroup contentView) {
         super.initView(contentView);
         mRefreshView = findViewById(R.id.refreshView);
-        mRefreshView.setIconId(R.drawable.icon_empty_no_goods);
         mConsignmentManngerAdapter=new ConsignmentManngerAdapter(null);
         mConsignmentManngerAdapter.setSale(mIsSale);
         mRefreshView.setAdapter(mConsignmentManngerAdapter);

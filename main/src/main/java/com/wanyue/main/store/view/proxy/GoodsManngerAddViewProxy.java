@@ -33,7 +33,6 @@ public class GoodsManngerAddViewProxy extends RxViewProxy implements BaseMutiRec
         mRefreshView =  findViewById(R.id.refreshView);
         mGoodsAddAdapter=new GoodsAddAdapter(null);
         mRefreshView.setAdapter(mGoodsAddAdapter);
-        mRefreshView.setIconId(R.drawable.icon_empty_no_goods);
 
         mRefreshView.setReclyViewSetting(RxRefreshView.ReclyViewSetting.createLinearSetting(getActivity(),1));
         mRefreshView.setDataListner(new RxRefreshView.DataListner<ConsignMentGoodsBean>() {

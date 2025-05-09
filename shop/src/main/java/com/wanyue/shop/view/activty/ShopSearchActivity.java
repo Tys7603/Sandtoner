@@ -72,7 +72,6 @@ public class ShopSearchActivity extends BaseActivity implements  CheckImageView.
 
         mRefreshView.setAdapter(mShopListAdapter);
         HotGoodsEmptyViewProxy hotGoodsEmptyViewProxy=new HotGoodsEmptyViewProxy();
-        hotGoodsEmptyViewProxy.setEmptyIconId(R.drawable.bg_empty_good_list);
         mRefreshView.setEmptyViewProxy(getViewProxyMannger(),hotGoodsEmptyViewProxy);
         mRefreshView.setDataListner(new RxRefreshView.DataListner<GoodsTypeBean>() {
             @Override

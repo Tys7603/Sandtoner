@@ -23,7 +23,6 @@ public abstract  class CouponListViewProxy<T extends CouponBean> extends RxViewP
     protected void initView(ViewGroup contentView) {
         super.initView(contentView);
         mRefreshView = (RxRefreshView) findViewById(R.id.refreshView);
-        mRefreshView.setIconId(R.drawable.icon_empty_no_coupon);
         mRefreshView.setReclyViewSetting(RxRefreshView.ReclyViewSetting.createLinearSetting(getActivity()));
 
         mCouponListAdapter.setOnItemChildClickListener(this);
@@ -98,6 +97,12 @@ public abstract  class CouponListViewProxy<T extends CouponBean> extends RxViewP
 
     public void setClickListner(OnCouponListner<T> listner) {
         mListner = listner;
+    }
+
+    public void setNoDataTip(String text) {
+        if (mRefreshView != null) {
+            mRefreshView.setNoDataTip(text);
+        }
     }
 
     public interface OnCouponListner<T>{
