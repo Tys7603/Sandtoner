@@ -158,6 +158,19 @@ public class FindBean implements MultiItemEntity, ListBean {
 
 
 
+    private String getTypeText() {
+        switch (type) {
+            case FindBean.TYPE_NEW:
+                return "New Arrival";
+            case FindBean.TYPE_RECOMMEND:
+                return "Recommend";
+            case FindBean.TYPE_LIVE:
+                return "Live";
+            default:
+        }
+        return null;
+    }
+
     private Drawable getTypeDrawable() {
         switch (type) {
             case FindBean.TYPE_NEW:
@@ -171,15 +184,20 @@ public class FindBean implements MultiItemEntity, ListBean {
         return null;
     }
 
-
     public CharSequence getContentTip() {
-
         if(titleTip==null){
-            Drawable drawable = getTypeDrawable();
-            drawable.setBounds(0, 0, DpUtil.dp2px(28), DpUtil.dp2px(15));
-            SpannableStringUtils.Builder builder= SpannableStringUtils.getBuilder(" ").setDrawable(drawable).
-                    append("  "+title);
-            titleTip=builder.create();
+            if (type == FindBean.TYPE_NEW) {
+                SpannableStringUtils.Builder builder = SpannableStringUtils.getBuilder(" ").
+                        append("New Arrival").
+                        append("  "+title);
+                titleTip = builder.create();
+            } else {
+                Drawable drawable = getTypeDrawable();
+                drawable.setBounds(0, 0, DpUtil.dp2px(28), DpUtil.dp2px(15));
+                SpannableStringUtils.Builder builder = SpannableStringUtils.getBuilder(" ").setDrawable(drawable).
+                        append("  "+title);
+                titleTip = builder.create();
+            }
         }
         return titleTip;
     }

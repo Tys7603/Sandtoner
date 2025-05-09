@@ -73,6 +73,7 @@ public class RxRefreshView<T> extends FrameLayout implements View.OnClickListene
     private boolean mIsMirror;
 
     private String mNoDataTip;
+    private String mEmptyText;
 
     private int mIconId;
     private int mEmptyLevel;
@@ -379,7 +380,7 @@ public class RxRefreshView<T> extends FrameLayout implements View.OnClickListene
                 mEmptyLayout.setBackgroundColor(mBackgroundColor);
                mImgEmpty = (ImageView) mEmptyLayout.findViewById(R.id.img_empty);
                if(mIconId!=0){
-                 mImgEmpty.setImageDrawable(ResourceUtil.getDrawable(mIconId,true));
+                 mImgEmpty.setVisibility(View.GONE);
                }
                setNodataTip();
             }
@@ -404,8 +405,12 @@ public class RxRefreshView<T> extends FrameLayout implements View.OnClickListene
             return;
         }
         TextView textView=mEmptyLayout.findViewById(R.id.tv_no_data);
-        if(textView!=null&&!TextUtils.isEmpty(mNoDataTip)){
-            textView.setText(mNoDataTip);
+        if(textView!=null){
+            if(!TextUtils.isEmpty(mEmptyText)){
+                textView.setText(mEmptyText);
+            }else if(!TextUtils.isEmpty(mNoDataTip)){
+                textView.setText(mNoDataTip);
+            }
         }
     }
 
@@ -740,5 +745,10 @@ public class RxRefreshView<T> extends FrameLayout implements View.OnClickListene
 
     public void setEmptyLevel(int emptyLevel) {
         mEmptyLevel = emptyLevel;
+    }
+
+    public void setEmptyText(String text) {
+        mEmptyText = text;
+        setNodataTip();
     }
 }

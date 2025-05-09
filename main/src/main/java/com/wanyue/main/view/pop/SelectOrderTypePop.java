@@ -45,13 +45,13 @@ public class SelectOrderTypePop extends PartShadowPopupView implements View.OnCl
             return;
         }
         if(mBtn1!=null){
-           mBtn1.setText(StringUtil.contact("已收货"," ",mOrderStatementBean.getEvaluatedCount()));
+           mBtn1.setText(StringUtil.contact("Received"," ",mOrderStatementBean.getEvaluatedCount()));
         }
         if(mBtn2!=null){
-           mBtn2.setText(StringUtil.contact("已完成"," ",mOrderStatementBean.getCompleteCount()));
+           mBtn2.setText(StringUtil.contact("Completed"," ",mOrderStatementBean.getCompleteCount()));
         }
         if(mBtn3!=null){
-            mBtn3.setText(StringUtil.contact("退款"," ",mOrderStatementBean.getRefundCount()));
+            mBtn3.setText(StringUtil.contact("Refund"," ",mOrderStatementBean.getRefundCount()));
         }
     }
 

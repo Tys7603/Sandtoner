@@ -41,7 +41,7 @@ public abstract class BuyerOderViewProxy extends RxViewProxy implements BaseQuic
     protected void initView(ViewGroup contentView) {
         super.initView(contentView);
         mRefreshView = findViewById(R.id.refreshView);
-        mRefreshView.setIconId(R.drawable.icon_empty_no_order);
+        mRefreshView.setEmptyText("No order information available~");
         mAdapter=new BuyerOrderAdaper(null);
         mAdapter.setOnItemClickListener(this);
         mRefreshView.setAdapter(mAdapter);

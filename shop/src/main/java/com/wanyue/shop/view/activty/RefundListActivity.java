@@ -23,7 +23,7 @@ public class RefundListActivity extends BaseActivity implements BaseQuickAdapter
     public void init() {
         setTabTitle("退货列表");
         mRefreshView =  findViewById(R.id.refreshView);
-        mRefreshView.setIconId(R.drawable.icon_empty_no_order);
+        mRefreshView.setEmptyText("No order information available~");
         mRefundListAdapter=new RefundListAdapter(null);
         mRefreshView.setAdapter(mRefundListAdapter);
         mRefreshView.setDataListner(new RxRefreshView.DataListner<OrderBean>() {
