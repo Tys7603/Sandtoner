@@ -1271,8 +1271,8 @@
     <string name="str_tuiguang_2">Number of\n Agents</string>
     <string name="str_tuiguang_3">Agent\'s Orders</string>
     <string name="str_xiajia">Take off the shelf</string>
-    <string name="str_xiaofei_1">Total assets (yuan)</string>
-    <string name="str_xiaofei_2">Cumulative consumption (yuan)</string>
+    <string name="str_xiaofei_1">Total assets (Rand)</string>
+    <string name="str_xiaofei_2">Cumulative consumption (Rand)</string>
     <string name="str_xiaofei_3">Billing records</string>
     <string name="str_xiaofei_4">Consumption records</string>
     <string name="str_xiaofei_5">Bank card</string>
