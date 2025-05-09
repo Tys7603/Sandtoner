@@ -528,20 +528,49 @@ public class LoginActivity extends BaseActivity implements TimeModel.TimeListner
             }
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                String json = response.body().string();
-                Log.e("SMS_API", "Response: " + json);
+                if (!response.isSuccessful()) {
+                    runOnUiThread(() -> {
+                        ToastUtil.show("Server error: " + response.code());
+                    });
+                    return;
+                }
+
+                String responseBody = response.body() != null ? response.body().string() : null;
+                if (responseBody == null) {
+                    runOnUiThread(() -> {
+                        ToastUtil.show("Empty response from server");
+                    });
+                    return;
+                }
+
+                Log.d("SMS_API", "Response: " + responseBody);
                 runOnUiThread(() -> {
                     try {
-                        JSONObject jsonObject = JSON.parseObject(json);
+                        JSONObject jsonObject = JSON.parseObject(responseBody);
+                        if (jsonObject == null) {
+                            ToastUtil.show("Invalid JSON response from server");
+                            return;
+                        }
+
                         int status = jsonObject.getIntValue("status");
                         String msg = jsonObject.getString("msg");
+                        
                         if (status == 200) {
-                            ToastUtil.show("Verification code sent successfully: " + msg);
+                            String code = "";
+                            java.util.regex.Matcher matcher = java.util.regex.Pattern.compile("(\\d+)$").matcher(msg);
+                            if (matcher.find()) {
+                                code = matcher.group(1);
+                                ToastUtil.show("Verification code sent successfully: " + code);
+                            } else {
+                                ToastUtil.show("Verification code sent successfully, but code not found in msg!");
+                            }
+                            getLoginCodeSucc(); // Start countdown timer
                         } else {
-                            ToastUtil.show("Verification code sent failed: " + msg);
+                            ToastUtil.show("Failed to send verification code: " + msg);
                         }
                     } catch (Exception ex) {
-                        ToastUtil.show("Response processing error: " + ex.getMessage());
+                        Log.e("SMS_API", "Error parsing response", ex);
+                        ToastUtil.show("Error processing server response");
                     }
                 });
             }
