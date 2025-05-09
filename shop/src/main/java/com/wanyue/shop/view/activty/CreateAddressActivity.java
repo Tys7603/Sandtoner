@@ -198,9 +198,9 @@ public class CreateAddressActivity extends BaseActivity {
             public void onNextTo(Boolean aBoolean) {
                 if(aBoolean){
                     if(mType==TYPE_ADD){
-                        ToastUtil.show("添加成功");
+                        ToastUtil.show("Added successfully");
                     }else if(mType==TYPE_UPDATE){
-                        ToastUtil.show("保存成功");
+                        ToastUtil.show("Saved successfully");
                     }
                     LiveEventBus.get(ShopEvent.ADDRESS_CHANGE,AddressInfoBean.class).post(new AddressInfoBean());
                     finish();

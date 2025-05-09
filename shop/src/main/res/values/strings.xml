@@ -1,5 +1,5 @@
 <resources>
-    <string name="delete_tip">删除成功</string>
+    <string name="delete_tip">Deleted successfully</string>
     <string name="beizhu">备注说明</string>
     <string name="coin_pay_pp">PayPal</string>
     <string name="str_zhifu_5">Safe international payments</string>

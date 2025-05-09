@@ -67,7 +67,7 @@ public  class AddressAdapter extends BaseRecyclerAdapter<AddressInfoBean, BaseRe
             @Override
             public void onNextTo(Boolean aBoolean) {
                 if(aBoolean){
-                    ToastUtil.show("删除成功");
+                    ToastUtil.show("Deleted successfully");
                    LiveEventBus.get(ShopEvent.ADDRESS_CHANGE, AddressInfoBean.class).post(new AddressInfoBean());
                 }
             }

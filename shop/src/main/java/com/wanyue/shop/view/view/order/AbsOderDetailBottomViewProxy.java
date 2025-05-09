@@ -220,7 +220,7 @@ public abstract class AbsOderDetailBottomViewProxy extends RxViewProxy implement
                     @Override
                     public void onNextTo(Boolean aBoolean) {
                         if(aBoolean){
-                           ToastUtil.show("删除成功");
+                           ToastUtil.show("Deleted successfully");
                            OrderModel.sendOrderChangeEvent(orderId);
                         }
                     }
