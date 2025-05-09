@@ -69,7 +69,7 @@
 
             <TextView
                 android:id="@+id/tv_area"
-                android:text="省 ,\t\t市 ,\t\t区"
+                android:text="Province ,\t\City ,\t\District"
                 android:layout_weight="1"
                 style="@style/address_input_content" />
 
