@@ -351,7 +351,7 @@ public class LoginActivity extends BaseActivity implements TimeModel.TimeListner
             mTimeModel = new TimeModel()
                     .setTotalUseTime(60)
                     .setState(TimeModel.COUNT_DOWN)
-                    .setAfterString("s后重新获取");
+                    .setAfterString("s Re-acquire after");
             mTimeModel.addTimeListner(this);
         }
     }
