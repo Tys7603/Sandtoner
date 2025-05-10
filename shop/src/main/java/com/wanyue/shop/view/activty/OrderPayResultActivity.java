@@ -64,9 +64,9 @@ public class OrderPayResultActivity extends BaseActivity implements View.OnClick
         findViewById(R.id.btn_pay_again).setOnClickListener(this);
         mIsFromLiveRoom=getIntent().getBooleanExtra(Constants.FROM,false);
         if(mIsFromLiveRoom){
-            mBtnBackMain.setText("返回直播间");
+            mBtnBackMain.setText("Return to live broadcast room");
         }else{
-            mBtnBackMain.setText("返回首页");
+            mBtnBackMain.setText("Return to home page");
         }
     }
 
@@ -127,16 +127,16 @@ public class OrderPayResultActivity extends BaseActivity implements View.OnClick
         if(isSucc){
             ImgLoader.display(this,R.drawable.icon_pay_succ,mImgState);
             mVpOrderFailed.setVisibility(View.GONE);
-            mTvPayState.setText("订单支付成功");
-            setTabTitle("支付成功");
-            mBtnPayAgain.setText("查看订单");
+            mTvPayState.setText("Order payment successful");
+            setTabTitle("Payment successful");
+            mBtnPayAgain.setText("View order");
         }else{
             ImgLoader.display(this,R.drawable.icon_pay_fail,mImgState);
             mVpOrderFailed.setVisibility(View.VISIBLE);
             mTvOrderFailed.setText(getIntent().getStringExtra(Constants.KEY_TINT));
-            mTvPayState.setText("订单支付失败");
-            setTabTitle("支付失败");
-            mBtnPayAgain.setText("重新支付");
+            mTvPayState.setText("Order payment failed");
+            setTabTitle("Payment failed");
+            mBtnPayAgain.setText("Repay");
         }
     }
 

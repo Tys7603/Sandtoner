@@ -112,7 +112,7 @@ public abstract class AbsOderDetailBottomViewProxy extends RxViewProxy implement
 
 
     private void openTakeGoodsDialog(final String orderId) {
-        DialogUitl.showSimpleDialog(getActivity(), "为保障权益请收到货确认无误后,再确认收货",new DialogUitl.SimpleCallback() {
+        DialogUitl.showSimpleDialog(getActivity(), "To protect your rights, please confirm receipt after receiving the goods.",new DialogUitl.SimpleCallback() {
             @Override
             public void onConfirmClick(Dialog dialog, String content) {
                 takeGoods(orderId);
@@ -179,7 +179,7 @@ public abstract class AbsOderDetailBottomViewProxy extends RxViewProxy implement
 
 
     private void openCancleOrderDialog(final OrderBean orderBean) {
-        DialogUitl.showSimpleDialog(getActivity(), "是否取消订单?", new DialogUitl.SimpleCallback() {
+        DialogUitl.showSimpleDialog(getActivity(), "Cancel the order ?", new DialogUitl.SimpleCallback() {
             @Override
             public void onConfirmClick(Dialog dialog, String content) {
                 cancleOrder(orderBean.getOrderId());
@@ -205,7 +205,7 @@ public abstract class AbsOderDetailBottomViewProxy extends RxViewProxy implement
     }
 
     private void openDeleteConfrimDialog(final OrderBean orderBean) {
-        DialogUitl.showSimpleDialog(getActivity(), "是否删除订单?", new DialogUitl.SimpleCallback() {
+        DialogUitl.showSimpleDialog(getActivity(), "Delete order ?", new DialogUitl.SimpleCallback() {
             @Override
             public void onConfirmClick(Dialog dialog, String content) {
                 deleteOrder(orderBean);

@@ -133,7 +133,7 @@ public abstract class BuyerOderViewProxy extends RxViewProxy implements BaseQuic
 
 
     private void openCancleOrderDialog(final String orderId, final int position) {
-        DialogUitl.showSimpleDialog(getActivity(), "是否取消订单?", new DialogUitl.SimpleCallback() {
+        DialogUitl.showSimpleDialog(getActivity(), "Cancel the order ?", new DialogUitl.SimpleCallback() {
             @Override
             public void onConfirmClick(Dialog dialog, String content) {
                 cancleOrder(orderId,position);
@@ -143,7 +143,7 @@ public abstract class BuyerOderViewProxy extends RxViewProxy implements BaseQuic
 
 
     private void openDeleteConfrimDialog(final OrderBean orderBean) {
-        DialogUitl.showSimpleDialog(getActivity(), "是否要删除订单?", new DialogUitl.SimpleCallback() {
+        DialogUitl.showSimpleDialog(getActivity(), "Do you want to delete the order?", new DialogUitl.SimpleCallback() {
             @Override
             public void onConfirmClick(Dialog dialog, String content) {
                 deleteOrder(orderBean);
