@@ -114,7 +114,7 @@ public class MyCouponActivity extends BaseActivity {
     }
 
     private String[] getTitleArray() {
-        String[] titleArray={"未使用","已过期"};
+        String[] titleArray={"Unused","Expired"};
         return titleArray;
     }
 
