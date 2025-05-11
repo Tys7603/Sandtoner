@@ -24,6 +24,6 @@
     <string name="all_evaluation">全部评价</string>
     <string name="overall_evaluation">总体评价</string>
     <string name="pub_evaluation">发表评价</string>
-    <string name="coin_tip">（¥%1$s）</string>
+    <string name="coin_tip">（R%1$s）</string>
     <string name="pay_success">支付成功</string>
 </resources>

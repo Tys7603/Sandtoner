@@ -214,7 +214,7 @@
                 android:background="@null"
                 android:gravity="center_vertical"
                 android:inputType="number"
-                android:text="￥0"
+                android:text="R0"
                 android:textColor="@color/red"
                 android:textSize="20sp"
 

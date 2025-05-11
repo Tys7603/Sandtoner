@@ -470,9 +470,9 @@ public class MainAPI {
                   List<MenuBean>list=JSONArray.parseArray(jsonArray.toString(),MenuBean.class);
                   menuBeanList.addAll(list);
               }
-              MenuBean menuBean=new MenuBean("Gift income",serviceId,R.drawable.trans_bg);
-              menuBeanList.add(menuBean);
-              menuBean=new MenuBean("Chat with Customer Care",settingId,R.drawable.icon_main_user_customer);
+//              MenuBean menuBean=new MenuBean("Gift income",serviceId,R.drawable.trans_bg);
+//              menuBeanList.add(menuBean);
+              MenuBean menuBean=new MenuBean("Chat with Customer Care",settingId,R.drawable.icon_main_user_customer);
               menuBeanList.add(menuBean);
               menuBean=new MenuBean("Account",settingId,R.drawable.icon_main_user_setting);
               menuBeanList.add(menuBean);
