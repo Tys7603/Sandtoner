@@ -47,7 +47,7 @@ public class CashActivity extends AbsActivity implements View.OnClickListener, C
 
     @Override
     protected void main() {
-        setTitle("提现账户");
+        setTitle("Withdraw Account");
         Intent intent = getIntent();
         mCashAccountId = intent.getStringExtra(Constants.CASH_ACCOUNT_ID);
         if (mCashAccountId == null) {
