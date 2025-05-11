@@ -2603,6 +2603,7 @@ int drawable notification_tile_bg 0x0
 int drawable notify_panel_notification_icon_bg 0x0
 int drawable page_selected 0x0
 int drawable page_unselected 0x0
+int drawable paystack 0x0
 int drawable play_voice_message 0x0
 int drawable popu_dialog_bg 0x0
 int drawable press_btn 0x0

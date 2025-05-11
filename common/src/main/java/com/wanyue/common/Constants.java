@@ -42,6 +42,7 @@ public class Constants {
     public static final String PAY_TYPE_GOOGLE = "4";//google支付
     public static final String PAY_TYPE_TEST = "5";//模拟支付
     public static final String PAY_TYPE_PP = "paypal";
+    public static final String PAY_TYPE_PSTACK = "paystack";
     public static final String AT_NAME = "atName";
     public static final String LIVE_BEAN = "liveBean";
     public static final String LIVE_TYPE = "liveType";

@@ -60,20 +60,68 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="170dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:background="@drawable/bg_color_white_radius_5"
         android:layout_marginTop="10dp"
         android:padding="@dimen/default_padding"
         >
+
         <TextView
+            android:id="@+id/tag_tv_tip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/chat_charge_pay_type"
-            android:textSize="@dimen/text_size_13"
             android:textColor="@color/textColor"
-            android:id="@+id/tag_tv_tip"
-            />
+            android:textSize="@dimen/text_size_13" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/btn_pay_stack"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp">
+
+            <com.wanyue.common.custom.DrawableTextView
+                android:id="@+id/tv_pp_pay_stack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="6dp"
+                android:gravity="center_vertical"
+                android:text="PayStack"
+                android:textSize="@dimen/text_size_14"
+                app:dt_left_drawable="@drawable/paystack"
+                app:dt_left_height="22dp"
+                app:dt_left_width="22dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/line1"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/line1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/line1"
+                android:layout_width="1dp"
+                android:layout_height="22dp"
+                android:background="#EEEEEE"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/str_zhifu_5"
+                android:textColor="#FFAAAAAA"
+                android:textSize="@dimen/text_size_13"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/line"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
         <!-- <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
