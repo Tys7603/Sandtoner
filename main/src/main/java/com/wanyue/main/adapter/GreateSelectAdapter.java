@@ -46,8 +46,8 @@ public class GreateSelectAdapter extends BaseRecyclerAdapter<GoodsBean, BaseRecl
 
         ImageView imageView=helper.getView(R.id.img_tag);
         if(imageView!=null&&imageView.getDrawable()==null){
-           Drawable drawable=ResourceUtil.getDrawable(R.drawable.icon_popular_today,true);
-           imageView.setImageDrawable(drawable);
+           //Drawable drawable=ResourceUtil.getDrawable(R.drawable.icon_popular_today,true);
+           //imageView.setImageDrawable(drawable);
         }
 
     }

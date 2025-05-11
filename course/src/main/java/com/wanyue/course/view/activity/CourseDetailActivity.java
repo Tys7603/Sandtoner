@@ -24,7 +24,7 @@ public class CourseDetailActivity extends BaseInsDetailActivity<CourseBean>imple
     @Override
     public void init() {
         super.init();
-        setTabTitle("内容详情");
+        setTabTitle("Course Details");
     }
 
     @Override

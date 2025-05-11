@@ -11,7 +11,7 @@ public class CourseIntroduceViewProxy extends WebViewInsViewProxy<CourseBean> {
     @Override
     protected void initView(ViewGroup contentView) {
         super.initView(contentView);
-        mTvFirstTitle.setText("内容介绍");
+        mTvFirstTitle.setText("Description");
     }
 
     @Override
@@ -24,7 +24,7 @@ public class CourseIntroduceViewProxy extends WebViewInsViewProxy<CourseBean> {
 
         super.setData(data);
         String lesson=data.getLesson();
-        if(TextUtils.isEmpty(lesson)||lesson.equals("0课时")){
+        if(TextUtils.isEmpty(lesson)||lesson.equals("0 class")){
             mTvCenterTag.setText(R.string.no_add_content);
         }else{
             mTvCenterTag.setText(getString(R.string.total_class_hour,data.getLesson()));

@@ -63,7 +63,7 @@ public class RecommendViewProxy  extends RxViewProxy {
         CharSequence text2=SpannableStringUtils.getBuilder("Reels").append("").setForegroundColor(ResourceUtil.getColor(R.color.global)).create();
         mTvVideoTitle.setText(text2);
 
-        CharSequence text3=SpannableStringUtils.getBuilder("G40").append(" Selected").setForegroundColor(ResourceUtil.getColor(R.color.global)).create();
+        CharSequence text3=SpannableStringUtils.getBuilder("G40").append(" Course").setForegroundColor(ResourceUtil.getColor(R.color.global)).create();
         mTvCourseTitle.setText(text3);
 
 
