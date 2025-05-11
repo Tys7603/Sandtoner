@@ -60,18 +60,6 @@
 
     </com.wanyue.common.custom.refresh.RxRefreshView>
 
-    <Button
-        android:id="@+id/btn_pay_stack"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="PayStack" />
-
-    <Button
-        android:id="@+id/payment_button_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Pay Paypal"/>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"

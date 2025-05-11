@@ -27,6 +27,7 @@ android {
 
         buildConfigField "String", "CLIENT_ID", "\"${localProps['CLIEN_ID']}\""
         buildConfigField "String", "SECRET_ID", "\"${localProps['SECRECT_ID']}\""
+        buildConfigField "String", "AUTHORI", "\"${localProps['AUTHORI']}\""
     }
 
     buildTypes {

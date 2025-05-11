@@ -4,14 +4,22 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.RecyclerView;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.common.Priority;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.jeremyliao.liveeventbus.LiveEventBus;
 import com.lxj.xpopup.XPopup;
@@ -32,6 +40,7 @@ import com.wanyue.common.utils.ListUtil;
 import com.wanyue.common.utils.ObjectUtil;
 import com.wanyue.common.utils.StringUtil;
 import com.wanyue.common.utils.ToastUtil;
+import com.wanyue.shop.BuildConfig;
 import com.wanyue.shop.R;
 import com.wanyue.shop.adapter.CommitOrderAdapter;
 import com.wanyue.shop.api.ShopAPI;
@@ -44,6 +53,8 @@ import com.wanyue.shop.business.ShopEvent;
 import com.wanyue.shop.view.pop.ChooseCouponPopView;
 import com.wanyue.shop.view.view.CommitOrderBottomViewProxy;
 import org.jetbrains.annotations.NotNull;
+import org.json.JSONException;
+
 import java.util.List;
 
 /**
@@ -63,7 +74,7 @@ public class CommitOrderActivity extends BaseActivity implements View.OnClickLis
     private CommitOrderAdapter mCommitOrderAdapter;
     private ChooseCouponPopView mChooseCouponPopView;
     private CommitOrderBottomViewProxy mCommitOrderBottomViewProxy;
-
+    private ProgressBar prb;
     private String orderIdArray;
     private OrderConfirmBean mOrderConfirmBean;
     private ParseHttpCallback<JSONObject> mComputeCallBack;
@@ -79,6 +90,7 @@ public class CommitOrderActivity extends BaseActivity implements View.OnClickLis
         mTvNamePhone = (TextView) findViewById(R.id.tv_name_phone);
         mTvAddress = (TextView) findViewById(R.id.tv_address);
         mReclyView =findViewById(R.id.reclyView);
+        prb =findViewById(R.id.progressBar2);
         mTvTotalPrice = (TextView) findViewById(R.id.tv_total_price);
         mBtnCommit = (TextView) findViewById(R.id.btn_commit);
         mCommitOrderAdapter=new CommitOrderAdapter(null);
@@ -122,10 +134,13 @@ public class CommitOrderActivity extends BaseActivity implements View.OnClickLis
                 if(isSuccess(code)&&info!=null){
                  mBtnCommit.setEnabled(true);
                  String json=info.toJSONString();
-                 mOrderConfirmBean =info.toJavaObject(OrderConfirmBean.class);
+                    Log.d("longnx", "onSuccess: " + json);
+
+                 mOrderConfirmBean = info.toJavaObject(OrderConfirmBean.class);
                  mOrderConfirmBean.setLiveUid(getIntent().getStringExtra(Constants.LIVE_UID));
                  setAboutOrderData(mOrderConfirmBean);
                  L.e("json=="+json);
+                    Log.d("longnx", "onSuccess: " + mOrderConfirmBean.getOrderKey());
                 }
             }
 
@@ -367,43 +382,141 @@ public class CommitOrderActivity extends BaseActivity implements View.OnClickLis
                 return;
             }
         }
-        ShopAPI.orderCreate(mOrderConfirmBean, new ParseHttpCallback<JSONObject>() {
-            @Override
-            public void onSuccess(int code, String msg, JSONObject info) {
-                ToastUtil.show(msg);
-                if(isSuccess(code)&&info!=null){
-                  info=info.getJSONObject("result");
-                  DebugUtil.logJson(info);
-                  if(mOrderConfirmBean.checkIsWxPay()){
-                      callByWx(info);
-                  }else{
-                      callSucc(info);
-                  }
+        Log.d("longnx", "commit: " + mOrderConfirmBean.getOrderKey());
+        Log.d("longnx", "commit: " + mOrderConfirmBean.toString());
+
+        if(StringUtil.equals(mOrderConfirmBean.getPayType(), Constants.PAY_TYPE_PP)){
+            prb.setVisibility(View.VISIBLE);
+           createOrderPaypal("paypal", String.valueOf(mOrderConfirmBean.getAddrId()), mOrderConfirmBean.getOrderKey());
+        } else if (StringUtil.equals(mOrderConfirmBean.getPayType(), Constants.PAY_TYPE_PSTACK)) {
+            prb.setVisibility(View.VISIBLE);
+            createOrderPayStack("paystack",  String.valueOf(mOrderConfirmBean.getAddrId()), "user@gmail.com", mOrderConfirmBean.getOrderKey());
+        } else {
+            ShopAPI.orderCreate(mOrderConfirmBean, new ParseHttpCallback<JSONObject>() {
+                @Override
+                public void onSuccess(int code, String msg, JSONObject info) {
+                    ToastUtil.show(msg);
+                    if(isSuccess(code)&&info!=null){
+                        info=info.getJSONObject("result");
+                        DebugUtil.logJson(info);
+                        Log.d("longnx", "onSuccess: " + info);
+                        if(mOrderConfirmBean.checkIsWxPay()){
+                            callByWx(info);
+                        }else{
+                            callSucc(info);
+                        }
+                    }
                 }
-            }
 
-            @Override
-            public void onError(Throwable e) {
-                // Handle error case for order creation
-                if (e != null) {
-                    ToastUtil.show(e.getMessage());
+                @Override
+                public void onError(Throwable e) {
+                    // Handle error case for order creation
+                    if (e != null) {
+                        ToastUtil.show(e.getMessage());
+                    }
                 }
-            }
 
-            @Override
-            public boolean showLoadingDialog() {
-                return true;
-            }
+                @Override
+                public boolean showLoadingDialog() {
+                    return true;
+                }
 
-            @Override
-            public Dialog createLoadingDialog() {
-                return DialogUitl.loadingDialog(CommitOrderActivity.this);
-            }
-        });
+                @Override
+                public Dialog createLoadingDialog() {
+                    return DialogUitl.loadingDialog(CommitOrderActivity.this);
+                }
+            });
+        }
+    }
+
+    public void createOrderPaypal(String payType, String addressId, String key) {
+        AndroidNetworking.upload("https://system.sandtoner.com/api/order/create/" + key)
+                .addHeaders("Authori-zation", BuildConfig.AUTHORI)
+                .addMultipartParameter("payType", payType)
+                .addMultipartParameter("addressId", addressId)
+                .setTag("createOrderPaypal")
+                .setPriority(Priority.HIGH)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(org.json.JSONObject response) {
+                        Log.d("API_RESPONSE", "Success: " + response.toString());
+                        try {
+                            String status = response.getString("status");
+                            String msg = response.getString("msg");
+
+                            if (status.equals("200")) {
+                                org.json.JSONObject data = response.getJSONObject("data");
+                                org.json.JSONObject result = data.getJSONObject("result");
+                                String orderId = result.getString("orderId");
+                                callSuccPay(orderId);
+                            } else {
+                                Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(mContext, "Data processing errors have occurred", Toast.LENGTH_SHORT).show();
+                        } finally {
+                            prb.setVisibility(View.GONE);
+                        }
+                    }
+
+                    @Override
+                    public void onError(ANError error) {
+                        Log.e("API_ERROR", "Error: " + error.getErrorDetail());
+                        prb.setVisibility(View.VISIBLE);
+                    }
+                });
+    }
+
+    public void createOrderPayStack(String payType, String addressId, String email, String key) {
+        AndroidNetworking.upload("https://system.sandtoner.com/api/order/create/" + key)
+                .addHeaders("Authori-zation",BuildConfig.AUTHORI)
+                .addMultipartParameter("payType", payType)  // e.g., "paystack"
+                .addMultipartParameter("addressId", addressId)
+                .addMultipartParameter("email", email)
+                .setTag("createOrderPaystack")
+                .setPriority(Priority.HIGH)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(org.json.JSONObject response) {
+                        Log.d("API_RESPONSE", "Success: " + response.toString());
+                        try {
+                            String status = response.getString("status");
+                            String msg = response.getString("msg");
+
+                            if (status.equals("200")) {
+                                org.json.JSONObject data = response.getJSONObject("data");
+                                org.json.JSONObject result = data.getJSONObject("result");
+                                String orderId = result.getString("orderId");
+                                callSuccPay(orderId);
+                            } else {
+                                Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(mContext, "Data processing errors have occurred", Toast.LENGTH_SHORT).show();
+                        } finally {
+                            prb.setVisibility(View.GONE);
+                        }
+                    }
+
+                    @Override
+                    public void onError(ANError error) {
+                        Log.e("API_ERROR", "Error: " + error.getErrorDetail());
+                        prb.setVisibility(View.VISIBLE);
+                    }
+                });
     }
 
     private void callSucc(JSONObject info) {
         String orderId=info.getString("orderId");
+        OrderPayResultActivity.forward(CommitOrderActivity.this,orderId,!TextUtils.isEmpty(mOrderConfirmBean.getLiveUid()));
+        finish();
+    }
+
+    private void callSuccPay(String orderId) {
         OrderPayResultActivity.forward(CommitOrderActivity.this,orderId,!TextUtils.isEmpty(mOrderConfirmBean.getLiveUid()));
         finish();
     }
@@ -430,8 +543,6 @@ public class CommitOrderActivity extends BaseActivity implements View.OnClickLis
         }
     }
 
-
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -447,11 +558,6 @@ public class CommitOrderActivity extends BaseActivity implements View.OnClickLis
         }
     }
 
-    /**
-     * Sets address.
-     *
-     * @param address the address
-     */
     private void setAddress(AddressInfoBean addressInfoBean) {
         if(addressInfoBean == null) {
             mAddressInfoBean = null;

@@ -148,4 +148,19 @@ public class OrderConfirmBean {
         }
         return JSON.toJSONString(map);
     }
+
+    @Override
+    public String toString() {
+        return "OrderConfirmBean{" +
+                "totalPrice=" + totalPrice +
+                ", cartInfo=" + cartInfo +
+                ", orderKey='" + orderKey + '\'' +
+                ", userInfo=" + userInfo +
+                ", payPrice=" + payPrice +
+                ", payType='" + payType + '\'' +
+                ", isUseCode=" + isUseCode +
+                ", addressInfo=" + addressInfo +
+                ", liveUid='" + liveUid + '\'' +
+                '}';
+    }
 }
