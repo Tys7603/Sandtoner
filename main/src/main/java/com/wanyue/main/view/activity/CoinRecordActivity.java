@@ -25,11 +25,11 @@ public class CoinRecordActivity extends BaseActivity {
 
     @Override
     public void init() {
-        setTabTitle("消费记录");
+        setTabTitle("Consumption record");
         mPostion=getIntent().getIntExtra(Constants.POSITION,0);
         mIndicator = (MagicIndicator) findViewById(R.id.indicator);
         mViewPager = (ViewPager) findViewById(R.id.viewPager);
-        String[]titleArray={"全部","消费","充值"};
+        String[]titleArray={"All","Consumption","Recharge"};
         mCoinRecordAdapter=new CoinRecordIndicatorAdapter(titleArray,this,mViewPager);
         CommonNavigator commonNavigator = new CommonNavigator(this);
         commonNavigator.setAdjustMode(true);

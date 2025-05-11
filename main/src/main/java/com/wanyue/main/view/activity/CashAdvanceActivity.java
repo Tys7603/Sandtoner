@@ -80,9 +80,9 @@ public class CashAdvanceActivity extends BaseActivity {
         mImgCheckWx = (CheckImageView) mWxGroup.findViewById(R.id.img_check);
         mImgCheckZfb = (CheckImageView) mZfbGroup.findViewById(R.id.img_check);
 
-        setUITopItemData(mBankGroup,mImgCheckBank,R.drawable.icon_advance_bank_default,R.drawable.icon_advance_bank_select,"银行卡");
-        setUITopItemData(mWxGroup,mImgCheckWx,R.drawable.icon_advance_wx_default,R.drawable.icon_advance_wx_select,"微信");
-        setUITopItemData(mZfbGroup,mImgCheckZfb,R.drawable.icon_advance_zfb_default,R.drawable.icon_advance_zfb_select,"支付宝");
+        setUITopItemData(mBankGroup,mImgCheckBank,R.drawable.icon_advance_bank_default,R.drawable.icon_advance_bank_select,"Bank card");
+        setUITopItemData(mWxGroup,mImgCheckWx,R.drawable.icon_advance_wx_default,R.drawable.icon_advance_wx_select,"WeChat");
+        setUITopItemData(mZfbGroup,mImgCheckZfb,R.drawable.icon_advance_zfb_default,R.drawable.icon_advance_zfb_select,"Alipay");
     }
 
     private void setUITopItemData(ViewGroup group, CheckImageView imgCheck, int defaultId, int selectId, String title) {
