@@ -19,7 +19,7 @@ public class ProiftRecordActivity extends BaseActivity {
 
     @Override
     public void init() {
-        setTabTitle("提现记录");
+        setTabTitle("Withdrawal Records");
         mProfitRecordAdapter=new ProfitRecordAdapter(null);
         mRefreshView = findViewById(R.id.refreshView);
         mRefreshView.setIconId(R.drawable.icon_empty_no_tixian);
