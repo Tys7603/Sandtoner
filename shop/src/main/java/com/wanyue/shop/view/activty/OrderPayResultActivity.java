@@ -3,6 +3,7 @@ package com.wanyue.shop.view.activty;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -49,16 +50,16 @@ public class OrderPayResultActivity extends BaseActivity implements View.OnClick
 
     @Override
     public void init() {
-        mTvOrderId = (TextView) findViewById(R.id.tv_order_id);
-        mTvOrderCreateTime = (TextView) findViewById(R.id.tv_order_create_time);
-        mTvPayStyle = (TextView) findViewById(R.id.tv_pay_style);
-        mTvOrderPrice = (TextView) findViewById(R.id.tv_order_price);
-        mVpOrderFailed = (ViewGroup) findViewById(R.id.vp_order_failed);
-        mTvOrderFailed = (TextView) findViewById(R.id.tv_order_failed);
-        mBtnPayAgain = (TextView) findViewById(R.id.btn_pay_again);
-        mImgState = (ImageView) findViewById(R.id.img_state);
-        mTvPayState = (TextView) findViewById(R.id.tv_pay_state);
-        mBtnBackMain = (TextView) findViewById(R.id.btn_back_main);
+        mTvOrderId = findViewById(R.id.tv_order_id);
+        mTvOrderCreateTime = findViewById(R.id.tv_order_create_time);
+        mTvPayStyle = findViewById(R.id.tv_pay_style);
+        mTvOrderPrice = findViewById(R.id.tv_order_price);
+        mVpOrderFailed = findViewById(R.id.vp_order_failed);
+        mTvOrderFailed = findViewById(R.id.tv_order_failed);
+        mBtnPayAgain = findViewById(R.id.btn_pay_again);
+        mImgState = findViewById(R.id.img_state);
+        mTvPayState = findViewById(R.id.tv_pay_state);
+        mBtnBackMain = findViewById(R.id.btn_back_main);
 
         mBtnBackMain.setOnClickListener(this);
         findViewById(R.id.btn_pay_again).setOnClickListener(this);
@@ -104,7 +105,7 @@ public class OrderPayResultActivity extends BaseActivity implements View.OnClick
     }
 
     private void checkOrderPayResult(OrderStatus orderStatus) {
-        isSucc=orderStatus!=null?orderStatus.getType()!=ShopState.ORDER_STATE_WAIT_PAY:false;
+        isSucc = orderStatus != null;
         isPaySucc(isSucc);
     }
 

@@ -38,6 +38,7 @@ import com.wanyue.common.utils.JsonUtil;
 import com.wanyue.common.utils.L;
 import com.wanyue.common.utils.ListUtil;
 import com.wanyue.common.utils.ObjectUtil;
+import com.wanyue.common.utils.SpUtil;
 import com.wanyue.common.utils.StringUtil;
 import com.wanyue.common.utils.ToastUtil;
 import com.wanyue.shop.BuildConfig;
@@ -382,15 +383,15 @@ public class CommitOrderActivity extends BaseActivity implements View.OnClickLis
                 return;
             }
         }
-        Log.d("longnx", "commit: " + mOrderConfirmBean.getOrderKey());
-        Log.d("longnx", "commit: " + mOrderConfirmBean.toString());
+
+        String token = SpUtil.getInstance().getStringValue(SpUtil.TOKEN);
 
         if(StringUtil.equals(mOrderConfirmBean.getPayType(), Constants.PAY_TYPE_PP)){
             prb.setVisibility(View.VISIBLE);
-           createOrderPaypal("paypal", String.valueOf(mOrderConfirmBean.getAddrId()), mOrderConfirmBean.getOrderKey());
+           createOrderPaypal("paypal", String.valueOf(mOrderConfirmBean.getAddrId()), mOrderConfirmBean.getOrderKey(), token);
         } else if (StringUtil.equals(mOrderConfirmBean.getPayType(), Constants.PAY_TYPE_PSTACK)) {
             prb.setVisibility(View.VISIBLE);
-            createOrderPayStack("paystack",  String.valueOf(mOrderConfirmBean.getAddrId()), "user@gmail.com", mOrderConfirmBean.getOrderKey());
+            createOrderPayStack("paystack",  String.valueOf(mOrderConfirmBean.getAddrId()), "user@gmail.com", mOrderConfirmBean.getOrderKey(), token);
         } else {
             ShopAPI.orderCreate(mOrderConfirmBean, new ParseHttpCallback<JSONObject>() {
                 @Override
@@ -429,9 +430,9 @@ public class CommitOrderActivity extends BaseActivity implements View.OnClickLis
         }
     }
 
-    public void createOrderPaypal(String payType, String addressId, String key) {
+    public void createOrderPaypal(String payType, String addressId, String key, String token) {
         AndroidNetworking.upload("https://system.sandtoner.com/api/order/create/" + key)
-                .addHeaders("Authori-zation", BuildConfig.AUTHORI)
+                .addHeaders("Authori-zation", "Bearer " + token)
                 .addMultipartParameter("payType", payType)
                 .addMultipartParameter("addressId", addressId)
                 .setTag("createOrderPaypal")
@@ -469,9 +470,9 @@ public class CommitOrderActivity extends BaseActivity implements View.OnClickLis
                 });
     }
 
-    public void createOrderPayStack(String payType, String addressId, String email, String key) {
+    public void createOrderPayStack(String payType, String addressId, String email, String key, String token) {
         AndroidNetworking.upload("https://system.sandtoner.com/api/order/create/" + key)
-                .addHeaders("Authori-zation",BuildConfig.AUTHORI)
+                .addHeaders("Authori-zation", "Bearer " + token)
                 .addMultipartParameter("payType", payType)  // e.g., "paystack"
                 .addMultipartParameter("addressId", addressId)
                 .addMultipartParameter("email", email)
@@ -517,6 +518,7 @@ public class CommitOrderActivity extends BaseActivity implements View.OnClickLis
     }
 
     private void callSuccPay(String orderId) {
+        Log.d("longnx", "callSuccPay: " + orderId);
         OrderPayResultActivity.forward(CommitOrderActivity.this,orderId,!TextUtils.isEmpty(mOrderConfirmBean.getLiveUid()));
         finish();
     }

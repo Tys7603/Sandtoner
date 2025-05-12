@@ -61,7 +61,7 @@ public class WebViewActivity extends BaseActivity {
         String url = getIntent().getStringExtra(Constants.URL);
         L.e("H5--->" + url);
         mTitle=getIntent().getStringExtra(Constants.KEY_TITLE);
-        setTabTitle(mTitle);
+        setTabTitle("mTitle");
         
         LinearLayout rootView = (LinearLayout) findViewById(R.id.rootView);
         mProgressBar = (ProgressBar) findViewById(R.id.progressbar);

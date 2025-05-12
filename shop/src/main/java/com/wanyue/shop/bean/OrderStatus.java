@@ -51,8 +51,13 @@ public class OrderStatus {
         this.payType = payType;
     }
 
-
-
-
-
+    @Override
+    public String toString() {
+        return "OrderStatus{" +
+                "type=" + type +
+                ", title='" + title + '\'' +
+                ", msg='" + msg + '\'' +
+                ", payType='" + payType + '\'' +
+                '}';
+    }
 }

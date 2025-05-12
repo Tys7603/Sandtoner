@@ -53,13 +53,14 @@
                         android:id="@+id/vp_banner_container"
                         android:background="@color/white"
                         />
+
                     <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rc_recommend"
                         android:layout_width="match_parent"
                         android:layout_height="150dp"
-                        android:id="@+id/rc_recommend"
                         android:layout_marginBottom="8dp"
                         android:background="@color/white"
-                        />
+                        android:visibility="visible" />
 
                     <FrameLayout
                         android:layout_width="match_parent"

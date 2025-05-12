@@ -236,6 +236,7 @@ public class MainHomePageViewProxy extends RxViewProxy implements LiveRoomCheckL
                         break;
                     case ReCommentAdapter.CLASSFIY:
                         ((MainActivity)getActivity()).setSelectClasfiy();
+
                         break;
                     case ReCommentAdapter.HELP:
                         String url= CommonAppConfig.HOST+"/appapi/help/list";
