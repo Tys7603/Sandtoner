@@ -44,7 +44,7 @@ public class IMSDK {
             @Override
             public void onError(String module, int errCode, String errMsg) {
                 CommonAppConfig.setLoginIM(false);
-                ToastUtil.show("IM 登录失败：" + module + " errmsg: " + errMsg);
+                ToastUtil.show("IM Login failed：" + module + " errmsg: " + errMsg);
             }
         });
     }
