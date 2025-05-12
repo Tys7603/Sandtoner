@@ -15,7 +15,7 @@ public class ConversationActivity extends BaseActivity {
 
     @Override
     public void init() {
-        setTabTitle("消息列表");
+        setTabTitle("Message List");
         mConversationLayout = (ConversationLayout) findViewById(R.id.conversation_layout);
         mConversationLayout.initDefault();
         mConversationLayout.getConversationList().setOnItemClickListener(new ConversationListLayout.OnItemClickListener() {
