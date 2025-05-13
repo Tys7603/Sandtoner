@@ -29,7 +29,7 @@ public class GoodsFootActivity extends BaseActivity {
         mRefreshView = findViewById(R.id.refreshView);
         mRefreshView.setEmptyLevel(1);
         mRefreshView.setIconId(R.mipmap.icon_default_no_data);
-        mRefreshView.setNoDataTip("No browsing history yet，\n hurry up and choose what you like~");
+        mRefreshView.setNoDataTip("No browsing history yet, hurry up and choose what you like~");
         mGoodsFootAdapter=new GoodsFootAdapter(null);
         mGoodsFootAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
