@@ -103,13 +103,8 @@ public class CommitOrderActivity extends BaseActivity implements View.OnClickLis
         LiveEventBus.get(ShopEvent.ADDRESS_CHANGE, AddressInfoBean.class).observe(this, new Observer<AddressInfoBean>() {
             @Override
             public void onChanged(@NotNull AddressInfoBean addressInfoBean) {
-                if(addressInfoBean.getId()==0){
-                    getDefaultAddr();
-                }else{
-                    setAddress(addressInfoBean);
-                    
-                    changeAddrUIState();
-                }
+                setAddress(addressInfoBean);
+                changeAddrUIState();
             }
         });
 
@@ -563,9 +558,15 @@ public class CommitOrderActivity extends BaseActivity implements View.OnClickLis
     private void setAddress(AddressInfoBean addressInfoBean) {
         if(addressInfoBean == null) {
             mAddressInfoBean = null;
+            if(mOrderConfirmBean != null) {
+                mOrderConfirmBean.setAddressInfo(null);
+            }
             return;
         }
         mAddressInfoBean = addressInfoBean;
+        if(mOrderConfirmBean != null) {
+            mOrderConfirmBean.setAddressInfo(addressInfoBean);
+        }
         mTvNamePhone.setText(addressInfoBean.getNamePhoneShowInfo());
         mTvAddress.setText(addressInfoBean.getDetailArea());
     }
