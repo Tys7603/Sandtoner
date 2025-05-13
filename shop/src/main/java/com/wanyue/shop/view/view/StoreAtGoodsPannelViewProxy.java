@@ -43,7 +43,7 @@ public class StoreAtGoodsPannelViewProxy extends RxViewProxy {
 
 
         if(mStoreData!=null){
-            mTvStoreName.setText(mStoreData.getName());
+            mTvStoreName.setText(mStoreData.getName().replace("Small Shop", "Store"));
             ImgLoader.display(getActivity(),mStoreData.getAvatar(),mImgStoreAvatar);
             mTvEvaluate1.setText(getEvaluateTip("Product Description",mStoreData.getShopScore1()));
             mTvEvaluate2.setText(getEvaluateTip("Seller Service",mStoreData.getShopScore2()));

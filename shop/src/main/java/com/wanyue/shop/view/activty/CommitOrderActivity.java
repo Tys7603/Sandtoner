@@ -1,8 +1,10 @@
 package com.wanyue.shop.view.activty;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -54,6 +56,7 @@ import com.wanyue.shop.business.ShopEvent;
 import com.wanyue.shop.view.pop.ChooseCouponPopView;
 import com.wanyue.shop.view.view.CommitOrderBottomViewProxy;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.json.JSONException;
 
 import java.util.List;
@@ -449,8 +452,13 @@ public class CommitOrderActivity extends BaseActivity implements View.OnClickLis
                             if (status.equals("200")) {
                                 org.json.JSONObject data = response.getJSONObject("data");
                                 org.json.JSONObject result = data.getJSONObject("result");
-                                String orderId = result.getString("orderId");
-                                callSuccPay(orderId);
+                                org.json.JSONObject payConfig = result.getJSONObject("payConfig");
+                                org.json.JSONObject pay_data = payConfig.getJSONObject("pay_data");
+                                String link = pay_data.getString("link_url");
+                                Intent intent = new Intent(mContext, PaymentWebViewActivity.class);
+                                intent.putExtra("payment_url", link);
+                                ((Activity) mContext).startActivityForResult(intent, 0);
+//                                callSuccPay(orderId);
                             } else {
                                 Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
                             }
@@ -490,8 +498,13 @@ public class CommitOrderActivity extends BaseActivity implements View.OnClickLis
                             if (status.equals("200")) {
                                 org.json.JSONObject data = response.getJSONObject("data");
                                 org.json.JSONObject result = data.getJSONObject("result");
-                                String orderId = result.getString("orderId");
-                                callSuccPay(orderId);
+                                org.json.JSONObject payConfig = result.getJSONObject("payConfig");
+                                org.json.JSONObject pay_data = payConfig.getJSONObject("pay_data");
+                                String link = pay_data.getString("authorization_url");
+                                Intent intent = new Intent(mContext, PaymentWebViewActivity.class);
+                                intent.putExtra("payment_url", link);
+                                ((Activity) mContext).startActivityForResult(intent, 0);
+//                                callSuccPay(orderId);
                             } else {
                                 Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
                             }
@@ -518,7 +531,6 @@ public class CommitOrderActivity extends BaseActivity implements View.OnClickLis
     }
 
     private void callSuccPay(String orderId) {
-        Log.d("longnx", "callSuccPay: " + orderId);
         OrderPayResultActivity.forward(CommitOrderActivity.this,orderId,!TextUtils.isEmpty(mOrderConfirmBean.getLiveUid()));
         finish();
     }
@@ -569,5 +581,48 @@ public class CommitOrderActivity extends BaseActivity implements View.OnClickLis
         mTvNamePhone.setText(addressInfoBean.getNamePhoneShowInfo());
         mTvAddress.setText(addressInfoBean.getDetailArea());
     }
-   
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 0 && resultCode == RESULT_OK) {
+            String trxref = data.getStringExtra("trxref");
+            String reference = data.getStringExtra("reference");
+            verifyPayment(trxref, reference);
+        }
+    }
+
+    private void verifyPayment(String trxref, String reference) {
+        AndroidNetworking.get("http://system.sandtoner.com/api/paystack/verify")
+                .addQueryParameter("trxref", trxref)
+                .addQueryParameter("reference", reference)
+                .setPriority(Priority.HIGH)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(org.json.JSONObject response) {
+                        try {
+                            int status = response.getInt("status");
+                            String msg = response.getString("msg");
+
+                            if (status == 200) {
+                                org.json.JSONObject data = response.getJSONObject("data");
+                                String resultStatus = data.getString("status");
+                                callSuccPay(resultStatus.equals("SUCCESS") ? trxref : "");
+                            } else {
+                                Toast.makeText(mContext, "Error: " + msg, Toast.LENGTH_LONG).show();
+                            }
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            Toast.makeText(mContext, "Data processing error", Toast.LENGTH_LONG).show();
+                        }
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+                        Toast.makeText(mContext, "Network error: " + anError.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                });
+    }
 }

@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.wanyue.shop">
 
     <application>
-
+        <activity
+            android:name=".view.activty.PaymentWebViewActivity"
+            android:exported="false" />
         <activity
             android:name=".store.view.activity.StoreHomeActivity"
             android:exported="true" />
@@ -31,46 +34,74 @@
         <activity
             android:name=".store.view.activity.StoreActivity"
             android:exported="true" />
-        <activity android:name=".view.activty.GreateGoodsSearchActivity"
-            android:exported="false"/>
-        <activity android:name=".evaluate.activity.EvaluateListActivity"
-            android:exported="false"/>
-        <activity android:name=".view.activty.ViewLogisticsActivity"
-            android:exported="false"/>
-        <activity android:name=".view.activty.RefundOrderDetailActivity"
-            android:exported="false"/>
-        <activity android:name=".view.activty.RefundListActivity"
-            android:exported="false"/>
-        <activity android:name=".view.activty.OrderRefundActivity"
-            android:exported="false"/>
-        <activity android:name=".photo.activity.SelectPhotoActivity"
-            android:exported="false"/>
-        <activity android:name=".evaluate.activity.PublishEvaluateActivity"
-            android:exported="false"/>
-        <activity android:name=".view.activty.MyCollectGoodsActivity"
-            android:exported="false"/>
-        <activity android:name=".view.activty.OrderPayResultActivity"
-            android:exported="false"/>
-        <activity android:name=".view.activty.OrderDeatailActivity"
-            android:exported="false"/>
-        <activity android:name=".view.activty.MyOrderActivity"
-            android:exported="false"/>
-        <activity android:name=".view.activty.MyAddressActivity"
-            android:exported="false"/>
-        <activity android:name=".view.activty.CreateAddressActivity"
-            android:exported="false"/>
+        <activity
+            android:name=".view.activty.GreateGoodsSearchActivity"
+            android:exported="false" />
+        <activity
+            android:name=".evaluate.activity.EvaluateListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.activty.ViewLogisticsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.activty.RefundOrderDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.activty.RefundListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.activty.OrderRefundActivity"
+            android:exported="false" />
+        <activity
+            android:name=".photo.activity.SelectPhotoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".evaluate.activity.PublishEvaluateActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.activty.MyCollectGoodsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.activty.OrderPayResultActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.activty.OrderDeatailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.activty.MyOrderActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.activty.MyAddressActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.activty.CreateAddressActivity"
+            android:exported="false" />
         <activity
             android:name=".view.activty.CommitOrderActivity"
-            android:launchMode="singleTop"
             android:exported="false"
-            android:screenOrientation="portrait" />
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            tools:ignore="AppLinkUrlError">
+            <intent-filter android:label="PayPal Callback">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="payment"
+                    android:pathPrefix="/verify"
+                    android:scheme="sandtoner" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".view.activty.ShopCartActivity"
-            android:launchMode="singleTop"
             android:exported="true"
-            android:screenOrientation="portrait" >
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <data android:scheme="com.example.paypal" />
 
                 <category android:name="android.intent.category.DEFAULT" />
@@ -84,8 +115,8 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".view.activty.ShopSearchActivity"
-            android:launchMode="singleTop"
             android:exported="false"
+            android:launchMode="singleTop"
             android:screenOrientation="portrait" />
     </application>
 

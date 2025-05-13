@@ -35,9 +35,9 @@ public class HotKeywordSearchGoodViewProxy extends RxViewProxy implements ViewGr
         mSearchViewProxy.setAddPosition(0);
         mSearchViewProxy.setSeacherListner(mSeacherListner);
         mSearchViewProxy.setEnableAutoSearch(false);
-        mSearchViewProxy.setHint("Search product name keywords");
+        mSearchViewProxy.setHint("Search for product name keywords");
         getViewProxyChildMannger().addViewProxy(mContainer,mSearchViewProxy,mSearchViewProxy.getDefaultTag());
-        mListView =  findViewById(R.id.listView);
+        mListView = findViewById(R.id.list_hot);
         mKeywordAdapter=new KeywordAdapter(null);
         mListView.setAdapter(mKeywordAdapter);
         getHotKeyWord();

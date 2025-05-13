@@ -2,6 +2,7 @@ package com.wanyue.imnew.busniess;
 
 import android.content.Context;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.tencent.imsdk.relationship.UserInfo;
 import com.tencent.imsdk.v2.V2TIMCallback;
@@ -34,6 +35,8 @@ public class IMSDK {
     public static void login(){
         String sign = SpUtil.getInstance().getStringValue(SpUtil.TX_IM_USER_SIGN);
         String uid=CommonAppConfig.getUid();
+        Log.d("longnxx", "sign: " + sign);
+        Log.d("longnxx", "uid: " + uid);
         TUIKit.login(uid, sign, new IUIKitCallBack() {
             @Override
             public void onSuccess(Object data) {
