@@ -32,12 +32,12 @@ public class StoreGoodsAddActivity extends BaseActivity {
 
     @Override
     public void init() {
-        setTabTitle("添加商品");
+        setTabTitle("Add product");
         mVpSearchContainer = (ViewGroup) findViewById(R.id.vp_search_container);
         mIndicator = (MagicIndicator) findViewById(R.id.indicator);
         mViewPager = (ViewPager) findViewById(R.id.viewPager);
         SearchViewProxy searchViewProxy=new SearchViewProxy();
-        searchViewProxy.setHint("搜索商品");
+        searchViewProxy.setHint("Search for products");
         searchViewProxy.setEnableAutoSearch(true);
         searchViewProxy.setSeacherListner(new SearchViewProxy.SeacherListner() {
             @Override

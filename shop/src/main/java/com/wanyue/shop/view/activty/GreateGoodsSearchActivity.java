@@ -28,7 +28,7 @@ public class GreateGoodsSearchActivity extends BaseActivity implements SearchVie
 
     @Override
     public void init() {
-        setTabTitle("搜索商品");
+        setTabTitle("Search for products");
         mRefreshView = findViewById(R.id.refreshView);
         mRefreshView.setDataListner(new RxRefreshView.DataListner<GoodsBean>() {
             @Override
