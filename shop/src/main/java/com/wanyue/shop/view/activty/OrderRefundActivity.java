@@ -76,7 +76,7 @@ public class OrderRefundActivity extends BaseActivity implements View.OnClickLis
 
     @Override
     public void init() {
-        setTabTitle("申请退款");
+        setTabTitle("Apply for a refund");
         mTvRefundNum = (TextView) findViewById(R.id.tv_refund_num);
         mTvRefundMoney = (TextView) findViewById(R.id.tv_refund_money);
         mTvRefundReason = (TextView) findViewById(R.id.tv_refund_reason);
