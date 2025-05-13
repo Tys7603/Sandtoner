@@ -448,10 +448,12 @@ public class CommitOrderActivity extends BaseActivity implements View.OnClickLis
                                 org.json.JSONObject data = response.getJSONObject("data");
                                 org.json.JSONObject result = data.getJSONObject("result");
                                 org.json.JSONObject payConfig = result.getJSONObject("payConfig");
+                                String orderId = result.getString("orderId");
                                 org.json.JSONObject pay_data = payConfig.getJSONObject("pay_data");
                                 String link = pay_data.getString("link_url");
                                 Intent intent = new Intent(mContext, PaymentWebViewActivity.class);
                                 intent.putExtra("payment_url", link);
+                                intent.putExtra("orderId", orderId);
                                 ((Activity) mContext).startActivityForResult(intent, 0);
 //                                callSuccPay(orderId);
                             } else {
@@ -494,10 +496,12 @@ public class CommitOrderActivity extends BaseActivity implements View.OnClickLis
                                 org.json.JSONObject data = response.getJSONObject("data");
                                 org.json.JSONObject result = data.getJSONObject("result");
                                 org.json.JSONObject payConfig = result.getJSONObject("payConfig");
+                                String orderId = result.getString("orderId");
                                 org.json.JSONObject pay_data = payConfig.getJSONObject("pay_data");
                                 String link = pay_data.getString("authorization_url");
                                 Intent intent = new Intent(mContext, PaymentWebViewActivity.class);
                                 intent.putExtra("payment_url", link);
+                                intent.putExtra("orderId", orderId);
                                 ((Activity) mContext).startActivityForResult(intent, 0);
 //                                callSuccPay(orderId);
                             } else {
@@ -589,7 +593,12 @@ public class CommitOrderActivity extends BaseActivity implements View.OnClickLis
         if (requestCode == 0 && resultCode == RESULT_OK) {
             String trxref = data.getStringExtra("trxref");
             String reference = data.getStringExtra("reference");
-            verifyPayment(trxref, reference);
+            String token = data.getStringExtra("token");
+            if (token.equals("")) {
+                verifyPayment(trxref, reference);
+            } else {
+                verifyPaymentPayPal(token, reference);
+            }
         }
     }
 
@@ -610,6 +619,39 @@ public class CommitOrderActivity extends BaseActivity implements View.OnClickLis
                                 org.json.JSONObject data = response.getJSONObject("data");
                                 String resultStatus = data.getString("status");
                                 callSuccPay(resultStatus.equals("SUCCESS") ? trxref : "");
+                            } else {
+                                Toast.makeText(mContext, "Error: " + msg, Toast.LENGTH_LONG).show();
+                            }
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            Toast.makeText(mContext, "Data processing error", Toast.LENGTH_LONG).show();
+                        }
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+                        Toast.makeText(mContext, "Network error: " + anError.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                });
+    }
+
+    private void verifyPaymentPayPal(String token, String reference) {
+        AndroidNetworking.get("http://system.sandtoner.com/api/paypal/verify")
+                .addQueryParameter("token", token)
+                .setPriority(Priority.HIGH)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(org.json.JSONObject response) {
+                        try {
+                            int status = response.getInt("status");
+                            String msg = response.getString("msg");
+
+                            if (status == 200) {
+                                org.json.JSONObject data = response.getJSONObject("data");
+                                String resultStatus = data.getString("status");
+                                callSuccPay(resultStatus.equals("SUCCESS") ? reference : "");
                             } else {
                                 Toast.makeText(mContext, "Error: " + msg, Toast.LENGTH_LONG).show();
                             }

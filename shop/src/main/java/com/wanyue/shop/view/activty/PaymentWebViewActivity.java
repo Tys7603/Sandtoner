@@ -15,7 +15,7 @@ import com.wanyue.shop.R;
 
 public class PaymentWebViewActivity extends AppCompatActivity {
     private WebView webView;
-
+    private String oderId;
     @SuppressLint("SetJavaScriptEnabled")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +23,7 @@ public class PaymentWebViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_payment_web_view2);
 
         String url = getIntent().getStringExtra("payment_url");
+        oderId = getIntent().getStringExtra("orderId");
 
         webView = findViewById(R.id.webView);
         webView.setWebViewClient(new WebViewClient());
@@ -43,6 +44,17 @@ public class PaymentWebViewActivity extends AppCompatActivity {
                     Intent resultIntent = new Intent();
                     resultIntent.putExtra("trxref", trxref);
                     resultIntent.putExtra("reference", reference);
+                    resultIntent.putExtra("token", "");
+                    setResult(RESULT_OK, resultIntent);
+                    finish();
+                    return true;
+                }
+                if (url.contains("/api/paypal/verify")) {
+                    Uri uri = Uri.parse(url);
+                    String token = uri.getQueryParameter("token");
+                    Intent resultIntent = new Intent();
+                    resultIntent.putExtra("token", token);
+                    resultIntent.putExtra("reference", oderId);
                     setResult(RESULT_OK, resultIntent);
                     finish();
                     return true;
