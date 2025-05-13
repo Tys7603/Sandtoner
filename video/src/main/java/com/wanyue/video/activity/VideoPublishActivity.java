@@ -329,7 +329,7 @@ public class VideoPublishActivity extends AbsActivity implements ITXLivePlayList
             mLocation.setText(CommonAppConfig.getCity());
         } else {
             mLocation.setEnabled(false);
-            mLocation.setText("位置");
+            mLocation.setText("Location");
         }
     }
 

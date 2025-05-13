@@ -43,9 +43,9 @@ public class RefundCommitBean {
 
     public String check(){
         if(TextUtils.isEmpty(text)){
-            return "请选择退款原因";
+            return "Please select a reason for refund";
         }else if(text.length()>100){
-            return "字数过多";
+            return "Too many words";
         }
         else if(TextUtils.isEmpty(uni)){
             return null;
