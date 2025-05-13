@@ -376,7 +376,7 @@ public class VideoPublishActivity extends AbsActivity implements ITXLivePlayList
            ToastUtil.show(R.string.video_title_empty);
             return;
         }else if(mClassfyId==null){
-           ToastUtil.show("请选择直播分类");
+           ToastUtil.show("Please select a live streaming category");
            return;
        }
 
