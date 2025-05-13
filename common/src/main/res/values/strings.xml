@@ -80,7 +80,7 @@
     <string name="goods_tip_25">No products are currently on sale\nPlease go to the store to add products first</string>
     <string name="goods_tip_26">Products on sale </string>
     <string name="goods_tip_27">Go to the store and browse</string>
-    <string name="goods_tip_28">Recommended products</string>
+    <string name="goods_tip_28">Selected Items</string>
     <string name="goods_tip_29">Go to buy</string>
     <string name="goods_tip_30">Remove from shelf</string>
     <string name="goods_tip_31">Related products</string>
@@ -1315,7 +1315,7 @@
     <string name="str_order_13">Free shipping</string>
     <string name="str_order_14">Please add remarks (150 characters or less)</string>
     <string name="str__order_15">Subtotal:</string>
-    <string name="str_tuijian">Recomment</string>
+    <string name="str_tuijian">Selected</string>
     <string name="str_xiangqing">Details</string>
     <string name="str_order_16">Apply for a refund</string>
     <string name="str_order_17">Check logistics</string>

@@ -23,7 +23,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:text="Recommended Products"
+        android:text="Selected Items"
         android:textColor="@color/global"
         android:textSize="@dimen/text_size_15"
         app:layout_constraintLeft_toLeftOf="parent"

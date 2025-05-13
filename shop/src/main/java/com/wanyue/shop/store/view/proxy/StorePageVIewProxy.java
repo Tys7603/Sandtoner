@@ -125,7 +125,7 @@ public class StorePageVIewProxy extends BaseStoreChildVIewProxy {
 
 
     private String[] getTitleArray() {
-        String[]titleArray={"Recommendations","New Products","Coupons"};
+        String[]titleArray={"HOT","NEW","COUPONS"};
         return titleArray;
     }
 
