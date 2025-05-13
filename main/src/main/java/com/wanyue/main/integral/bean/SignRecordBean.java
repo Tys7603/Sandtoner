@@ -64,6 +64,9 @@ public class SignRecordBean {
         int size= ListUtil.size(weekSign);
         for(int i=0;i<size;i++){
             WeekSignBean weekSignBean=weekSign.get(i);
+            if (weekSignBean.getDay() != null && weekSignBean.getDay().contains("sky")) {
+                weekSignBean.setDay(weekSignBean.getDay().replace("sky", "day"));
+            }
             WeekSignBean nextSign=ListUtil.safeGetData(weekSign,i+1);
 
             list.add(weekSignBean);
