@@ -5,7 +5,7 @@
     <string name="ssdk_oks_share_failed">分享失败</string>
     <string name="ssdk_oks_share_completed">分享成功</string>
     <string name="ssdk_oks_share_canceled">分享已取消</string>
-    <string name="ssdk_oks_cancel">取消</string>
+    <string name="ssdk_oks_cancel">Cancel</string>
     <string name="ssdk_oks_multi_share">图文分享</string>
     <string name="ssdk_oks_confirm">确定</string>
     <string name="ssdk_oks_contacts">联系人</string>

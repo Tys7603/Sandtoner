@@ -90,7 +90,7 @@ public class MyCollectGoodsActivity extends BaseActivity implements BaseQuickAda
                     @Override
                     public void onNextTo(Boolean aBoolean) {
                         if(aBoolean){
-                            ToastUtil.show("取消收藏成功");
+                            ToastUtil.show("Cancel collection successfully");
                             if(mRefreshView!=null){
                                mRefreshView.initData();
                             }

@@ -539,7 +539,7 @@ public class CommitOrderActivity extends BaseActivity implements View.OnClickLis
             }
             @Override
             public void onFailed(int errorCode) {
-                String errorString=errorCode==PayCallback.CANCLE_PAY?"取消支付":"支付失败";
+                String errorString=errorCode==PayCallback.CANCLE_PAY?"Cancel payment":"Payment failed";
                 String orderId=info.getString("orderId");
                 OrderPayResultActivity.forward(CommitOrderActivity.this,orderId,!TextUtils.isEmpty(mOrderConfirmBean.getLiveUid()),errorString);
                 finish();

@@ -113,7 +113,7 @@
 	<string name="ssdk_sms_input_phone_hint">请输入手机号码</string>
 	<string name="ssdk_sms_input_code_hint">请输入验证码</string>
 	<string name="ssdk_sms_input_voice_code"><Data>短信验证码收不到？请尝试&lt;font color=#2ba245>语音验证码&lt;/font></Data></string>
-	<string name="ssdk_sms_dialog_btn_cancel">取消</string>
+	<string name="ssdk_sms_dialog_btn_cancel">Cancel</string>
 	<string name="ssdk_sms_dialog_btn_ok">好</string>
 	<string name="ssdk_sms_dialog_btn_wait">等待</string>
 	<string name="ssdk_sms_dialog_btn_back">返回</string>
