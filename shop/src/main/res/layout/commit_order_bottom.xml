@@ -87,7 +87,7 @@
                 android:layout_height="wrap_content"
                 android:drawablePadding="6dp"
                 android:gravity="center_vertical"
-                android:text="PayStack"
+                android:text="PayStack payment"
                 android:textSize="@dimen/text_size_14"
                 app:dt_left_drawable="@drawable/paystack"
                 app:dt_left_height="22dp"
