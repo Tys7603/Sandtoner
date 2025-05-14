@@ -79,6 +79,11 @@ public class StorePageVIewProxy extends BaseStoreChildVIewProxy {
     }
 
     private void checkFollowButtonAnswer() {
+        // Set fixed width
+        ViewGroup.LayoutParams params = mTvFollow.getLayoutParams();
+        params.width = (int) (120 * getActivity().getResources().getDisplayMetrics().density); // 120dp
+        mTvFollow.setLayoutParams(params);
+        
         if(mStoreBean.getIsFollow()==1){
            mTvFollow.setText("Following");
            mTvFollow.setBackground(ResourceUtil.getDrawable(R.drawable.bg_color_gray1_radius_15,false));
