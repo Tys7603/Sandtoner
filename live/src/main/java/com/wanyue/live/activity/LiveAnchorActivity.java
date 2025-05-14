@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -63,6 +64,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Arrays;
 
 import pl.droidsonroids.gif.GifImageView;
 
@@ -455,17 +457,19 @@ public class LiveAnchorActivity extends LiveActivity implements LiveFunctionClic
         LiveHttpUtil.stopLive(mStream, new HttpCallback() {
             @Override
             public void onSuccess(int code, String msg, String[] info) {
-                if (BaseHttpCallBack.isSuccess(code)) {
-                    SocketChatUtil.sendEndLiveRoom(mSocketClient);
-                    stopLiveSucc();
-                } else {
-                    ToastUtil.show(msg);
-                }
+                //if (BaseHttpCallBack.isSuccess(code)) {
+                SocketChatUtil.sendEndLiveRoom(mSocketClient);
+                stopLiveSucc();
+//                } else {
+//                    ToastUtil.show(msg);
+//                }
+                Log.d("SSS", "Info: " + Arrays.toString(info));
+                Log.d("SSS", "code: " + code);
             }
 
             @Override
             public void onError(int code, String msg) {
-
+                Log.d("SSS","endLive onError msg: " + msg);
             }
 
             @Override
