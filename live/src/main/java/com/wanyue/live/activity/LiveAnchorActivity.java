@@ -31,6 +31,7 @@ import com.wanyue.common.utils.DateFormatUtil;
 import com.wanyue.common.utils.DialogUitl;
 import com.wanyue.common.utils.L;
 import com.wanyue.common.utils.ProcessResultUtil;
+import com.wanyue.common.utils.SpUtil;
 import com.wanyue.common.utils.SystemUtil;
 import com.wanyue.common.utils.ToastUtil;
 import com.wanyue.common.utils.ViewUtil;
@@ -452,14 +453,16 @@ public class LiveAnchorActivity extends LiveActivity implements LiveFunctionClic
      * 结束直播
      */
 
+
+    //Note: Temporary fix Stream 
     public void endLive() {
         //请求关播的接口
         LiveHttpUtil.stopLive(mStream, new HttpCallback() {
             @Override
             public void onSuccess(int code, String msg, String[] info) {
                 //if (BaseHttpCallBack.isSuccess(code)) {
-                SocketChatUtil.sendEndLiveRoom(mSocketClient);
-                stopLiveSucc();
+                    SocketChatUtil.sendEndLiveRoom(mSocketClient);
+                    stopLiveSucc();
 //                } else {
 //                    ToastUtil.show(msg);
 //                }

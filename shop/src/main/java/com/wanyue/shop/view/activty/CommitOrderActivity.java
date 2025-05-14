@@ -5,6 +5,8 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -126,20 +128,23 @@ public class CommitOrderActivity extends BaseActivity implements View.OnClickLis
         getOrderInfo();
     }
 
+
+
     private void getOrderInfo() {
+        Log.d("SSS", "getOrderInfo orderIdArray: " + orderIdArray);
         ShopAPI.orderConfirm(orderIdArray, new ParseHttpCallback<JSONObject>() {
             @Override
             public void onSuccess(int code, String msg, JSONObject info) {
                 if(isSuccess(code)&&info!=null){
                  mBtnCommit.setEnabled(true);
                  String json=info.toJSONString();
-                    Log.d("longnx", "onSuccess: " + json);
+                    Log.d("SSS", "onSuccess: " + json);
 
                  mOrderConfirmBean = info.toJavaObject(OrderConfirmBean.class);
                  mOrderConfirmBean.setLiveUid(getIntent().getStringExtra(Constants.LIVE_UID));
                  setAboutOrderData(mOrderConfirmBean);
                  L.e("json=="+json);
-                    Log.d("longnx", "onSuccess: " + mOrderConfirmBean.getOrderKey());
+                    Log.d("SSS", "onSuccess: " + mOrderConfirmBean.getOrderKey());
                 }
             }
 
@@ -381,7 +386,8 @@ public class CommitOrderActivity extends BaseActivity implements View.OnClickLis
                 return;
             }
         }
-
+        Log.d("SSS", "commit");
+        Log.d("SSS", "mOrderConfirmBean: " + mOrderConfirmBean.toString());
         String token = SpUtil.getInstance().getStringValue(SpUtil.TOKEN);
 
         if(StringUtil.equals(mOrderConfirmBean.getPayType(), Constants.PAY_TYPE_PP)){
@@ -391,6 +397,7 @@ public class CommitOrderActivity extends BaseActivity implements View.OnClickLis
             prb.setVisibility(View.VISIBLE);
             createOrderPayStack("paystack",  String.valueOf(mOrderConfirmBean.getAddrId()), "user@gmail.com", mOrderConfirmBean.getOrderKey(), token);
         } else {
+
             ShopAPI.orderCreate(mOrderConfirmBean, new ParseHttpCallback<JSONObject>() {
                 @Override
                 public void onSuccess(int code, String msg, JSONObject info) {
@@ -426,9 +433,11 @@ public class CommitOrderActivity extends BaseActivity implements View.OnClickLis
                 }
             });
         }
+
     }
 
     public void createOrderPaypal(String payType, String addressId, String key, String token) {
+
         AndroidNetworking.upload("https://system.sandtoner.com/api/order/create/" + key)
                 .addHeaders("Authori-zation", "Bearer " + token)
                 .addMultipartParameter("payType", payType)
@@ -439,7 +448,7 @@ public class CommitOrderActivity extends BaseActivity implements View.OnClickLis
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(org.json.JSONObject response) {
-                        Log.d("API_RESPONSE", "Success: " + response.toString());
+                        Log.d("SSS", "Success: " + response.toString());
                         try {
                             String status = response.getString("status");
                             String msg = response.getString("msg");
@@ -448,15 +457,19 @@ public class CommitOrderActivity extends BaseActivity implements View.OnClickLis
                                 org.json.JSONObject data = response.getJSONObject("data");
                                 org.json.JSONObject result = data.getJSONObject("result");
                                 org.json.JSONObject payConfig = result.getJSONObject("payConfig");
-                                String orderId = result.getString("orderId");
+
                                 org.json.JSONObject pay_data = payConfig.getJSONObject("pay_data");
                                 String link = pay_data.getString("link_url");
+
+                                String orderId = result.getString("orderId");
+
                                 Intent intent = new Intent(mContext, PaymentWebViewActivity.class);
                                 intent.putExtra("payment_url", link);
                                 intent.putExtra("orderId", orderId);
                                 ((Activity) mContext).startActivityForResult(intent, 0);
 //                                callSuccPay(orderId);
                             } else {
+                                Log.d("SSS", "msg: " + msg);
                                 Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
@@ -471,6 +484,7 @@ public class CommitOrderActivity extends BaseActivity implements View.OnClickLis
                     public void onError(ANError error) {
                         Log.e("API_ERROR", "Error: " + error.getErrorDetail());
                         prb.setVisibility(View.VISIBLE);
+
                     }
                 });
     }
@@ -499,13 +513,18 @@ public class CommitOrderActivity extends BaseActivity implements View.OnClickLis
                                 String orderId = result.getString("orderId");
                                 org.json.JSONObject pay_data = payConfig.getJSONObject("pay_data");
                                 String link = pay_data.getString("authorization_url");
+
+
                                 Intent intent = new Intent(mContext, PaymentWebViewActivity.class);
                                 intent.putExtra("payment_url", link);
                                 intent.putExtra("orderId", orderId);
                                 ((Activity) mContext).startActivityForResult(intent, 0);
 //                                callSuccPay(orderId);
                             } else {
+                                Log.d("SSS", "msg: " + msg);
+
                                 Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
+
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -519,6 +538,7 @@ public class CommitOrderActivity extends BaseActivity implements View.OnClickLis
                     public void onError(ANError error) {
                         Log.e("API_ERROR", "Error: " + error.getErrorDetail());
                         prb.setVisibility(View.VISIBLE);
+
                     }
                 });
     }
@@ -599,6 +619,13 @@ public class CommitOrderActivity extends BaseActivity implements View.OnClickLis
             } else {
                 verifyPaymentPayPal(token, reference);
             }
+
+            Log.d("SSS" , "onActivityResult success");
+
+        } else {
+            Log.d("SSS" , "onActivityResult fail");
+
+            finish();
         }
     }
 
