@@ -3,15 +3,17 @@ package com.wanyue.shop.view.pop;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import com.alibaba.fastjson.JSONObject;
 import com.wanyue.common.CommonAppConfig;
 import com.wanyue.common.Constants;
-import com.wanyue.common.api.CommonAPI;
 import com.wanyue.common.bean.UserBean;
 import com.wanyue.common.business.UserModel;
 import com.wanyue.common.http.ParseHttpCallback;
@@ -23,13 +25,17 @@ import com.wanyue.common.utils.StringUtil;
 import com.wanyue.shop.R;
 import com.wanyue.shop.api.ShopAPI;
 import com.wanyue.shop.model.OrderModel;
+import com.wanyue.shop.view.activty.PaymentWebViewActivity;
+
 
 public class PayOrderPopView extends BaseBottomPopView implements View.OnClickListener {
     private ImageView mBtnClose;
     private ViewGroup mBtnWx;
+    private ViewGroup mBtn_pp;
     private ViewGroup mBtnCoin;
     private TextView mTvCoinMoney;
     private String mId;
+    private String mPrice;
     private PayPresenter mPayPresenter;
 
     @Override
@@ -37,9 +43,11 @@ public class PayOrderPopView extends BaseBottomPopView implements View.OnClickLi
         super.init();
         mBtnClose = findViewById(R.id.btn_close);
         mBtnWx =  findViewById(R.id.btn_wx);
+        mBtn_pp =  findViewById(R.id.btn_pp);
         mBtnCoin = findViewById(R.id.btn_coin);
         mTvCoinMoney =  findViewById(R.id.tv_coin_money);
         mBtnClose.setOnClickListener(this);
+        mBtn_pp.setOnClickListener(this);
         mBtnWx.setOnClickListener(this);
         mBtnCoin.setOnClickListener(this);
 
@@ -66,7 +74,10 @@ public class PayOrderPopView extends BaseBottomPopView implements View.OnClickLi
         if(id==R.id.btn_close){
             dismiss();
         }else if(id==R.id.btn_wx){
-            payforWx();
+            payByPayStack();
+        }else if(id==R.id.btn_pp){
+            //getOrderInfo();
+            payByPaypal();
         }else if(id==R.id.btn_coin){
             payForCoin();
         }
@@ -75,6 +86,9 @@ public class PayOrderPopView extends BaseBottomPopView implements View.OnClickLi
     public void setId(String id) {
         mId = id;
     }
+    public void setPrice(String price) {
+        mPrice = price;
+    }
 
     private void initPayPrestner() {
         if(mPayPresenter==null){
@@ -82,17 +96,85 @@ public class PayOrderPopView extends BaseBottomPopView implements View.OnClickLi
         }
     }
 
-    private void payforWx() {
+
+    private void payByPaypal() {
         if(mId==null){
             dismiss();
             return;
         }
-        ShopAPI.orderPay(mId, Constants.PAY_TYPE_WX, new ParseHttpCallback<JSONObject>() {
+
+        ShopAPI.orderPay(mId, Constants.PAY_TYPE_PP, new ParseHttpCallback<JSONObject>() {
             @Override
             public void onSuccess(int code, String msg, JSONObject info) {
                 if(isSuccess(code)){
-                    tuneWx(info);
+
+                    try {
+                        JSONObject result = info.getJSONObject("result");
+                        String orderId = result.getString("order_id");
+
+                        JSONObject payConfig = result.getJSONObject("payConfig");
+                        JSONObject payData = payConfig.getJSONObject("pay_data");
+                        String link = payData.getString("link_url");
+
+                        Intent intent = new Intent(getContext(), PaymentWebViewActivity.class);
+                        intent.putExtra("payment_url", link);
+                        intent.putExtra("orderId", orderId);
+                        ((Activity) getContext()).startActivityForResult(intent, 0);
+                    } catch (Exception e) {
+                        Log.e("DEBUG_INFO", "Lỗi khi parse JSON: " + e.getMessage());
+                        e.printStackTrace();
+                    }
+
                 }
+
+            }
+            @Override
+            public boolean showLoadingDialog() {
+                return true;
+            }
+            @Override
+            public Dialog createLoadingDialog() {
+                return DialogUitl.loadingDialog(getContext());
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                // Handle error case for WeChat payment
+                DialogUitl.dismissDialog(createLoadingDialog());
+            }
+        });
+    }
+
+    private void payByPayStack() {
+        if(mId==null){
+            dismiss();
+            return;
+        }
+
+        ShopAPI.orderPay(mId, Constants.PAY_TYPE_PSTACK, new ParseHttpCallback<JSONObject>() {
+            @Override
+            public void onSuccess(int code, String msg, JSONObject info) {
+                if(isSuccess(code)){
+
+                    try {
+                        JSONObject result = info.getJSONObject("result");
+                        String orderId = result.getString("order_id");
+
+                        JSONObject payConfig = result.getJSONObject("payConfig");
+                        JSONObject payData = payConfig.getJSONObject("pay_data");
+                        String link = payData.getString("link_url");
+
+                        Intent intent = new Intent(getContext(), PaymentWebViewActivity.class);
+                        intent.putExtra("payment_url", link);
+                        intent.putExtra("orderId", orderId);
+                        ((Activity) getContext()).startActivityForResult(intent, 0);
+                    } catch (Exception e) {
+                        Log.e("DEBUG_INFO", "Lỗi khi parse JSON: " + e.getMessage());
+                        e.printStackTrace();
+                    }
+
+                }
+
             }
             @Override
             public boolean showLoadingDialog() {
