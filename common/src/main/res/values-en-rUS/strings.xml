@@ -44,10 +44,10 @@
     <string name="copy_success">Copied successfully</string>
 
     <string name="home_page">Home</string>
-    <string name="home_page_share_1">"%1$s" is also in %2$s, ~ click to view HIS/HER story</string>
+    <string name="home_page_share_1">"%1$s" is also in %2$s, click to view HIS/HER story</string>
     <string name="home_page_share_2">HE/SHE has %1$s fans, come and watch!</string>
 
-    <string name="im_live_anchor_msg">Hi~ I\'m the network anchor, come and chat with me.</string>
+    <string name="im_live_anchor_msg">Hi I\'m the network anchor, come and chat with me.</string>
     <string name="im_type_image">[Picture]</string>
     <string name="im_type_voide">[Voice]</string>
     <string name="im_type_location">[Location]</string>
@@ -141,7 +141,7 @@
     <string name="content_empty">Please fill in the content</string>
     <string name="choose">Select</string>
     <string name="choose_flie">Select file</string>
-    <string name="cannot_follow_self">Oh~, you can\'t follow the account of yourself </string>
+    <string name="cannot_follow_self">Oh, you can\'t follow the account of yourself </string>
     <string name="dialog_tip">Prompt</string>
     <string name="download">Download</string>
     <string name="delete">Delete</string>
@@ -149,7 +149,7 @@
     <string name="hot">Hot</string>
     <string name="load_failure">Network request failed</string>
     <string name="net_work_broken">The network connection was disconnected</string>
-    <string name="load_failure_2">Please check your network connection and try again~</string>
+    <string name="load_failure_2">Please check your network connection and try again</string>
     <string name="loading">Loading</string>
     <string name="location">Location</string>
     <string name="no_more_data">No more data</string>
@@ -327,7 +327,7 @@
     <string name="fans_my_fans">My fans</string>
     <string name="fans_ta_fans">HIS/HER fans</string>
     <string name="fans_no_fans">You have no fans yet</string>
-    <string name="fans_do_fans">Perfect personal information will make more people follow you~</string>
+    <string name="fans_do_fans">Perfect personal information will make more people follow you</string>
     <string name="fans_no_fans_2">HE/SHE has no fans yet</string>
     <string name="edit_profile">Edit data</string>
     <string name="voice">Sound</string>
@@ -337,8 +337,8 @@
     <string name="edit_profile_city">Hometown</string>
     <string name="edit_profile_city_1">Please select your hometown</string>
     <string name="edit_profile_sign">Signature</string>
-    <string name="edit_profile_sign_1">Introduce yourself ~</string>
-    <string name="edit_profile_sign_2">Please set the signature ~</string>
+    <string name="edit_profile_sign_1">Introduce yourself</string>
+    <string name="edit_profile_sign_2">Please set the signature</string>
     <string name="edit_profile_interest">Interest</string>
     <string name="edit_profile_interest_1">Please select your hobbies</string>
     <string name="edit_profile_interest_2">Select your interest (%1$s/5)</string>

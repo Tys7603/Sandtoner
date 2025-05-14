@@ -25,7 +25,7 @@ public class MyAddressActivity extends BaseActivity implements View.OnClickListe
         setTabTitle(R.string.address_mannger);
         setTabBackGound(R.color.white);
         mRefreshView = findViewById(R.id.refreshView);
-        mRefreshView.setNoDataTip("No address added yet~");
+        mRefreshView.setNoDataTip("No address added yet");
         mAddressAdapter= new AddressAdapter(null, this);
         mAddressAdapter.setOnItemClickListener(this);
         mRefreshView.setAdapter(mAddressAdapter);

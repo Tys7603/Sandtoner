@@ -37,7 +37,7 @@ public class SearchLiveActivity extends BaseActivity implements SearchViewProxy.
         mContainer = (ViewGroup) findViewById(R.id.container);
         mTvSearch = (TextView) findViewById(R.id.tv_search);
         mRefreshView=findViewById(R.id.refreshView);
-        mRefreshView.setEmptyText("No search results, please try another word~");
+        mRefreshView.setEmptyText("No search results, please try another word");
         mHomeLiveAdapter=new HomeLiveAdapter(null);
         mHomeLiveAdapter.setOnItemClickListener(this);
         mRefreshView.setAdapter(mHomeLiveAdapter);

@@ -23,7 +23,7 @@ public class RefundListActivity extends BaseActivity implements BaseQuickAdapter
     public void init() {
         setTabTitle("Return List");
         mRefreshView =  findViewById(R.id.refreshView);
-        mRefreshView.setEmptyText("No order information available~");
+        mRefreshView.setEmptyText("No order information available");
         mRefundListAdapter=new RefundListAdapter(null);
         mRefreshView.setAdapter(mRefundListAdapter);
         mRefreshView.setDataListner(new RxRefreshView.DataListner<OrderBean>() {

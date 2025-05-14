@@ -62,7 +62,7 @@ public class StoreOrderListActivity extends BaseActivity implements RadioGroup.O
         mBtnOnther.setOnClickListener(this);
         mStoreOrderAdapter=new StoreOrderAdapter(null);
         mRefreshView.setAdapter(mStoreOrderAdapter);
-        mRefreshView.setEmptyText("No order information available~");
+        mRefreshView.setEmptyText("No order information available");
         mRefreshView.setReclyViewSetting(RxRefreshView.ReclyViewSetting.createLinearSetting(this,10));
         mRefreshView.setDataListner(new RxRefreshView.DataListner<OrderBean>() {
             @Override

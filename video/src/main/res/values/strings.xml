@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
 
-    <string name="video_say_something">Say something~~</string>
+    <string name="video_say_something">Say something</string>
     <string name="video_download_success">视频下载成功</string>
     <string name="video_download_failed">视频下载失败</string>
     <string name="video_no_more_video">没有更多视频</string>
@@ -41,7 +41,7 @@
     <string name="video_cut_tip">截取所需音频片段</string>
     <string name="video_edit_origin">原声</string>
     <string name="video_edit_cut_tip">拖拽两侧滑块选择裁剪区域</string>
-    <string name="video_pub_des_tip">添加视频描述~</string>
+    <string name="video_pub_des_tip">添加视频描述</string>
     <string name="video_pub_pub">确认发布</string>
     <string name="video_pub">视频发布</string>
     <string name="video_process_2">视频生成中</string>

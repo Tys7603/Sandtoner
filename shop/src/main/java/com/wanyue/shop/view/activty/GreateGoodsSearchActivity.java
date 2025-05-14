@@ -52,7 +52,7 @@ public class GreateGoodsSearchActivity extends BaseActivity implements SearchVie
         mRefreshView.setReclyViewSetting(RxRefreshView.ReclyViewSetting.createLinearSetting(this,0));
 
         HotGoodsEmptyViewProxy hotGoodsEmptyViewProxy=new HotGoodsEmptyViewProxy();
-        hotGoodsEmptyViewProxy.setEmptyText("No search results, please try another word~");
+        hotGoodsEmptyViewProxy.setEmptyText("No search results, please try another word");
         mRefreshView.setEmptyViewProxy(getViewProxyMannger(),hotGoodsEmptyViewProxy);
         mRefreshView.setRefreshEnable(false);
     }

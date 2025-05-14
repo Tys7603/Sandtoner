@@ -21,7 +21,7 @@ public class StoreCouponListVIewProxy extends CouponListViewProxy<CouponBean> im
         setCouponListAdapter(adapter);
         setClickListner(this);
         super.initView(contentView);
-        setNoDataTip("No coupons available for use~");
+        setNoDataTip("No coupons available for use");
     }
 
     @Override

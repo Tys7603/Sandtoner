@@ -25,7 +25,7 @@ public class MyCollectGoodsActivity extends BaseActivity implements BaseQuickAda
     public void init() {
         setTabTitle(R.string.collect_goods);
         mRefreshView =findViewById(R.id.refreshView);
-        mRefreshView.setNoDataTip("Not following yet, hurry up and follow now~");
+        mRefreshView.setNoDataTip("Not following yet, hurry up and follow now");
 
         mRefreshView.setDataListner(new RxRefreshView.DataListner<StoreGoodsBean>() {
             @Override
@@ -43,7 +43,7 @@ public class MyCollectGoodsActivity extends BaseActivity implements BaseQuickAda
         mRefreshView.setAdapter(mCollectGoodsAdapter);
 
         HotGoodsEmptyViewProxy hotGoodsEmptyViewProxy=new HotGoodsEmptyViewProxy();
-        hotGoodsEmptyViewProxy.setEmptyText("Not following yet, hurry up and follow now~");
+        hotGoodsEmptyViewProxy.setEmptyText("Not following yet, hurry up and follow now");
         mRefreshView.setEmptyViewProxy(getViewProxyMannger(),hotGoodsEmptyViewProxy);
         mRefreshView.setRefreshEnable(false);
 
