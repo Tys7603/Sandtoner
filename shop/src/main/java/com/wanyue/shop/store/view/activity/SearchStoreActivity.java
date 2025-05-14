@@ -54,9 +54,9 @@ public class SearchStoreActivity extends BaseActivity {
         mGoodsSearchArgs.mer_id=mClassifyBean.getStoreId();
 
         if(!TextUtils.isEmpty(id)){
-            searchViewProxy.setHint("当前搜索类目："+mClassifyBean.getName());
+            searchViewProxy.setHint("Current search category："+mClassifyBean.getName());
         }else{
-            searchViewProxy.setHint("搜索全部商品");
+            searchViewProxy.setHint("Search all products");
         }
         getViewProxyMannger().addViewProxy(mVpSearchContainer,searchViewProxy,searchViewProxy.getDefaultTag());
         mVpContentContainer =findViewById(R.id.vp_content_container);

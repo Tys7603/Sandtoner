@@ -1018,7 +1018,7 @@
     <string name="select_goods_tip">Please select goods</string>
     <string name="collect_succ">Collection successful</string>
     <string name="set_addr">Set delivery address</string>
-    <string name="goods_field_tip">Attribute: %1$s</string>
+    <string name="goods_field_tip">Attribute: default</string>
     <string name="user_price_min">Available for purchases over %1$s</string>
     <string name="no_limit_time" >Unlimited time</string>
     <string name="please_inpu_address_user_name">Please enter your name</string>
