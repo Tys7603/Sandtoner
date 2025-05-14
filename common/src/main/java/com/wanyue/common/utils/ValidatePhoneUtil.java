@@ -8,21 +8,16 @@ import java.util.regex.Pattern;
 
 public class ValidatePhoneUtil {
 
-    // South African phone number regex that accepts:
-    // 1. NSN format (9 digits starting with 6-8)
-    // 2. National format (starting with 0)
-    // 3. International format (starting with +27 or 27)
-    private static final String MOBILE_NUM_REGEX = "^((\\+?27[6-8][0-9]{8})|(0[6-8][0-9]{8})|([6-8][0-9]{8}))$";
+    // Flexible phone number regex that accepts various international formats
+    // Allows numbers with optional + prefix and 7-15 digits
+    private static final String MOBILE_NUM_REGEX = "^[+]?[0-9]{7,15}$";
 
     /**
-     * Validate South African phone number
-     * Accepts:
-     * - NSN format: 739022705 (9 digits starting with 6-8)
-     * - National format: 0739022705 (starting with 0)
-     * - International format: +27739022705 or 27739022705
+     * Validate phone number with flexible international format
+     * Accepts various phone number formats from different countries
      *
      * @param mobileNumber
-     * @return true if valid South African phone number
+     * @return true if valid phone number format
      */
     public static boolean validateMobileNumber(String mobileNumber) {
         if(TextUtils.isEmpty(mobileNumber)){
