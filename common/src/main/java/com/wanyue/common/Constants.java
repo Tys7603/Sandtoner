@@ -83,8 +83,8 @@ public class Constants {
 
 
     //提现账号类型，1表示支付宝，2表示微信，3表示银行卡
-    public static final int CASH_ACCOUNT_ALI = 1;
-    public static final int CASH_ACCOUNT_WX = 2;
+    public static final int CASH_ACCOUNT_PP = 1;
+    public static final int CASH_ACCOUNT_PS = 2;
     public static final int CASH_ACCOUNT_BANK = 3;
     public static final String CASH_ACCOUNT_ID = "cashAccountID";
     public static final String CASH_ACCOUNT = "cashAccount";

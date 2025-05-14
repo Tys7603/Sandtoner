@@ -38,7 +38,7 @@ public class GetProfitActivity extends BaseActivity {
     double mMoney;
     @Override
     public void init() {
-        setTabTitle("提取收益");
+        setTabTitle("Withdraw Earnings");
         mTvCenter = (TextView) findViewById(R.id.tv_center);
         mBtnChooseAccount = (ViewGroup) findViewById(R.id.btn_choose_account);
         mChooseTip = (TextView) findViewById(R.id.choose_tip);

@@ -57,10 +57,10 @@ public class CashAccountViewHolder extends AbsViewHolder implements View.OnClick
     @Override
     public void init() {
         mSparseIntArray = new SparseIntArray();
-        mSparseIntArray.put(Constants.CASH_ACCOUNT_ALI, R.string.cash_type_ali);
-        mSparseIntArray.put(Constants.CASH_ACCOUNT_WX, R.string.cash_type_wx);
+        mSparseIntArray.put(Constants.CASH_ACCOUNT_PP, R.string.cash_type_pp);
+        mSparseIntArray.put(Constants.CASH_ACCOUNT_PS, R.string.cash_type_ps);
         mSparseIntArray.put(Constants.CASH_ACCOUNT_BANK, R.string.cash_type_bank);
-        mKey = Constants.CASH_ACCOUNT_ALI;
+        mKey = Constants.CASH_ACCOUNT_PP;
         mInflater = LayoutInflater.from(mContext);
         findViewById(R.id.root).setOnClickListener(this);
         findViewById(R.id.btn_confirm).setOnClickListener(this);
@@ -127,7 +127,7 @@ public class CashAccountViewHolder extends AbsViewHolder implements View.OnClick
         String account = null;
         String name = null;
         String bank = null;
-        if (mKey == Constants.CASH_ACCOUNT_ALI) {
+        if (mKey == Constants.CASH_ACCOUNT_PP) {
             account = mEditAliAccount.getText().toString().trim();
             if (TextUtils.isEmpty(account)) {
                 ToastUtil.show(R.string.cash_input_ali_account);
@@ -140,7 +140,7 @@ public class CashAccountViewHolder extends AbsViewHolder implements View.OnClick
                 return;
             }
             mEditAliName.setText("");
-        } else if (mKey == Constants.CASH_ACCOUNT_WX) {
+        } else if (mKey == Constants.CASH_ACCOUNT_PS) {
             account = mEditWxAccount.getText().toString().trim();
             if (TextUtils.isEmpty(account)) {
                 ToastUtil.show(R.string.cash_input_wx_account);
@@ -181,12 +181,12 @@ public class CashAccountViewHolder extends AbsViewHolder implements View.OnClick
         popupWindow.setBackgroundDrawable(ContextCompat.getDrawable(mContext, R.drawable.bg_pop_cash));
         TextView btn1 = v.findViewById(R.id.btn_1);
         TextView btn2 = v.findViewById(R.id.btn_2);
-        if (mKey == Constants.CASH_ACCOUNT_ALI) {
+        if (mKey == Constants.CASH_ACCOUNT_PP) {
             btn1.setTag(mSparseIntArray.keyAt(1));
             btn1.setText(mSparseIntArray.valueAt(1));
             btn2.setTag(mSparseIntArray.keyAt(2));
             btn2.setText(mSparseIntArray.valueAt(2));
-        } else if (mKey == Constants.CASH_ACCOUNT_WX) {
+        } else if (mKey == Constants.CASH_ACCOUNT_PS) {
             btn1.setTag(mSparseIntArray.keyAt(0));
             btn1.setText(mSparseIntArray.valueAt(0));
             btn2.setTag(mSparseIntArray.keyAt(2));
@@ -207,7 +207,7 @@ public class CashAccountViewHolder extends AbsViewHolder implements View.OnClick
                     mBtnChooseType.setText(mSparseIntArray.get(key));
                     mKey = key;
                     switch (key) {
-                        case Constants.CASH_ACCOUNT_ALI:
+                        case Constants.CASH_ACCOUNT_PP:
                             if (mGroup1.getVisibility() != View.VISIBLE) {
                                 mGroup1.setVisibility(View.VISIBLE);
                             }
@@ -218,7 +218,7 @@ public class CashAccountViewHolder extends AbsViewHolder implements View.OnClick
                                 mGroup3.setVisibility(View.GONE);
                             }
                             break;
-                        case Constants.CASH_ACCOUNT_WX:
+                        case Constants.CASH_ACCOUNT_PS:
                             if (mGroup1.getVisibility() == View.VISIBLE) {
                                 mGroup1.setVisibility(View.GONE);
                             }

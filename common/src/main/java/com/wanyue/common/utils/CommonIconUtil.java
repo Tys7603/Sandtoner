@@ -45,8 +45,8 @@ public class CommonIconUtil {
 
 
         sCashTypeMap = new SparseIntArray();
-        sCashTypeMap.put(Constants.CASH_ACCOUNT_ALI, R.mipmap.icon_cash_ali);
-        sCashTypeMap.put(Constants.CASH_ACCOUNT_WX, R.mipmap.icon_cash_wx);
+        sCashTypeMap.put(Constants.CASH_ACCOUNT_PP, R.mipmap.icon_share_paypal);
+        sCashTypeMap.put(Constants.CASH_ACCOUNT_PS, R.mipmap.paystack);
         sCashTypeMap.put(Constants.CASH_ACCOUNT_BANK, R.mipmap.icon_cash_bank);
 
     }

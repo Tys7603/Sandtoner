@@ -52,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:paddingLeft="8dp"
-                android:text="@string/cash_type_ali"
+                android:text="@string/cash_type_pp"
                 android:textColor="@color/textColor2"
                 android:textSize="14sp"
                 app:dt_right_drawable="@mipmap/icon_arrow_right"

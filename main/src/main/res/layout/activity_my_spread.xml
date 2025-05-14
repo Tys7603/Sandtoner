@@ -39,7 +39,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="100000.00"
+            android:text="0"
             android:textSize="43dp"
             android:textColor="@color/white"
             android:id="@+id/tv_current_money"

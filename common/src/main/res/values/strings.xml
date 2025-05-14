@@ -23,7 +23,9 @@
     <string name="cash_input_ali_account">Please enter Alipay account</string>
     <string name="cash_input_ali_name">Please enter Alipay account name</string>
     <string name="cash_type_ali">Alipay</string>
+    <string name="cash_type_pp">Paypal</string>
     <string name="cash_type_wx">WeChat</string>
+    <string name="cash_type_ps">Paystack</string>
     <string name="cash_type_bank">Bank card</string>
     <string name="cash_delete">Do you want to delete this account? </string>
     <string name="cash_record">Withdrawal record</string>
@@ -439,7 +441,7 @@
     <string name="detail">Details</string>
     <string name="profit_choose_account">Please choose a withdrawal account</string>
     <string name="profit_amount">Please enter the amount to withdraw</string>
-    <string name="profit_get_money">Amount available for withdrawal</string>
+    <string name="profit_get_money">Amount available\nfor withdrawal</string>
     <string name="profit_cash">Withdraw cash immediately</string>
     <string name="im_order">Order message</string>
     <string name="im_system_msg">Official announcement</string>
@@ -1213,14 +1215,14 @@
     <string name="str_shouyi_tip2">Total income (Rand)</string>
     <string name="str_shouyi_tip3">Settled (Rand)</string>
     <string name="str_zrsy">Yesterday\'s income</string>
-    <string name="str_shouyi_tip6">Amount available for withdrawal</string>
+    <string name="str_shouyi_tip6">Amount available\nfor withdrawal</string>
 
     <string name="str_tixian_tip2">Withdrawal record</string>
     <string name="str_tixian_tip3">Withdraw immediately</string>
     <string name="str_dan">Order</string>
     <string name="str_tuiguang_tip1">Number of Agents</string>
     <string name="str_tuiguang_tip2">People</string>
-    <string name="str_tixian_tip4">Amount Available for Withdrawal</string>
+    <string name="str_tixian_tip4">Amount Available\nfor Withdrawal</string>
     <string name="str_tixian_tip5">Enter Withdrawal Amount</string>
     <string name="str_tixian_tip6">Withdraw Immediately</string>
     <string name="str_jingcai_tip1">Recommended Live Broadcast</string>

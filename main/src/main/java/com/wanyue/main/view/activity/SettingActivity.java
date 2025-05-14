@@ -2,10 +2,13 @@ package com.wanyue.main.view.activity;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
+import android.content.ActivityNotFoundException;
+import android.widget.Toast;
 import com.trello.rxlifecycle2.android.ActivityEvent;
 import com.wanyue.common.CommonAppConfig;
 import com.wanyue.common.Constants;
@@ -53,7 +56,14 @@ public class SettingActivity extends BaseActivity {
     public void settingClick(View v) {
         int i = v.getId();
         if (i == R.id.btn_about_us) {
-            WebViewActivity.forward(this, HtmlConfig.CONNECT_US,false);
+            String url = "https://sandtoner.com/contact.html";
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse(url));
+            try {
+                startActivity(intent);
+            } catch (ActivityNotFoundException e) {
+                ToastUtil.show("No browser found");
+            }
         } else if (i == R.id.btn_check_update) {
             checkVersion();
         } else if (i == R.id.btn_clear_cache) {

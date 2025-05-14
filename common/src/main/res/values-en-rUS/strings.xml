@@ -20,11 +20,13 @@
     <string name="black">Blacklist</string>
     <string name="black_ing">Cancel blacklisting</string>
 
-    <string name="cash_input_wx_account">Please type in WeChat account No.</string>
-    <string name="cash_input_ali_account">Please type in Alipay account No.</string>
-    <string name="cash_input_ali_name">Please type in Alipay account name</string>
+    <string name="cash_input_wx_account">Please type in Patstack account No.</string>
+    <string name="cash_input_ali_account">Please type in Paypal account No.</string>
+    <string name="cash_input_ali_name">Please type in Paypal account name</string>
     <string name="cash_type_ali">Alipay</string>
+    <string name="cash_type_pp">Paypal</string>
     <string name="cash_type_wx">WeChat</string>
+    <string name="cash_type_ps">Paystack</string>
     <string name="cash_type_bank">Bank card</string>
     <string name="cash_delete">Do you want to delete this account?</string>
     <string name="cash_record">Withdrawal record</string>
