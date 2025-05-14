@@ -151,7 +151,7 @@ public class GoodsHandleViewProxy extends BaseGoodsDetailBottomViewProxy impleme
            public void onSuccess(int code, String msg, String[] info) {
                if(isSuccess(code)){
                   ShopCartModel.requestShopcartCount();
-                  ToastUtil.show("加入购物车成功");
+                  ToastUtil.show("Add to cart successfully");
                }else{
                    ToastUtil.show(msg);
                }
