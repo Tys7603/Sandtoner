@@ -49,9 +49,9 @@ public class RefundListAdapter extends BaseRecyclerAdapter<OrderBean, BaseReclyV
         int refundStatus=item.getRefundStatus();
         ImageView refundStatusImg=helper.getView(R.id.img_refund_state);
         if(refundStatus== ShopState.REFUND_STATE_COMPELETE){
-           refundStatusImg.setImageDrawable(ResourceUtil.getDrawable(R.drawable.icon_refund_state_compeleted,true));
+           //refundStatusImg.setImageDrawable(ResourceUtil.getDrawable(R.drawable.icon_refund_state_compeleted,true));
         }else{
-            refundStatusImg.setImageDrawable(ResourceUtil.getDrawable(R.drawable.icon_refund_state_ing,true));
+            //refundStatusImg.setImageDrawable(ResourceUtil.getDrawable(R.drawable.icon_refund_state_ing,true));
         }
     }
 }
