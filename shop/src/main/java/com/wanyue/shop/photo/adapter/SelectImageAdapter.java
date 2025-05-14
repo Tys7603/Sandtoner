@@ -15,7 +15,6 @@ import java.util.List;
  */
 public class SelectImageAdapter extends BaseRecyclerAdapter<SelectPhotoBean, BaseReclyViewHolder> {
    private int mMaxLengh=Constants.MAX_PHOTO_LENGTH;
-   private int mBtnIcon=R.drawable.icon_up_photo;
 
     /**
      * Instantiates a new Select image adapter.
@@ -33,11 +32,15 @@ public class SelectImageAdapter extends BaseRecyclerAdapter<SelectPhotoBean, Bas
     @Override
     protected void convert(@NonNull BaseReclyViewHolder helper, SelectPhotoBean item) {
         if(item.isBtn()){
-           helper.setImageDrawable(R.id.image,ResourceUtil.getDrawable(mBtnIcon,true));
-           helper.setVisible(R.id.btn_delete,false);
+           helper.setText(R.id.tv_upload_hint, "Click upload pictures here");
+           helper.setVisible(R.id.tv_upload_hint, true);
+           helper.setVisible(R.id.image, false);
+           helper.setVisible(R.id.btn_delete, false);
         }else{
             helper.setImageUrl(item.getPhoto(),R.id.image);
-            helper.setVisible(R.id.btn_delete,true);
+            helper.setVisible(R.id.tv_upload_hint, false);
+            helper.setVisible(R.id.image, true);
+            helper.setVisible(R.id.btn_delete, true);
         }
         helper.setOnChildClickListner(R.id.btn_delete,mOnClickListener);
     }
@@ -90,17 +93,6 @@ public class SelectImageAdapter extends BaseRecyclerAdapter<SelectPhotoBean, Bas
         }
         return list;
     }
-
-
-    /**
-     * Sets btn icon.
-     *
-     * @param btnIcon the btn icon
-     */
-    public void setBtnIcon(int btnIcon) {
-        mBtnIcon = btnIcon;
-    }
-
 
     @Override
     public void addData(@NonNull SelectPhotoBean data) {
