@@ -1,12 +1,14 @@
 package com.wanyue.shop.view.view.buyer;
 
 import android.app.Dialog;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.lifecycle.Observer;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.google.gson.Gson;
 import com.lxj.xpopup.XPopup;
 import com.wanyue.common.adapter.base.BaseMutiRecyclerAdapter;
 import com.wanyue.common.custom.refresh.RxRefreshView;
@@ -24,6 +26,7 @@ import com.wanyue.shop.R;
 import com.wanyue.shop.adapter.BuyerOrderAdaper;
 import com.wanyue.shop.api.ShopAPI;
 import com.wanyue.shop.bean.OrderBean;
+import com.wanyue.shop.bean.ShopCartBean;
 import com.wanyue.shop.business.ShopState;
 import com.wanyue.shop.model.OrderModel;
 import com.wanyue.shop.view.activty.CommitOrderActivity;
@@ -63,6 +66,7 @@ public abstract class BuyerOderViewProxy extends RxViewProxy implements BaseQuic
         OrderModel.watchOrderChangeEvent(getActivity(), new Observer<String>() {
             @Override
             public void onChanged(String id) {
+
                 checkNeedRefresh(id);
             }
         });
@@ -96,7 +100,8 @@ public abstract class BuyerOderViewProxy extends RxViewProxy implements BaseQuic
         }
     }
 
-    private void autoRefresh() {
+    public void autoRefresh() {
+        Log.d("SSS" , "mRefreshView: " + mRefreshView);
         if(mRefreshView!=null){
            mRefreshView.initData();
         }
@@ -114,6 +119,9 @@ public abstract class BuyerOderViewProxy extends RxViewProxy implements BaseQuic
            }
           OrderBean orderBean=mAdapter.getItem(position);
           OrderDeatailActivity.forward(getActivity(), ShopState.ORDER_BUY_SELF,orderBean.getOrderId());
+
+        String json = new Gson().toJson(orderBean);
+        Log.d("SSS", "onItemClick orderBean JSON: " + json);
     }
 
     @Override
@@ -122,7 +130,8 @@ public abstract class BuyerOderViewProxy extends RxViewProxy implements BaseQuic
             if(id==R.id.btn_cancel){
               openCancleOrderDialog(orderBean.getOrderId(),position);
             }else if(id==R.id.btn_buy){
-                buyOrder(orderBean.getOrderId(),position);
+
+                buyOrder(orderBean.getOrderId(), position);
             }else if(id==R.id.btn_evaluate){
              toEvaluate(orderBean);
             }else if(id==R.id.btn_buy_again){
@@ -147,6 +156,7 @@ public abstract class BuyerOderViewProxy extends RxViewProxy implements BaseQuic
         DialogUitl.showSimpleDialog(getActivity(), "Cancel the order ?", new DialogUitl.SimpleCallback() {
             @Override
             public void onConfirmClick(Dialog dialog, String content) {
+                //Log.d("SSS", "orderId: " + orderId);
                 cancleOrder(orderId,position);
             }
         });
@@ -164,6 +174,7 @@ public abstract class BuyerOderViewProxy extends RxViewProxy implements BaseQuic
     /*删除订单*/
     private void deleteOrder(OrderBean orderBean) {
        final  String orderId=orderBean.getOrderId();
+       Log.d("SSS","deleteOrder orderId: " + orderId);
         ShopAPI.deleteOrder(orderId).compose(this.<Boolean>bindToLifecycle())
                 .subscribe(new DialogObserver<Boolean>(getActivity()) {
                     @Override
@@ -189,6 +200,9 @@ public abstract class BuyerOderViewProxy extends RxViewProxy implements BaseQuic
     }
 
     private PayOrderPopView mPayOrderPopView;
+
+
+    //THUONG
     private void buyOrder(String id, int position) {
         if(mPayOrderPopView!=null&&mPayOrderPopView.isShow()){
             return;
