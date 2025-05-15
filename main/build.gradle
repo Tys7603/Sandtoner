@@ -46,6 +46,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.1.0'
     annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
     annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
-    implementation 'com.github.yuzhiqiang1993:zxing:2.1.4'
+    //implementation 'com.github.yuzhiqiang1993:zxing:2.1.4'
     api project(':common')
+    implementation 'com.journeyapps:zxing-android-embedded:4.3.0'
 }

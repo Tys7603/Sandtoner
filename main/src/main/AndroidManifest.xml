@@ -105,6 +105,12 @@
             android:name=".view.activity.GiftProfitActivity"
             android:screenOrientation="portrait"
             android:exported="false"/>
+        <activity
+            android:name=".view.activity.CustomCaptureActivity"
+            android:screenOrientation="landscape"
+            android:configChanges="orientation|screenSize"
+            android:exported="false"
+            android:theme="@style/zxing_CaptureTheme"/>
     </application>
 
 </manifest>

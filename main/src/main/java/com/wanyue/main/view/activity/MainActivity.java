@@ -40,10 +40,10 @@ import com.wanyue.main.view.proxy.MainHomePageViewProxy;
 import com.wanyue.main.view.proxy.MainHomeUserViewProxy;
 import com.wanyue.main.view.proxy.MainShopCartViewProxy;
 import com.wanyue.shop.view.activty.GoodsDetailActivity;
-import com.yzq.zxinglibrary.common.Constant;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import com.google.zxing.integration.android.IntentResult;
 
 @Route(path = RouteUtil.PATH_MAIN)
 public class MainActivity extends BaseActivity implements BottomNavigationView.OnNavigationItemSelectedListener, LiveRoomCheckLivePresenter.ActionListener {
@@ -283,11 +283,11 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1111) {
-            if (data != null) {
-                String content = data.getStringExtra(Constant.CODED_CONTENT);
+        IntentResult result = com.google.zxing.integration.android.IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        if (result != null) {
+            String content = result.getContents();
+            if (content != null) {
                 checkLivekey(content);
-
             }
         }
     }
@@ -312,11 +312,20 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-        setIntent(intent); // Cập nhật intent mới
+        setIntent(intent);
 
         if (mShopCartViewProxy != null) {
             mShopCartViewProxy.onActivityNewIntent(intent);
         }
+    }
+
+    public void startQrScan() {
+        com.google.zxing.integration.android.IntentIntegrator integrator = new com.google.zxing.integration.android.IntentIntegrator(this);
+        integrator.setPrompt("Scan a QR Code");
+        integrator.setBeepEnabled(true);
+        integrator.setOrientationLocked(true);
+        integrator.setCaptureActivity(com.wanyue.main.view.activity.CustomCaptureActivity.class);
+        integrator.initiateScan();
     }
 
 }

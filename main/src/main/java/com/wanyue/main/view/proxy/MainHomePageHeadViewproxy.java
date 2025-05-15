@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import com.google.zxing.integration.android.IntentIntegrator;
 import com.jeremyliao.liveeventbus.LiveEventBus;
 import com.tencent.imsdk.v2.V2TIMManager;
 import com.tencent.imsdk.v2.V2TIMMessage;
@@ -22,7 +23,6 @@ import com.wanyue.common.utils.StringUtil;
 import com.wanyue.common.utils.ViewUtil;
 import com.wanyue.imnew.view.conversation.ConversationActivity;
 import com.wanyue.main.R;
-import com.yzq.zxinglibrary.android.CaptureActivity;
 
 import io.reactivex.Observable;
 
@@ -106,8 +106,9 @@ public abstract class  MainHomePageHeadViewproxy extends RxViewProxy implements 
     public void onClick(View v) {
         int id = v.getId();
         if (id == R.id.btn_scan) {
-            Intent intent = new Intent(getActivity(), CaptureActivity.class);
-            startActivityForResult(intent, 1111);
+            if (getActivity() instanceof com.wanyue.main.view.activity.MainActivity) {
+                ((com.wanyue.main.view.activity.MainActivity) getActivity()).startQrScan();
+            }
         } else if (id == R.id.btn_message) {
             startActivity(ConversationActivity.class);
         }else if(id ==R.id.btn_search){
