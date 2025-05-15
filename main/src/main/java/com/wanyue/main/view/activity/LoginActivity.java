@@ -9,10 +9,15 @@ import android.text.InputFilter;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -97,6 +102,13 @@ public class LoginActivity extends BaseActivity implements TimeModel.TimeListner
     @BindView(R2.id.img_launcher)
     ImageView mImgLauncher;
 
+    private CheckBox mCheckboxPrivacy;
+    private TextView mTvPrivacyText;
+    private FrameLayout mPrivacyPolicyContainer;
+    private CheckBox mCheckboxAgree;
+    private Button mBtnClosePrivacy;
+    private ScrollView mScrollPrivacy;
+
     private TimeModel mTimeModel;
     private LoginCommitBean mLoginCommitBean;
     private MobLoginUtil mLoginUtil;
@@ -114,6 +126,8 @@ public class LoginActivity extends BaseActivity implements TimeModel.TimeListner
 
     private static final long CLICK_DEBOUNCE_TIME = 1000; // 1 second debounce time
     private long mLastClickTime = 0;
+
+    private boolean hasReadCompletePrivacy = false;
 
     @Override
     public void init() {
@@ -174,6 +188,17 @@ public class LoginActivity extends BaseActivity implements TimeModel.TimeListner
         });
 
         tvPhone.setFilters(new InputFilter[]{ new InputFilter.LengthFilter(15) });
+
+        // Initialize the privacy controls using findViewById
+        mCheckboxPrivacy = findViewById(R.id.checkbox_privacy);
+        mTvPrivacyText = findViewById(R.id.tv_privacy_text);
+        mPrivacyPolicyContainer = findViewById(R.id.privacy_policy_container);
+        mCheckboxAgree = findViewById(R.id.checkbox_agree);
+        mBtnClosePrivacy = findViewById(R.id.btn_close_privacy);
+        mScrollPrivacy = findViewById(R.id.scroll_privacy);
+
+        // Set up the privacy policy checkbox and dialog
+        setupPrivacyPolicy();
     }
 
     private void initCommitData() {
@@ -501,7 +526,18 @@ public class LoginActivity extends BaseActivity implements TimeModel.TimeListner
         }
         btnGetCode.setEnabled(isValid);
         String code = tvCode.getText().toString().trim();
-        btnLogin.setEnabled(isValid && !TextUtils.isEmpty(code));
+
+        // Điều kiện để enable checkbox privacy
+        boolean canEnablePrivacy = isValid && !TextUtils.isEmpty(code);
+        mCheckboxPrivacy.setEnabled(canEnablePrivacy);
+        if (!canEnablePrivacy) {
+            mCheckboxPrivacy.setChecked(false);
+        }
+
+        // Điều kiện để enable nút login
+        boolean isPrivacyChecked = mCheckboxPrivacy.isChecked();
+        btnLogin.setEnabled(isValid && !TextUtils.isEmpty(code) && isPrivacyChecked);
+
         if (!TextUtils.isEmpty(phoneNumber) && !isValid) {
             tvPhone.setError("Invalid phone number for " + mSelectedCountry.getName());
         } else {
@@ -577,5 +613,71 @@ public class LoginActivity extends BaseActivity implements TimeModel.TimeListner
                 });
             }
         });
+    }
+
+    private void setupPrivacyPolicy() {
+        // Set Login button disabled by default
+        mBtnLogin.setEnabled(false);
+        
+        // Add click listener to privacy policy text to show the dialog
+        mTvPrivacyText.setOnClickListener(v -> {
+            showPrivacyPolicyDialog();
+        });
+        
+        // Add click listener to privacy checkbox
+        mCheckboxPrivacy.setOnClickListener(v -> {
+            if (mCheckboxPrivacy.isChecked()) {
+                showPrivacyPolicyDialog();
+            } else {
+                // If unchecked, disable login button
+                validatePhoneNumber();
+            }
+        });
+        
+        // Add listener for the agreement checkbox
+        mCheckboxAgree.setOnClickListener(v -> {
+            if (mCheckboxAgree.isChecked()) {
+                // User has agreed, validate phone to potentially enable login
+                validatePhoneNumber();
+            }
+        });
+        
+        // Set up the privacy policy dialog
+        mBtnClosePrivacy.setOnClickListener(v -> {
+            mPrivacyPolicyContainer.setVisibility(View.GONE);
+            // Không tự động check mCheckboxPrivacy, chỉ đóng dialog
+        });
+        
+        // Improved scroll listener: enable/disable checkbox based on scroll position
+        mScrollPrivacy.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
+            @Override
+            public void onScrollChanged() {
+                View view = mScrollPrivacy.getChildAt(0);
+                if (view != null) {
+                    int diff = view.getBottom() - (mScrollPrivacy.getHeight() + mScrollPrivacy.getScrollY());
+                    if (diff <= 10) { // Allow a small threshold
+                        hasReadCompletePrivacy = true;
+                        mCheckboxAgree.setEnabled(true);
+                    } else {
+                        hasReadCompletePrivacy = false;
+                        mCheckboxAgree.setEnabled(false);
+                        mCheckboxAgree.setChecked(false);
+                    }
+                }
+            }
+        });
+        
+        // Disable agree checkbox initially until user scrolls to the bottom
+        mCheckboxAgree.setEnabled(false);
+    }
+    
+    private void showPrivacyPolicyDialog() {
+        mPrivacyPolicyContainer.setVisibility(View.VISIBLE);
+        // Reset scroll position
+        mScrollPrivacy.scrollTo(0, 0);
+        // Reset flag and checkbox
+        hasReadCompletePrivacy = false;
+        mCheckboxAgree.setChecked(false);
+        mCheckboxAgree.setEnabled(false);
     }
 }

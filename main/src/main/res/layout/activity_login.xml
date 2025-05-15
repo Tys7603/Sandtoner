@@ -146,12 +146,36 @@
             android:layout_width="match_parent"
             android:layout_height="1px"
             android:background="@color/gray6" />
+            
+        <!-- Privacy Policy Checkbox -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+            
+            <CheckBox
+                android:id="@+id/checkbox_privacy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:enabled="false" />
+                
+            <TextView
+                android:id="@+id/tv_privacy_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/privacy_checkbox_text"
+                android:textColor="@color/textColor2"
+                android:textSize="@dimen/text_size_14" />
+        </LinearLayout>
 
         <!-- Thay thế nút LOGIN cũ và thêm layout mới cho 2 nút ở phía dưới cùng -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="39dp"
+            android:layout_marginTop="24dp"
             android:layout_marginBottom="30dp"
             android:orientation="horizontal"
             android:gravity="center">
@@ -163,9 +187,10 @@
                 android:layout_weight="1"
                 android:background="@drawable/bg_btn_login_white"
                 android:text="LOGIN"
-                android:textColor="@color/global"
+                android:textColor="@color/color_btn_login_text"
                 android:textSize="@dimen/text_size_15"
-                android:layout_marginEnd="8dp"/>
+                android:layout_marginEnd="8dp"
+                android:enabled="false"/>
 
             <Button
                 android:id="@+id/btn_register"
@@ -219,5 +244,130 @@
         </LinearLayout>
 
     </LinearLayout>
+    
+    <!-- Privacy Policy Dialog -->
+    <FrameLayout
+        android:id="@+id/privacy_policy_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/alpha_black_5f"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone">
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="20dp"
+            android:background="@color/white"
+            android:orientation="vertical">
+            
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="15dp"
+                android:text="@string/privacy_policy_title"
+                android:textColor="@color/textColor"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+                
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/gray6" />
+                
+            <ScrollView
+                android:id="@+id/scroll_privacy"
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:padding="15dp">
+                
+                <TextView
+                    android:id="@+id/privacy_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/textColor2"
+                    android:textSize="14sp"
+                    android:text="Privacy Policy for Sandtoner\n\n
+Last Updated: May 15, 2025\n\n
+Welcome to Sandtoner ('we', 'us', 'our'). We respect your privacy and are committed to protecting your personal data. This privacy policy will inform you about how we look after your personal data when you visit our application (regardless of where you visit it from) and tell you about your privacy rights and how the law protects you.\n\n
+1. IMPORTANT INFORMATION AND WHO WE ARE\n\n
+Purpose of this privacy policy\n
+This privacy policy aims to give you information on how we collect and process your personal data through your use of this application, including any data you may provide through this application.\n\n
+This application is not intended for children under 13 years of age and we do not knowingly collect data relating to children.\n\n
+It is important that you read this privacy policy together with any other privacy policy or fair processing notice we may provide on specific occasions when we are collecting or processing personal data about you so that you are fully aware of how and why we are using your data.\n\n
+2. THE DATA WE COLLECT ABOUT YOU\n\n
+Personal data, or personal information, means any information about an individual from which that person can be identified. It does not include data where the identity has been removed (anonymous data).\n\n
+We may collect, use, store and transfer different kinds of personal data about you which we have grouped together as follows:\n\n
+- Identity Data includes first name, last name, username or similar identifier.\n
+- Contact Data includes email address and telephone numbers.\n
+- Technical Data includes internet protocol (IP) address, your login data, browser type and version, time zone setting and location, browser plug-in types and versions, operating system and platform and other technology on the devices you use to access this application.\n
+- Profile Data includes your username and password, your interests, preferences, feedback and survey responses.\n
+- Usage Data includes information about how you use our application.\n\n
+3. HOW WE USE YOUR PERSONAL DATA\n\n
+We will only use your personal data when the law allows us to. Most commonly, we will use your personal data in the following circumstances:\n\n
+- Where we need to perform the contract we are about to enter into or have entered into with you.\n
+- Where it is necessary for our legitimate interests (or those of a third party) and your interests and fundamental rights do not override those interests.\n
+- Where we need to comply with a legal or regulatory obligation.\n\n
+4. DATA SECURITY\n\n
+We have put in place appropriate security measures to prevent your personal data from being accidentally lost, used or accessed in an unauthorized way, altered or disclosed. In addition, we limit access to your personal data to those employees, agents, contractors and other third parties who have a business need to know. They will only process your personal data on our instructions and they are subject to a duty of confidentiality.\n\n
+5. YOUR LEGAL RIGHTS\n\n
+Under certain circumstances, you have rights under data protection laws in relation to your personal data. These include the right to:\n\n
+- Request access to your personal data.\n
+- Request correction of your personal data.\n
+- Request erasure of your personal data.\n
+- Object to processing of your personal data.\n
+- Request restriction of processing your personal data.\n
+- Request transfer of your personal data.\n
+- Right to withdraw consent.\n\n
+If you wish to exercise any of the rights set out above, please contact us.\n\n
+6. CONTACT US\n\n
+If you have any questions about this privacy policy or our privacy practices, please contact us at:\n\n
+Email general inquiries: info@sandtoner.com\n\n
+Email partnerships: partner@sandtoner.com\n\n
+Thank you for taking the time to read our Privacy Policy." />
+            </ScrollView>
+            
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/gray6" />
+                
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="15dp"
+                android:gravity="center_vertical">
+                
+                <CheckBox
+                    android:id="@+id/checkbox_agree"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                    
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/privacy_agree"
+                    android:textColor="@color/textColor"
+                    android:textSize="16sp" />
+                    
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+                    
+                <Button
+                    android:id="@+id/btn_close_privacy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_btn_primary"
+                    android:text="@string/privacy_close"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
 
 </FrameLayout>

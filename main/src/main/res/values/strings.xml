@@ -3,4 +3,11 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    
+    <!-- Privacy Policy Strings -->
+    <string name="privacy_checkbox_text">Fill in the information and agree to privacy to log in</string>
+    <string name="privacy_policy_title">Privacy Policy</string>
+    <string name="privacy_agree">I agree</string>
+    <string name="privacy_close">Close</string>
+    <string name="privacy_agree_prompt">Please agree to the privacy policy</string>
 </resources>
