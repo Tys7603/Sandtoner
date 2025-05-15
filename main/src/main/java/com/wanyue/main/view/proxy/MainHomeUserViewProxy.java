@@ -348,7 +348,7 @@ public class MainHomeUserViewProxy extends RxViewProxy implements View.OnClickLi
             mainUserSectionBean1.setRightTitle("Check the details");
             List<MenuBean>list=ListUtil.asList(new MenuBean("Product Management",CONSIGNMENT_GOOD_MANNGER,R.drawable.icon_main_user_good_mannger),
             new MenuBean("Consignment sales orders",CONSIGNMENT_ORDER,R.drawable.icon_main_user_consignment_order),
-            new MenuBean("Agency income",CONSIGNMENT_MONEY,R.drawable.icon_main_user_consignment_money)
+            new MenuBean("Agency income",CONSIGNMENT_MONEY, R.drawable.icon_purchase_history)
             );
             data.add(mainUserSectionBean1);
             mainUserSectionBean1.setMenuBeanList(list);
@@ -357,7 +357,7 @@ public class MainHomeUserViewProxy extends RxViewProxy implements View.OnClickLi
             mainUserSectionBean2.setRightTitle("Store homepage");
             mainUserSectionBean2.setId(MY_STORE);
             List<MenuBean>list2=ListUtil.asList(new MenuBean("Store order",STORE_ORDER,R.drawable.icon_main_user_store_order),
-                    new MenuBean("Store revenue",STORE_MONEY,R.drawable.icon_main_user_store_money)
+                    new MenuBean("Store revenue",STORE_MONEY,R.drawable.icon_main_bottom_shopcart2)
             );
             mainUserSectionBean2.setMenuBeanList(list2);
             data.add(mainUserSectionBean2);
