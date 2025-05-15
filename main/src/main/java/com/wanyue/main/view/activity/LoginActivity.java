@@ -108,6 +108,7 @@ public class LoginActivity extends BaseActivity implements TimeModel.TimeListner
     private CheckBox mCheckboxAgree;
     private Button mBtnClosePrivacy;
     private ScrollView mScrollPrivacy;
+    private TextView mPrivacyContent;
 
     private TimeModel mTimeModel;
     private LoginCommitBean mLoginCommitBean;
@@ -669,6 +670,12 @@ public class LoginActivity extends BaseActivity implements TimeModel.TimeListner
         
         // Disable agree checkbox initially until user scrolls to the bottom
         mCheckboxAgree.setEnabled(false);
+        
+        // Initialize privacy content
+        mPrivacyContent = findViewById(R.id.privacy_content);
+        
+        // Fetch privacy policy from API
+        fetchPrivacyPolicy();
     }
     
     private void showPrivacyPolicyDialog() {
@@ -679,5 +686,46 @@ public class LoginActivity extends BaseActivity implements TimeModel.TimeListner
         hasReadCompletePrivacy = false;
         mCheckboxAgree.setChecked(false);
         mCheckboxAgree.setEnabled(false);
+    }
+
+    private void fetchPrivacyPolicy() {
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder()
+            .url("https://system.sandtoner.com/appapi/page/detail?id=2")
+            .get()
+            .build();
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                runOnUiThread(() -> {
+                    ToastUtil.show("Failed to load privacy policy: " + e.getMessage());
+                    mPrivacyContent.setText(R.string.default_privacy_policy);
+                });
+            }
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String responseBody = response.body() != null ? response.body().string() : null;
+                if (responseBody == null) {
+                    runOnUiThread(() -> {
+                        ToastUtil.show("Empty response from server");
+                        mPrivacyContent.setText(R.string.default_privacy_policy);
+                    });
+                    return;
+                }
+                // Parse HTML to get content in <div class="page_content">...</div>
+                String content = "";
+                try {
+                    int start = responseBody.indexOf("<div class=\"page_content\">");
+                    int end = responseBody.indexOf("</div>", start);
+                    if (start != -1 && end != -1) {
+                        content = responseBody.substring(start + 26, end).replaceAll("<[^>]+>", "").trim();
+                    }
+                } catch (Exception e) {
+                    // fallback
+                }
+                String finalContent = content.isEmpty() ? getString(R.string.default_privacy_policy) : content;
+                runOnUiThread(() -> mPrivacyContent.setText(finalContent));
+            }
+        });
     }
 }
