@@ -10,4 +10,6 @@
     <string name="paypal_logo">Logo PayPal</string>
     <string name="payment_cancelled">Payment has been cancelled</string>
     <string name="order_id_format">Order code: %s</string>
+    <string name="order_timeout_message">Order expires in: %s</string>
+    <string name="order_timeout_recovery">\nYour order will be cancelled if not paid within 1 hour</string>
 </resources>

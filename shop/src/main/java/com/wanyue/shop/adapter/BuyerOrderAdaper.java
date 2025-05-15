@@ -1,6 +1,8 @@
 package com.wanyue.shop.adapter;
 
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import com.wanyue.common.adapter.base.BaseMutiRecyclerAdapter;
@@ -15,15 +17,20 @@ import com.wanyue.shop.api.ShopAPI;
 import com.wanyue.shop.bean.OrderBean;
 import com.wanyue.shop.bean.OrderStatus;
 import com.wanyue.shop.business.ShopState;
+import com.wanyue.shop.utils.OrderTimerUtil;
 import com.wanyue.shop.view.widet.linear.ListPool;
 import com.wanyue.shop.view.widet.linear.PoolLinearListView;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * The type Buyer order adaper.
  */
 public class BuyerOrderAdaper extends BaseMutiRecyclerAdapter<OrderBean, BaseReclyViewHolder> {
     private ListPool mListPool;
+    private Map<String, OrderTimerUtil> mOrderTimers;
 
     /**
      * Instantiates a new Buyer order adaper.
@@ -38,7 +45,7 @@ public class BuyerOrderAdaper extends BaseMutiRecyclerAdapter<OrderBean, BaseRec
         addItemType(ShopState.ORDER_STATE_WAIT_EVALUATE,R.layout.item_recly_buyer_order_3);
         addItemType(ShopState.ORDER_STATE_COMPELETE,R.layout.item_recly_buyer_order_4);
         addItemType(-1,R.layout.empty);
-
+        mOrderTimers = new HashMap<>();
     }
 
     @Override
@@ -48,6 +55,7 @@ public class BuyerOrderAdaper extends BaseMutiRecyclerAdapter<OrderBean, BaseRec
                 commonConvert(helper,item);
                 helper.setOnChildClickListner(R.id.btn_cancel,mOnClickListener);
                 helper.setOnChildClickListner(R.id.btn_buy,mOnClickListener);
+                setupOrderTimer(helper, item);
                 break;
             case ShopState.ORDER_STATE_WAIT_DELIVERED:
             case ShopState.ORDER_STATE_WAIT_RECEIVE:
@@ -67,6 +75,47 @@ public class BuyerOrderAdaper extends BaseMutiRecyclerAdapter<OrderBean, BaseRec
                 break;
             default:
                 break;
+        }
+    }
+
+    private void setupOrderTimer(BaseReclyViewHolder helper, OrderBean orderBean) {
+        LinearLayout timerContainer = helper.getView(R.id.layout_order_timer);
+        TextView timerTextView = helper.getView(R.id.tv_order_timeout);
+        
+        if (timerContainer != null && timerTextView != null) {
+            // Show the timer container
+            timerContainer.setVisibility(View.VISIBLE);
+            
+            String orderId = orderBean.getOrderId();
+            OrderTimerUtil timerUtil = mOrderTimers.get(orderId);
+            
+            if (timerUtil == null) {
+                timerUtil = new OrderTimerUtil(timerContainer, timerTextView);
+                timerUtil.setListener(new OrderTimerUtil.TimerListener() {
+                    @Override
+                    public void onTimerTick(long millisUntilFinished) {
+                        // Update the UI during countdown
+                    }
+
+                    @Override
+                    public void onTimerFinished() {
+                        // Order expired, refresh the adapter
+                        if (mOnOrderExpiredListener != null) {
+                            mOnOrderExpiredListener.onOrderExpired(orderId);
+                        }
+                    }
+                });
+                mOrderTimers.put(orderId, timerUtil);
+            }
+            
+            // Start or resume timer based on order creation time
+            if (orderBean.getAddTime() != null) {
+                // Parse the creation time and start timer
+                timerUtil.startNewOrderTimer();
+            } else {
+                // If no creation time, just start a new timer
+                timerUtil.startNewOrderTimer();
+            }
         }
     }
 
@@ -92,6 +141,42 @@ public class BuyerOrderAdaper extends BaseMutiRecyclerAdapter<OrderBean, BaseRec
            helper.setText(R.id.tv_status,orderStatus.getTitle());
         }
     }
-
-
+    
+    /**
+     * Interface for order expiration events
+     */
+    public interface OnOrderExpiredListener {
+        void onOrderExpired(String orderId);
+    }
+    
+    private OnOrderExpiredListener mOnOrderExpiredListener;
+    
+    public void setOnOrderExpiredListener(OnOrderExpiredListener listener) {
+        mOnOrderExpiredListener = listener;
+    }
+    
+    @Override
+    public void onViewRecycled(@NonNull BaseReclyViewHolder holder) {
+        super.onViewRecycled(holder);
+        // Stop timers when views are recycled
+        if (holder.getItemViewType() == ShopState.ORDER_STATE_WAIT_PAY) {
+            OrderBean orderBean = getItem(holder.getLayoutPosition());
+            if (orderBean != null) {
+                OrderTimerUtil timerUtil = mOrderTimers.get(orderBean.getOrderId());
+                if (timerUtil != null) {
+                    timerUtil.stopTimer();
+                }
+            }
+        }
+    }
+    
+    @Override
+    public void onDetachedFromRecyclerView(@NonNull androidx.recyclerview.widget.RecyclerView recyclerView) {
+        super.onDetachedFromRecyclerView(recyclerView);
+        // Clean up all timers
+        for (OrderTimerUtil timer : mOrderTimers.values()) {
+            timer.stopTimer();
+        }
+        mOrderTimers.clear();
+    }
 }
