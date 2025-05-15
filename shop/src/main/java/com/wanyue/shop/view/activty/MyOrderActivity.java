@@ -3,7 +3,6 @@ package com.wanyue.shop.view.activty;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.TextView;
 import androidx.lifecycle.Observer;
 import androidx.viewpager.widget.ViewPager;
@@ -67,25 +66,14 @@ public class MyOrderActivity extends BaseActivity {
         OrderModel.watchOrderStatementChange(this, new Observer<OrderStatementBean>() {
             @Override
             public void onChanged(OrderStatementBean orderStatementBean) {
-                Log.d("SSS" , "setOrderStatementToUI: " + orderStatementBean.toString());
                 setOrderStatementToUI(orderStatementBean);
             }
         });
         OrderModel.freshOrderStatement();
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        
-        // Kiểm tra nếu tab đang được chọn là index 0 thì update lại dữ liệu
-        if (mViewPager.getCurrentItem() == 0 && mBuyerOderViewProxyList != null && mBuyerOderViewProxyList.size() > 0) {
-            Log.d("SSS", "update lại dữ liệu");
-            mBuyerOderViewProxyList.get(0).autoRefresh();
-        }
-    }
 
-    private void initTitleArray(String temp1, String temp2, String temp3, String temp4, String temp5) {
+    private void initTitleArray(String temp1,String temp2,String temp3,String temp4,String temp5) {
         if(mTitleArray==null){
            mTitleArray=new String[5];
         }

@@ -9,37 +9,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import com.alibaba.fastjson.JSONObject;
-import com.androidnetworking.AndroidNetworking;
-import com.androidnetworking.common.Priority;
-import com.androidnetworking.error.ANError;
-import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.wanyue.common.CommonAppConfig;
 import com.wanyue.common.Constants;
 import com.wanyue.common.bean.UserBean;
 import com.wanyue.common.business.UserModel;
-import com.wanyue.common.http.HttpCallback;
 import com.wanyue.common.http.ParseHttpCallback;
-import com.wanyue.common.http.ParseSingleHttpCallback;
 import com.wanyue.common.pay.PayCallback;
 import com.wanyue.common.pay.PayPresenter;
 import com.wanyue.common.utils.ClickUtil;
 import com.wanyue.common.utils.DialogUitl;
-import com.wanyue.common.utils.L;
-import com.wanyue.common.utils.SpUtil;
 import com.wanyue.common.utils.StringUtil;
-import com.wanyue.common.utils.ToastUtil;
 import com.wanyue.shop.R;
 import com.wanyue.shop.api.ShopAPI;
-import com.wanyue.shop.bean.OrderConfirmBean;
 import com.wanyue.shop.model.OrderModel;
-import com.wanyue.shop.view.activty.CommitOrderActivity;
 import com.wanyue.shop.view.activty.PaymentWebViewActivity;
-
-import org.json.JSONException;
 
 
 public class PayOrderPopView extends BaseBottomPopView implements View.OnClickListener {
@@ -49,7 +35,7 @@ public class PayOrderPopView extends BaseBottomPopView implements View.OnClickLi
     private ViewGroup mBtnCoin;
     private TextView mTvCoinMoney;
     private String mId;
-
+    private String mPrice;
     private PayPresenter mPayPresenter;
 
     @Override
@@ -70,8 +56,6 @@ public class PayOrderPopView extends BaseBottomPopView implements View.OnClickLi
          String price= StringUtil.getFormatPrice(userBean.getBalance());
          mTvCoinMoney.setText(price);
         }
-
-        //reOrder();
     }
 
     public PayOrderPopView(@NonNull Context context) {
@@ -88,28 +72,23 @@ public class PayOrderPopView extends BaseBottomPopView implements View.OnClickLi
         }
         int id=v.getId();
         if(id==R.id.btn_close){
-
             dismiss();
-
         }else if(id==R.id.btn_wx){
-
-            reOrder(false);
-
+            payByPayStack();
         }else if(id==R.id.btn_pp){
-
-            reOrder(true);
-
+            //getOrderInfo();
+            payByPaypal();
         }else if(id==R.id.btn_coin){
-
             payForCoin();
-
         }
     }
 
     public void setId(String id) {
         mId = id;
     }
-
+    public void setPrice(String price) {
+        mPrice = price;
+    }
 
     private void initPayPrestner() {
         if(mPayPresenter==null){
@@ -117,168 +96,6 @@ public class PayOrderPopView extends BaseBottomPopView implements View.OnClickLi
         }
     }
 
-    private OrderConfirmBean mOrderConfirmBean;
-    private void reOrder(Boolean paypal){
-        Log.d("SSS", "reOrder mId: " + mId.toString());
-        ShopAPI.againOrder(mId, new ParseSingleHttpCallback<String>("cateId") {
-            @Override
-            public void onSuccess(String data) {
-                Log.d("SSS", "reOrder data: " + data);
-
-                ShopAPI.orderConfirm(data, new ParseHttpCallback<JSONObject>() {
-                    @Override
-                    public void onSuccess(int code, String msg, JSONObject info) {
-                        if(isSuccess(code)&&info!=null){
-
-                            //String json=info.toJSONString();
-                            mOrderConfirmBean = info.toJavaObject(OrderConfirmBean.class);
-                            Log.d("SSS", "orderConfirm info: " + info);
-
-                            if(paypal){
-                                cancelPreOrder();
-                                createOrderPaypal();
-                                //payByPaypal();
-                            }else {
-                                cancelPreOrder();
-                                //payByPayStack();
-                                createOrderPayStack();
-                            }
-                        }
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        // Handle error case
-                        if (e != null) {
-                            Log.d("SSS", "reOrder onError: " + e);
-                            ToastUtil.show(e.getMessage());
-                        }
-                    }
-                });
-
-            }
-        });
-
-    }
-
-    private void cancelPreOrder(){
-        ShopAPI.cancleOrder(mId, new HttpCallback() {
-            @Override
-            public void onSuccess(int code, String msg, String[] info) {
-                //ToastUtil.show(msg);
-                if(isSuccess(code)){
-                    Log.d("SSS", "cancleOrder isSuccess");
-                }
-            }
-
-            @Override
-            public void onError(int code, String msg) {
-
-            }
-        });
-    }
-    public void createOrderPaypal() {
-        String token = SpUtil.getInstance().getStringValue(SpUtil.TOKEN);
-        String addressId= String.valueOf(mOrderConfirmBean.getAddrId());
-        String key= mOrderConfirmBean.getOrderKey();
-
-        AndroidNetworking.upload("https://system.sandtoner.com/api/order/create/" + key)
-                .addHeaders("Authori-zation", "Bearer " + token)
-                .addMultipartParameter("payType", "paypal")
-                .addMultipartParameter("addressId", addressId)
-                .setTag("createOrderPaypal")
-                .setPriority(Priority.HIGH)
-                .build()
-                .getAsJSONObject(new JSONObjectRequestListener() {
-                    @Override
-                    public void onResponse(org.json.JSONObject response) {
-                        Log.d("SSS", "Success: " + response.toString());
-                        try {
-                            String status = response.getString("status");
-                            String msg = response.getString("msg");
-
-                            if (status.equals("200")) {
-                                dismiss();
-                                org.json.JSONObject data = response.getJSONObject("data");
-                                org.json.JSONObject result = data.getJSONObject("result");
-                                org.json.JSONObject payConfig = result.getJSONObject("payConfig");
-                                org.json.JSONObject pay_data = payConfig.getJSONObject("pay_data");
-                                String link = pay_data.getString("link_url");
-                                String orderId = result.getString("orderId");
-                                Intent intent = new Intent(getContext(), PaymentWebViewActivity.class);
-                                intent.putExtra("payment_url", link);
-                                intent.putExtra("orderId", orderId);
-                                ((Activity) getContext()).startActivityForResult(intent, 0);
-//                                callSuccPay(orderId);
-                            } else {
-                                Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            Toast.makeText(getContext(), "Data processing errors have occurred", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-                    @Override
-                    public void onError(ANError error) {
-                        Log.e("SSS", "Error: " + error.getErrorDetail());
-
-                    }
-                });
-    }
-
-    public void createOrderPayStack() {
-        String token = SpUtil.getInstance().getStringValue(SpUtil.TOKEN);
-        String addressId= String.valueOf(mOrderConfirmBean.getAddrId());
-        String key= mOrderConfirmBean.getOrderKey();
-        String email= "user@gmail.com";
-
-
-        AndroidNetworking.upload("https://system.sandtoner.com/api/order/create/" + key)
-                .addHeaders("Authori-zation", "Bearer " + token)
-                .addMultipartParameter("payType", "paystack")  // e.g., "paystack"
-                .addMultipartParameter("addressId", addressId)
-                .addMultipartParameter("email", email)
-                .setTag("createOrderPaystack")
-                .setPriority(Priority.HIGH)
-                .build()
-                .getAsJSONObject(new JSONObjectRequestListener() {
-                    @Override
-                    public void onResponse(org.json.JSONObject response) {
-                        Log.d("SSS", "Success: " + response.toString());
-                        try {
-                            String status = response.getString("status");
-                            String msg = response.getString("msg");
-
-                            if (status.equals("200")) {
-                                dismiss();
-                                org.json.JSONObject data = response.getJSONObject("data");
-                                org.json.JSONObject result = data.getJSONObject("result");
-                                org.json.JSONObject payConfig = result.getJSONObject("payConfig");
-                                String orderId = result.getString("orderId");
-                                org.json.JSONObject pay_data = payConfig.getJSONObject("pay_data");
-                                String link = pay_data.getString("authorization_url");
-                                Intent intent = new Intent(getContext(), PaymentWebViewActivity.class);
-                                intent.putExtra("payment_url", link);
-                                intent.putExtra("orderId", orderId);
-                                ((Activity) getContext()).startActivityForResult(intent, 0);
-//                                callSuccPay(orderId);
-                            } else {
-                                Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            Toast.makeText(getContext(), "Data processing errors have occurred", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-                    @Override
-                    public void onError(ANError error) {
-                        Log.e("SSS", "Error: " + error.getErrorDetail());
-
-                    }
-                });
-    }
 
     private void payByPaypal() {
         if(mId==null){
@@ -286,12 +103,11 @@ public class PayOrderPopView extends BaseBottomPopView implements View.OnClickLi
             return;
         }
 
-
         ShopAPI.orderPay(mId, Constants.PAY_TYPE_PP, new ParseHttpCallback<JSONObject>() {
             @Override
             public void onSuccess(int code, String msg, JSONObject info) {
                 if(isSuccess(code)){
-                    Log.d("SSS", "orderPay info: " + info.toString());
+
                     try {
                         JSONObject result = info.getJSONObject("result");
                         String orderId = result.getString("order_id");
