@@ -19,9 +19,9 @@ public class MyVideoActivity extends BaseActivity implements View.OnClickListene
 
     @Override
     public void init() {
-        setTabTitle("我的视频");
+        setTabTitle("My Video");
         mTvRightTitle = (TextView) findViewById(R.id.tv_right_title);
-        mTvRightTitle.setText("发布");
+        mTvRightTitle.setText("Release");
         mTvRightTitle.setOnClickListener(this);
 
         mContainer =  findViewById(R.id.container);
@@ -36,7 +36,7 @@ public class MyVideoActivity extends BaseActivity implements View.OnClickListene
             }
         };
 
-        videoListProxy.setEmptyData(0,"还没有作品，赶快去发布第一个作品吧～",R.mipmap.icon_no_data_big);
+        videoListProxy.setEmptyData(0,"There is no work yet. Hurry up and publish your first work.",R.mipmap.icon_no_data_big);
         getViewProxyMannger().addViewProxy(mContainer,videoListProxy,videoListProxy.getDefaultTag());
         videoListProxy.initData();
     }
