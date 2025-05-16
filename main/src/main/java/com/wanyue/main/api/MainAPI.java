@@ -276,6 +276,10 @@ public class MainAPI {
      */
     public static final String GET_PROFIT ="getProfit" ;//收益
 
+    /**
+     * The constant GET_TOP_PRODUCTS.
+     */
+    public static final String GET_TOP_PRODUCTS = "topproduct"; // Top 100 products endpoint
 
     /**
      * Gets base info.
@@ -1016,5 +1020,14 @@ public class MainAPI {
                 .put("p",p)
                 .build();
         return RequestFactory.getRequestManager().get("integral/list",parm,IntegralRecordBean.class,true);
+    }
+
+    /**
+     * Get top products observable.
+     *
+     * @return the observable
+     */
+    public static Observable<List<GoodsBean>> getTopProducts() {
+        return RequestFactory.getRequestManager().get(GET_TOP_PRODUCTS, null, GoodsBean.class, false);
     }
 }

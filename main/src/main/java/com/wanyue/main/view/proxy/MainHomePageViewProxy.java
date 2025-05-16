@@ -1,7 +1,9 @@
 package com.wanyue.main.view.proxy;
 
+import android.os.Handler;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -38,6 +40,7 @@ import com.wanyue.main.view.activity.GreateSelectActivity;
 import com.wanyue.main.view.activity.MainActivity;
 import com.wanyue.main.view.activity.MySpreadActivity;
 import com.wanyue.main.view.activity.SearchLiveActivity;
+import com.wanyue.shop.adapter.HotGoodsAdapter;
 import com.wanyue.shop.store.view.activity.BusniessStoreActivity;
 
 
@@ -49,6 +52,8 @@ import com.wanyue.shop.view.activty.MyCollectGoodsActivity;
 import com.wanyue.shop.view.activty.MyOrderActivity;
 import com.wanyue.video.activity.AbsVideoPlayActivity;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -64,16 +69,24 @@ public class MainHomePageViewProxy extends RxViewProxy implements LiveRoomCheckL
     private RecyclerView mRcRecommend;
     private RecyclerView mRcGoods;
     private RecyclerView mRcMoudle;
+    private RecyclerView mRcTopProducts;
 
     private ReCommentAdapter mReCommentAdapter;
     private LikeGoodsAdapter mLikeGoodsAdapter;
     private MainMoudleAdapter mMainMoudleAdapter;
+    private HotGoodsAdapter mHotGoodsAdapter;
 
     private ViewGroup mVpRecommendContainer;
     private  int mPage;
 
     private AdvViewProxy mAdvViewProxy;
     private FrameLayout mVpAdvContainer;
+
+    private Button mBtnShowMoreTopProducts;
+    private int topProductsDisplayCount = 10;
+    private List<GoodsBean> mAllTopProducts = new ArrayList<>();
+
+    private Handler mHandler = new Handler();
 
     @Override
     public int getLayoutId() {
@@ -88,12 +101,12 @@ public class MainHomePageViewProxy extends RxViewProxy implements LiveRoomCheckL
         mVpBannerContainer =  findViewById(R.id.vp_banner_container);
         mVpAdvContainer = findViewById(R.id.vp_adv_container);
         mRcMoudle =  findViewById(R.id.rc_moudle);
-
+        mRcTopProducts = findViewById(R.id.rc_top_products);
+        mBtnShowMoreTopProducts = findViewById(R.id.btn_show_more_top_products);
         mMainMoudleAdapter=new MainMoudleAdapter(null,getActivity());
         mRcMoudle.setAdapter(mMainMoudleAdapter);
         int size=DpUtil.dp2px(5);
         ViewUtil.setViewOutlineProvider(mRcMoudle,size);
-
         RxRefreshView.ReclyViewSetting.createGridSetting(getActivity(), 2, 0, new GridLayoutManager.SpanSizeLookup() {
             @Override
             public int getSpanSize(int i) {
@@ -104,6 +117,24 @@ public class MainHomePageViewProxy extends RxViewProxy implements LiveRoomCheckL
                 return weight;
             }
         }).settingRecyclerView(mRcMoudle);
+        RxRefreshView.ReclyViewSetting.createGridSetting(getActivity(),2).settingRecyclerView(mRcTopProducts);
+        mHotGoodsAdapter = new HotGoodsAdapter(null);
+        mRcTopProducts.setAdapter(mHotGoodsAdapter);
+        mHotGoodsAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                GoodsBean goodsBean = mHotGoodsAdapter.getItem(position);
+                if(goodsBean != null) {
+                    GoodsDetailActivity.forward(getActivity(), goodsBean.getId());
+                }
+            }
+        });
+        mBtnShowMoreTopProducts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showMoreTopProducts();
+            }
+        });
         initTopRecommend();
 
         mRefreshLayout = findViewById(R.id.refreshLayout);
@@ -249,6 +280,26 @@ public class MainHomePageViewProxy extends RxViewProxy implements LiveRoomCheckL
 
 
     private void initData() {
+        // Call top products API first
+        MainAPI.getTopProducts().compose(this.<List<GoodsBean>>bindToLifecycle())
+                .subscribe(new DefaultObserver<List<GoodsBean>>() {
+                    @Override
+                    public void onNext(@NonNull List<GoodsBean> topProducts) {
+                        mAllTopProducts.clear();
+                        if (topProducts != null && !topProducts.isEmpty()) {
+                            mAllTopProducts.addAll(topProducts);
+                            topProductsDisplayCount = Math.min(10, mAllTopProducts.size());
+                            updateTopProductsDisplay();
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        super.onError(e);
+                    }
+                });
+
+        // Get other homepage data
         MainAPI.getIndex(mPage).compose(this.<HomePageBean>bindToLifecycle())
                 .subscribe(new DefaultObserver<HomePageBean>() {
                     @Override
@@ -268,19 +319,23 @@ public class MainHomePageViewProxy extends RxViewProxy implements LiveRoomCheckL
                            mReCommentAdapter.setData(homePageBean.getClassList());
                         }
 
-
                         if(mMainMoudleAdapter!=null){
                            mMainMoudleAdapter.setNewData(homePageBean.getMoudleList());
                         }
 
-
-
-                        List<GoodsBean>goodsList=homePageBean.getGoodsList();
+                        // Handle guess you like products
+                        List<GoodsBean> goodsList = homePageBean.getGoodsList();
+                        List<GoodsBean> guessYouLike = new ArrayList<>();
+                        if (goodsList != null && !goodsList.isEmpty()) {
+                            List<GoodsBean> tempList = new ArrayList<>(goodsList);
+                            Collections.shuffle(tempList);
+                            int guessCount = Math.min(10, tempList.size());
+                            guessYouLike.addAll(tempList.subList(0, guessCount));
+                        }
                         if(mLikeGoodsAdapter!=null){
-                           mLikeGoodsAdapter.setData(goodsList);
+                            mLikeGoodsAdapter.setData(guessYouLike);
                         }
                     }
-
                     @Override
                     public void onError(Throwable e) {
                         super.onError(e);
@@ -311,6 +366,41 @@ public class MainHomePageViewProxy extends RxViewProxy implements LiveRoomCheckL
             getViewProxyChildMannger().addViewProxy(mVpBannerContainer, mBannerViewProxy, mBannerViewProxy.getDefaultTag());
         } else {
             mBannerViewProxy.update(beanList);
+        }
+    }
+
+    private void showMoreTopProducts() {
+        if (mAllTopProducts == null) return;
+        mBtnShowMoreTopProducts.setEnabled(false);
+        mBtnShowMoreTopProducts.setText("Loading...");
+        mHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                int nextCount = topProductsDisplayCount + 10;
+                if (nextCount > mAllTopProducts.size()) {
+                    nextCount = mAllTopProducts.size();
+                }
+                if (nextCount > 100) {
+                    nextCount = 100;
+                }
+                topProductsDisplayCount = nextCount;
+                updateTopProductsDisplay();
+            }
+        }, 700); // 700ms loading giả lập
+    }
+
+    private void updateTopProductsDisplay() {
+        if (mHotGoodsAdapter != null && mAllTopProducts != null) {
+            List<GoodsBean> subList = mAllTopProducts.subList(0, Math.min(topProductsDisplayCount, mAllTopProducts.size()));
+            mHotGoodsAdapter.setData(subList);
+            // Hiển thị nút nếu còn có thể show thêm
+            if (mAllTopProducts.size() > topProductsDisplayCount && topProductsDisplayCount < 100) {
+                mBtnShowMoreTopProducts.setVisibility(View.VISIBLE);
+                mBtnShowMoreTopProducts.setEnabled(true);
+                mBtnShowMoreTopProducts.setText("Show more");
+            } else {
+                mBtnShowMoreTopProducts.setVisibility(View.GONE);
+            }
         }
     }
 
