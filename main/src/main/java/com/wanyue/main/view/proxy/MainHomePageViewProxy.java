@@ -280,6 +280,26 @@ public class MainHomePageViewProxy extends RxViewProxy implements LiveRoomCheckL
 
 
     private void initData() {
+        // Call top products API first
+        MainAPI.getTopProducts().compose(this.<List<GoodsBean>>bindToLifecycle())
+                .subscribe(new DefaultObserver<List<GoodsBean>>() {
+                    @Override
+                    public void onNext(@NonNull List<GoodsBean> topProducts) {
+                        mAllTopProducts.clear();
+                        if (topProducts != null && !topProducts.isEmpty()) {
+                            mAllTopProducts.addAll(topProducts);
+                            topProductsDisplayCount = Math.min(10, mAllTopProducts.size());
+                            updateTopProductsDisplay();
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        super.onError(e);
+                    }
+                });
+
+        // Get other homepage data
         MainAPI.getIndex(mPage).compose(this.<HomePageBean>bindToLifecycle())
                 .subscribe(new DefaultObserver<HomePageBean>() {
                     @Override
@@ -303,20 +323,15 @@ public class MainHomePageViewProxy extends RxViewProxy implements LiveRoomCheckL
                            mMainMoudleAdapter.setNewData(homePageBean.getMoudleList());
                         }
 
-                        List<GoodsBean>goodsList=homePageBean.getGoodsList();
-                        mAllTopProducts.clear();
+                        // Handle guess you like products
+                        List<GoodsBean> goodsList = homePageBean.getGoodsList();
                         List<GoodsBean> guessYouLike = new ArrayList<>();
                         if (goodsList != null && !goodsList.isEmpty()) {
-                            // Top 100 Products: lấy tối đa 100 sản phẩm đầu
-                            mAllTopProducts.addAll(goodsList.subList(0, Math.min(100, goodsList.size())));
-                            // Guess you like: random 10 sản phẩm từ toàn bộ danh sách
                             List<GoodsBean> tempList = new ArrayList<>(goodsList);
                             Collections.shuffle(tempList);
                             int guessCount = Math.min(10, tempList.size());
                             guessYouLike.addAll(tempList.subList(0, guessCount));
                         }
-                        topProductsDisplayCount = Math.min(10, mAllTopProducts.size());
-                        updateTopProductsDisplay();
                         if(mLikeGoodsAdapter!=null){
                             mLikeGoodsAdapter.setData(guessYouLike);
                         }
