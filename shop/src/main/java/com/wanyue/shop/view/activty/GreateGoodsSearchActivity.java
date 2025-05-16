@@ -67,7 +67,7 @@ public class GreateGoodsSearchActivity extends BaseActivity implements SearchVie
     public void search(String keyward) {
         mKeyword=keyward;
         if(TextUtils.isEmpty(mKeyword)){
-           ToastUtil.show("请输入关键词");
+           ToastUtil.show("Please enter keywords");
            return;
         }
 
