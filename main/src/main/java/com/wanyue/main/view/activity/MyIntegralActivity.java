@@ -31,7 +31,7 @@ public class MyIntegralActivity extends BaseActivity {
         mRxRefreshView.setReclyViewSetting(RxRefreshView.ReclyViewSetting.createLinearSetting(this,0));
         mRxRefreshView.setAdapter(mMyIntegral2Adapter);
         mRxRefreshView.setEmptyLevel(1);
-        mRxRefreshView.setNoDataTip("暂无积分明细");
+        mRxRefreshView.setNoDataTip("No points details yet");
         mRxRefreshView.setDataListner(new RxRefreshView.DataListner<IntegralRecordBean>() {
             @Override
             public Observable<List<IntegralRecordBean>> loadData(int p) {

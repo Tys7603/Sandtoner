@@ -21,7 +21,7 @@ public class GoodsConnectActivity extends BaseActivity {
 
     @Override
     public void init() {
-        setTabTitle("商品关联直播");
+        setTabTitle("Product related live broadcast");
         final String id=getIntent().getStringExtra(Constants.KEY_ID);
         mContainer = findViewById(R.id.container);
         NormalFindListProxy findListProxy=new NormalFindListProxy(){
@@ -30,7 +30,7 @@ public class GoodsConnectActivity extends BaseActivity {
                 return FindAPI.getLiveAboutGoods(p,id).compose(this.<List<FindBean>>bindToLifecycle());
             }
         };
-        findListProxy.setTitle("暂无关联直播");
+        findListProxy.setTitle("No live broadcasts yet");
         findListProxy.setIconId(R.mipmap.icon_default_no_data);
         findListProxy.setLevel(1);
         getViewProxyMannger().addViewProxy(mContainer,findListProxy,findListProxy.getDefaultTag());
