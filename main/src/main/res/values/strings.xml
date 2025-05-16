@@ -11,4 +11,5 @@
     <string name="privacy_close">Close</string>
     <string name="privacy_agree_prompt">Please agree to the privacy policy</string>
     <string name="str_top_products">Top 100 Products</string>
+    <string name="default_privacy_policy">Privacy Policy for Sandtoner\n\nWe respect your privacy and are committed to protecting your personal data. This privacy policy will inform you about how we look after your personal data when you visit our application and tell you about your privacy rights.\n\n1. THE DATA WE COLLECT\n\nWe may collect various types of personal data including your name, contact information, and usage data.\n\n2. HOW WE USE YOUR DATA\n\nWe use your data to provide and improve our services, communicate with you, and ensure security.\n\n3. YOUR RIGHTS\n\nYou have the right to access, correct, or delete your personal data.\n\n4. CONTACT US\n\nFor questions about this policy, please contact info@sandtoner.com.</string>
 </resources>
