@@ -649,28 +649,6 @@ public class LoginActivity extends BaseActivity implements TimeModel.TimeListner
             // Không tự động check mCheckboxPrivacy, chỉ đóng dialog
         });
         
-        // Improved scroll listener: enable/disable checkbox based on scroll position
-        mScrollPrivacy.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
-            @Override
-            public void onScrollChanged() {
-                View view = mScrollPrivacy.getChildAt(0);
-                if (view != null) {
-                    int diff = view.getBottom() - (mScrollPrivacy.getHeight() + mScrollPrivacy.getScrollY());
-                    if (diff <= 10) { // Allow a small threshold
-                        hasReadCompletePrivacy = true;
-                        mCheckboxAgree.setEnabled(true);
-                    } else {
-                        hasReadCompletePrivacy = false;
-                        mCheckboxAgree.setEnabled(false);
-                        mCheckboxAgree.setChecked(false);
-                    }
-                }
-            }
-        });
-        
-        // Disable agree checkbox initially until user scrolls to the bottom
-        mCheckboxAgree.setEnabled(false);
-        
         // Initialize privacy content
         mPrivacyContent = findViewById(R.id.privacy_content);
         
@@ -682,10 +660,9 @@ public class LoginActivity extends BaseActivity implements TimeModel.TimeListner
         mPrivacyPolicyContainer.setVisibility(View.VISIBLE);
         // Reset scroll position
         mScrollPrivacy.scrollTo(0, 0);
-        // Reset flag and checkbox
-        hasReadCompletePrivacy = false;
+        // Enable agree checkbox by default
+        mCheckboxAgree.setEnabled(true);
         mCheckboxAgree.setChecked(false);
-        mCheckboxAgree.setEnabled(false);
     }
 
     private void fetchPrivacyPolicy() {
