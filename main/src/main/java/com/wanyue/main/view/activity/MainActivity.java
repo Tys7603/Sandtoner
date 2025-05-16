@@ -219,7 +219,7 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
        if(CommonAppConfig.getUserBean().getIsshop()==1){
            Activity activity= (LiveAudienceActivity) ActivityMannger.getInstance().getFirstClassTypeActivieActivity(LiveAudienceActivity.class);
            if(activity!=null){
-              ToastUtil.show("请关闭直播间悬浮窗");
+              ToastUtil.show("Please close the live streaming floating window");
               return;
            }
            LiveAnchorActivity.forward(this,id);
@@ -231,8 +231,8 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
     private void openAuthDialog() {
         DialogUitl.Builder builder = new DialogUitl.Builder(this);
         builder.setTitle("Activate Shop")
-                .setContent("你未认证开通店铺，无法进行直播")
-                .setConfrimString("前往认证")
+                .setContent("You have not authenticated the store and cannot conduct live broadcast")
+                .setConfrimString("Go to certification")
                 .setCancelable(true)
                 .setClickCallback(new DialogUitl.SimpleCallback() {
                     @Override
