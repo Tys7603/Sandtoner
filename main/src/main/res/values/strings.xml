@@ -10,4 +10,5 @@
     <string name="privacy_agree">I agree</string>
     <string name="privacy_close">Close</string>
     <string name="privacy_agree_prompt">Please agree to the privacy policy</string>
+    <string name="str_top_products">Top 100 Products</string>
 </resources>
