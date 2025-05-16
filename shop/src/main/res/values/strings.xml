@@ -11,5 +11,9 @@
     <string name="payment_cancelled">Payment has been cancelled</string>
     <string name="order_id_format">Order code: %s</string>
     <string name="order_timeout_message">Order expires in: %s</string>
-    <string name="order_timeout_recovery">\nYour order will be cancelled if not paid within 1 hour</string>
+    <string name="order_timeout_recovery">\n\nYour order will be cancelled within 1 hour</string>
+    <string name="order_auto_cancelled">Order has been automatically cancelled due to payment timeout</string>
+    <string name="order_cancelling">Cancelling order...</string>
+    <string name="order_cancel_countdown">Order %1$s will be cancelled in %2$d seconds...</string>
+    <string name="order_cancel_starting">Order %1$s will be cancelled in 5 seconds...</string>
 </resources>

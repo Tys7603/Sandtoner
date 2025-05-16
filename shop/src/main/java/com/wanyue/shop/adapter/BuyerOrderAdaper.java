@@ -50,30 +50,23 @@ public class BuyerOrderAdaper extends BaseMutiRecyclerAdapter<OrderBean, BaseRec
 
     @Override
     protected void convert(@NonNull BaseReclyViewHolder helper, OrderBean item) {
+        LinearLayout timerContainer = helper.getView(R.id.layout_order_timer);
         switch (helper.getItemViewType()){
             case ShopState.ORDER_STATE_WAIT_PAY:
                 commonConvert(helper,item);
                 helper.setOnChildClickListner(R.id.btn_cancel,mOnClickListener);
                 helper.setOnChildClickListner(R.id.btn_buy,mOnClickListener);
+                if (timerContainer != null) timerContainer.setVisibility(View.VISIBLE);
                 setupOrderTimer(helper, item);
                 break;
             case ShopState.ORDER_STATE_WAIT_DELIVERED:
             case ShopState.ORDER_STATE_WAIT_RECEIVE:
-                commonConvert(helper,item);
-                break;
             case ShopState.ORDER_STATE_WAIT_EVALUATE:
-                commonConvert(helper,item);
-                helper.setOnChildClickListner(R.id.btn_evaluate,mOnClickListener);
-                break;
             case ShopState.ORDER_STATE_COMPELETE:
-                commonConvert(helper,item);
-                helper.setOnChildClickListner(R.id.btn_buy_again,mOnClickListener);
-                helper.setOnChildClickListner(R.id.btn_delete,mOnClickListener);
-                break;
             case -1:
-                DebugUtil.sendException("出现空数据");
-                break;
             default:
+                commonConvert(helper,item);
+                if (timerContainer != null) timerContainer.setVisibility(View.GONE);
                 break;
         }
     }
@@ -83,23 +76,30 @@ public class BuyerOrderAdaper extends BaseMutiRecyclerAdapter<OrderBean, BaseRec
         TextView timerTextView = helper.getView(R.id.tv_order_timeout);
         
         if (timerContainer != null && timerTextView != null) {
-            // Show the timer container
-            timerContainer.setVisibility(View.VISIBLE);
-            
             String orderId = orderBean.getOrderId();
+            long orderCreatedTimeMs = 0;
+            try {
+                String addTimeStr = orderBean.getAddTime();
+                if (addTimeStr != null && !addTimeStr.isEmpty()) {
+                    long addTimeLong = Long.parseLong(addTimeStr);
+                    if (addTimeLong < 1000000000000L) {
+                        orderCreatedTimeMs = addTimeLong * 1000L;
+                    } else {
+                        orderCreatedTimeMs = addTimeLong;
+                    }
+                }
+            } catch (Exception e) {
+                orderCreatedTimeMs = System.currentTimeMillis();
+            }
             OrderTimerUtil timerUtil = mOrderTimers.get(orderId);
             
             if (timerUtil == null) {
-                timerUtil = new OrderTimerUtil(timerContainer, timerTextView);
+                timerUtil = new OrderTimerUtil(helper.itemView.getContext(), timerContainer, timerTextView, orderId, orderCreatedTimeMs);
                 timerUtil.setListener(new OrderTimerUtil.TimerListener() {
                     @Override
-                    public void onTimerTick(long millisUntilFinished) {
-                        // Update the UI during countdown
-                    }
-
+                    public void onTimerTick(long millisUntilFinished) {}
                     @Override
                     public void onTimerFinished() {
-                        // Order expired, refresh the adapter
                         if (mOnOrderExpiredListener != null) {
                             mOnOrderExpiredListener.onOrderExpired(orderId);
                         }
@@ -107,15 +107,7 @@ public class BuyerOrderAdaper extends BaseMutiRecyclerAdapter<OrderBean, BaseRec
                 });
                 mOrderTimers.put(orderId, timerUtil);
             }
-            
-            // Start or resume timer based on order creation time
-            if (orderBean.getAddTime() != null) {
-                // Parse the creation time and start timer
-                timerUtil.startNewOrderTimer();
-            } else {
-                // If no creation time, just start a new timer
-                timerUtil.startNewOrderTimer();
-            }
+            timerUtil.resumeOrderTimer();
         }
     }
 

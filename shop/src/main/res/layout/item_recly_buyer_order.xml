@@ -53,7 +53,7 @@
         android:paddingLeft="@dimen/default_padding"
         android:paddingRight="@dimen/default_padding"
         android:paddingBottom="8dp"
-        android:visibility="gone">
+        android:visibility="visible">
         
         <ImageView
             android:layout_width="16dp"

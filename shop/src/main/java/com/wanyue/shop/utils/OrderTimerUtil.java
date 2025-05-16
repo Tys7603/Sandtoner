@@ -1,8 +1,14 @@
 package com.wanyue.shop.utils;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.TextView;
+
+import com.wanyue.common.utils.ToastUtil;
+import com.wanyue.shop.R;
+import com.wanyue.shop.api.ShopAPI;
 
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
@@ -12,143 +18,100 @@ import java.util.concurrent.TimeUnit;
  * Orders will expire after 1 hour if not paid
  */
 public class OrderTimerUtil {
-
+    private static final String PREF_NAME = "order_timers";
+    private static final String KEY_ORDER_TIME = "order_time_";
     private static final long ORDER_TIMEOUT_MS = TimeUnit.HOURS.toMillis(1); // 1 hour timeout
+    
     private CountDownTimer countDownTimer;
     private View timerContainer;
     private TextView timerTextView;
     private long remainingTimeMs;
     private TimerListener listener;
+    private Context context;
+    private String orderId;
+    private long orderCreatedTimeMs;
 
     /**
      * Constructor for the OrderTimerUtil
-     * 
-     * @param timerContainer Container layout for the timer UI
-     * @param timerTextView TextView that displays the countdown
      */
-    public OrderTimerUtil(View timerContainer, TextView timerTextView) {
+    public OrderTimerUtil(Context context, View timerContainer, TextView timerTextView, String orderId, long orderCreatedTimeMs) {
+        this.context = context;
         this.timerContainer = timerContainer;
         this.timerTextView = timerTextView;
+        this.orderId = orderId;
+        this.orderCreatedTimeMs = orderCreatedTimeMs;
     }
 
     /**
-     * Start the countdown timer for a newly created order
+     * Start or resume the countdown timer based on orderCreatedTimeMs
      */
-    public void startNewOrderTimer() {
-        startTimer(ORDER_TIMEOUT_MS);
-    }
-
-    /**
-     * Start the countdown timer with a specific remaining time
-     * 
-     * @param createdAtTimestampMs The timestamp when the order was created
-     */
-    public void resumeOrderTimer(long createdAtTimestampMs) {
-        long elapsedTimeMs = System.currentTimeMillis() - createdAtTimestampMs;
+    public void resumeOrderTimer() {
+        long elapsedTimeMs = System.currentTimeMillis() - orderCreatedTimeMs;
         long remainingTimeMs = ORDER_TIMEOUT_MS - elapsedTimeMs;
-        
         if (remainingTimeMs > 0) {
             startTimer(remainingTimeMs);
         } else {
-            // Order already expired
-            if (listener != null) {
-                listener.onTimerFinished();
-            }
+            handleOrderExpired();
         }
     }
 
-    /**
-     * Start the timer with a specific duration
-     * 
-     * @param durationMs Duration in milliseconds
-     */
     private void startTimer(long durationMs) {
         stopTimer(); // Stop any existing timer
-        
         remainingTimeMs = durationMs;
         timerContainer.setVisibility(View.VISIBLE);
-        
         countDownTimer = new CountDownTimer(durationMs, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 remainingTimeMs = millisUntilFinished;
                 updateTimerText(millisUntilFinished);
-                
                 if (listener != null) {
                     listener.onTimerTick(millisUntilFinished);
                 }
             }
-
             @Override
             public void onFinish() {
                 remainingTimeMs = 0;
                 updateTimerText(0);
-                
+                handleOrderExpired();
+            }
+        };
+        countDownTimer.start();
+    }
+
+    private void handleOrderExpired() {
+        ShopAPI.cancleOrder(orderId, new com.wanyue.common.http.HttpCallback() {
+            @Override
+            public void onSuccess(int code, String msg, String[] info) {
                 if (listener != null) {
                     listener.onTimerFinished();
                 }
             }
-        };
-        
-        countDownTimer.start();
+            @Override
+            public void onError(int code, String msg) {}
+        });
     }
-    
-    /**
-     * Update the timer text view with the formatted time
-     * 
-     * @param millisUntilFinished Milliseconds until the timer finishes
-     */
+
     private void updateTimerText(long millisUntilFinished) {
         long hours = TimeUnit.MILLISECONDS.toHours(millisUntilFinished);
         long minutes = TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished) % 60;
         long seconds = TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) % 60;
-        
         String timeFormatted = String.format(Locale.getDefault(), "%02d:%02d:%02d", hours, minutes, seconds);
-        timerTextView.setText(timeFormatted);
+        timerTextView.setText(context.getString(R.string.order_timeout_message, timeFormatted));
     }
-    
-    /**
-     * Stop the countdown timer
-     */
+
     public void stopTimer() {
         if (countDownTimer != null) {
             countDownTimer.cancel();
             countDownTimer = null;
         }
     }
-    
-    /**
-     * Get the remaining time in milliseconds
-     * 
-     * @return Remaining time in milliseconds
-     */
-    public long getRemainingTimeMs() {
-        return remainingTimeMs;
-    }
-    
-    /**
-     * Set a listener for timer events
-     * 
-     * @param listener The timer listener
-     */
+
     public void setListener(TimerListener listener) {
         this.listener = listener;
     }
-    
-    /**
-     * Interface for timer event callbacks
-     */
+
     public interface TimerListener {
-        /**
-         * Called when the timer ticks
-         * 
-         * @param millisUntilFinished Milliseconds until finished
-         */
         void onTimerTick(long millisUntilFinished);
-        
-        /**
-         * Called when the timer finishes
-         */
         void onTimerFinished();
     }
 } 
