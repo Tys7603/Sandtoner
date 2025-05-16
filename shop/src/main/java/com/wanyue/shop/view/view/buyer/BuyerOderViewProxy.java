@@ -34,7 +34,7 @@ import com.wanyue.shop.view.pop.PayOrderPopView;
 import java.util.List;
 import io.reactivex.Observable;
 
-public abstract class BuyerOderViewProxy extends RxViewProxy implements BaseQuickAdapter.OnItemClickListener, BaseMutiRecyclerAdapter.OnItemChildClickListener2<OrderBean>, BuyerOrderAdaper.OnOrderExpiredListener {
+public abstract class BuyerOderViewProxy extends RxViewProxy implements BaseQuickAdapter.OnItemClickListener, BaseMutiRecyclerAdapter.OnItemChildClickListener2<OrderBean> {
     private RxRefreshView<OrderBean> mRefreshView;
     private BuyerOrderAdaper mAdapter;
     @Override
@@ -58,7 +58,6 @@ public abstract class BuyerOderViewProxy extends RxViewProxy implements BaseQuic
             }
         });
         mAdapter.setOnItemChildClickListener2(this);
-        mAdapter.setOnOrderExpiredListener(this);
         mRefreshView.setReclyViewSetting(RxRefreshView.ReclyViewSetting.createLinearSetting(getActivity(),10));
         OrderModel.watchOrderChangeEvent(getActivity(), new Observer<String>() {
             @Override
@@ -132,16 +131,6 @@ public abstract class BuyerOderViewProxy extends RxViewProxy implements BaseQuic
             }
     }
 
-    @Override
-    public void onOrderExpired(String orderId) {
-        // Handle order expiration by refreshing the data
-        if (mRefreshView != null) {
-            mRefreshView.initData();
-        }
-        
-        // Show notification to user about expired order
-        ToastUtil.show(getString(R.string.order_timeout_recovery));
-    }
 
     private void openCancleOrderDialog(final String orderId, final int position) {
         DialogUitl.showSimpleDialog(getActivity(), "Cancel the order ?", new DialogUitl.SimpleCallback() {
@@ -152,6 +141,7 @@ public abstract class BuyerOderViewProxy extends RxViewProxy implements BaseQuic
         });
     }
 
+
     private void openDeleteConfrimDialog(final OrderBean orderBean) {
         DialogUitl.showSimpleDialog(getActivity(), "Do you want to delete the order?", new DialogUitl.SimpleCallback() {
             @Override
@@ -160,6 +150,7 @@ public abstract class BuyerOderViewProxy extends RxViewProxy implements BaseQuic
             }
         });
     }
+
 
     /*删除订单*/
     private void deleteOrder(OrderBean orderBean) {
@@ -175,6 +166,8 @@ public abstract class BuyerOderViewProxy extends RxViewProxy implements BaseQuic
                 });
     }
 
+
+
     protected  void againOrder(OrderBean orderBean){
         ShopAPI.againOrder(orderBean.getOrderId(), new ParseSingleHttpCallback<String>("cateId") {
             @Override
@@ -183,6 +176,7 @@ public abstract class BuyerOderViewProxy extends RxViewProxy implements BaseQuic
             }
         });
     }
+
 
     private void toEvaluate(OrderBean orderBean) {
         OrderDeatailActivity.forward(getActivity(),ShopState.ORDER_BUY_SELF,orderBean.getOrderId());

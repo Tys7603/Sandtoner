@@ -77,7 +77,7 @@ public class SearchLiveActivity extends BaseActivity implements SearchViewProxy.
     public void search(String keyward) {
         mKeyword=keyward;
         if(TextUtils.isEmpty(mKeyword)){
-            ToastUtil.show("Please enter keywords");
+            ToastUtil.show("请输入关键词");
             return;
         }
         if(mRefreshView!=null){

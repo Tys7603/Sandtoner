@@ -42,46 +42,6 @@
              />
 
     </LinearLayout>
-    
-    <!-- Countdown timer for order expiration -->
-    <LinearLayout
-        android:id="@+id/layout_order_timer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:paddingLeft="@dimen/default_padding"
-        android:paddingRight="@dimen/default_padding"
-        android:paddingBottom="8dp"
-        android:visibility="gone">
-        
-        <ImageView
-            android:layout_width="16dp"
-            android:layout_height="16dp"
-            android:src="@drawable/icon_task_timeout"
-            android:layout_marginRight="5dp"/>
-            
-        <TextView
-            android:id="@+id/tv_order_timeout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/text_size_12"
-            android:textColor="@color/red"
-            tools:text="Order expires in: 00:59:59" />
-            
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
-            
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/order_timeout_recovery"
-            android:textSize="@dimen/text_size_11"
-            android:textColor="@color/gray1" />
-    </LinearLayout>
-    
     <View android:layout_width="match_parent"
         android:layout_height="1px"
         android:background="@color/line_color"
