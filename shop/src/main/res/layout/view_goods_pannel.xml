@@ -63,42 +63,50 @@
             android:maxLines="2"
             android:ellipsize="end"
             />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="原价：0.00元"
-            android:textColor="@color/gray1"
-            android:textSize="@dimen/text_size_14"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title"
-            app:layout_constraintLeft_toLeftOf="@id/tv_price"
-            android:layout_marginTop="20dp"
-            android:id="@+id/tv_ot_price"
-            />
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:text="库存:7双"
-            android:textColor="@color/gray1"
-            android:textSize="@dimen/text_size_14"
+            android:paddingLeft="@dimen/default_padding"
+            android:paddingRight="@dimen/default_padding"
             app:layout_constraintTop_toBottomOf="@+id/tv_title"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
             android:layout_marginTop="20dp"
-            android:id="@+id/tv_stock"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="销量:68双"
-            android:textColor="@color/gray1"
-            android:textSize="@dimen/text_size_14"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title"
-            app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="@dimen/default_margin"
-            android:id="@+id/tv_sale_num"
-            />
+            android:weightSum="4">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                tools:text="原价：0.00元"
+                android:textColor="@color/gray1"
+                android:textSize="@dimen/text_size_14"
+                android:id="@+id/tv_ot_price"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                tools:text="库存:7双"
+                android:textColor="@color/gray1"
+                android:textSize="@dimen/text_size_14"
+                android:id="@+id/tv_stock"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                tools:text="销量:68双"
+                android:textColor="@color/gray1"
+                android:textSize="@dimen/text_size_14"
+                android:id="@+id/tv_sale_num"
+                />
+
+        </LinearLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
