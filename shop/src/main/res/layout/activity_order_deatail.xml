@@ -29,15 +29,15 @@
                     android:background="@drawable/bg_global"
                     android:id="@+id/tag_v_bg"
                     android:layout_height="143dp"/>
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintBottom_toBottomOf="@id/tag_v_bg"
-                    android:layout_marginLeft="@dimen/default_margin"
-                    android:id="@+id/img_status_gif"
-                    android:layout_marginBottom="@dimen/default_margin"
-                    />
+
+            <ImageView
+                android:id="@+id/img_status_gif"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="@dimen/default_margin"
+                android:layout_marginBottom="@dimen/default_margin"
+                app:layout_constraintBottom_toBottomOf="@id/tag_v_bg"
+                app:layout_constraintLeft_toLeftOf="parent" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
