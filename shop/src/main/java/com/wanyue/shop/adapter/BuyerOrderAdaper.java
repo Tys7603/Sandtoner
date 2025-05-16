@@ -63,7 +63,7 @@ public class BuyerOrderAdaper extends BaseMutiRecyclerAdapter<OrderBean, BaseRec
                 helper.setOnChildClickListner(R.id.btn_delete,mOnClickListener);
                 break;
             case -1:
-                DebugUtil.sendException("出现空数据");
+                DebugUtil.sendException("Empty data appears");
                 break;
             default:
                 break;
