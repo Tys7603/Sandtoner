@@ -82,8 +82,6 @@ public class MainHomePageViewProxy extends RxViewProxy implements LiveRoomCheckL
     private AdvViewProxy mAdvViewProxy;
     private FrameLayout mVpAdvContainer;
 
-    private Button mBtnShowMoreTopProducts;
-    private int topProductsDisplayCount = 10;
     private List<GoodsBean> mAllTopProducts = new ArrayList<>();
 
     private Handler mHandler = new Handler();
@@ -102,7 +100,6 @@ public class MainHomePageViewProxy extends RxViewProxy implements LiveRoomCheckL
         mVpAdvContainer = findViewById(R.id.vp_adv_container);
         mRcMoudle =  findViewById(R.id.rc_moudle);
         mRcTopProducts = findViewById(R.id.rc_top_products);
-        mBtnShowMoreTopProducts = findViewById(R.id.btn_show_more_top_products);
         mMainMoudleAdapter=new MainMoudleAdapter(null,getActivity());
         mRcMoudle.setAdapter(mMainMoudleAdapter);
         int size=DpUtil.dp2px(5);
@@ -127,12 +124,6 @@ public class MainHomePageViewProxy extends RxViewProxy implements LiveRoomCheckL
                 if(goodsBean != null) {
                     GoodsDetailActivity.forward(getActivity(), goodsBean.getId());
                 }
-            }
-        });
-        mBtnShowMoreTopProducts.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showMoreTopProducts();
             }
         });
         initTopRecommend();
@@ -285,11 +276,8 @@ public class MainHomePageViewProxy extends RxViewProxy implements LiveRoomCheckL
                 .subscribe(new DefaultObserver<List<GoodsBean>>() {
                     @Override
                     public void onNext(@NonNull List<GoodsBean> topProducts) {
-                        mAllTopProducts.clear();
                         if (topProducts != null && !topProducts.isEmpty()) {
-                            mAllTopProducts.addAll(topProducts);
-                            topProductsDisplayCount = Math.min(10, mAllTopProducts.size());
-                            updateTopProductsDisplay();
+                            mHotGoodsAdapter.setData(topProducts);
                         }
                     }
 
@@ -366,41 +354,6 @@ public class MainHomePageViewProxy extends RxViewProxy implements LiveRoomCheckL
             getViewProxyChildMannger().addViewProxy(mVpBannerContainer, mBannerViewProxy, mBannerViewProxy.getDefaultTag());
         } else {
             mBannerViewProxy.update(beanList);
-        }
-    }
-
-    private void showMoreTopProducts() {
-        if (mAllTopProducts == null) return;
-        mBtnShowMoreTopProducts.setEnabled(false);
-        mBtnShowMoreTopProducts.setText("Loading...");
-        mHandler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                int nextCount = topProductsDisplayCount + 10;
-                if (nextCount > mAllTopProducts.size()) {
-                    nextCount = mAllTopProducts.size();
-                }
-                if (nextCount > 100) {
-                    nextCount = 100;
-                }
-                topProductsDisplayCount = nextCount;
-                updateTopProductsDisplay();
-            }
-        }, 700); // 700ms loading giả lập
-    }
-
-    private void updateTopProductsDisplay() {
-        if (mHotGoodsAdapter != null && mAllTopProducts != null) {
-            List<GoodsBean> subList = mAllTopProducts.subList(0, Math.min(topProductsDisplayCount, mAllTopProducts.size()));
-            mHotGoodsAdapter.setData(subList);
-            // Hiển thị nút nếu còn có thể show thêm
-            if (mAllTopProducts.size() > topProductsDisplayCount && topProductsDisplayCount < 100) {
-                mBtnShowMoreTopProducts.setVisibility(View.VISIBLE);
-                mBtnShowMoreTopProducts.setEnabled(true);
-                mBtnShowMoreTopProducts.setText("Show more");
-            } else {
-                mBtnShowMoreTopProducts.setVisibility(View.GONE);
-            }
         }
     }
 
