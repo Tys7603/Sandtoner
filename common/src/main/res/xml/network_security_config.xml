@@ -1,5 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<network-security-config>             
-    <base-config cleartextTrafficPermitted="true"/> 
+<network-security-config>
+    <!-- Tắt cleartext traffic mặc định -->
+    <base-config cleartextTrafficPermitted="false">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
 
+    <!-- Cấu hình domain cho các endpoint HTTPS -->
+    <domain-config cleartextTrafficPermitted="false">
+        <!-- Domain chính -->
+        <domain includeSubdomains="true">system.sandtoner.com</domain>
+        
+        <!-- CDN domains cho Nam Phi -->
+        <domain includeSubdomains="true">cdn-za1.sandtoner.com</domain>
+        <domain includeSubdomains="true">cdn-za2.sandtoner.com</domain>
+        
+        <!-- Các domain khác -->
+        <domain includeSubdomains="true">playvideo.qcloud.com</domain>
+        <domain includeSubdomains="true">${CommonAppConfig.HOST}</domain>
+        
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+        
+        <!-- Certificate pinning sẽ được xử lý tự động bởi CertificateUtil -->
+        <pin-set expiration="2024-12-31">
+            <!-- Các pin sẽ được thêm tự động khi ứng dụng khởi động -->
+        </pin-set>
+    </domain-config>
 </network-security-config>
