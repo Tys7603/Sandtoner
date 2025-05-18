@@ -42,7 +42,7 @@ public class ChatActivity extends BaseActivity {
 
     public static void forward(Context context, String id,String name){
         if(TextUtils.equals(id, CommonAppConfig.getUid())){
-           ToastUtil.show("不能与自己发送私信");
+           ToastUtil.show("Can't send private messages to yourself");
            return;
         }
 
