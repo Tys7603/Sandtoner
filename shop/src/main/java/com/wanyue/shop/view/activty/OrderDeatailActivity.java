@@ -5,14 +5,21 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.lifecycle.Observer;
 import com.alibaba.fastjson.JSONObject;
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.common.Priority;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.wanyue.common.Constants;
 import com.wanyue.common.activity.BaseActivity;
 import com.wanyue.common.activity.WebViewActivity;
@@ -20,6 +27,7 @@ import com.wanyue.common.glide.ImgLoader;
 import com.wanyue.common.http.ParseHttpCallback;
 import com.wanyue.common.http.ParseSingleHttpCallback;
 import com.wanyue.common.utils.L;
+import com.wanyue.common.utils.SpUtil;
 import com.wanyue.common.utils.StringUtil;
 import com.wanyue.common.utils.ToastUtil;
 import com.wanyue.imnew.view.chat.ChatActivity;
@@ -33,10 +41,15 @@ import com.wanyue.shop.bean.StoreGoodsBean;
 import com.wanyue.shop.business.ShopState;
 import com.wanyue.shop.evaluate.activity.PublishEvaluateActivity;
 import com.wanyue.shop.model.OrderModel;
+import com.wanyue.shop.view.pop.PayOrderPopView;
 import com.wanyue.shop.view.view.order.AbsOderDetailBottomViewProxy;
 import com.wanyue.shop.view.view.order.OrderDetailProgressViewProxy;
 import com.wanyue.shop.view.widet.ViewGroupLayoutBaseAdapter;
 import com.wanyue.shop.view.widet.linear.PoolLinearListView;
+
+import org.jetbrains.annotations.Nullable;
+import org.json.JSONException;
+
 import java.util.List;
 
 public class OrderDeatailActivity extends BaseActivity implements View.OnClickListener {
@@ -111,7 +124,8 @@ public class OrderDeatailActivity extends BaseActivity implements View.OnClickLi
             @Override
             public void onChanged(String s) {
                 if(StringUtil.equals(s,mOrderId)){
-                    finish();
+                    if(!isPaying)finish();
+                    Log.d("SSS" , "onChanged");
                 }
             }
         });
@@ -206,7 +220,16 @@ public class OrderDeatailActivity extends BaseActivity implements View.OnClickLi
         if(mAbsOderDetailBottomViewProxy==null&&mStatus==ShopState.ORDER_BUY_SELF){
             AbsOderDetailBottomViewProxy bottomViewProxy=AbsOderDetailBottomViewProxy.create(orderType);
             if(bottomViewProxy!=null){
+
+                bottomViewProxy.setOnPaymentResultListener(new AbsOderDetailBottomViewProxy.OnPaymentResultListener() {
+                    @Override
+                    public void onSuccess(Boolean isPaypal, String addressId, String key) {
+                        commitPayMethod(isPaypal, addressId, key);
+                    }
+
+                });
                 mAbsOderDetailBottomViewProxy=bottomViewProxy;
+
                 getViewProxyMannger().addViewProxy(mVpBottom,bottomViewProxy,bottomViewProxy.getDefaultTag());
                 bottomViewProxy.setOrderBean(mOrderBean);
             }
@@ -214,6 +237,218 @@ public class OrderDeatailActivity extends BaseActivity implements View.OnClickLi
             mVpBottom.setVisibility(View.GONE);
         }
     }
+
+    private Boolean isPaying= false;
+    private void commitPayMethod(Boolean isPaypal, String addressId, String key){
+        String token = SpUtil.getInstance().getStringValue(SpUtil.TOKEN);
+
+        Log.d("SSS","commitPayMethod");
+        isPaying= true;
+        if (isPaypal) {
+            createOrderPaypal(addressId, key, token);
+        } else {
+            String email = "user@gmail.com";
+            createOrderPayStack(addressId, email, key, token);
+        }
+    }
+
+    public void createOrderPaypal(String addressId, String key, String token) {
+
+        AndroidNetworking.upload("https://system.sandtoner.com/api/order/create/" + key)
+                .addHeaders("Authori-zation", "Bearer " + token)
+                .addMultipartParameter("payType", "paypal")
+                .addMultipartParameter("addressId", addressId)
+                .setTag("createOrderPaypal")
+                .setPriority(Priority.HIGH)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(org.json.JSONObject response) {
+
+                        try {
+                            String status = response.getString("status");
+                            String msg = response.getString("msg");
+
+                            if (status.equals("200")) {
+                                org.json.JSONObject data = response.getJSONObject("data");
+                                org.json.JSONObject result = data.getJSONObject("result");
+                                org.json.JSONObject payConfig = result.getJSONObject("payConfig");
+
+                                org.json.JSONObject pay_data = payConfig.getJSONObject("pay_data");
+                                String link = pay_data.getString("link_url");
+
+                                String orderId = result.getString("orderId");
+
+                                Intent intent = new Intent(OrderDeatailActivity.this, PaymentWebViewActivity.class);
+                                intent.putExtra("payment_url", link);
+                                intent.putExtra("orderId", orderId);
+                                startActivityForResult(intent, 0);
+//                                callSuccPay(orderId);
+                            } else {
+                                Log.d("SSS", "msg: " + msg);
+                                Toast.makeText(OrderDeatailActivity.this, msg, Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(OrderDeatailActivity.this, "Data processing errors have occurred", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onError(ANError error) {
+                        Log.e("API_ERROR", "Error: " + error.getErrorDetail());
+                    }
+                });
+    }
+
+    public void createOrderPayStack(String addressId, String email, String key, String token) {
+        AndroidNetworking.upload("https://system.sandtoner.com/api/order/create/" + key)
+                .addHeaders("Authori-zation", "Bearer " + token)
+                .addMultipartParameter("payType", "paystack")  // e.g., "paystack"
+                .addMultipartParameter("addressId", addressId)
+                .addMultipartParameter("email", email)
+                .setTag("createOrderPaystack")
+                .setPriority(Priority.HIGH)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(org.json.JSONObject response) {
+                        Log.d("API_RESPONSE", "Success: " + response.toString());
+                        try {
+                            String status = response.getString("status");
+                            String msg = response.getString("msg");
+
+                            if (status.equals("200")) {
+                                org.json.JSONObject data = response.getJSONObject("data");
+                                org.json.JSONObject result = data.getJSONObject("result");
+                                org.json.JSONObject payConfig = result.getJSONObject("payConfig");
+                                String orderId = result.getString("orderId");
+                                org.json.JSONObject pay_data = payConfig.getJSONObject("pay_data");
+                                String link = pay_data.getString("authorization_url");
+
+
+                                Intent intent = new Intent(OrderDeatailActivity.this, PaymentWebViewActivity.class);
+                                intent.putExtra("payment_url", link);
+                                intent.putExtra("orderId", orderId);
+                                startActivityForResult(intent, 0);
+//                                callSuccPay(orderId);
+                            } else {
+                                Log.d("SSS", "msg: " + msg);
+
+                                Toast.makeText(OrderDeatailActivity.this, msg, Toast.LENGTH_SHORT).show();
+
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(OrderDeatailActivity.this, "Data processing errors have occurred", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onError(ANError error) {
+                        Log.e("API_ERROR", "Error: " + error.getErrorDetail());
+
+                    }
+                });
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        Log.d("SSS" , "onActivityResult");
+
+        if (requestCode == 0 && resultCode == RESULT_OK) {
+            String trxref = data.getStringExtra("trxref");
+            String reference = data.getStringExtra("reference");
+            String token = data.getStringExtra("token");
+
+            if (token.equals("")) {
+                verifyPayment(trxref, reference);
+            } else {
+                verifyPaymentPayPal(token, reference);
+            }
+
+        }
+    }
+
+    private void verifyPayment(String trxref, String reference) {
+        AndroidNetworking.get("http://system.sandtoner.com/api/paystack/verify")
+                .addQueryParameter("trxref", trxref)
+                .addQueryParameter("reference", reference)
+                .setPriority(Priority.HIGH)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(org.json.JSONObject response) {
+                        try {
+                            int status = response.getInt("status");
+                            String msg = response.getString("msg");
+
+                            if (status == 200) {
+                                org.json.JSONObject data = response.getJSONObject("data");
+                                String resultStatus = data.getString("status");
+                                callSuccPay(resultStatus.equals("SUCCESS") ? trxref : "");
+                            } else {
+                                Toast.makeText(OrderDeatailActivity.this, "Error: " + msg, Toast.LENGTH_LONG).show();
+                            }
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            Toast.makeText(OrderDeatailActivity.this, "Data processing error", Toast.LENGTH_LONG).show();
+                        }
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+                        Toast.makeText(OrderDeatailActivity.this, "Network error: " + anError.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                });
+    }
+
+    private void verifyPaymentPayPal(String token, String reference) {
+        AndroidNetworking.get("http://system.sandtoner.com/api/paypal/verify")
+                .addQueryParameter("token", token)
+                .setPriority(Priority.HIGH)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(org.json.JSONObject response) {
+                        try {
+                            int status = response.getInt("status");
+                            String msg = response.getString("msg");
+
+                            if (status == 200) {
+                                org.json.JSONObject data = response.getJSONObject("data");
+                                String resultStatus = data.getString("status");
+                                callSuccPay(resultStatus.equals("SUCCESS") ? reference : "");
+                            } else {
+                                Toast.makeText(OrderDeatailActivity.this, "Error: " + msg, Toast.LENGTH_LONG).show();
+                            }
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            Toast.makeText(OrderDeatailActivity.this, "Data processing error", Toast.LENGTH_LONG).show();
+                        }
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+                        Toast.makeText(OrderDeatailActivity.this, "Network error: " + anError.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                });
+    }
+
+    private void callSuccPay(String orderId) {
+
+        OrderPayResultActivity.forward(
+                OrderDeatailActivity.this,
+                orderId,
+                !TextUtils.isEmpty(null));
+        finish();
+    }
+
+
 
     private void setLogisticsMessage(OrderBean orderBean) {
         mVpLogistics.setVisibility(View.VISIBLE);
