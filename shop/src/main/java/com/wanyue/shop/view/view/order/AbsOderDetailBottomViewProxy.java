@@ -1,10 +1,23 @@
 package com.wanyue.shop.view.view.order;
 
+import static android.app.Activity.RESULT_OK;
+
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
+import androidx.fragment.app.FragmentActivity;
+
 import com.alibaba.fastjson.JSONObject;
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.common.Priority;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.lxj.xpopup.XPopup;
 import com.wanyue.common.http.HttpCallback;
 import com.wanyue.common.http.ParseHttpCallback;
@@ -13,17 +26,25 @@ import com.wanyue.common.proxy.RxViewProxy;
 import com.wanyue.common.server.observer.DialogObserver;
 import com.wanyue.common.utils.ClickUtil;
 import com.wanyue.common.utils.DialogUitl;
+import com.wanyue.common.utils.SpUtil;
 import com.wanyue.common.utils.ToastUtil;
 import com.wanyue.shop.R;
 import com.wanyue.shop.api.ShopAPI;
 import com.wanyue.shop.bean.OrderBean;
+import com.wanyue.shop.bean.OrderConfirmBean;
+import com.wanyue.shop.bean.ShopCartBean;
 import com.wanyue.shop.business.ShopState;
 import com.wanyue.shop.model.OrderModel;
 import com.wanyue.shop.view.activty.CommitOrderActivity;
+import com.wanyue.shop.view.activty.OrderPayResultActivity;
 import com.wanyue.shop.view.activty.OrderRefundActivity;
+import com.wanyue.shop.view.activty.PaymentWebViewActivity;
 import com.wanyue.shop.view.activty.ViewLogisticsActivity;
 import com.wanyue.shop.view.pop.GetCodePop;
 import com.wanyue.shop.view.pop.PayOrderPopView;
+
+import org.jetbrains.annotations.Nullable;
+import org.json.JSONException;
 
 /**
  * The type Abs oder detail bottom view proxy.
@@ -31,7 +52,6 @@ import com.wanyue.shop.view.pop.PayOrderPopView;
 public abstract class AbsOderDetailBottomViewProxy extends RxViewProxy implements View.OnClickListener {
     private OrderBean mOrderBean;
     private PayOrderPopView mPayOrderPopView;
-
 
     /**
      * Sets order bean.
@@ -159,39 +179,21 @@ public abstract class AbsOderDetailBottomViewProxy extends RxViewProxy implement
                 .show();
     }
 
-    private void buy(String id) {
-        if(mPayOrderPopView!=null&&mPayOrderPopView.isShow()){
-            return;
-        }
-        mPayOrderPopView=new PayOrderPopView(getActivity()){
-            @Override
-            protected void onDismiss() {
-                super.onDismiss();
-                mPayOrderPopView=null;
-            }
-        };
-        mPayOrderPopView.setId(id);
-        new XPopup.Builder(getActivity())
-                .isDestroyOnDismiss(true) //对于只使用一次的弹窗，推荐设置这个
-                .asCustom(mPayOrderPopView)
-                .show();
-    }
-
 
     private void openCancleOrderDialog(final OrderBean orderBean) {
         DialogUitl.showSimpleDialog(getActivity(), "Cancel the order ?", new DialogUitl.SimpleCallback() {
             @Override
             public void onConfirmClick(Dialog dialog, String content) {
-                cancleOrder(orderBean.getOrderId());
+                cancleOrder(orderBean.getOrderId(), true);
             }
         });
     }
 
-    private void cancleOrder(final String id) {
+    private void cancleOrder(final String id , Boolean isNeedConfirm) {
         ShopAPI.cancleOrder(id, new HttpCallback() {
             @Override
             public void onSuccess(int code, String msg, String[] info) {
-                ToastUtil.show(msg);
+                if(isNeedConfirm)ToastUtil.show(msg);
                 if(isSuccess(code)){
                     OrderModel.sendOrderChangeEvent(id);
                 }
@@ -247,5 +249,146 @@ public abstract class AbsOderDetailBottomViewProxy extends RxViewProxy implement
         super.onDestroy();
         ShopAPI.cancle(ShopAPI.ORDER_AGAIN);
         ShopAPI.cancle(ShopAPI.ORDER_TAKE);
+    }
+
+
+    private void buy(String id) {
+        if(mPayOrderPopView!=null&&mPayOrderPopView.isShow()){
+            return;
+        }
+
+        getProductInfo(id);
+    }
+
+    //Note: Pay Method
+    //CourseDetailActivity not yet apply those changes
+    private OrderConfirmBean mOrderConfirmBean;
+    private String productId;
+    private int productCount;
+    private void getProductInfo(String mId){
+        Log.d("SSS", "getProductInfo");
+        ShopAPI.getOrderDetail(mId, ShopState.ORDER_BUY_SELF,new ParseHttpCallback<JSONObject>() {
+            @Override
+            public void onSuccess(int code, String msg, JSONObject info) {
+                if(isSuccess(code)){
+
+                    OrderBean orderBean=info.toJavaObject(OrderBean.class);
+                    ShopCartBean shopCartBean= orderBean.getCartInfo().get(0);
+                    productId= shopCartBean.getProductId();
+                    productCount= orderBean.getTotalNum();
+
+                    requestAddShopCart(mId);
+                }
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                // Handle error case
+                if (e != null) {
+                    ToastUtil.show(e.getMessage());
+                }
+            }
+        });
+    }
+    private void requestAddShopCart(String mId) {
+        ShopAPI.addShopCart(
+                productId, productCount, null, null, null, null, 1,new ParseHttpCallback<JSONObject>() {
+                    @Override
+                    public void onSuccess(int code, String msg, JSONObject info) {
+                        if(isSuccess(code)&&info!=null){
+                            String orderIdArray=info.getString("cartId");
+                            //Log.d("SSS", "requestAddShopCart orderIdArray: " + orderIdArray);
+
+                            ShopAPI.orderConfirm(orderIdArray, new ParseHttpCallback<JSONObject>() {
+                                @Override
+                                public void onSuccess(int code, String msg, JSONObject info) {
+                                    if(isSuccess(code)&&info!=null){
+
+                                        String json=info.toJSONString();
+                                        //Log.d("SSS", "onSuccess: " + json);
+
+                                        mOrderConfirmBean = info.toJavaObject(OrderConfirmBean.class);
+                                        mOrderConfirmBean.setLiveUid(null);
+
+                                        //start chosse pay method
+                                        openDialogPayMethodChoice(mId);
+
+                                    } else {
+                                        Log.d("SSS", "onSuccess null");
+                                    }
+                                }
+
+                                @Override
+                                public void onError(Throwable e) {
+                                    // Handle error case
+                                    if (e != null) {
+                                        ToastUtil.show(e.getMessage());
+                                        Log.d("SSS", "onError: " + e.getMessage());
+                                    }
+                                }
+                            });
+
+                        }else{
+                            ToastUtil.show(msg);
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        if (e != null) {
+                            ToastUtil.show(e.getMessage());
+                        }
+                    }
+                }
+        );
+    }
+
+    private void openDialogPayMethodChoice(String mId){
+        if(mPayOrderPopView!=null&&mPayOrderPopView.isShow()){
+            return;
+        }
+
+        mPayOrderPopView=new PayOrderPopView(getActivity()){
+            @Override
+            protected void onDismiss() {
+                super.onDismiss();
+                mPayOrderPopView=null;
+            }
+        };
+        mPayOrderPopView.setId(mId);
+        mPayOrderPopView.setOnPaymentResultListener(new PayOrderPopView.OnPaymentResultListener() {
+            @Override
+            public void onSuccess(Boolean isPaypal) {
+                // Xử lý khi thanh toán thành công
+                String addressId = String.valueOf(mOrderConfirmBean.getAddrId());
+                String key= mOrderConfirmBean.getOrderKey();
+
+                commitPayMethod(isPaypal, addressId, key);
+                cancleOrder(mId , false);
+
+            }
+
+        });
+        new XPopup.Builder(getActivity())
+                .isDestroyOnDismiss(true) //对于只使用一次的弹窗，推荐设置这个
+                .asCustom(mPayOrderPopView)
+                .show();
+    }
+
+    private void commitPayMethod(Boolean isPaypal, String addressId, String key){
+        if (mListener != null) {
+            mListener.onSuccess(isPaypal, addressId, key);
+        }
+    }
+
+    //callback
+    public interface OnPaymentResultListener {
+        void onSuccess(Boolean isPaypal, String addressId, String key);
+    }
+
+    private AbsOderDetailBottomViewProxy.OnPaymentResultListener mListener;
+
+    public void setOnPaymentResultListener(AbsOderDetailBottomViewProxy.OnPaymentResultListener listener) {
+        this.mListener = listener;
     }
 }
