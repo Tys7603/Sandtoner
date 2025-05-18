@@ -4,28 +4,45 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import com.alibaba.fastjson.JSONObject;
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.common.Priority;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.wanyue.common.CommonAppConfig;
 import com.wanyue.common.Constants;
+import com.wanyue.common.bean.SpecsValueBean;
 import com.wanyue.common.bean.UserBean;
 import com.wanyue.common.business.UserModel;
+import com.wanyue.common.http.BaseHttpCallBack;
 import com.wanyue.common.http.ParseHttpCallback;
 import com.wanyue.common.pay.PayCallback;
 import com.wanyue.common.pay.PayPresenter;
 import com.wanyue.common.utils.ClickUtil;
 import com.wanyue.common.utils.DialogUitl;
+import com.wanyue.common.utils.L;
 import com.wanyue.common.utils.StringUtil;
+import com.wanyue.common.utils.ToastUtil;
 import com.wanyue.shop.R;
 import com.wanyue.shop.api.ShopAPI;
+import com.wanyue.shop.bean.OrderBean;
+import com.wanyue.shop.bean.OrderConfirmBean;
+import com.wanyue.shop.bean.ShopCartBean;
+import com.wanyue.shop.business.ShopState;
 import com.wanyue.shop.model.OrderModel;
+import com.wanyue.shop.view.activty.CommitOrderActivity;
 import com.wanyue.shop.view.activty.PaymentWebViewActivity;
+
+import org.json.JSONException;
 
 
 public class PayOrderPopView extends BaseBottomPopView implements View.OnClickListener {
@@ -35,12 +52,13 @@ public class PayOrderPopView extends BaseBottomPopView implements View.OnClickLi
     private ViewGroup mBtnCoin;
     private TextView mTvCoinMoney;
     private String mId;
-    private String mPrice;
     private PayPresenter mPayPresenter;
 
     @Override
     protected void init() {
         super.init();
+
+
         mBtnClose = findViewById(R.id.btn_close);
         mBtnWx =  findViewById(R.id.btn_wx);
         mBtn_pp =  findViewById(R.id.btn_pp);
@@ -53,8 +71,8 @@ public class PayOrderPopView extends BaseBottomPopView implements View.OnClickLi
 
         UserBean userBean= CommonAppConfig.getUserBean();
         if(userBean!=null){
-         String price= StringUtil.getFormatPrice(userBean.getBalance());
-         mTvCoinMoney.setText(price);
+            String price= StringUtil.getFormatPrice(userBean.getBalance());
+            mTvCoinMoney.setText(price);
         }
     }
 
@@ -74,10 +92,12 @@ public class PayOrderPopView extends BaseBottomPopView implements View.OnClickLi
         if(id==R.id.btn_close){
             dismiss();
         }else if(id==R.id.btn_wx){
-            payByPayStack();
+           // payByPayStack();
+            commitPayment(false);
         }else if(id==R.id.btn_pp){
             //getOrderInfo();
-            payByPaypal();
+            //payByPaypal();
+            commitPayment(true);
         }else if(id==R.id.btn_coin){
             payForCoin();
         }
@@ -86,15 +106,32 @@ public class PayOrderPopView extends BaseBottomPopView implements View.OnClickLi
     public void setId(String id) {
         mId = id;
     }
-    public void setPrice(String price) {
-        mPrice = price;
-    }
 
     private void initPayPrestner() {
         if(mPayPresenter==null){
            mPayPresenter=new PayPresenter((Activity) getContext());
         }
     }
+
+
+    //callback
+    public interface OnPaymentResultListener {
+        void onSuccess(Boolean isPaypal);
+    }
+
+    private OnPaymentResultListener mListener;
+
+    public void setOnPaymentResultListener(OnPaymentResultListener listener) {
+        this.mListener = listener;
+    }
+
+    private void commitPayment(Boolean isPaypal) {
+        if (mListener != null) {
+            mListener.onSuccess(isPaypal);
+        }
+        dismiss();
+    }
+
 
 
     private void payByPaypal() {
@@ -151,6 +188,7 @@ public class PayOrderPopView extends BaseBottomPopView implements View.OnClickLi
             return;
         }
 
+        Log.d("SSS", "mId: " + mId);
         ShopAPI.orderPay(mId, Constants.PAY_TYPE_PSTACK, new ParseHttpCallback<JSONObject>() {
             @Override
             public void onSuccess(int code, String msg, JSONObject info) {
@@ -255,5 +293,12 @@ public class PayOrderPopView extends BaseBottomPopView implements View.OnClickLi
     protected void onDismiss() {
         super.onDismiss();
         ShopAPI.cancle(ShopAPI.ORDER_PAY);
+        ShopAPI.cancle(ShopAPI.ORDER_CONFIRM);
+        ShopAPI.cancle(ShopAPI.DEFAULT_ADDRESS);
+        ShopAPI.cancle(ShopAPI.ORDER_COMPUTED);
+
+        mListener= null;
+
     }
+
 }
