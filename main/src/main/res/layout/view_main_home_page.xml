@@ -85,7 +85,7 @@
                         />
 
                     <!-- Top Products Section -->
-                    <FrameLayout
+                    <!-- <FrameLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/white"
@@ -120,7 +120,7 @@
                                 android:src="@drawable/icon_u_like"
                                 />
                         </LinearLayout>
-                    </FrameLayout>
+                    </FrameLayout> -->
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rc_top_products"
