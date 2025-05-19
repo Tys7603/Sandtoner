@@ -253,6 +253,15 @@ public class SocketClient {
             }
             SocketReceiveBean received = JSON.parseObject(socketMsg, SocketReceiveBean.class);
             JSONObject map = received.getMsg().getJSONObject(0);
+            
+            // Thêm logic dịch message
+            if (Constants.SOCKET_SYSTEM.equals(map.getString("_method_"))) {
+                String content = map.getString("ct");
+                if ("直播内容包含任何低俗、暴露和涉黄内容，账号会被封禁；安全部门会24小时巡查哦～".equals(content)) {
+                    map.put("ct", "Live content containing any vulgar, explicit, or adult content will result in account suspension; Security department monitors 24/7~");
+                }
+            }
+            
             switch (map.getString("_method_")) {
                 case Constants.SOCKET_SYSTEM://系统消息
                     systemChatMessage(map.getString("ct"));
