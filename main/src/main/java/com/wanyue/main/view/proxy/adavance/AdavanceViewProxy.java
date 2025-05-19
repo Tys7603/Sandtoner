@@ -80,17 +80,17 @@ public abstract  class AdavanceViewProxy extends RxViewProxy {
             double price=Double.parseDouble(priceString);
             double currentCount=Double.parseDouble(mData.getCommissionCount());
             if(price>currentCount){
-                ToastUtil.show("不能大于可提现金额");
+                ToastUtil.show("Cannot be greater than the withdrawable amount");
                 return false;
             }
             double minPrice=Double.parseDouble(mData.getMinPrice());
             if(price<minPrice){
-                ToastUtil.show("不能小于最低提现金额");
+                ToastUtil.show("Cannot be less than the minimum withdrawal amount");
                 return false;
             }
         }catch (Exception e){
             e.printStackTrace();
-            ToastUtil.show("输入金额格式有误");
+            ToastUtil.show("The amount entered is in incorrect format");
             return false;
         }
         return true;
