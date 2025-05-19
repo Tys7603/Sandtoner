@@ -4079,6 +4079,7 @@ mipmap icon_share_fb_1
 mipmap icon_share_fb_2
 mipmap icon_share_fb_3
 mipmap icon_share_fb_4
+mipmap icon_share_paypal
 mipmap icon_share_pyq_1
 mipmap icon_share_pyq_2
 mipmap icon_share_pyq_3
@@ -4115,6 +4116,7 @@ mipmap o_user_line_disturb
 mipmap o_user_line_off
 mipmap o_user_line_on
 mipmap o_vip_icon
+mipmap paystack
 mipmap zan_0
 mipmap zan_1
 mipmap zan_2
@@ -4267,6 +4269,8 @@ string cash_input_wx_account
 string cash_record
 string cash_type_ali
 string cash_type_bank
+string cash_type_pp
+string cash_type_ps
 string cash_type_wx
 string chajin
 string change_camera

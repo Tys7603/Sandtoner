@@ -46,6 +46,14 @@
                     />
             </FrameLayout>
 
+            <Button
+                android:id="@+id/btn_login_user"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/global"
+                android:layout_marginHorizontal="24dp"
+                android:visibility="gone"
+                android:text="@string/login" />
         </com.google.android.material.appbar.AppBarLayout>
 
 
@@ -61,9 +69,12 @@
                 android:id="@+id/reclyView"
                 android:overScrollMode="never"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior"
-               />
+               >
+
+            </androidx.recyclerview.widget.RecyclerView>
 
         </LinearLayout>
+
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </LinearLayout>

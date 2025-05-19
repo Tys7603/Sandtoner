@@ -119,12 +119,12 @@ public class LaunchActivity extends AbsActivity {
                 if (isFinishing()) {
                     return;
                 }
-                Intent intent;
-                if (CommonAppConfig.isLogin()) {
-                    intent = new Intent(LaunchActivity.this, MainActivity.class);
-                } else {
-                    intent = new Intent(LaunchActivity.this, LoginActivity.class);
-                }
+                Intent intent = new Intent(LaunchActivity.this, MainActivity.class);
+//                if (CommonAppConfig.isLogin()) {
+//                    intent = new Intent(LaunchActivity.this, MainActivity.class);
+//                } else {
+//                    intent = new Intent(LaunchActivity.this, LoginActivity.class);
+//                }
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 finish();

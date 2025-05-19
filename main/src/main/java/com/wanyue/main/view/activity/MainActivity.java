@@ -213,9 +213,6 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
    }
 
    public void openLive(String id){
-
-
-
        if(CommonAppConfig.getUserBean().getIsshop()==1){
            Activity activity= (LiveAudienceActivity) ActivityMannger.getInstance().getFirstClassTypeActivieActivity(LiveAudienceActivity.class);
            if(activity!=null){

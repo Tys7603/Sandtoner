@@ -45,7 +45,7 @@ public class IMSDK {
         GeneralConfig generalConfig = new GeneralConfig();
         TUIKit.getConfigs().setGeneralConfig(generalConfig);
         TUIKit.init(context, appid, TUIKit.getConfigs());
-        
+
         registerNetworkCallback(context);
     }
 
@@ -81,7 +81,7 @@ public class IMSDK {
     private static boolean isNetworkConnected() {
         ConnectivityManager cm = (ConnectivityManager) CommonApplication.sInstance.getSystemService(Context.CONNECTIVITY_SERVICE);
         if (cm == null) return false;
-        
+
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
         return activeNetwork != null && activeNetwork.isConnectedOrConnecting();
     }
@@ -94,7 +94,7 @@ public class IMSDK {
 
         String sign = SpUtil.getInstance().getStringValue(SpUtil.TX_IM_USER_SIGN);
         String uid = CommonAppConfig.getUid();
-        
+
         // Validate inputs
         if (TextUtils.isEmpty(sign) || TextUtils.isEmpty(uid)) {
             ToastUtil.show("IM login failed: Invalid login information");
@@ -102,7 +102,7 @@ public class IMSDK {
         }
 
         Log.d("IMSDK", "Attempting IM login - uid: " + uid + ", attempt: " + currentRetryCount);
-        
+
         // Cancel old timeout if exists
         if (loginTimeoutRunnable != null) {
             mainHandler.removeCallbacks(loginTimeoutRunnable);
@@ -116,7 +116,7 @@ public class IMSDK {
             }
         };
         mainHandler.postDelayed(loginTimeoutRunnable, NETWORK_TIMEOUT_MS);
-        
+
         TUIKit.login(uid, sign, new IUIKitCallBack() {
             @Override
             public void onSuccess(Object data) {
@@ -124,7 +124,7 @@ public class IMSDK {
                 if (loginTimeoutRunnable != null) {
                     mainHandler.removeCallbacks(loginTimeoutRunnable);
                 }
-                
+
                 currentRetryCount = 0;
                 CommonAppConfig.setLoginIM(true);
                 UserBean userBean = CommonAppConfig.getUserBean();
@@ -142,7 +142,7 @@ public class IMSDK {
                 }
 
                 Log.e("IMSDK", "IM login failed - module: " + module + ", code: " + errCode + ", msg: " + errMsg);
-                
+
                 switch (errCode) {
                     case 6017: // Network error
                         handleRetry("Network connection error, retrying...");
@@ -168,7 +168,7 @@ public class IMSDK {
             currentRetryCount++;
             Log.d("IMSDK", message + " (Attempt " + currentRetryCount + " of " + MAX_RETRY_COUNT + ")");
             ToastUtil.show(message);
-            
+
             // Only retry if network is available
             if (isNetworkConnected()) {
                 mainHandler.postDelayed(() -> login(), RETRY_DELAY_MS);

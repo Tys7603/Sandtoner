@@ -342,11 +342,9 @@ public class LoginActivity extends BaseActivity implements TimeModel.TimeListner
     };
 
     private void loginingSucc(JSONObject jsonObject) {
-        Log.d("longgg", "loginingSucc: " + jsonObject);
         String token = jsonObject.getString("token");
         CommonAppConfig.setLoginInfo("0", token, true);
         String sign = jsonObject.getString("usersig");
-        Log.d("longgg", "sign: " + sign);
         SpUtil.getInstance().setStringValue(SpUtil.TX_IM_USER_SIGN, sign);
         askUserInfo();
     }

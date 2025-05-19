@@ -42,8 +42,6 @@ public class JumpInterceptor {
       if(activity!=null&&!isBaseActivity&&!activity.isFinishing()){
          activity.finish();
       }
-       RouteUtil.forwardLogin();
+//       RouteUtil.forwardLogin();
     }
-
-
 }

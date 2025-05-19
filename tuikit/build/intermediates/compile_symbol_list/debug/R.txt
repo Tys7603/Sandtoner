@@ -4078,6 +4078,7 @@ int mipmap icon_share_fb_1 0x0
 int mipmap icon_share_fb_2 0x0
 int mipmap icon_share_fb_3 0x0
 int mipmap icon_share_fb_4 0x0
+int mipmap icon_share_paypal 0x0
 int mipmap icon_share_pyq_1 0x0
 int mipmap icon_share_pyq_2 0x0
 int mipmap icon_share_pyq_3 0x0
@@ -4114,6 +4115,7 @@ int mipmap o_user_line_disturb 0x0
 int mipmap o_user_line_off 0x0
 int mipmap o_user_line_on 0x0
 int mipmap o_vip_icon 0x0
+int mipmap paystack 0x0
 int mipmap zan_0 0x0
 int mipmap zan_1 0x0
 int mipmap zan_2 0x0
@@ -4266,6 +4268,8 @@ int string cash_input_wx_account 0x0
 int string cash_record 0x0
 int string cash_type_ali 0x0
 int string cash_type_bank 0x0
+int string cash_type_pp 0x0
+int string cash_type_ps 0x0
 int string cash_type_wx 0x0
 int string chajin 0x0
 int string change_camera 0x0

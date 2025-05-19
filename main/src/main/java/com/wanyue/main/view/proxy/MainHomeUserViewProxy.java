@@ -6,8 +6,10 @@ import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.text.style.AbsoluteSizeSpan;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;
@@ -33,6 +35,7 @@ import com.wanyue.common.server.observer.DefaultObserver;
 import com.wanyue.common.utils.ClickUtil;
 import com.wanyue.common.utils.DebugUtil;
 import com.wanyue.common.utils.ListUtil;
+import com.wanyue.common.utils.RouteUtil;
 import com.wanyue.common.utils.SpannableStringUtils;
 import com.wanyue.common.utils.ViewUtil;
 import com.wanyue.course.view.activity.MyCourseActivity;
@@ -51,6 +54,7 @@ import com.wanyue.main.store.view.activity.ProfitActivity;
 import com.wanyue.main.store.view.activity.StoreOrderListActivity;
 import com.wanyue.main.view.activity.EditProfileActivity;
 import com.wanyue.main.view.activity.GiftProfitActivity;
+import com.wanyue.main.view.activity.LoginActivity;
 import com.wanyue.main.view.activity.MainActivity;
 import com.wanyue.main.view.activity.MyCoinActivity;
 import com.wanyue.main.view.activity.MyDiamondsActivity;
@@ -72,6 +76,8 @@ import com.wanyue.shop.view.activty.MyOrderActivity;
 import com.wanyue.shop.view.activty.RefundListActivity;
 import java.util.ArrayList;
 import java.util.List;
+
+import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
 import io.reactivex.functions.Function;
 
@@ -140,6 +146,7 @@ public class MainHomeUserViewProxy extends RxViewProxy implements View.OnClickLi
     private TextView mTvFollowStore;
     private TextView mTvIntegralCode;
     private TextView mTvCoupon;
+    private Button btnLogin;
 
     @Override
     public int getLayoutId() {
@@ -160,7 +167,7 @@ public class MainHomeUserViewProxy extends RxViewProxy implements View.OnClickLi
         mBtnWaitReceived = findViewById(R.id.btn_wait_received);
         mBtnWaitEvaluated =  findViewById(R.id.btn_wait_evaluated);
         mBtnRefund = findViewById(R.id.btn_refund);
-
+        btnLogin = findViewById(R.id.btn_login_user);
         mTvFavorites = (TextView) findViewById(R.id.tv_favorites);
         mTvFollowStore = (TextView) findViewById(R.id.tv_follow_store);
         mTvIntegralCode = (TextView) findViewById(R.id.tv_integral_code);
@@ -179,7 +186,7 @@ public class MainHomeUserViewProxy extends RxViewProxy implements View.OnClickLi
         mBtnWaitReceived.setOnClickListener(this);
         mBtnWaitEvaluated.setOnClickListener(this);
         mBtnRefund.setOnClickListener(this);
-
+        btnLogin.setOnClickListener(this);
         mImgAvator.setOnClickListener(this);
         mTvUserName.setOnClickListener(this);
         mTvUserId.setOnClickListener(this);
@@ -252,6 +259,11 @@ public class MainHomeUserViewProxy extends RxViewProxy implements View.OnClickLi
     public void onStart() {
         super.onStart();
         requestData();
+        if (CommonAppConfig.isLogin()) {
+            btnLogin.setVisibility(View.GONE);
+        } else {
+            btnLogin.setVisibility(View.VISIBLE);
+        }
     }
 
     private void requestData() {
@@ -428,6 +440,8 @@ public class MainHomeUserViewProxy extends RxViewProxy implements View.OnClickLi
             startActivity(SpreadCensusActivity.class);
         }else if(id==R.id.tv_spread_num||id==R.id.tv_spread_num_tip){
             startActivity(SpreadOrderActivity.class);
+        } else if (id == R.id.btn_login_user) {
+            startActivity(LoginActivity.class);
         }
     }
 
