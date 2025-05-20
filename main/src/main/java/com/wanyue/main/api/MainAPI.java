@@ -3,8 +3,6 @@ package com.wanyue.main.api;
 
 import android.text.TextUtils;
 
-import androidx.annotation.NonNull;
-
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -20,14 +18,11 @@ import com.wanyue.common.mob.LoginData;
 import com.wanyue.common.server.MapBuilder;
 import com.wanyue.common.server.OkGoRequestMannger;
 import com.wanyue.common.server.RequestFactory;
-import com.wanyue.common.utils.JsonUtil;
 import com.wanyue.common.utils.StringUtil;
 import com.wanyue.live.bean.LiveBean;
 import com.wanyue.main.R;
 import com.wanyue.main.apply.bean.ApplyStoreBean;
-import com.wanyue.main.bean.AdvBean;
 import com.wanyue.main.bean.ApplyAnthorInfo;
-import com.wanyue.main.bean.BannerBean;
 import com.wanyue.main.bean.CommissionBankBean;
 import com.wanyue.main.bean.CommissionSectionBean;
 import com.wanyue.main.bean.CommitAdavanceBean;
@@ -37,7 +32,6 @@ import com.wanyue.main.bean.HomePageBean;
 import com.wanyue.main.bean.IntegralRecordBean;
 import com.wanyue.main.bean.MainUserSectionBean;
 import com.wanyue.main.bean.MenuBean;
-import com.wanyue.main.bean.ReCommentBean;
 import com.wanyue.main.bean.RegisterCommitBean;
 import com.wanyue.main.bean.SpreadManRankBean;
 import com.wanyue.main.store.bean.ConsignMentGoodsBean;
@@ -1029,5 +1023,20 @@ public class MainAPI {
      */
     public static Observable<List<GoodsBean>> getTopProducts() {
         return RequestFactory.getRequestManager().get(GET_TOP_PRODUCTS, null, GoodsBean.class, false);
+    }
+
+    /**
+     * API call payment Sandtoner
+     */
+    public static void createSandtonerOrder(String uid, String token, String money, String ruleid, String coin, String paytype, String order_date, HttpCallback callback) {
+        HttpClient.getInstance().post("getorderbyapp", "getorderbyapp")
+                .params("uid", uid)
+                .params("token", token)
+                .params("money", money)
+                .params("ruleid", ruleid)
+                .params("coin", coin)
+                .params("type", paytype)
+                .params("order_date", order_date)
+                .execute(callback);
     }
 }
