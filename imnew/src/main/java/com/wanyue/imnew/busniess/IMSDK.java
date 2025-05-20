@@ -34,30 +34,9 @@ public class IMSDK {
 
     public static void login(){
         String sign = SpUtil.getInstance().getStringValue(SpUtil.TX_IM_USER_SIGN);
-        String uid = CommonAppConfig.getUid();
-
-        // Validate inputs
-//        if (TextUtils.isEmpty(sign) || TextUtils.isEmpty(uid)) {
-//            ToastUtil.show("IM login failed: Invalid login information");
-//            return;
-//        }
-
-        Log.d("IMSDK", "Attempting IM login - uid: " + uid + ", attempt: " + currentRetryCount);
-
-        // Cancel old timeout if exists
-        if (loginTimeoutRunnable != null) {
-            mainHandler.removeCallbacks(loginTimeoutRunnable);
-        }
-
-        // Set timeout for request
-        loginTimeoutRunnable = () -> {
-            if (currentRetryCount < MAX_RETRY_COUNT) {
-                Log.e("IMSDK", "Login timeout after " + NETWORK_TIMEOUT_MS + "ms");
-                handleRetry("Connection timeout, retrying...");
-            }
-        };
-        mainHandler.postDelayed(loginTimeoutRunnable, NETWORK_TIMEOUT_MS);
-
+        String uid=CommonAppConfig.getUid();
+        Log.d("longnxx", "sign: " + sign);
+        Log.d("longnxx", "uid: " + uid);
         TUIKit.login(uid, sign, new IUIKitCallBack() {
             @Override
             public void onSuccess(Object data) {
@@ -67,48 +46,10 @@ public class IMSDK {
             }
             @Override
             public void onError(String module, int errCode, String errMsg) {
-                // Cancel timeout on error
-                if (loginTimeoutRunnable != null) {
-                    mainHandler.removeCallbacks(loginTimeoutRunnable);
-                }
-
-                switch (errCode) {
-                    case 6017: // Network error
-                        handleRetry("Network connection error, retrying...");
-                        break;
-                    case 6205: // Invalid usersig
-//                        ToastUtil.show("IM login failed: Invalid signature, please login again");
-                        CommonAppConfig.setLoginIM(false);
-                        break;
-                    case 6206: // Usersig expired
-//                        ToastUtil.show("IM login failed: Signature expired, please login again");
-                        CommonAppConfig.setLoginIM(false);
-                        break;
-                    default:
-//                        handleRetry("Login failed, retrying...");
-                        break;
-                }
+                CommonAppConfig.setLoginIM(false);
+                ToastUtil.show("IM Login failed：" + module + " errmsg: " + errMsg);
             }
         });
-    }
-
-    private static void handleRetry(String message) {
-        if (currentRetryCount < MAX_RETRY_COUNT) {
-            currentRetryCount++;
-            Log.d("IMSDK", message + " (Attempt " + currentRetryCount + " of " + MAX_RETRY_COUNT + ")");
-            ToastUtil.show(message);
-
-            // Only retry if network is available
-            if (isNetworkConnected()) {
-                mainHandler.postDelayed(() -> login(), RETRY_DELAY_MS);
-            } else {
-                ToastUtil.show("No network connection, will automatically retry when network is available");
-            }
-        } else {
-            currentRetryCount = 0;
-            CommonAppConfig.setLoginIM(false);
-//            ToastUtil.show("Login failed after " + MAX_RETRY_COUNT + " attempts. Please try again later.");
-        }
     }
 
     public static void editUserIcon(String url,String nickName){
