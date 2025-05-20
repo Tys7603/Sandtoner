@@ -169,7 +169,7 @@ public class CoinAdapter extends RecyclerView.Adapter {
                     if (mGiveGroup.getVisibility() != View.VISIBLE) {
                         mGiveGroup.setVisibility(View.VISIBLE);
                     }
-                    mGive.setText(mGiveString + " " + bean.getGive() + " " + mCoinName);
+                    mGive.setText(mGiveString + " " + bean.getGive() + " LEMX");
                 } else {
                     if (mGiveGroup.getVisibility() == View.VISIBLE) {
                         mGiveGroup.setVisibility(View.INVISIBLE);
