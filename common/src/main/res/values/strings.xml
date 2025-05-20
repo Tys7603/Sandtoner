@@ -1127,10 +1127,10 @@
     <string name="view_logistics">View logistics</string>
     <string name="copy_no">Copy order number</string>
 
-    <string name="evaluate_btn_tip0">All (%1$s)</string>
-    <string name="evaluate_btn_tip1">Good reviews (%1$s)</string>
-    <string name="evaluate_btn_tip2">Medium reviews (%1$s)</string>
-    <string name="evaluate_btn_tip3">Bad reviews (%1$s)</string>
+    <string name="evaluate_btn_tip0">All\n(%1$s)</string>
+    <string name="evaluate_btn_tip1">Good reviews\n(%1$s)</string>
+    <string name="evaluate_btn_tip2">Medium reviews\n(%1$s)</string>
+    <string name="evaluate_btn_tip3">Bad reviews\n(%1$s)</string>
     <string name="service_name">Waiter:</string>
     <string name="profit_coin_empty">Please enter the correct amount</string>
     <string name="profit_coin_error">The amount exceeds the amount that can be withdrawn</string>
