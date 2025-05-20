@@ -898,7 +898,7 @@
     <string name="music_no_data_collect">You haven\'t collected any music yet</string>
     <string name="music_no_data_class_1">No music of this type</string>
     <string name="music_no_data_class_2">Go check out other music types</string>
-    <string name="money_symbol">￥</string>
+    <string name="money_symbol">R</string>
 
     <string name="added">Added</string>
     <string name="ge">pcs</string>

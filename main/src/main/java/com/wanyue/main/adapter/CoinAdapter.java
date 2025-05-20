@@ -164,12 +164,12 @@ public class CoinAdapter extends RecyclerView.Adapter {
             if (payload == null) {
                 itemView.setTag(position);
                 mCoin.setText(bean.getCoin());
-                mMoney.setText("￥" + bean.getMoney());
+                mMoney.setText("R" + bean.getMoney());
                 if (!"0".equals(bean.getGive())) {
                     if (mGiveGroup.getVisibility() != View.VISIBLE) {
                         mGiveGroup.setVisibility(View.VISIBLE);
                     }
-                    mGive.setText(mGiveString + bean.getGive() + mCoinName);
+                    mGive.setText(mGiveString + " " + bean.getGive() + " " + mCoinName);
                 } else {
                     if (mGiveGroup.getVisibility() == View.VISIBLE) {
                         mGiveGroup.setVisibility(View.INVISIBLE);
