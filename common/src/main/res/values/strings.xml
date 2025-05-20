@@ -19,7 +19,7 @@
     <string name="black">Blacklist</string>
     <string name="black_ing">Cancel blacklist</string>
 
-    <string name="cash_input_wx_account">Please enter WeChat account</string>
+    <string name="cash_input_wx_account">Please enter Paypal account</string>
     <string name="cash_input_ali_account">Please enter Alipay account</string>
     <string name="cash_input_ali_name">Please enter Alipay account name</string>
     <string name="cash_type_ali">Alipay</string>
@@ -1230,7 +1230,7 @@
     <string name="str_jingcai_tip3">Featured Content</string>
     <string name="str_tuiguang_tip3">Promotional Business Card</string>
     <string name="str_tixian_tip7">Account</string>
-    <string name="str_tixian_tip8">Please enter your Alipay account</string>
+    <string name="str_tixian_tip8">Please enter your Paystack account</string>
     <string name="str_jifen_tip1">My points</string>
     <string name="str_jifen_tip2">Points details</string>
     <string name="str_shouyi_tip7">Store revenue</string>
@@ -1263,7 +1263,7 @@
     <string name="str_auth_10">Other certificates</string>
     <string name="str_auth_11">Submit</string>
     <string name="str_auth_12">Account</string>
-    <string name="str_auth_13">Please enter WeChat account</string>
+    <string name="str_auth_13">Please enter Paypal account</string>
     <string name="str_followed">Followed</string>
     <string name="str_in_store">Enter the store</string>
     <string name="str_del">Delete</string>
