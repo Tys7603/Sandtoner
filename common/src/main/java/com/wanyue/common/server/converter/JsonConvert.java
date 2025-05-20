@@ -158,11 +158,11 @@ public class JsonConvert<T> implements Converter<T> {
             if (typeArgument == Void.class) {
                 // 泛型格式如下： new JsonCallback<LzyResponse<Void>>(this)
                 BaseSimpleReponse simpleResponse = Convert.fromJson(jsonReader, BaseSimpleReponse.class);
-                L.e("simpleResponse=="+simpleResponse.getMsg());
+                L.e("simpleResponse1=="+simpleResponse.getMsg());
                 return (T) simpleResponse;
             }else if(rawType== BaseOriginalResponse.class){
                 BaseOriginalResponse baseOriginalResponse=Convert.fromJson(jsonReader,BaseOriginalResponse.class);
-                L.e("simpleResponse=="+baseOriginalResponse.getMsg());
+                L.e("simpleResponse2=="+baseOriginalResponse.getMsg());
                 return (T) baseOriginalResponse;
             }
             else {
@@ -175,7 +175,7 @@ public class JsonConvert<T> implements Converter<T> {
                     BaseSimpleReponse baseResponse = Convert.fromJson(jsonReader, type);
                     baseSimpleReponse=baseResponse;
                 }
-                L.e("simpleResponse=="+baseSimpleReponse.getMsg());
+                L.e("simpleResponse3=="+baseSimpleReponse.getMsg());
                 response.close();
                 int code = baseSimpleReponse.getStatus();
                 //这里的0是以下意思

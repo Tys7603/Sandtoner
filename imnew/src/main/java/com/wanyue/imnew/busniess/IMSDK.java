@@ -96,10 +96,10 @@ public class IMSDK {
         String uid = CommonAppConfig.getUid();
 
         // Validate inputs
-        if (TextUtils.isEmpty(sign) || TextUtils.isEmpty(uid)) {
-            ToastUtil.show("IM login failed: Invalid login information");
-            return;
-        }
+//        if (TextUtils.isEmpty(sign) || TextUtils.isEmpty(uid)) {
+//            ToastUtil.show("IM login failed: Invalid login information");
+//            return;
+//        }
 
         Log.d("IMSDK", "Attempting IM login - uid: " + uid + ", attempt: " + currentRetryCount);
 
@@ -141,22 +141,20 @@ public class IMSDK {
                     mainHandler.removeCallbacks(loginTimeoutRunnable);
                 }
 
-                Log.e("IMSDK", "IM login failed - module: " + module + ", code: " + errCode + ", msg: " + errMsg);
-
                 switch (errCode) {
                     case 6017: // Network error
                         handleRetry("Network connection error, retrying...");
                         break;
                     case 6205: // Invalid usersig
-                        ToastUtil.show("IM login failed: Invalid signature, please login again");
+//                        ToastUtil.show("IM login failed: Invalid signature, please login again");
                         CommonAppConfig.setLoginIM(false);
                         break;
                     case 6206: // Usersig expired
-                        ToastUtil.show("IM login failed: Signature expired, please login again");
+//                        ToastUtil.show("IM login failed: Signature expired, please login again");
                         CommonAppConfig.setLoginIM(false);
                         break;
                     default:
-                        handleRetry("Login failed, retrying...");
+//                        handleRetry("Login failed, retrying...");
                         break;
                 }
             }
@@ -178,7 +176,7 @@ public class IMSDK {
         } else {
             currentRetryCount = 0;
             CommonAppConfig.setLoginIM(false);
-            ToastUtil.show("Login failed after " + MAX_RETRY_COUNT + " attempts. Please try again later.");
+//            ToastUtil.show("Login failed after " + MAX_RETRY_COUNT + " attempts. Please try again later.");
         }
     }
 
