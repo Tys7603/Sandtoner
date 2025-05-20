@@ -2,6 +2,7 @@ package com.wanyue.main.view.proxy;
 
 import android.content.Context;
 import android.os.Handler;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -154,6 +155,7 @@ public class MainHomePageViewProxy extends RxViewProxy implements LiveRoomCheckL
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                 GoodsBean goodsBean = mHotGoodsAdapter.getItem(position);
                 if(goodsBean != null) {
+                    Log.d("longnx", "onItemClick: " + goodsBean.getId());
                     GoodsDetailActivity.forward(getActivity(), goodsBean.getId());
                 }
             }
