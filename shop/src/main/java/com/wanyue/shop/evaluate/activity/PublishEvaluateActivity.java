@@ -207,22 +207,22 @@ public class PublishEvaluateActivity extends BaseActivity implements BaseQuickAd
             return;
         }
         if(mEvaluateCommitBean.getProduct_score()<=0){
-            ToastUtil.show("请为产品评分");
+            ToastUtil.show("Please rate the product");
             return;
         }
         if(mEvaluateCommitBean.getService_score()<=0){
-            ToastUtil.show("请为服务评分");
+            ToastUtil.show("Please rate the service");
             return;
         }
 
         if(mEvaluateCommitBean.getExpress_score()<=0){
-            ToastUtil.show("请为物流评分");
+            ToastUtil.show("Please rate logistics");
             return;
         }
 
         String comment=mEvaluateCommitBean.getComment();
         if(TextUtils.isEmpty(comment)){
-            ToastUtil.show("请填写评价内容");
+            ToastUtil.show("Please fill in the evaluation content");
             return;
         }
         List<String> commitList= mSelectImageAdapter.getUsedImageList();
@@ -233,7 +233,7 @@ public class PublishEvaluateActivity extends BaseActivity implements BaseQuickAd
                 @Override
                 public void onNextTo(Boolean aBoolean) {
                     if(aBoolean){
-                        ToastUtil.show("感谢您的评价!");
+                        ToastUtil.show("Thank you for your review!");
                         OrderModel.sendOrderChangeEvent(mOrderId);
                         finish();
                     }
@@ -278,7 +278,7 @@ public class PublishEvaluateActivity extends BaseActivity implements BaseQuickAd
                     @Override
                     public void onNext(Boolean aBoolean) {
                         if(aBoolean){
-                            ToastUtil.show("感谢您的评价!");
+                            ToastUtil.show("Thank you for your review!");
                             finish();
                             OrderModel.sendOrderChangeEvent(mOrderId);
                         }
@@ -382,11 +382,11 @@ public class PublishEvaluateActivity extends BaseActivity implements BaseQuickAd
     private void openTipDialog(){
         Dialog dialog= new DialogUitl.Builder(this)
                 .setTitle("")
-                .setContent("离开后评价内容将清空，仍要离开吗？")
+                .setContent("The review content will be cleared after you leave. Do you still want to leave?")
                 .setCancelable(false)
                 .setBackgroundDimEnabled(true)
-                .setConfrimString("离开")
-                .setCancelString("继续评价")
+                .setConfrimString("Leave")
+                .setCancelString("Continue to rate")
                 .setClickCallback(new DialogUitl.SimpleCallback() {
                     @Override
                     public void onConfirmClick(Dialog dialog, String content) {
@@ -401,7 +401,7 @@ public class PublishEvaluateActivity extends BaseActivity implements BaseQuickAd
 
     public static void forward(Context context, ShopCartBean shopCartBean,String orderId) {
         if (shopCartBean == null) {
-            DebugUtil.sendException("ShopCartBean不能为null");
+            DebugUtil.sendException("ShopCartBean cannot be null");
             return;
         }
         Intent intent = new Intent(context, PublishEvaluateActivity.class);

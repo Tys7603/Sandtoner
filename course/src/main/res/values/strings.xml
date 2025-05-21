@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="img_text">图文</string>
-    <string name="buyed">已付费</string>
+    <string name="img_text">Image & Text</string>
+    <string name="buyed">Paid</string>
     <string name="content_detail">Course Details</string>
 
     <string name="no_lesson">No lessons added yet</string>
     <string name="no_content">No content available</string>
-    <string name="no_add_content">尚未添加内容</string>
-    <string name="please_select_star">请选择星级</string>
-    <string name="please_input_content">请填写评价内容</string>
+    <string name="no_add_content">No content added yet</string>
+    <string name="please_select_star">Please select rating</string>
+    <string name="please_input_content">Please enter review content</string>
     <string name="no_evaluate">No comments yet</string>
 
     <string name="total_class_hour">Total %1$s </string>
     <string name="study_person_count">%1$s people joined</string>
-    <string name="speak_u_evaluate">老师水平怎么样？教学效果好不好？说说你的感受吧</string>
-    <string name="try_to_learn">试学</string>
-    <string name="studyed">已学</string>
-    <string name="in_live">正在直播</string>
+    <string name="speak_u_evaluate">How is the teacher\'s level? How effective is the teaching? Share your experience</string>
+    <string name="try_to_learn">Try to Learn</string>
+    <string name="studyed">Studied</string>
+    <string name="in_live">Live Now</string>
     <string name="introduction">Introduction</string>
     <string name="catalog">Contents</string>
     <string name="evaluation">Reviews</string>
 
-    <string name="all_evaluation">全部评价</string>
-    <string name="overall_evaluation">总体评价</string>
-    <string name="pub_evaluation">发表评价</string>
-    <string name="coin_tip">（R%1$s）</string>
-    <string name="pay_success">支付成功</string>
+    <string name="all_evaluation">All Reviews</string>
+    <string name="overall_evaluation">Overall Rating</string>
+    <string name="pub_evaluation">Post Review</string>
+    <string name="coin_tip">(R%1$s)</string>
+    <string name="pay_success">Payment Successful</string>
 </resources>
