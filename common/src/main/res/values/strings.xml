@@ -1234,8 +1234,8 @@
     <string name="str_jifen_tip1">My points</string>
     <string name="str_jifen_tip2">Points details</string>
     <string name="str_shouyi_tip7">Store revenue</string>
-    <string name="str_shouyi_tip8">Today\'s revenue (yuan)</string>
-    <string name="str_shouyi_tip9">Total revenue (yuan)</string>
+    <string name="str_shouyi_tip8">Today\'s revenue (Rand)</string>
+    <string name="str_shouyi_tip9">Total revenue (Rand)</string>
     <string name="str_shouyi_tip10">Settled (Rand)</string>
     <string name="str_shouyi_tip11">Account Balance (Rand)</string>
     <string name="str_sao">Scan</string>
