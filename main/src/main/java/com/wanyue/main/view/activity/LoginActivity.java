@@ -526,15 +526,21 @@ public class LoginActivity extends BaseActivity implements TimeModel.TimeListner
         btnGetCode.setEnabled(isValid);
         String code = tvCode.getText().toString().trim();
 
-        // Điều kiện để enable checkbox privacy
+        // Enable privacy checkbox only if phone and code are valid
         boolean canEnablePrivacy = isValid && !TextUtils.isEmpty(code);
         mCheckboxPrivacy.setEnabled(canEnablePrivacy);
-        if (!canEnablePrivacy) {
+        
+        // If privacy checkbox is checked but agree checkbox is not, uncheck privacy
+        if (mCheckboxPrivacy.isChecked() && !mCheckboxAgree.isChecked()) {
             mCheckboxPrivacy.setChecked(false);
         }
 
-        // Điều kiện để enable nút login
-        boolean isPrivacyChecked = mCheckboxPrivacy.isChecked();
+        // Login button is only enabled if:
+        // 1. Phone number is valid
+        // 2. Code is not empty
+        // 3. Privacy checkbox is checked
+        // 4. Agree checkbox is checked
+        boolean isPrivacyChecked = mCheckboxPrivacy.isChecked() && mCheckboxAgree.isChecked();
         btnLogin.setEnabled(isValid && !TextUtils.isEmpty(code) && isPrivacyChecked);
 
         if (!TextUtils.isEmpty(phoneNumber) && !isValid) {
@@ -628,7 +634,8 @@ public class LoginActivity extends BaseActivity implements TimeModel.TimeListner
             if (mCheckboxPrivacy.isChecked()) {
                 showPrivacyPolicyDialog();
             } else {
-                // If unchecked, disable login button
+                // If unchecked, disable login button and reset agree checkbox
+                mCheckboxAgree.setChecked(false);
                 validatePhoneNumber();
             }
         });
@@ -637,14 +644,23 @@ public class LoginActivity extends BaseActivity implements TimeModel.TimeListner
         mCheckboxAgree.setOnClickListener(v -> {
             if (mCheckboxAgree.isChecked()) {
                 // User has agreed, validate phone to potentially enable login
+                mCheckboxPrivacy.setChecked(true);
+                validatePhoneNumber();
+            } else {
+                // If unchecked, disable login button and privacy checkbox
+                mCheckboxPrivacy.setChecked(false);
                 validatePhoneNumber();
             }
         });
         
-        // Set up the privacy policy dialog
+        // Set up the privacy policy dialog close button
         mBtnClosePrivacy.setOnClickListener(v -> {
             mPrivacyPolicyContainer.setVisibility(View.GONE);
-            // Không tự động check mCheckboxPrivacy, chỉ đóng dialog
+            // If user hasn't agreed, uncheck privacy checkbox and disable login
+            if (!mCheckboxAgree.isChecked()) {
+                mCheckboxPrivacy.setChecked(false);
+                validatePhoneNumber();
+            }
         });
         
         // Initialize privacy content
@@ -658,9 +674,9 @@ public class LoginActivity extends BaseActivity implements TimeModel.TimeListner
         mPrivacyPolicyContainer.setVisibility(View.VISIBLE);
         // Reset scroll position
         mScrollPrivacy.scrollTo(0, 0);
-        // Enable agree checkbox by default
-        mCheckboxAgree.setEnabled(true);
+        // Reset agree checkbox to unchecked state
         mCheckboxAgree.setChecked(false);
+        mCheckboxAgree.setEnabled(true);
     }
 
     private void fetchPrivacyPolicy() {

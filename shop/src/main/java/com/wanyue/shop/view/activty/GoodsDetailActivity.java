@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -313,7 +312,7 @@ public class GoodsDetailActivity extends BaseActivity implements View.OnClickLis
                 if (e != null) {
                     ToastUtil.show(e.getMessage());
                 }
-//                finish();
+                finish();
             }
         });
     }

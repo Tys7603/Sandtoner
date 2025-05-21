@@ -21,9 +21,9 @@ public class JumpInterceptor {
       if(!canClick()){
           return;
       }
-//      if(code==BaseHttpCallBack.NO_LOGIN||code==BaseHttpCallBack.EXPIRE_LOGIN||code==BaseHttpCallBack.LOGIN_ERROR){
-//          interceptorAndFinshActivity();
-//      }
+      if(code==BaseHttpCallBack.NO_LOGIN||code==BaseHttpCallBack.EXPIRE_LOGIN||code==BaseHttpCallBack.LOGIN_ERROR){
+          interceptorAndFinshActivity();
+      }
   }
 
     private static long sLastClickTime;

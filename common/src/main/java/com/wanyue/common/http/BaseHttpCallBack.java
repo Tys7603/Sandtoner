@@ -2,7 +2,6 @@ package com.wanyue.common.http;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.util.Log;
 
 import com.alibaba.fastjson.JSON;
 import com.lzy.okgo.callback.AbsCallback;
@@ -96,7 +95,6 @@ public abstract class BaseHttpCallBack extends AbsCallback<JsonBean> {
         int code=jsonBean.getStatus();
         if(code==NO_LOGIN||code==EXPIRE_LOGIN||code==LOGIN_ERROR){
             JumpInterceptor.shouldInterceptor(code);
-            Log.d("longnx", "checkingStatus: " + jsonBean.getMsg());
             ToastUtil.show(jsonBean.getMsg());
             return false;
         }

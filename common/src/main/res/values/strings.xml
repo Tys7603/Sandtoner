@@ -19,7 +19,7 @@
     <string name="black">Blacklist</string>
     <string name="black_ing">Cancel blacklist</string>
 
-    <string name="cash_input_wx_account">Please enter WeChat account</string>
+    <string name="cash_input_wx_account">Please enter Paypal account</string>
     <string name="cash_input_ali_account">Please enter Alipay account</string>
     <string name="cash_input_ali_name">Please enter Alipay account name</string>
     <string name="cash_type_ali">Alipay</string>
@@ -29,7 +29,7 @@
     <string name="cash_type_bank">Bank card</string>
     <string name="cash_delete">Do you want to delete this account? </string>
     <string name="cash_record">Withdrawal record</string>
-    <string name="coin_give">Giveaway</string>
+    <string name="coin_give">Topup</string>
     <string name="coin_balance">Account balance</string>
     <string name="coin_balance_2">Balance:</string>
     <string name="coin_pay_ali">Alipay</string>
@@ -898,7 +898,7 @@
     <string name="music_no_data_collect">You haven\'t collected any music yet</string>
     <string name="music_no_data_class_1">No music of this type</string>
     <string name="music_no_data_class_2">Go check out other music types</string>
-    <string name="money_symbol">￥</string>
+    <string name="money_symbol">R</string>
 
     <string name="added">Added</string>
     <string name="ge">pcs</string>
@@ -1127,10 +1127,10 @@
     <string name="view_logistics">View logistics</string>
     <string name="copy_no">Copy order number</string>
 
-    <string name="evaluate_btn_tip0">All (%1$s)</string>
-    <string name="evaluate_btn_tip1">Good reviews (%1$s)</string>
-    <string name="evaluate_btn_tip2">Medium reviews (%1$s)</string>
-    <string name="evaluate_btn_tip3">Bad reviews (%1$s)</string>
+    <string name="evaluate_btn_tip0">All\n(%1$s)</string>
+    <string name="evaluate_btn_tip1">Good reviews\n(%1$s)</string>
+    <string name="evaluate_btn_tip2">Medium reviews\n(%1$s)</string>
+    <string name="evaluate_btn_tip3">Bad reviews\n(%1$s)</string>
     <string name="service_name">Waiter:</string>
     <string name="profit_coin_empty">Please enter the correct amount</string>
     <string name="profit_coin_error">The amount exceeds the amount that can be withdrawn</string>
@@ -1230,7 +1230,7 @@
     <string name="str_jingcai_tip3">Featured Content</string>
     <string name="str_tuiguang_tip3">Promotional Business Card</string>
     <string name="str_tixian_tip7">Account</string>
-    <string name="str_tixian_tip8">Please enter your Alipay account</string>
+    <string name="str_tixian_tip8">Please enter your Paystack account</string>
     <string name="str_jifen_tip1">My points</string>
     <string name="str_jifen_tip2">Points details</string>
     <string name="str_shouyi_tip7">Store revenue</string>
@@ -1263,7 +1263,7 @@
     <string name="str_auth_10">Other certificates</string>
     <string name="str_auth_11">Submit</string>
     <string name="str_auth_12">Account</string>
-    <string name="str_auth_13">Please enter WeChat account</string>
+    <string name="str_auth_13">Please enter Paypal account</string>
     <string name="str_followed">Followed</string>
     <string name="str_in_store">Enter the store</string>
     <string name="str_del">Delete</string>

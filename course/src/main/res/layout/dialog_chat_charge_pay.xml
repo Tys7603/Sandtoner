@@ -53,7 +53,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="￥"
+            android:text="R"
             android:id="@+id/tv_unit"
             android:textColor="@color/textColor"
             android:textSize="12sp"

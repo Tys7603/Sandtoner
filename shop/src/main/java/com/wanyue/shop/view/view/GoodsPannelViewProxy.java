@@ -29,7 +29,6 @@ import com.wanyue.shop.model.GoodDetailModel;
 import com.wanyue.shop.video.GSYVideoPlayer;
 import com.wanyue.shop.view.activty.GoodsDetailActivity;
 import com.wanyue.shop.view.pop.CouponGetPopView;
-import com.wanyue.shop.view.pop.ShareGoodsPop;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -180,8 +179,6 @@ public class GoodsPannelViewProxy extends BaseGoodItemViewProxy implements View.
         int id=v.getId();
         if(id==R.id.btn_specs){
             openSelectSpecsSelectDialog();
-        }else if(id==R.id.btn_share){
-            share();
         }else if(id==R.id.btn_coupon){
             openCouponPopWindow();
         }
@@ -198,15 +195,6 @@ public class GoodsPannelViewProxy extends BaseGoodItemViewProxy implements View.
                 .asCustom(mCouponGetPopView)
                 .show();
     }
-
-    /*分享*/
-    private void share() {
-        new XPopup.Builder(getActivity())
-                .isDestroyOnDismiss(true) //对于只使用一次的弹窗，推荐设置这个
-                .asCustom(new ShareGoodsPop(getActivity()))
-                .show();
-    }
-
 
     private void openSelectSpecsSelectDialog() {
         FragmentActivity fragmentActivity=getActivity();

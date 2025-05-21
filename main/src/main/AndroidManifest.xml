@@ -100,7 +100,17 @@
         <activity
             android:name=".view.activity.MyDiamondsActivity"
             android:screenOrientation="portrait"
-            android:exported="false"/>
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:scheme="https"
+                    android:host="system.sandtoner.com"
+                    android:pathPrefix="/api/paystack/verify" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".view.activity.GiftProfitActivity"
             android:screenOrientation="portrait"

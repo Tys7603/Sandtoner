@@ -83,13 +83,13 @@ public class GiftProfitActivity extends BaseActivity implements View.OnClickList
                         mEdit.setSelection(s.length());
                     }
                     if (mRate != 0) {
-                        mMoney.setText("￥" + StringUtil.toMoney(i/mRate));
+                        mMoney.setText("R" + StringUtil.toMoney(i/mRate));
                     }
                     if (i>0){
                         mBtnCash.setEnabled(true);
                     }
                 } else {
-                    mMoney.setText("￥");
+                    mMoney.setText("R");
                     mBtnCash.setEnabled(false);
                 }
             }

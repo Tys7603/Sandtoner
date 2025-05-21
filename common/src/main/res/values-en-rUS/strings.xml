@@ -30,7 +30,7 @@
     <string name="cash_type_bank">Bank card</string>
     <string name="cash_delete">Do you want to delete this account?</string>
     <string name="cash_record">Withdrawal record</string>
-    <string name="coin_give">Give away</string>
+    <string name="coin_give">Topup</string>
     <string name="coin_balance">Account balance</string>
     <string name="coin_balance_2">Balance:</string>
     <string name="coin_pay_ali">Alipay</string>
@@ -383,7 +383,7 @@
     <string name="wallet_5">The Cloud Coin proceeds from receiving orders and being rewarded, which can be withdrawn</string>
     <string name="wallet_6">Proceeds</string>
     <string name="wallet_7">Withdrawals</string>
-    <string name="money_symbol">￥</string>
+    <string name="money_symbol">R</string>
     <string name="detail">Details</string>
     <string name="profit_choose_account">Please select a cash withdrawal account</string>
     <string name="profit_amount">Pleas type in the amount to be withdrawn</string>

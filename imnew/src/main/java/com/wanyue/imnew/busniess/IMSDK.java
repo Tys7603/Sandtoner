@@ -141,19 +141,24 @@ public class IMSDK {
                     mainHandler.removeCallbacks(loginTimeoutRunnable);
                 }
 
+                Log.e("IMSDK", "IM login failed - module: " + module + ", code: " + errCode + ", msg: " + errMsg);
+
                 switch (errCode) {
                     case 6017: // Network error
                         handleRetry("Trying to load...");
                         break;
                     case 6205: // Invalid usersig
+                        ToastUtil.show("IM login failed: Invalid signature, please login again");
 //                        ToastUtil.show("IM login failed: Invalid signature, please login again");
                         CommonAppConfig.setLoginIM(false);
                         break;
                     case 6206: // Usersig expired
+                        ToastUtil.show("IM login failed: Signature expired, please login again");
 //                        ToastUtil.show("IM login failed: Signature expired, please login again");
                         CommonAppConfig.setLoginIM(false);
                         break;
                     default:
+                        handleRetry("Login failed, retrying...");
 //                        handleRetry("Login failed, retrying...");
                         break;
                 }

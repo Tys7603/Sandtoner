@@ -36,7 +36,6 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:padding="7dp"
-            android:src="@drawable/icon_goods_share"
             app:layout_constraintRight_toRightOf="parent"
             android:layout_marginRight="10dp"
             android:scaleType="fitCenter"
