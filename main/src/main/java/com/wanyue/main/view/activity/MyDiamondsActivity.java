@@ -17,6 +17,10 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.common.Priority;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.wanyue.common.CommonAppConfig;
 import com.wanyue.common.Constants;
 import com.wanyue.common.HtmlConfig;
@@ -41,6 +45,7 @@ import com.wanyue.main.R;
 import com.wanyue.main.adapter.CoinAdapter;
 import com.wanyue.main.adapter.CoinPayAdapter;
 import com.wanyue.main.api.MainAPI;
+import com.wanyue.shop.view.activty.OrderDeatailActivity;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -171,6 +176,96 @@ public class MyDiamondsActivity extends BaseActivity implements OnItemClickListe
             }
         });
         EventBus.getDefault().register(this);
+
+        Intent intent = getIntent();
+        Uri data = intent.getData();
+
+        if (data != null) {
+            String trxref = data.getQueryParameter("trxref");
+            String reference = data.getQueryParameter("reference");
+            String token = data.getQueryParameter("token");
+
+            if (trxref != null && reference != null) {
+                verifyPayment(trxref, reference);
+            } else {
+                verifyPaymentPayPal(token);
+            }
+        }
+    }
+
+    private void verifyPayment(String trxref, String reference) {
+        AndroidNetworking.get("http://system.sandtoner.com/api/paystack/verify")
+                .addQueryParameter("trxref", trxref)
+                .addQueryParameter("reference", reference)
+                .setPriority(Priority.HIGH)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(org.json.JSONObject response) {
+                        try {
+                            int status = response.getInt("status");
+                            String msg = response.getString("msg");
+
+                            if (status == 200) {
+                                org.json.JSONObject data = response.getJSONObject("data");
+                                String resultStatus = data.getString("status");
+                                if ("success".equalsIgnoreCase(resultStatus)) {
+                                    Toast.makeText(MyDiamondsActivity.this, "Payment successful", Toast.LENGTH_LONG).show();
+                                } else {
+                                    Toast.makeText(MyDiamondsActivity.this, "Payment failed: " + msg, Toast.LENGTH_LONG).show();
+                                }
+                            } else {
+                                Toast.makeText(MyDiamondsActivity.this, "Error: " + msg, Toast.LENGTH_LONG).show();
+                            }
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            Toast.makeText(MyDiamondsActivity.this, "Data processing error", Toast.LENGTH_LONG).show();
+                        }
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+                        Toast.makeText(MyDiamondsActivity.this, "Network error: " + anError.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                });
+    }
+
+    private void verifyPaymentPayPal(String token) {
+        AndroidNetworking.get("http://system.sandtoner.com/api/paypal/verify")
+                .addQueryParameter("token", token)
+                .setPriority(Priority.HIGH)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(org.json.JSONObject response) {
+                        try {
+                            int status = response.getInt("status");
+                            String msg = response.getString("msg");
+
+                            if (status == 200) {
+                                org.json.JSONObject data = response.getJSONObject("data");
+                                String resultStatus = data.getString("status");
+                                if ("success".equalsIgnoreCase(resultStatus)) {
+                                    Toast.makeText(MyDiamondsActivity.this, "Payment successful", Toast.LENGTH_LONG).show();
+                                } else {
+                                    Toast.makeText(MyDiamondsActivity.this, "Payment failed: " + msg, Toast.LENGTH_LONG).show();
+                                }
+                            } else {
+                                Toast.makeText(MyDiamondsActivity.this, "Error: " + msg, Toast.LENGTH_LONG).show();
+                            }
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            Toast.makeText(MyDiamondsActivity.this, "Data processing error", Toast.LENGTH_LONG).show();
+                        }
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+                        Toast.makeText(MyDiamondsActivity.this, "Network error: " + anError.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                });
     }
 
     @Override

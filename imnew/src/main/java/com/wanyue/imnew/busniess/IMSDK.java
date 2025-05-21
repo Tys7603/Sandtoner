@@ -181,7 +181,6 @@ public class IMSDK {
         } else {
             currentRetryCount = 0;
             CommonAppConfig.setLoginIM(false);
-            ToastUtil.show("Login failed after " + MAX_RETRY_COUNT + " attempts. Please try again later.");
 //            ToastUtil.show("Login failed after " + MAX_RETRY_COUNT + " attempts. Please try again later.");
         }
     }
