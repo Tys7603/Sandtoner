@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -147,6 +149,7 @@ public class MainHomeUserViewProxy extends RxViewProxy implements View.OnClickLi
     private TextView mTvIntegralCode;
     private TextView mTvCoupon;
     private Button btnLogin;
+    private CoordinatorLayout llController;
 
     @Override
     public int getLayoutId() {
@@ -172,7 +175,7 @@ public class MainHomeUserViewProxy extends RxViewProxy implements View.OnClickLi
         mTvFollowStore = (TextView) findViewById(R.id.tv_follow_store);
         mTvIntegralCode = (TextView) findViewById(R.id.tv_integral_code);
         mTvCoupon = (TextView) findViewById(R.id.tv_coupon);
-
+        llController = findViewById(R.id.coordinatorLayout);
         mTvFavorites.setOnClickListener(this);
         mTvFollowStore.setOnClickListener(this);
         mTvIntegralCode.setOnClickListener(this);
@@ -258,12 +261,14 @@ public class MainHomeUserViewProxy extends RxViewProxy implements View.OnClickLi
     @Override
     public void onStart() {
         super.onStart();
-        requestData();
         if (CommonAppConfig.isLogin()) {
             btnLogin.setVisibility(View.GONE);
+            llController.setVisibility(View.VISIBLE);
         } else {
             btnLogin.setVisibility(View.VISIBLE);
+            llController.setVisibility(View.GONE);
         }
+        requestData();
     }
 
     private void requestData() {

@@ -71,7 +71,7 @@ public class IMSDK {
             public void onLost(Network network) {
                 isNetworkAvailable = false;
                 Log.d("IMSDK", "Network is lost");
-                ToastUtil.show("Network connection lost, please check your connection");
+                ToastUtil.show("Network abnormal, please connect to the network first");
             }
         };
 
@@ -97,13 +97,9 @@ public class IMSDK {
 
         // Validate inputs
         if (TextUtils.isEmpty(sign) || TextUtils.isEmpty(uid)) {
-            ToastUtil.show("IM login failed: Invalid login information");
+//            ToastUtil.show("IM login failed: Invalid login information");
             return;
         }
-//        if (TextUtils.isEmpty(sign) || TextUtils.isEmpty(uid)) {
-//            ToastUtil.show("IM login failed: Invalid login information");
-//            return;
-//        }
 
         Log.d("IMSDK", "Attempting IM login - uid: " + uid + ", attempt: " + currentRetryCount);
 
@@ -149,7 +145,7 @@ public class IMSDK {
 
                 switch (errCode) {
                     case 6017: // Network error
-                        handleRetry("Network connection error, retrying...");
+                        handleRetry("Trying to load...");
                         break;
                     case 6205: // Invalid usersig
                         ToastUtil.show("IM login failed: Invalid signature, please login again");
