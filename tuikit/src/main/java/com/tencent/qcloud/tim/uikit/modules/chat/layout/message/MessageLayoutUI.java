@@ -15,6 +15,7 @@ import com.tencent.qcloud.tim.uikit.component.action.PopMenuAction;
 import com.tencent.qcloud.tim.uikit.modules.chat.interfaces.IMessageLayout;
 import com.tencent.qcloud.tim.uikit.modules.chat.interfaces.IMessageProperties;
 import com.tencent.qcloud.tim.uikit.utils.ScreenUtil;
+import com.tencent.qcloud.tim.uikit.modules.chat.layout.message.MessageListAdapter.OnScrollListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,18 +62,74 @@ public abstract class MessageLayoutUI extends RecyclerView implements IMessageLa
         setLayoutManager(linearLayoutManager);
         
         addOnScrollListener(new RecyclerView.OnScrollListener() {
+            private int lastScrollY = 0;
+            private boolean isScrollingUp = false;
+            private static final int SCROLL_THRESHOLD = 10; // Minimum scroll distance to trigger boundary check
+
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
                 if (newState == RecyclerView.SCROLL_STATE_IDLE) {
-                    // Handle scroll end
+                    // Reset scroll tracking when scrolling stops
+                    lastScrollY = 0;
+                    
+                    // Check if we're at boundaries and need to bounce back
+                    LinearLayoutManager layoutManager = (LinearLayoutManager) getLayoutManager();
+                    if (layoutManager != null) {
+                        int firstVisible = layoutManager.findFirstCompletelyVisibleItemPosition();
+                        int lastVisible = layoutManager.findLastCompletelyVisibleItemPosition();
+                        
+                        // If we're at the top and trying to scroll up further
+                        if (firstVisible == 0 && isScrollingUp) {
+                            smoothScrollToPosition(0);
+                        }
+                        
+                        // If we're at the bottom and trying to scroll down further
+                        if (lastVisible == getAdapter().getItemCount() - 1 && !isScrollingUp) {
+                            smoothScrollToPosition(getAdapter().getItemCount() - 1);
+                        }
+                    }
                 }
             }
             
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                // Handle scroll
+                
+                // Track scroll direction
+                if (Math.abs(dy) > SCROLL_THRESHOLD) {
+                    isScrollingUp = dy < 0;
+                    lastScrollY = dy;
+                }
+
+                // Prevent over-scrolling at boundaries
+                LinearLayoutManager layoutManager = (LinearLayoutManager) getLayoutManager();
+                if (layoutManager != null) {
+                    int firstVisible = layoutManager.findFirstCompletelyVisibleItemPosition();
+                    int lastVisible = layoutManager.findLastCompletelyVisibleItemPosition();
+                    
+                    // If at top and trying to scroll up
+                    if (firstVisible == 0 && dy < 0) {
+                        setOverScrollMode(View.OVER_SCROLL_NEVER);
+                    }
+                    // If at bottom and trying to scroll down
+                    else if (lastVisible == getAdapter().getItemCount() - 1 && dy > 0) {
+                        setOverScrollMode(View.OVER_SCROLL_NEVER);
+                    }
+                    // Allow normal over-scroll in middle of list
+                    else {
+                        setOverScrollMode(View.OVER_SCROLL_IF_CONTENT_SCROLLS);
+                    }
+                }
+
+                // Notify scroll position changes
+                if (mAdapter != null && mAdapter instanceof MessageListAdapter) {
+                    MessageListAdapter adapter = (MessageListAdapter) mAdapter;
+                    MessageListAdapter.OnScrollListener scrollListener = adapter.getOnScrollListener();
+                    if (scrollListener != null) {
+                        scrollListener.onScrollChanged(dx, dy);
+                    }
+                }
             }
         });
     }

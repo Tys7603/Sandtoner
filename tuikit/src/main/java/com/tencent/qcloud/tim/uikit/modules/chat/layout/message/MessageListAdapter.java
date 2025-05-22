@@ -36,12 +36,25 @@ public class MessageListAdapter extends RecyclerView.Adapter {
     private MessageLayout mRecycleView;
     private List<MessageInfo> mDataSource = new ArrayList<>();
     private MessageLayout.OnItemLongClickListener mOnItemLongClickListener;
+    private OnScrollListener mOnScrollListener;
 
     //消息转发
     private HashMap<String, Boolean> mSelectedPositions = new HashMap<String, Boolean>();
     private boolean isShowMutiSelectCheckBox = false;
 
     private int mHighShowPosition;
+
+    public interface OnScrollListener {
+        void onScrollChanged(int dx, int dy);
+    }
+
+    public void setOnScrollListener(OnScrollListener listener) {
+        this.mOnScrollListener = listener;
+    }
+
+    public OnScrollListener getOnScrollListener() {
+        return mOnScrollListener;
+    }
 
     //获得选中条目的结果，msgid
     public ArrayList<MessageInfo> getSelectedItem() {
