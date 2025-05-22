@@ -47,34 +47,10 @@ public class MessageLayout extends MessageLayoutUI {
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent e) {
-        if (e.getAction() == MotionEvent.ACTION_UP) {
-            View child = findChildViewUnder(e.getX(), e.getY());
-            if (child == null) {
-                if (mEmptySpaceClickListener != null)
-                    mEmptySpaceClickListener.onClick();
-            } else if (child instanceof ViewGroup) {
-                ViewGroup group = (ViewGroup) child;
-                final int count = group.getChildCount();
-                float x = e.getRawX();
-                float y = e.getRawY();
-                View touchChild = null;
-                for (int i = count - 1; i >= 0; i--) {
-                    final View innerChild = group.getChildAt(i);
-                    int position[] = new int[2];
-                    innerChild.getLocationOnScreen(position);
-                    if (x >= position[0]
-                            && x <= position[0] + innerChild.getMeasuredWidth()
-                            && y >= position[1]
-                            && y <= position[1] + innerChild.getMeasuredHeight()) {
-                        touchChild = innerChild;
-                        break;
-                    }
-                }
-                if (touchChild == null) {
-                    if (mEmptySpaceClickListener != null) {
-                        mEmptySpaceClickListener.onClick();
-                    }
-                }
+        if (e.getAction() == MotionEvent.ACTION_DOWN) {
+            float y = e.getY();
+            if (y < 0 || y > getHeight()) {
+                return false;
             }
         }
         return super.onInterceptTouchEvent(e);
@@ -226,21 +202,33 @@ public class MessageLayout extends MessageLayoutUI {
     public void onScrollStateChanged(int state) {
         super.onScrollStateChanged(state);
         if (state == RecyclerView.SCROLL_STATE_IDLE) {
-            if (mHandler != null) {
-                LinearLayoutManager layoutManager = (LinearLayoutManager) getLayoutManager();
-                int firstPosition = layoutManager.findFirstCompletelyVisibleItemPosition();
-                int lastPosition = layoutManager.findLastCompletelyVisibleItemPosition();
-                if (firstPosition == 0 && ((lastPosition - firstPosition + 1) < getAdapter().getItemCount())) {
-                    if (getAdapter() instanceof MessageListAdapter) {
-                        ((MessageListAdapter) getAdapter()).showLoading();
-                    }
-                    mHandler.loadMore(TUIKitConstants.GET_MESSAGE_FORWARD);
-                } else if (lastPosition == getAdapter().getItemCount() -1 && !isListEnd(lastPosition)){
-                    if (getAdapter() instanceof MessageListAdapter) {
-                        ((MessageListAdapter) getAdapter()).showLoading();
-                    }
-                    mHandler.loadMore(TUIKitConstants.GET_MESSAGE_BACKWARD);
+            LinearLayoutManager layoutManager = (LinearLayoutManager) getLayoutManager();
+            if (layoutManager == null || mHandler == null) {
+                return;
+            }
+            
+            int firstPosition = layoutManager.findFirstCompletelyVisibleItemPosition();
+            int lastPosition = layoutManager.findLastCompletelyVisibleItemPosition();
+            int itemCount = getAdapter() != null ? getAdapter().getItemCount() : 0;
+            
+            // Handle load more at top
+            if (firstPosition == 0 && lastPosition < itemCount - 1) {
+                if (getAdapter() instanceof MessageListAdapter) {
+                    ((MessageListAdapter) getAdapter()).showLoading();
                 }
+                mHandler.loadMore(TUIKitConstants.GET_MESSAGE_FORWARD);
+            }
+            // Handle load more at bottom
+            else if (lastPosition == itemCount - 1 && !isListEnd(lastPosition)) {
+                if (getAdapter() instanceof MessageListAdapter) {
+                    ((MessageListAdapter) getAdapter()).showLoading();
+                }
+                mHandler.loadMore(TUIKitConstants.GET_MESSAGE_BACKWARD);
+            }
+            
+            // Check if we need to scroll to end
+            if (lastPosition < itemCount - 1) {
+                scrollToEnd();
             }
         }
     }
@@ -251,13 +239,16 @@ public class MessageLayout extends MessageLayoutUI {
 
     public void scrollToEnd() {
         if (getAdapter() != null) {
-            scrollToPosition(getAdapter().getItemCount() - 1);
+            int itemCount = getAdapter().getItemCount();
+            if (itemCount > 0) {
+                smoothScrollToPosition(itemCount - 1);
+            }
         }
     }
 
-    public void scrollToPositon(int position) {
-        if (getAdapter() != null && position < getAdapter().getItemCount()) {
-            scrollToPosition(position);
+    public void scrollToPosition(int position) {
+        if (getAdapter() != null && position >= 0 && position < getAdapter().getItemCount()) {
+            smoothScrollToPosition(position);
         }
     }
 
@@ -334,5 +325,19 @@ public class MessageLayout extends MessageLayoutUI {
         void onMultiSelectMessageClick(int position, MessageInfo msg);
 
         void onForwardMessageClick(int position, MessageInfo msg);
+    }
+
+    public boolean isAtTop() {
+        LinearLayoutManager layoutManager = (LinearLayoutManager) getLayoutManager();
+        return layoutManager != null && layoutManager.findFirstCompletelyVisibleItemPosition() == 0;
+    }
+
+    public boolean isAtBottom() {
+        LinearLayoutManager layoutManager = (LinearLayoutManager) getLayoutManager();
+        if (layoutManager == null || getAdapter() == null) {
+            return false;
+        }
+        int lastPosition = layoutManager.findLastCompletelyVisibleItemPosition();
+        return lastPosition == getAdapter().getItemCount() - 1;
     }
 }

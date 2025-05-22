@@ -248,6 +248,7 @@ public class InputLayout extends InputLayoutUI implements View.OnClickListener, 
     @Override
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
+        hideSoftInput();
         mTextInput.removeTextChangedListener(this);
         atUserInfoMap.clear();
     }
@@ -502,7 +503,7 @@ public class InputLayout extends InputLayoutUI implements View.OnClickListener, 
                 mEmojiInputButton.setImageResource(R.drawable.action_textinput_selector);
                 showFaceViewGroup();
             }
-        } else if (view.getId() == R.id.more_btn) {//若点击右边的“+”号按钮
+        } else if (view.getId() == R.id.more_btn) {//若点击右边的"+"号按钮
             hideSoftInput();
             if (mMoreInputEvent instanceof View.OnClickListener) {
                 ((View.OnClickListener) mMoreInputEvent).onClick(view);
@@ -520,7 +521,7 @@ public class InputLayout extends InputLayoutUI implements View.OnClickListener, 
                     }
                     //以上是zanhanding添加的代码，用于fix有时需要两次点击加号按钮才能呼出富文本选择布局的问题
                 } else {
-                    showInputMoreLayout();//显示“更多”消息发送布局
+                    showInputMoreLayout();//显示"更多"消息发送布局
                     mCurrentState = STATE_ACTION_INPUT;
                     mAudioInputSwitchButton.setImageResource(R.drawable.action_audio_selector);
                     mEmojiInputButton.setImageResource(R.drawable.action_face_selector);
@@ -570,24 +571,35 @@ public class InputLayout extends InputLayoutUI implements View.OnClickListener, 
         mAudioInputSwitchButton.setImageResource(R.drawable.action_audio_selector);
         mEmojiInputButton.setImageResource(R.drawable.ic_input_face_normal);
         mTextInput.requestFocus();
-        InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.showSoftInput(mTextInput, 0);
-        if (mChatInputHandler != null) {
-            postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    mChatInputHandler.onInputAreaClick();
+        
+        // Add delay to ensure proper keyboard show
+        postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                if (imm != null) {
+                    imm.showSoftInput(mTextInput, InputMethodManager.SHOW_IMPLICIT);
+                    if (mChatInputHandler != null) {
+                        mChatInputHandler.onInputAreaClick();
+                    }
                 }
-            }, 200);
-        }
+            }
+        }, 100);
     }
 
     public void hideSoftInput() {
         TUIKitLog.i(TAG, "hideSoftInput");
         InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(mTextInput.getWindowToken(), 0);
-        mTextInput.clearFocus();
-        mInputMoreView.setVisibility(View.GONE);
+        if (imm != null && mTextInput != null && mTextInput.getWindowToken() != null) {
+            imm.hideSoftInputFromWindow(mTextInput.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+            mTextInput.clearFocus();
+            mInputMoreView.setVisibility(View.GONE);
+            
+            // Reset input state
+            mCurrentState = STATE_NONE_INPUT;
+            mAudioInputSwitchButton.setImageResource(R.drawable.action_audio_selector);
+            mEmojiInputButton.setImageResource(R.drawable.ic_input_face_normal);
+        }
     }
 
     private void showFaceViewGroup() {
@@ -814,6 +826,22 @@ public class InputLayout extends InputLayoutUI implements View.OnClickListener, 
 
     public interface OnStartActivityListener {
         void onStartGroupMemberSelectActivity();
+    }
+
+    // Add method to handle keyboard height changes
+    public void onKeyboardHeightChanged(int height) {
+        if (height > 0) {
+            // Keyboard shown
+            mCurrentState = STATE_SOFT_INPUT;
+            if (mChatInputHandler != null) {
+                mChatInputHandler.onInputAreaClick();
+            }
+        } else {
+            // Keyboard hidden
+            if (mCurrentState == STATE_SOFT_INPUT) {
+                mCurrentState = STATE_NONE_INPUT;
+            }
+        }
     }
 
 }

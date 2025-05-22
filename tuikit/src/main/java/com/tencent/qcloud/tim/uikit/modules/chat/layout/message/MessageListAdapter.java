@@ -279,7 +279,7 @@ public class MessageListAdapter extends RecyclerView.Adapter {
                     notifyDataSetChanged();
                 } else if (type == MessageLayout.DATA_CHANGE_SCROLL_TO_POSITION) {
                     notifyDataSetChanged();
-                    mRecycleView.scrollToPositon(value);
+                    mRecycleView.scrollToPosition(value);
                     mRecycleView.setHighShowPosition(value);
                 } else if (type == MessageLayout.DATA_CHANGE_TYPE_NEW_MESSAGE) {
                     notifyItemRangeInserted(mDataSource.size() + 1, value);

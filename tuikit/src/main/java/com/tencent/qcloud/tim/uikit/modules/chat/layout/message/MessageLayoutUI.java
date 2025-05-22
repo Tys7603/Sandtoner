@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.AttributeSet;
+import android.view.View;
 
 import com.tencent.qcloud.tim.uikit.component.CustomLinearLayoutManager;
 import com.tencent.qcloud.tim.uikit.component.action.PopMenuAction;
@@ -49,9 +50,31 @@ public abstract class MessageLayoutUI extends RecyclerView implements IMessageLa
         setItemViewCacheSize(0);
         setHasFixedSize(true);
         setFocusableInTouchMode(false);
-        LinearLayoutManager linearLayoutManager = new CustomLinearLayoutManager(getContext());
+        setOverScrollMode(View.OVER_SCROLL_NEVER);
+        setVerticalScrollBarEnabled(true);
+        setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
+        
+        CustomLinearLayoutManager linearLayoutManager = new CustomLinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        linearLayoutManager.setStackFromEnd(true);
+        linearLayoutManager.setReverseLayout(false);
         setLayoutManager(linearLayoutManager);
+        
+        addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                    // Handle scroll end
+                }
+            }
+            
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                // Handle scroll
+            }
+        });
     }
 
     @Override
