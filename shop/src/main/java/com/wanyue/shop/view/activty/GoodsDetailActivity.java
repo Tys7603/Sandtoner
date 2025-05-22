@@ -312,7 +312,7 @@ public class GoodsDetailActivity extends BaseActivity implements View.OnClickLis
                 if (e != null) {
                     ToastUtil.show(e.getMessage());
                 }
-                finish();
+//                finish();
             }
         });
     }
