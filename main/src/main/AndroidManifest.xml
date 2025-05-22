@@ -110,6 +110,15 @@
                     android:host="system.sandtoner.com"
                     android:pathPrefix="/api/paystack/verify" />
             </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:scheme="https"
+                    android:host="system.sandtoner.com"
+                    android:pathPrefix="/api/paypal/verify" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".view.activity.GiftProfitActivity"
