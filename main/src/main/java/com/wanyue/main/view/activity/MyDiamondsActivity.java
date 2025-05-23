@@ -1,9 +1,11 @@
 package com.wanyue.main.view.activity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -46,10 +48,12 @@ import com.wanyue.main.adapter.CoinAdapter;
 import com.wanyue.main.adapter.CoinPayAdapter;
 import com.wanyue.main.api.MainAPI;
 import com.wanyue.shop.view.activty.OrderDeatailActivity;
+import com.wanyue.shop.view.activty.PaymentWebViewActivity;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -176,21 +180,6 @@ public class MyDiamondsActivity extends BaseActivity implements OnItemClickListe
             }
         });
         EventBus.getDefault().register(this);
-
-        Intent intent = getIntent();
-        Uri data = intent.getData();
-
-        if (data != null) {
-            String trxref = data.getQueryParameter("trxref");
-            String reference = data.getQueryParameter("reference");
-            String token = data.getQueryParameter("token");
-
-            if (trxref != null && reference != null) {
-                verifyPayment(trxref, reference);
-            } else {
-                verifyPaymentPayPal(token);
-            }
-        }
     }
 
     private void verifyPayment(String trxref, String reference) {
@@ -513,8 +502,9 @@ public class MyDiamondsActivity extends BaseActivity implements OnItemClickListe
                                         if (payData != null && payData.containsKey("authorization_url")) {
                                             String url = payData.getString("authorization_url");
                                             if (!TextUtils.isEmpty(url)) {
-                                                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                                                mContext.startActivity(intent);
+                                                Intent intent = new Intent(mContext, PaymentWebViewActivity.class);
+                                                intent.putExtra("payment_url", url);
+                                                ((Activity) mContext).startActivityForResult(intent, 0);
                                                 Toast.makeText(mContext, "Order " + orderNo + " created successfully, please complete payment!", Toast.LENGTH_LONG).show();
                                                 mShowBackHomeDialog = true;
                                             } else {
@@ -544,8 +534,9 @@ public class MyDiamondsActivity extends BaseActivity implements OnItemClickListe
                                         if (payData != null && payData.containsKey("link_url")) {
                                             String url = payData.getString("link_url");
                                             if (!TextUtils.isEmpty(url)) {
-                                                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                                                mContext.startActivity(intent);
+                                                Intent intent = new Intent(mContext, PaymentWebViewActivity.class);
+                                                intent.putExtra("payment_url", url);
+                                                ((Activity) mContext).startActivityForResult(intent, 0);
                                                 Toast.makeText(mContext, "Order " + orderNo + " created successfully, please complete payment!", Toast.LENGTH_LONG).show();
                                                 mShowBackHomeDialog = true;
                                             } else {
@@ -626,5 +617,27 @@ public class MyDiamondsActivity extends BaseActivity implements OnItemClickListe
         super.onDestroy();
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 0 && resultCode == RESULT_OK) {
+            String trxref = data.getStringExtra("trxref");
+            String reference = data.getStringExtra("reference");
+            String token = data.getStringExtra("token");
+
+            if (trxref != null && reference != null) {
+                verifyPayment(trxref, reference);
+            } else {
+                verifyPaymentPayPal(token);
+            }
+
+            Log.d("SSS" , "onActivityResult success");
+
+        } else {
+            Log.d("SSS" , "onActivityResult fail");
+
+            finish();
+        }
+    }
 
 }

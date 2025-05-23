@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.alibaba.fastjson.JSONObject;
+import com.wanyue.common.CommonAppConfig;
 import com.wanyue.common.activity.WebViewActivity;
 import com.wanyue.common.custom.CheckImageView;
 import com.wanyue.common.http.BaseHttpCallBack;
@@ -115,15 +116,15 @@ public class GoodsHandleViewProxy extends BaseGoodsDetailBottomViewProxy impleme
         }
         int id=v.getId();
         if(id==R.id.img_collect||id==R.id.tv_collect){
-            collect();
+            if (CommonAppConfig.isLogin()) collect(); else ToastUtil.show("Please log in");
         }else if(id==R.id.img_shop_cart||id==R.id.tv_shop_cart){
-            toShopCart();
+            if (CommonAppConfig.isLogin()) toShopCart(); else ToastUtil.show("Please log in");
         }else if(id==R.id.btn_add_shop){
             addShopCart();
         }else if(id==R.id.btn_buy){
             addShopCartAndBuy();
         }else if(id==R.id.tv__customer_service||id==R.id.img_customer_service){
-            openService();
+            if (CommonAppConfig.isLogin()) openService(); else ToastUtil.show("Please log in");
         }
     }
 

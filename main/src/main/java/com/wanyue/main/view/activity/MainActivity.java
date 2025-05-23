@@ -200,7 +200,7 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
             } else if (id == R.id.main_find) {
                 setPageIndex(2);
             } else if (id == R.id.main_shopcart) {
-                setPageIndex(3);
+                if (CommonAppConfig.isLogin()) setPageIndex(3); else ToastUtil.show("Please log in");
         }   else if (id == R.id.main_user) {
                 setPageIndex(4);
             }
