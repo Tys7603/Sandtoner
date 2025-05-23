@@ -138,9 +138,23 @@ public class GoodsHandleViewProxy extends BaseGoodsDetailBottomViewProxy impleme
         ChatActivity.forward(getActivity(),storeId+"",mStoreGoodsBean.getStoreName());
     }
 
+    private boolean checkInventory() {
+        if (mStoreGoodsBean == null) {
+            return false;
+        }
+        int stock = mStoreGoodsBean.getStock();
+        if (stock <= 0) {
+            ToastUtil.show(getString(R.string.goods_tip_40)); // "In Stock" message
+            return false;
+        }
+        return true;
+    }
 
     //加入购物车
     private void addShopCart() {
+        if (!checkInventory()) {
+            return;
+        }
         BaseViewProxy baseViewProxy=getViewProxyMannger().getViewProxyByTag(SpecsSelectViewProxy.class.getSimpleName());
         if(baseViewProxy==null){
             ((GoodsDetailActivity)getActivity()).showSpecsSelectWindow();
@@ -165,6 +179,9 @@ public class GoodsHandleViewProxy extends BaseGoodsDetailBottomViewProxy impleme
     }
     //立即购买
     private void addShopCartAndBuy() {
+        if (!checkInventory()) {
+            return;
+        }
         BaseViewProxy baseViewProxy=getViewProxyMannger().getViewProxyByTag(SpecsSelectViewProxy.class.getSimpleName());
         if(baseViewProxy==null){
             ((GoodsDetailActivity)getActivity()).showSpecsSelectWindow();

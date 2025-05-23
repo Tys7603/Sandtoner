@@ -71,6 +71,7 @@
     <string name="goods_tip_14">View the same product</string>
     <string name="goods_tip_16">Invalid advertising link</string>
     <string name="goods_tip_17">In Stock</string>
+    <string name="goods_tip_40">Out of stock product</string>
 
     <string name="goods_tip_18">Go to buy</string>
     <string name="goods_tip_19">No products are currently on sale</string>
