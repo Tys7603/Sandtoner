@@ -20,6 +20,7 @@ import com.wanyue.common.proxy.Arg;
 import com.wanyue.common.proxy.RxViewProxy;
 import com.wanyue.common.utils.L;
 import com.wanyue.common.utils.StringUtil;
+import com.wanyue.common.utils.ToastUtil;
 import com.wanyue.common.utils.ViewUtil;
 import com.wanyue.imnew.view.conversation.ConversationActivity;
 import com.wanyue.main.R;
@@ -110,7 +111,7 @@ public abstract class  MainHomePageHeadViewproxy extends RxViewProxy implements 
                 ((com.wanyue.main.view.activity.MainActivity) getActivity()).startQrScan();
             }
         } else if (id == R.id.btn_message) {
-            startActivity(ConversationActivity.class);
+            if (CommonAppConfig.isLogin()) startActivity(ConversationActivity.class); else ToastUtil.show("Please log in");
         }else if(id ==R.id.btn_search){
             foward();
         }
