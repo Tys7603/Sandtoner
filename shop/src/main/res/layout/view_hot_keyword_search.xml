@@ -34,7 +34,7 @@
     </LinearLayout>
 
 
-    <TextView
+    <!-- <TextView
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:text="@string/str_search_1"
@@ -58,7 +58,7 @@
         android:textColor="@color/textColor"
         android:paddingRight="@dimen/default_padding"
         android:textStyle="bold"
-        />
+        /> -->
 
 
 
@@ -74,7 +74,7 @@
 
 
 
-    <TextView
+    <!-- <TextView
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:text="@string/str_search_3"
@@ -85,7 +85,7 @@
         android:textColor="@color/textColor"
         android:paddingRight="@dimen/default_padding"
         android:textStyle="bold"
-        />
+        /> -->
 
   <com.wanyue.shop.view.widet.linear.ListFlexboxLayout
       android:layout_width="match_parent"
