@@ -238,6 +238,11 @@ public abstract class AbsOderDetailBottomViewProxy extends RxViewProxy implement
             public void onSuccess(String data) {
                 CommitOrderActivity.forward(getActivity(),data);
             }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
         });
     }
 

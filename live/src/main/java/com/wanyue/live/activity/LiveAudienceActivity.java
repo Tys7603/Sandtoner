@@ -518,6 +518,7 @@ public class LiveAudienceActivity extends LiveActivity {
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         // super.onSaveInstanceState(outState);
+        super.onSaveInstanceState(outState);
     }
 
     @Override
@@ -556,6 +557,11 @@ public class LiveAudienceActivity extends LiveActivity {
                     if (mLiveRoomViewHolder != null) {
                         mLiveRoomViewHolder.setLiveNums(data);
                     }
+                }
+
+                @Override
+                public void onError(Throwable e) {
+
                 }
             };
         }

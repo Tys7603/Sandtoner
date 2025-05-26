@@ -250,6 +250,11 @@ public class LiveRecordPlayActivity extends AbsActivity implements
                     }
                 }
             }
+
+            @Override
+            public void onError(Throwable e) {
+                
+            }
         });
     }
 

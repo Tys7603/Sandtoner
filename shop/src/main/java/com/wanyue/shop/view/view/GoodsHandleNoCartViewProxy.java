@@ -10,4 +10,12 @@ public class GoodsHandleNoCartViewProxy extends GoodsHandleViewProxy {
     public int getLayoutId() {
         return R.layout.view_goods_handle_no_cart;
     }
+
+    @Override
+    public void setButtonsEnabled(boolean enabled) {
+        if (mBtnBuy != null) {
+            mBtnBuy.setEnabled(enabled);
+            mBtnBuy.setAlpha(enabled ? 1.0f : 0.5f);
+        }
+    }
 }

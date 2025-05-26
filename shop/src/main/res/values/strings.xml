@@ -10,4 +10,12 @@
     <string name="paypal_logo">Logo PayPal</string>
     <string name="payment_cancelled">Payment has been cancelled</string>
     <string name="order_id_format">Order code: %s</string>
+    <string name="product_deleted">This product has been removed from the store</string>
+    <string name="product_out_of_stock">This product is currently out of stock</string>
+    <string name="product_unavailable_image">Product unavailable image</string>
+    <string name="product_unavailable_title">Product Unavailable</string>
+    <string name="product_unavailable_message">This product is no longer available in our store. It may have been removed or is temporarily out of stock.</string>
+    <string name="back_to_home">Back to Home</string>
+    <string name="product_removed_from_cart">Product has been removed from your cart as it is no longer available</string>
+    <string name="product_removed_from_wishlist">Product has been removed from your wishlist as it is no longer available</string>
 </resources>

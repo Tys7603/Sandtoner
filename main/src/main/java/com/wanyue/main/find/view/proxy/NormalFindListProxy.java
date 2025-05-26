@@ -270,6 +270,11 @@ public class NormalFindListProxy  extends RxViewProxy {
                 findBean.setIsattent(data);
                 LiveEventBus.get(ShopEvent.FOLLOW_STORE).post(new StoreBean(findBean.getStoreId(),data));
             }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
         });
     }
 

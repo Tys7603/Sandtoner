@@ -100,6 +100,11 @@ public class ShopCartModel extends ViewModel {
                 SpUtil.getInstance().setIntegerValue("cart_num",shopCartNum);
                 LiveEventBus.get(EVENT_SHOP_CART,Integer.class).post(shopCartNum);
             }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
         });
     }
     public  static void  loadShopCartCount(){

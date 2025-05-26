@@ -74,6 +74,11 @@ public class ConsignmentManngerActivity extends BaseActivity {
                    mIndicatorAdapter.notifyTitle(StringUtil.contact("By Order","\t",data),1);
                 }
             }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
         });
     }
 
@@ -85,6 +90,11 @@ public class ConsignmentManngerActivity extends BaseActivity {
                 if(mIndicatorAdapter!=null){
                    mIndicatorAdapter.notifyTitle(StringUtil.contact("In Stock","\t",data),0);
                 }
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
             }
         });
     }

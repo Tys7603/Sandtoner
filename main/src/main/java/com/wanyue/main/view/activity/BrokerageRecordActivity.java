@@ -87,6 +87,11 @@ public class BrokerageRecordActivity extends BaseActivity {
                 style.setSpan(new AbsoluteSizeSpan(19, true), 0, 1, Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
                 mTvNumTip.setText(style);
             }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
         });
     }
 

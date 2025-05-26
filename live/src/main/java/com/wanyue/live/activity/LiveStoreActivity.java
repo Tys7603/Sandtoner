@@ -84,11 +84,16 @@ public class LiveStoreActivity extends BaseActivity implements View.OnClickListe
     private void setData() {
         if(mUserBean!=null){
            ImgLoader.display(this,mUserBean.getAvatar(),mAvatar);
-           mTvName.setText(mUserBean.getUserNiceName()+"的小店");
+           mTvName.setText(mUserBean.getUserNiceName()+"shop");
             LiveShopAPI.getShopSaleNum(mUserBean.getId(), new ParseSingleHttpCallback<String>("nums") {
                 @Override
                 public void onSuccess(String data) {
                     mTvGoodsCount.setText(data+" items");
+                }
+
+                @Override
+                public void onError(Throwable e) {
+
                 }
             });
         }

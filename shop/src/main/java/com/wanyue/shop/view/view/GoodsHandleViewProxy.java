@@ -49,8 +49,8 @@ public class GoodsHandleViewProxy extends BaseGoodsDetailBottomViewProxy impleme
     private ImageView mImgShopCart;
     private TextView mTvShopCart;
     private TextView mTvRedPoint;
-    private TextView mBtnAddShop;
-    private TextView mBtnBuy;
+    protected TextView mBtnAddShop;
+    protected TextView mBtnBuy;
     private ShopCartModel mShopCartModel;
     private GoodDetailModel mGoodDetailModel;
 
@@ -139,15 +139,31 @@ public class GoodsHandleViewProxy extends BaseGoodsDetailBottomViewProxy impleme
         ChatActivity.forward(getActivity(),storeId+"",mStoreGoodsBean.getStoreName());
     }
 
+    @Override
+    public void setButtonsEnabled(boolean enabled) {
+        if (mBtnAddShop != null) {
+            mBtnAddShop.setEnabled(enabled);
+            mBtnAddShop.setAlpha(enabled ? 1.0f : 0.5f);
+        }
+        if (mBtnBuy != null) {
+            mBtnBuy.setEnabled(enabled);
+            mBtnBuy.setAlpha(enabled ? 1.0f : 0.5f);
+        }
+    }
+
     private boolean checkInventory() {
         if (mStoreGoodsBean == null) {
+            ToastUtil.show(getString(R.string.product_deleted));
+            setButtonsEnabled(false);
             return false;
         }
         int stock = mStoreGoodsBean.getStock();
         if (stock <= 0) {
-            ToastUtil.show(getString(R.string.goods_tip_40)); // "In Stock" message
+            ToastUtil.show(getString(R.string.product_out_of_stock));
+            setButtonsEnabled(false);
             return false;
         }
+        setButtonsEnabled(true);
         return true;
     }
 

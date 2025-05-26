@@ -48,6 +48,11 @@ public class GoodsBillPop extends BaseCenterPopView implements View.OnClickListe
                     mBtnSave.setEnabled(true);
                     mBtnSave.setAlpha(1F);
                 }
+
+                @Override
+                public void onError(Throwable e) {
+
+                }
             });
         }
     }

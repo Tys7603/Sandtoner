@@ -277,6 +277,25 @@ public class GoodsDetailActivity extends BaseActivity implements View.OnClickLis
             public void onSuccess(int code, String msg, JSONObject info) {
                 if(isSuccess(code)){
                    GoodsParseBean goodsParseBean= info.toJavaObject(GoodsParseBean.class);
+                   StoreGoodsBean storeGoodsBean = goodsParseBean.getGoodsInfo();
+                   
+                   // Check if product exists or is deleted
+                   if (storeGoodsBean == null) {
+                       // Chuyển hướng đến trang sản phẩm không tồn tại
+                       ProductUnavailableActivity.forward(GoodsDetailActivity.this);
+                       finish();
+                       return;
+                   }
+                   
+                   // Check if product is out of stock
+                   if (storeGoodsBean.getStock() <= 0) {
+                       ToastUtil.show(getString(R.string.product_out_of_stock));
+                       // Disable các nút mua hàng
+                       if (mGoodsHandleViewProxy != null) {
+                           mGoodsHandleViewProxy.setButtonsEnabled(false);
+                       }
+                   }
+
                    if(ListUtil.haveData(goodsParseBean.getLiveList())){
                        ViewUtil.setVisibility(mBtnLive, View.VISIBLE);
                        ImgLoader.display(mContext,R.drawable.icon_goods_have_live,mImgLive);
@@ -291,7 +310,7 @@ public class GoodsDetailActivity extends BaseActivity implements View.OnClickLis
                    }
                    List<GoodsBean> goodsBeanList=goodsParseBean.getGoodsList();
                    List<VideoBean>videoList=goodsParseBean.getVideo();
-                   StoreGoodsBean storeGoodsBean=goodsParseBean.getGoodsInfo();
+                   storeGoodsBean=goodsParseBean.getGoodsInfo();
 
                    if(mGoodsHandleViewProxy!=null&&storeGoodsBean!=null){
                       storeGoodsBean.setStoreName(goodsParseBean.getShopName());

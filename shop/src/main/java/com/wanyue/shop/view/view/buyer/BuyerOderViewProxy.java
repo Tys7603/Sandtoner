@@ -55,6 +55,7 @@ import com.wanyue.shop.view.activty.OrderPayResultActivity;
 import com.wanyue.shop.view.activty.PaymentWebViewActivity;
 import com.wanyue.shop.view.pop.PayOrderPopView;
 import com.wanyue.shop.view.view.SpecsSelectViewProxy;
+import com.wanyue.shop.view.activty.ProductUnavailableActivity;
 
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONException;
@@ -199,12 +200,23 @@ public abstract class BuyerOderViewProxy extends RxViewProxy implements BaseQuic
 
 
 
-    protected  void againOrder(OrderBean orderBean){
+    protected void againOrder(OrderBean orderBean) {
         ShopAPI.againOrder(orderBean.getOrderId(), new ParseSingleHttpCallback<String>("cateId") {
             @Override
             public void onSuccess(String data) {
+                if (data == null || data.isEmpty()) {
+                    ProductUnavailableActivity.forward(getActivity());
+                    return;
+                }
+                CommitOrderActivity.forward(getActivity(), data);
+            }
 
-                CommitOrderActivity.forward(getActivity(),data);
+            @Override
+            public void onError(Throwable e) {
+                if (e != null) {
+                    ToastUtil.show(e.getMessage());
+                }
+                ProductUnavailableActivity.forward(getActivity());
             }
         });
     }
@@ -254,26 +266,34 @@ public abstract class BuyerOderViewProxy extends RxViewProxy implements BaseQuic
     private String productId;
     private int productCount;
     private void getProductInfo(String mId, int position){
-        ShopAPI.getOrderDetail(mId, ShopState.ORDER_BUY_SELF,new ParseHttpCallback<JSONObject>() {
+        ShopAPI.getOrderDetail(mId, ShopState.ORDER_BUY_SELF, new ParseHttpCallback<JSONObject>() {
             @Override
             public void onSuccess(int code, String msg, JSONObject info) {
                 if(isSuccess(code)){
-
-                    OrderBean orderBean=info.toJavaObject(OrderBean.class);
-                    ShopCartBean shopCartBean= orderBean.getCartInfo().get(0);
-                    productId= shopCartBean.getProductId();
-                    productCount= orderBean.getTotalNum();
-
+                    OrderBean orderBean = info.toJavaObject(OrderBean.class);
+                    if (orderBean == null || orderBean.getCartInfo() == null || orderBean.getCartInfo().isEmpty()) {
+                        ProductUnavailableActivity.forward(getActivity());
+                        return;
+                    }
+                    ShopCartBean shopCartBean = orderBean.getCartInfo().get(0);
+                    if (shopCartBean == null) {
+                        ProductUnavailableActivity.forward(getActivity());
+                        return;
+                    }
+                    productId = shopCartBean.getProductId();
+                    productCount = orderBean.getTotalNum();
                     requestAddShopCart(mId, position);
+                } else {
+                    ProductUnavailableActivity.forward(getActivity());
                 }
             }
 
             @Override
             public void onError(Throwable e) {
-                // Handle error case
                 if (e != null) {
                     ToastUtil.show(e.getMessage());
                 }
+                ProductUnavailableActivity.forward(getActivity());
             }
         });
     }

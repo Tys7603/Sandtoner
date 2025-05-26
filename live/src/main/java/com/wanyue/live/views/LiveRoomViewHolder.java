@@ -175,6 +175,11 @@ public class LiveRoomViewHolder extends AbsViewHolder implements View.OnClickLis
                   setLiveUserNum(data);
                 }
             }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
         };
 
         getLikeNums();
@@ -193,7 +198,12 @@ public class LiveRoomViewHolder extends AbsViewHolder implements View.OnClickLis
                         setGoodsNum(data);
                     }
                 }
-            };
+
+               @Override
+               public void onError(Throwable e) {
+
+               }
+           };
         }
         LiveHttpUtil.cancel(LiveHttpConsts.LIVE_GOODS_NUMS);
         LiveShopAPI.getLiveGoodsNums(mStream,mGoodsHttpCallBack);
@@ -224,6 +234,11 @@ public class LiveRoomViewHolder extends AbsViewHolder implements View.OnClickLis
                     if(data!=null){
                         setLiveNums(data);
                     }
+                }
+
+                @Override
+                public void onError(Throwable e) {
+
                 }
             };
         }
@@ -407,6 +422,11 @@ public class LiveRoomViewHolder extends AbsViewHolder implements View.OnClickLis
                     EventBus.getDefault().post(new FollowEvent(mLiveUid,isAttention));
                     ToastUtil.show(R.string.follow_succ);
                 }
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
             }
         });
     }

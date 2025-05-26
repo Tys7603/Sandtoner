@@ -220,6 +220,11 @@ public class LiveAnthorUserDialogPop extends BaseCenterPopView implements View.O
                 EventBus.getDefault().post(new FollowEvent(mUserBean.getId(), data));
                 checkFollowButtonState();
             }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
         });
     }
 

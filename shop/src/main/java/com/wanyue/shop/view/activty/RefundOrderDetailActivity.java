@@ -219,6 +219,11 @@ public class RefundOrderDetailActivity extends BaseActivity implements View.OnCl
                     mServiceLink=data;
                     WebViewActivity.forward(RefundOrderDetailActivity.this,data);
                 }
+
+                @Override
+                public void onError(Throwable e) {
+
+                }
             });
         }else{
             WebViewActivity.forward(this,mServiceLink);

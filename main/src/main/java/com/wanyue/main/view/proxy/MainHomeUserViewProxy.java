@@ -530,6 +530,11 @@ public class MainHomeUserViewProxy extends RxViewProxy implements View.OnClickLi
                     mServiceLink=data;
                     WebViewActivity.forward(getActivity(),data);
                 }
+
+                @Override
+                public void onError(Throwable e) {
+
+                }
             });
         }else{
             WebViewActivity.forward(getActivity(),mServiceLink);
