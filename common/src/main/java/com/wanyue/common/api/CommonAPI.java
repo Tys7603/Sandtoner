@@ -35,7 +35,10 @@ public class CommonAPI {
     public static final String CITY_LIST="city_list"; //获取城市列表
     public static final String BALANCE="user/balance"; //用户余额
     public static final String UP_IMAGE="upload/image"; //用户余额
+    public static final String UP_DATA="upload-data"; //用户余额
     public static final String CONFIG="config"; //公共配置
+    public static final String FILE_NAME= "file";
+    public static final String DIR= "image";
 
     /**
      * 使用腾讯定位sdk获取 位置信息
@@ -256,8 +259,10 @@ public class CommonAPI {
     }
 
     public static void upload(File file, BaseHttpCallBack httpCallback){
-        HttpClient.getInstance().post(UP_IMAGE,UP_IMAGE)
+        HttpClient.getInstance().post(UP_DATA,UP_DATA)
           .params("file",file)
+          .params("filename",FILE_NAME)
+          .params("dir",DIR)
          .isMultipart(true).execute(httpCallback);
     }
 

@@ -4608,6 +4608,7 @@ int string goods_tip_37 0x0
 int string goods_tip_38 0x0
 int string goods_tip_39 0x0
 int string goods_tip_4 0x0
+int string goods_tip_40 0x0
 int string goods_tip_5 0x0
 int string goods_tip_6 0x0
 int string goods_tip_7 0x0

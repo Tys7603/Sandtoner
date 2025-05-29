@@ -1,5 +1,6 @@
 package com.wanyue.shop.view.view;
 
+import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -48,6 +49,7 @@ public class StoreAtGoodsPannelViewProxy extends RxViewProxy {
             mTvEvaluate1.setText(getEvaluateTip("Product Description",mStoreData.getShopScore1()));
             mTvEvaluate2.setText(getEvaluateTip("Seller Service",mStoreData.getShopScore2()));
             mTvEvaluate3.setText(getEvaluateTip("Logistics Service",mStoreData.getShopScore3()));
+            Log.d("longnx", "initView: " + mStoreData.getId());
         }
 
         if(mStoreData.getShoptype()==2){
